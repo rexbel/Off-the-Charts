@@ -9,12 +9,17 @@ import { ClosingScene } from "./scenes/Closing";
 import { StepsScene } from "./scenes/Steps";
 import { TitleScene } from "./scenes/Title";
 import { FRAME_MARGIN, VIDEO_FONT_FAMILY, type SceneProps } from "./scenes/shared";
+import { Backdrop } from "./scenes/comic";
+import { DEFAULT_BACKDROP } from "./backdrops";
+import { spotSrc, spotsForScript } from "./spots";
 
 export type VisitVideoProps = {
   script: VideoScript;
   palette: VideoPalette;
   preferredName: string;
   language: Language;
+  /** Illustrated scene behind the chat bubbles (public path). */
+  backdrop?: string;
 };
 
 const SCENE_COMPONENT: Record<Scene["kind"], (props: SceneProps) => React.JSX.Element> = {
@@ -29,9 +34,10 @@ const SCENE_COMPONENT: Record<Scene["kind"], (props: SceneProps) => React.JSX.El
  * The patient-facing visit video: one Sequence per scene, each with its own
  * burned-in caption. 1280x720 at 30 fps; durations come from `durations.ts`.
  */
-export function VisitVideo({ script, palette, preferredName, language }: VisitVideoProps) {
+export function VisitVideo({ script, palette, preferredName, language, backdrop = DEFAULT_BACKDROP }: VisitVideoProps) {
   const durations = sceneDurationsInFrames(script, VIDEO_FPS);
   const starts = sceneStartFrames(script, VIDEO_FPS);
+  const spots = spotsForScript(script);
 
   return (
     <AbsoluteFill
@@ -42,6 +48,7 @@ export function VisitVideo({ script, palette, preferredName, language }: VisitVi
         WebkitFontSmoothing: "antialiased",
       }}
     >
+      <Backdrop src={backdrop} />
       {script.scenes.map((scene, index) => {
         const start = starts[index];
         const durationInFrames = durations[index];
@@ -62,6 +69,8 @@ export function VisitVideo({ script, palette, preferredName, language }: VisitVi
               language={language}
               durationInFrames={durationInFrames}
               index={index}
+              spot={spots[index]?.scene ? spotSrc(spots[index].scene!) : undefined}
+              itemSpots={(spots[index]?.items ?? []).map(spotSrc)}
             />
             <SceneDots count={script.scenes.length} current={index} palette={palette} />
             <Caption

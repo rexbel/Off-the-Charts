@@ -1,38 +1,23 @@
-import { interpolate } from "remotion";
-import {
-  bodyStyle,
-  contentArea,
-  GREETING,
-  headlineStyle,
-  kickerStyle,
-  STAGE_LABEL,
-  useSceneMotion,
-  type SceneProps,
-} from "./shared";
+import { Bubble, ClinicAvatar, EmojiPop, Pill, TypingDots } from "./comic";
+import { GREETING, STAGE_LABEL, type SceneProps } from "./shared";
 
-/** Opening card: stage label, a big greeting with the person's name, then the scene text. */
-export function TitleScene({ scene, script, palette, preferredName, language, durationInFrames, index }: SceneProps) {
-  const { frame, style } = useSceneMotion(durationInFrames, { rise: 24, fadeIn: index > 0 });
-  const ruleWidth = interpolate(frame, [6, 30], [0, 120], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-  });
-  const detailOpacity = interpolate(frame, [14, 30], [index > 0 ? 0 : 0.6, 1], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-  });
-
+/** Opening scene: the clinic starts the conversation. Typing dots, then a greeting bubble, then the scene text. */
+export function TitleScene({ scene, script, preferredName, language, index }: SceneProps) {
+  const first = index === 0;
   return (
-    <div style={{ ...contentArea, alignItems: "flex-start" }}>
-      <div style={{ ...style, display: "flex", flexDirection: "column", gap: 20, maxWidth: 1040 }}>
-        <p style={kickerStyle(palette)}>{STAGE_LABEL[language][script.stage]}</p>
-        <h1 style={headlineStyle(palette, 88)}>{GREETING[language](preferredName)}</h1>
-        <div style={{ height: 8, width: ruleWidth, borderRadius: 4, backgroundColor: palette.accent }} />
-        <div style={{ opacity: detailOpacity, display: "flex", flexDirection: "column", gap: 12 }}>
-          {scene.title ? <p style={{ ...headlineStyle(palette, 44), letterSpacing: 0 }}>{scene.title}</p> : null}
-          <p style={{ ...bodyStyle(palette, 34), color: palette.inkMuted }}>{scene.text}</p>
-        </div>
+    <>
+      <div style={{ position: "absolute", top: 36, left: 56 }}>
+        <Pill>{STAGE_LABEL[language][script.stage]}</Pill>
       </div>
-    </div>
+      {/* The opening frame is the poster: show the greeting at once. Later title scenes get the typing dots first. */}
+      {!first && <TypingDots x={56} y={104} delay={2} exitAt={24} />}
+      <Bubble x={56} y={104} width={540} delay={first ? 0 : 26} instant={first} avatar={<ClinicAvatar />} fontSize={44}>
+        {GREETING[language](preferredName)}!
+      </Bubble>
+      <Bubble tone="patient" x={80} y={280} width={540} delay={first ? 18 : 50} fontSize={28}>
+        {scene.text}
+      </Bubble>
+      <EmojiPop emoji="👋" x={620} y={40} delay={first ? 10 : 40} size={88} />
+    </>
   );
 }
