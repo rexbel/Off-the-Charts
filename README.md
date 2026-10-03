@@ -4,7 +4,7 @@
 
 Off the Chart is a care-team console that turns a patient's chart and their own "what matters to you" check-in into a Persona Profile and a Voice Guide, then writes every automated touchpoint for that person: appointment messages, a plain-language visit summary, a captioned prep video, and a 30-second clinician brief. A rules-based checker scores the clinic's current template and the new version by the same eight rules, every claim cites its source in the record, guesses are labeled, and a clinician approves before anything goes out.
 
-**Every patient, note, visit, staff account and message in this repository is synthetic.** The EHR records come from [sparkcpark/synthetic_hospital](https://huggingface.co/datasets/sparkcpark/synthetic_hospital) (MIT). Names, caregivers, upcoming visits and check-ins are seeded. Sending is simulated.
+**Every patient, note, visit, staff account and message in this repository is synthetic.** The EHR records come from [sparkcpark/synthetic_hospital]([https://huggingface.co/datasets/sparkcpark/synthetic_hospital](https://github.com/sparkcpark/synthetic_hospital) (MIT). Names, caregivers, upcoming visits and check-ins are seeded. Sending is simulated.
 
 ![The patients work queue: twenty upcoming visits with who the messages go to, check-in status and persona status](docs/screenshots/03-patients.jpg)
 
