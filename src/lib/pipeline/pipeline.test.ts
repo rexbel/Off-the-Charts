@@ -110,10 +110,10 @@ describe("fillDateTokens", () => {
   });
 });
 
-describe("runPipeline (cached mode, no model)", () => {
+describe("runPipeline (rules fallback, no model, no cache)", () => {
   it("produces a schema-valid run, scores every message, and lifts the score well above the generic template", async () => {
     const emily = getPatient(1672)!;
-    const run = await runPipeline(emily, defaultContext(emily), () => {}, { mode: "cached", cachedStageDelayMs: 0, now: FIXED_NOW, namespace: "demo" });
+    const run = await runPipeline(emily, defaultContext(emily), () => {}, { mode: "cached", useCache: false, cachedStageDelayMs: 0, now: FIXED_NOW, namespace: "demo" });
     expect(personaRunSchema.safeParse(run).success).toBe(true);
     expect(run.namespace).toBe("demo");
     expect(run.stages.map((s) => s.stage)).toEqual(["extract", "profile", "voice", "render", "score"]);
@@ -129,7 +129,7 @@ describe("runPipeline (cached mode, no model)", () => {
 
   it("blocks the generic template, not the Persona message, when a privacy rule applies", async () => {
     const jake = getPatient(2544)!;
-    const run = await runPipeline(jake, defaultContext(jake), () => {}, { mode: "cached", cachedStageDelayMs: 0, now: FIXED_NOW });
+    const run = await runPipeline(jake, defaultContext(jake), () => {}, { mode: "cached", useCache: false, cachedStageDelayMs: 0, now: FIXED_NOW });
     const twoDay = run.scores.messages.find((m) => m.stage === "before_2d")!;
     expect(twoDay.generic.blocked).toBe(true);
     expect(twoDay.persona.blocked).toBe(false);
@@ -140,7 +140,7 @@ describe("runPipeline (cached mode, no model)", () => {
   it("renders Spanish-stated patients in Spanish at 85 or higher on the fallback", async () => {
     for (const id of [2696, 2848]) {
       const p = getPatient(id)!;
-      const run = await runPipeline(p, defaultContext(p), () => {}, { mode: "cached", cachedStageDelayMs: 0, now: FIXED_NOW });
+      const run = await runPipeline(p, defaultContext(p), () => {}, { mode: "cached", useCache: false, cachedStageDelayMs: 0, now: FIXED_NOW });
       expect(run.profile.communicationNeeds.language).toBe("es");
       for (const m of run.scores.messages) expect(m.persona.score).toBeGreaterThanOrEqual(85);
       expect(run.outputs.messages[0].persona).toMatch(/^Hola /);
@@ -149,7 +149,7 @@ describe("runPipeline (cached mode, no model)", () => {
 
   it("keeps date tokens when asked (precompute mode)", async () => {
     const emily = getPatient(1672)!;
-    const run = await runPipeline(emily, defaultContext(emily), () => {}, { mode: "cached", cachedStageDelayMs: 0, now: FIXED_NOW, keepDateTokens: true });
+    const run = await runPipeline(emily, defaultContext(emily), () => {}, { mode: "cached", useCache: false, cachedStageDelayMs: 0, now: FIXED_NOW, keepDateTokens: true });
     expect(JSON.stringify(run.outputs.messages)).toContain("{{date}}");
   });
 });

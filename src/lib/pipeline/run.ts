@@ -50,6 +50,8 @@ export type RunOptions = {
   keepDateTokens?: boolean;
   /** "demo" isolates the guided walkthrough's data. Default "live". */
   namespace?: Namespace;
+  /** Set false to ignore precomputed output (tests that target the rules fallback). Default true. */
+  useCache?: boolean;
 };
 
 type StageOutcome<T> = { value: T; source: RunSource; model?: string; warning?: string };
@@ -148,7 +150,7 @@ export async function runPipeline(record: PatientRecord, context: PatientContext
   const now = opts.now ?? new Date();
   const delay = opts.cachedStageDelayMs ?? 700;
   const stages: PersonaRun["stages"] = [];
-  const cached: CachedRun | null = await loadCachedRun(record.patientId);
+  const cached: CachedRun | null = opts.useCache === false ? null : await loadCachedRun(record.patientId);
   // Cached output only applies when the coordinator did not change the audience or language.
   const cacheMatches = cached && cached.context.audience === context.audience && cached.context.language === context.language ? cached : null;
 
