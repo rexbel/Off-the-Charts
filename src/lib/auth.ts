@@ -41,6 +41,26 @@ export function seedPassword(): string | null {
   return process.env.NODE_ENV === "production" ? null : "offthechart";
 }
 
+/**
+ * One-click sign-in for a public demo (OFF_THE_CHART_QUICK_SIGNIN=1). Coordinator and clinician only:
+ * the admin account always needs the password, and no password is ever sent to the browser.
+ */
+export const QUICK_SIGNIN_ROLES: Role[] = ["coordinator", "clinician"];
+
+export function quickSigninEnabled(): boolean {
+  return process.env.OFF_THE_CHART_QUICK_SIGNIN === "1";
+}
+
+export async function quickSigninUser(email: string): Promise<User | null> {
+  if (!quickSigninEnabled()) return null;
+  const seed = SEED_USERS.find((u) => u.email === email.toLowerCase().trim());
+  if (!seed || !QUICK_SIGNIN_ROLES.includes(seed.role)) return null;
+  await ensureSeedUsers();
+  const db = await ready();
+  const row = await db.users.findOne({ email: seed.email }, noId);
+  return row && QUICK_SIGNIN_ROLES.includes(roleSchema.parse(row.role)) ? toUser(row) : null;
+}
+
 let seeded: Promise<void> | null = null;
 export function ensureSeedUsers(): Promise<void> {
   if (!seeded) {

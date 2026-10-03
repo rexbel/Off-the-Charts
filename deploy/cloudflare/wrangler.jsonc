@@ -13,7 +13,9 @@
   "vars": {
     "MAC_ORIGIN": "https://offthechart.nextrex.health",
     "OFF_THE_CHART_DEMO": "1",
-    "OFF_THE_CHART_PROVIDER": "openai"
+    "OFF_THE_CHART_PROVIDER": "openai",
+    // One-click sign-in for the seeded coordinator and clinician (admin still needs the password).
+    "OFF_THE_CHART_QUICK_SIGNIN": "1"
   },
 
   // The cloud copy: the repo's Dockerfile, one instance. Data lives in MongoDB Atlas,

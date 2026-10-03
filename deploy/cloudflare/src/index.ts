@@ -29,7 +29,11 @@ export class OtcContainer extends Container<Env> {
     super(ctx, env);
     // Production needs MONGODB_URI and SEED_PASSWORD; the model and voice keys are optional
     // (without a model key builds replay the committed cached output).
-    const vars: Record<string, string> = { OFF_THE_CHART_DEMO: env.OFF_THE_CHART_DEMO, OFF_THE_CHART_PROVIDER: env.OFF_THE_CHART_PROVIDER };
+    const vars: Record<string, string> = {
+      OFF_THE_CHART_DEMO: env.OFF_THE_CHART_DEMO,
+      OFF_THE_CHART_PROVIDER: env.OFF_THE_CHART_PROVIDER,
+      OFF_THE_CHART_QUICK_SIGNIN: env.OFF_THE_CHART_QUICK_SIGNIN,
+    };
     for (const key of ["MONGODB_URI", "SEED_PASSWORD", "OPENAI_API_KEY", "ELEVENLABS_API_KEY"] as const) {
       const value = (env as unknown as Record<string, string | undefined>)[key];
       if (value) vars[key] = value;

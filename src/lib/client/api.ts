@@ -64,6 +64,7 @@ export type PatientBundle = {
 export const api = {
   me: () => request<{ user: User | null; namespace: Namespace; demoEnabled: boolean }>("/api/me"),
   login: (body: LoginRequest) => request<{ user: User }>("/api/auth/login", { method: "POST", body: JSON.stringify(body) }),
+  quickLogin: (email: string) => request<{ user: User }>("/api/auth/quick", { method: "POST", body: JSON.stringify({ email }) }),
   logout: () => request<{ ok: true }>("/api/auth/logout", { method: "POST" }),
   queue: () => request<{ items: QueueItem[] }>("/api/queue"),
   audit: (patientId?: number) => request<{ events: AuditEvent[] }>(`/api/audit${patientId ? `?patientId=${patientId}` : ""}`),
