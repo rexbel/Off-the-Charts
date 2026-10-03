@@ -6,6 +6,8 @@ import { HttpError } from "@/lib/http";
 import { audit } from "./audit";
 import { getRun } from "./runs";
 import { getTouchpoint, scoreTouchpoint } from "./touchpoints";
+import { isPostVisitKind, visitDateForRun } from "@/lib/pipeline/provenance";
+import { getPatient } from "@/lib/data/cohort";
 
 /**
  * Simulated sending. A delivery row is written per touchpoint; a vendor
@@ -41,6 +43,9 @@ export async function sendTouchpoints(ids: string[], actor: User, namespace: Nam
     } else if (tp.sentAt) {
       status = "blocked";
       reason = "Already sent.";
+    } else if (isPostVisitKind(tp.kind) && visitDateForRun(bundle.run, getPatient(tp.patientId)?.seed.upcomingVisit.daysUntil ?? 0) > new Date()) {
+      status = "blocked";
+      reason = "The visit has not happened yet. After-visit messages and summaries are pre-visit drafts; re-render or edit after the visit, then send.";
     } else {
       const score = scoreTouchpoint(bundle.run, tp);
       if (score.blocked) {

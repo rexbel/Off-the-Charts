@@ -10,7 +10,7 @@ export async function POST(req: NextRequest) {
     await requireUser(req);
     if (!demoEnabled()) throw new HttpError(404, "The demo is not enabled in this environment");
     const store = await cookies();
-    store.set(NAMESPACE_COOKIE, "demo", { httpOnly: false, sameSite: "lax", path: "/" });
+    store.set(NAMESPACE_COOKIE, "demo", { httpOnly: true, sameSite: "lax", secure: process.env.NODE_ENV === "production", path: "/" });
     return json({ namespace: "demo" });
   });
 }

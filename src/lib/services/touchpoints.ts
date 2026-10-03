@@ -9,6 +9,7 @@ import { HttpError } from "@/lib/http";
 import { audit } from "./audit";
 import { getRun, markRunApproved } from "./runs";
 import { canApprove } from "@/lib/auth";
+import { unconfirmedInferred } from "@/lib/pipeline/provenance";
 
 /** Scores a touchpoint's current text with the same rules used in the workspace. */
 export function scoreTouchpoint(run: PersonaRun, tp: Touchpoint): TiScore {
@@ -30,9 +31,10 @@ export async function getTouchpoint(id: string): Promise<Touchpoint | null> {
  * a privacy rule is violated, so a restricted term can never be approved by
  * accident. Editing re-scores; approving an edited text keeps status "edited".
  */
-export async function applyTouchpointAction(id: string, action: TouchpointAction, actor: User | null = null): Promise<{ touchpoint: Touchpoint; score: TiScore }> {
+export async function applyTouchpointAction(id: string, action: TouchpointAction, actor: User | null = null, namespace: Namespace = "live"): Promise<{ touchpoint: Touchpoint; score: TiScore }> {
   const tp = await getTouchpoint(id);
   if (!tp) throw new HttpError(404, "Touchpoint not found");
+  if (tp.namespace !== namespace) throw new HttpError(403, "That touchpoint belongs to another workspace");
   const bundle = await getRun(tp.runId);
   if (!bundle) throw new HttpError(404, "Run not found");
   const { run } = bundle;
@@ -42,7 +44,9 @@ export async function applyTouchpointAction(id: string, action: TouchpointAction
     case "edit": {
       const text = (action.text ?? "").trim();
       if (!text) throw new HttpError(400, "Edited text cannot be empty");
-      next = { ...tp, text, status: tp.status === "approved" ? "edited" : tp.status === "rejected" ? "pending" : tp.status === "edited" ? "edited" : "pending", note: action.note ?? tp.note };
+      if (tp.sentAt) throw new HttpError(409, "This touchpoint was already sent (simulated). It cannot be edited.");
+      // Any edit re-opens review: the text a clinician approved is no longer the text that would be sent.
+      next = { ...tp, text, status: "pending", decidedAt: null, approvedBy: null, note: action.note ?? tp.note };
       break;
     }
     case "approve": {
@@ -50,6 +54,10 @@ export async function applyTouchpointAction(id: string, action: TouchpointAction
       const score = scoreTouchpoint(run, tp);
       if (score.blocked) {
         throw new HttpError(409, "A privacy rule is violated. Edit the text before approving.", { findings: score.findings.filter((f) => f.severity === "block" && !f.passed) });
+      }
+      const pending = unconfirmedInferred(run, tp);
+      if (pending.length) {
+        throw new HttpError(409, `Confirm the inferred claim${pending.length === 1 ? "" : "s"} this rests on first: ${pending.map((c) => c.text).join(" · ")}`, { unconfirmed: pending });
       }
       next = { ...tp, status: tp.text !== tp.originalText ? "edited" : "approved", decidedAt: nowIso(), note: action.note ?? tp.note, approvedBy: actor?.id ?? null };
       break;

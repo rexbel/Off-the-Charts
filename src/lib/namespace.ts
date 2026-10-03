@@ -10,6 +10,7 @@ import { namespaceSchema, type Namespace } from "@/lib/schemas";
 export const NAMESPACE_COOKIE = "otc_ns";
 
 export function parseNamespace(raw: string | undefined | null): Namespace {
+  if (!demoEnabled()) return "live";
   const parsed = namespaceSchema.safeParse(raw);
   return parsed.success ? parsed.data : "live";
 }

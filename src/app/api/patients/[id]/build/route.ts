@@ -8,6 +8,7 @@ import { getContext, saveContext } from "@/lib/services/context";
 import { runPipeline } from "@/lib/pipeline/run";
 import { saveRun } from "@/lib/services/runs";
 import { audit } from "@/lib/services/audit";
+import { rateLimit } from "@/lib/rate-limit";
 
 /**
  * POST /api/patients/[id]/build  → NDJSON stream of BuildEvent.
@@ -18,6 +19,9 @@ import { audit } from "@/lib/services/audit";
 export async function POST(req: NextRequest, ctx: RouteContext<"/api/patients/[id]/build">) {
   const user = await userFromRequest(req);
   if (!user) return errorResponse(401, "Sign in to continue");
+  // Each build can be three model calls; cap spend per user.
+  const limit = rateLimit(`build:${user.id}`, 30, 10 * 60_000);
+  if (!limit.ok) return errorResponse(429, `Too many builds. Try again in ${limit.retryAfterSeconds} seconds.`);
   const ns = namespaceFromRequest(req);
   const { id } = await ctx.params;
   const patientId = parsePatientId(id);

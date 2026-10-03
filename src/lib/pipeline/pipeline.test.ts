@@ -98,7 +98,7 @@ describe("fallback profile", () => {
     const outputs = fallbackRender(ava, profile, guide, facts, ctx);
     const guardianMessages = outputs.messages.filter((m) => m.recipient === "guardian");
     expect(guardianMessages).toHaveLength(3);
-    for (const m of guardianMessages) for (const term of rule!.restrictedTerms) expect(m.persona.toLowerCase()).not.toContain(term.toLowerCase());
+    for (const m of guardianMessages) for (const term of rule!.restrictedTerms) expect(new RegExp(`\\b${term}\\b`, "i").test(m.persona)).toBe(false);
   });
 });
 

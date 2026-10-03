@@ -3,7 +3,7 @@ import { getPatient } from "@/lib/data/cohort";
 import { getCheckinByToken } from "@/lib/services/checkins";
 import { getContext } from "@/lib/services/context";
 
-export const metadata = { title: "Before your visit", robots: { index: false, follow: false } };
+export const metadata = { title: "Before your visit", robots: { index: false, follow: false }, referrer: "no-referrer" };
 export const dynamic = "force-dynamic";
 
 const TOKEN_SHAPE = /^[A-Za-z0-9_-]{16,128}$/;

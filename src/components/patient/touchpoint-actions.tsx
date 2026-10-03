@@ -9,6 +9,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import type { TiScore, Touchpoint, TouchpointAction } from "@/lib/schemas";
+import { isPostVisitKind } from "@/lib/pipeline/provenance";
 import { cn } from "@/lib/utils";
 
 export type OnTouchpointAction = (tpId: string, action: TouchpointAction) => Promise<void>;
@@ -48,6 +49,14 @@ export function TouchpointActions({ tp, score, onAction, editLabel = "Edit", dem
   return (
     <div className="flex flex-wrap items-center gap-1.5" data-demo={demoKey}>
       <TouchpointStatusBadge status={tp.status} />
+      {isPostVisitKind(tp.kind) && !tp.sentAt && (
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <span className="text-xs text-muted-foreground underline decoration-dotted underline-offset-2">Pre-visit draft</span>
+          </TooltipTrigger>
+          <TooltipContent>Written before the visit from the chart. It can be approved as a draft but will not send until the visit has happened and the text has been checked against what was decided.</TooltipContent>
+        </Tooltip>
+      )}
       {(!decided || tp.status === "rejected") && !canApprove ? (
         <span className="text-xs text-muted-foreground">Needs a clinician to approve</span>
       ) : null}

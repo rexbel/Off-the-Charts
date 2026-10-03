@@ -27,6 +27,7 @@ import { extractFacts } from "./extract-facts";
 import { genericBaseline } from "./generic-baseline";
 import { fallbackProfile, fallbackRender, fallbackVoiceGuide, primaryRecipient, recipientsFor } from "./fallback";
 import { loadCachedRun, type CachedRun } from "./cached";
+import { validateOutputs, validateProfile } from "./provenance";
 
 /**
  * The Persona pipeline:
@@ -165,8 +166,8 @@ export async function runPipeline(record: PatientRecord, context: PatientContext
   const generic = genericBaseline(record, now);
   const recipients = recipientsFor(record, context);
 
-  const profile = await timed<PersonaProfile>("profile", () =>
-    modelStage({
+  const profile = await timed<PersonaProfile>("profile", async () => {
+    const out = await modelStage({
       name: "profile",
       mode: opts.mode,
       delayMs: delay,
@@ -178,8 +179,11 @@ export async function runPipeline(record: PatientRecord, context: PatientContext
       cached: () => cacheMatches?.profile ?? null,
       cachedModel: cacheMatches?.model,
       fallback: () => fallbackProfile(record, facts, context),
-    }),
-  );
+    });
+    const checked = validateProfile(out.value, facts);
+    const warning = [out.warning, ...checked.warnings].filter(Boolean).join(" ") || undefined;
+    return { ...out, value: checked.profile, warning };
+  });
 
   const guide = await timed<VoiceGuide>("voice", () =>
     modelStage({
@@ -214,7 +218,9 @@ export async function runPipeline(record: PatientRecord, context: PatientContext
       cachedModel: cacheMatches?.model,
       fallback: () => fallbackRender(record, profile, guide, facts, context),
     });
-    return { ...out, value: opts.keepDateTokens ? out.value : fillDateTokens(out.value, slot) };
+    const checked = validateOutputs(out.value, profile);
+    const warning = [out.warning, ...checked.warnings].filter(Boolean).join(" ") || undefined;
+    return { ...out, value: opts.keepDateTokens ? checked.outputs : fillDateTokens(checked.outputs, slot), warning };
   });
 
   const scores = await timed<Scores>("score", async () => ({ value: scoreRun(profile, guide, outputs, generic), source: "live" }));

@@ -15,7 +15,9 @@ const WHAT_IT_DOES: { icon: LucideIcon; text: string }[] = [
 
 export default async function LoginPage() {
   if (await currentUser()) redirect("/");
-  const quickFill = process.env.NODE_ENV !== "production" && seedPassword() ? SEED_USERS.map((u) => ({ email: u.email, name: u.name, role: u.role })) : [];
+  // Quick-fill only when the built-in dev default is in use; a real SEED_PASSWORD never reaches the browser.
+  const devDefault = process.env.NODE_ENV !== "production" && !process.env.SEED_PASSWORD ? seedPassword() : null;
+  const quickFill = devDefault ? SEED_USERS.map((u) => ({ email: u.email, name: u.name, role: u.role })) : [];
   return (
     <div className="flex flex-1 flex-col">
       <main className="mx-auto grid w-full max-w-5xl flex-1 items-center gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[1.1fr_1fr] lg:gap-16 lg:py-20">
@@ -39,7 +41,7 @@ export default async function LoginPage() {
             Sign in
           </h2>
           <p className="mt-1 text-sm text-muted-foreground">Staff accounts only. Coordinators prepare and edit; clinicians approve and send.</p>
-          <LoginForm quickFill={quickFill} seedPassword={quickFill.length ? seedPassword() : null} />
+          <LoginForm quickFill={quickFill} seedPassword={devDefault} />
         </section>
       </main>
       <footer className="border-t border-border/60 py-5 text-xs text-muted-foreground">

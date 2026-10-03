@@ -63,7 +63,7 @@ export function DemoIntro({ genericText, genericScore, steps }: { genericText: s
         </ol>
       </div>
       <p className="mt-6 text-xs text-muted-foreground">
-        The walkthrough replays cached model output so it is fast and identical every time. Live builds call Claude. Use Alt+→ and Alt+← to step, Esc to exit.
+        The walkthrough replays precomputed model output where a cache exists and the rules-based fallback otherwise; each stage is labeled. Live builds call the model. Use Alt+→ and Alt+← to step, Esc to exit.
       </p>
     </div>
   );

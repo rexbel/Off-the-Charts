@@ -109,11 +109,22 @@ export async function currentUser(): Promise<User | null> {
 
 /** Current user in a route handler. */
 export async function userFromRequest(req: NextRequest): Promise<User | null> {
+  assertSameSite(req);
   return userForSession(req.cookies.get(SESSION_COOKIE)?.value);
+}
+
+/** Rejects state-changing requests that a browser marks as cross-site (CSRF defense in depth beyond SameSite=Lax). */
+export function assertSameSite(req: NextRequest): void {
+  if (req.method === "GET" || req.method === "HEAD") return;
+  const site = req.headers.get("sec-fetch-site");
+  if (site === "cross-site") throw new HttpError(403, "Cross-site requests are not allowed");
+  const origin = req.headers.get("origin");
+  if (origin && req.nextUrl.origin && origin !== req.nextUrl.origin) throw new HttpError(403, "Cross-site requests are not allowed");
 }
 
 /** Route guard: 401 when signed out, 403 when the role is not allowed. */
 export async function requireUser(req: NextRequest, roles?: Role[]): Promise<User> {
+  assertSameSite(req);
   const user = await userFromRequest(req);
   if (!user) throw new HttpError(401, "Sign in to continue");
   if (roles && !roles.includes(user.role) && user.role !== "admin") throw new HttpError(403, `This action needs a ${roles.map((r) => r).join(" or ")}`);

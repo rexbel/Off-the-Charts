@@ -1,6 +1,7 @@
 import type { NextRequest } from "next/server";
 import { handle, json, readJson } from "@/lib/http";
 import { requireUser } from "@/lib/auth";
+import { namespaceFromRequest } from "@/lib/namespace";
 import { touchpointActionSchema } from "@/lib/schemas";
 import { applyTouchpointAction } from "@/lib/services/touchpoints";
 
@@ -10,6 +11,6 @@ export async function POST(req: NextRequest, ctx: RouteContext<"/api/touchpoints
     const user = await requireUser(req);
     const { id } = await ctx.params;
     const action = await readJson(req, (raw) => touchpointActionSchema.parse(raw));
-    return json(await applyTouchpointAction(id, action, user));
+    return json(await applyTouchpointAction(id, action, user, namespaceFromRequest(req)));
   });
 }

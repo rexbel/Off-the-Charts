@@ -539,12 +539,30 @@ function collect(regex: RegExp, text: string, suggestion?: string): TiMatch[] {
  * entries); omit it to run the whole lexicon. Matches are sorted by index
  * and never overlap.
  */
+/** Context guards for entries whose plain sense is clinical, financial or logistical. */
+function falsePositive(entryId: string, text: string, m: TiMatch): boolean {
+  const after = text.slice(m.index + m.length, m.index + m.length + 40).toLowerCase();
+  const before = text.slice(Math.max(0, m.index - 40), m.index).toLowerCase();
+  switch (entryId) {
+    case "en.denies":
+      return /^\s+(the\s+|your\s+|our\s+)?(claim|coverage|authorization|request|appeal)/.test(after) || /\b(insurance|insurer|payer|plan)\b[^.]*$/.test(before);
+    case "en.relapse":
+      return /\b(cancer|lymphoma|leukemia|myeloma|remission|tumou?r|nephrotic|multiple sclerosis|\bMS\b)\b/i.test(before + " " + after);
+    case "en.poorly_controlled":
+      return /^\s+(bleeding|seizure|pain|movement|shaking|coughing)/.test(after);
+    case "en.wheelchair_bound":
+      return /^\s+(parking|accessible|placard|space|spot)/.test(after);
+    default:
+      return false;
+  }
+}
+
 export function stigmaMatches(text: string, language?: Language): TiMatch[] {
   if (typeof text !== "string" || text.length === 0) return [];
   const all: TiMatch[] = [];
   for (const { entry, regex } of COMPILED) {
     if (language && entry.language !== "both" && entry.language !== language) continue;
-    all.push(...collect(regex, text, entry.suggestion));
+    all.push(...collect(regex, text, entry.suggestion).filter((m) => !falsePositive(entry.id, text, m)));
   }
   return dedupeMatches(all);
 }

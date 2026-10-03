@@ -3,6 +3,7 @@ import { db, ready, schema } from "@/db";
 import { personaRunSchema, touchpointSchema, type Namespace, type PersonaRun, type Touchpoint } from "@/lib/schemas";
 import { touchpointsForRun } from "@/lib/pipeline/touchpoints";
 import { audit } from "./audit";
+import { HttpError } from "@/lib/http";
 
 function rowToRun(row: typeof schema.personaRuns.$inferSelect): PersonaRun | null {
   try {
@@ -93,10 +94,14 @@ export async function latestRunSummaries(namespace: Namespace = "live"): Promise
   return out;
 }
 
-export async function confirmClaim(runId: string, claimId: string, actorId: string | null = null): Promise<string[] | null> {
+export async function confirmClaim(runId: string, claimId: string, actorId: string | null = null, namespace: Namespace = "live"): Promise<string[] | null> {
   await ready();
   const row = await db.query.personaRuns.findFirst({ where: eq(schema.personaRuns.id, runId) });
   if (!row) return null;
+  if (row.namespace !== namespace) throw new HttpError(403, "That run belongs to another workspace");
+  const run = rowToRun(row);
+  const known = run ? new Set([...run.profile.emotionalContext, ...run.profile.cognitiveSupport, ...run.profile.strengths, ...run.profile.privacyRules].map((c) => c.id)) : new Set<string>();
+  if (!known.has(claimId)) throw new HttpError(404, "That claim is not part of this run");
   const ids = new Set<string>(JSON.parse(row.confirmedClaimIds) as string[]);
   ids.add(claimId);
   const next = [...ids];

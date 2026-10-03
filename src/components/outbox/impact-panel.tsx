@@ -17,7 +17,7 @@ export function ImpactPanel({ metrics }: { metrics: OutboxMetrics }) {
             </>
           )}
         </p>
-        <p className="text-xs text-muted-foreground">Flesch-Kincaid, generic template vs Persona</p>
+        <p className="text-xs text-muted-foreground">Flesch-Kincaid, synthetic composite template vs Persona</p>
       </Card>
       <Card className="gap-1 p-4">
         <p className="text-xs text-muted-foreground">Trauma-informed score</p>

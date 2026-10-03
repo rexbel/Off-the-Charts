@@ -30,8 +30,9 @@ import { dataQualityWarnings, latestEncounter } from "./extract-facts";
 const COND = {
   anxiety: /anxiety|\bGAD\b|panic/i,
   depression: /depress|\bMDD\b/i,
-  dementia: /dementia|alzheimer|delirium|frontotemporal/i,
-  stroke: /stroke|\bMCA\b|aphasia|hemipare/i,
+  dementia: /dementia|alzheimer|frontotemporal/i,
+  delirium: /delirium/i,
+  stroke: /(?<!heat )\bstroke\b|\bMCA\b|aphasia|hemipare|\bCVA\b/i,
   oud: /opioid (?:use disorder|withdrawal|dependence)|heroin|substance use disorder|\bOUD\b/i,
   hiv: /\bHIV\b|\bAIDS\b|antiretroviral/i,
   pregnancy: /pregnan|peripartum|postpartum|twin/i,
@@ -39,7 +40,7 @@ const COND = {
   diabetes: /diabet|glucose|\bDKA\b|hypoglyc|insulin/i,
   weight: /\bPCOS\b|obes|insulin resistance|weight/i,
   autism: /autism/i,
-  heart: /cardiomyopathy|heart|\bHFrEF\b|mitral|\bHOCM\b|hypertroph|cardiotox|atrial fib|\bAFib\b/i,
+  heart: /cardiomyopathy|heart failure|\bHFrEF\b|mitral|\bHOCM\b|hypertrophic|cardiotox|atrial fib|\bAFib\b|pulmonary hypertension/i,
   psychosis: /schizo/i,
   bleeding: /von willebrand|hemophilia|bleeding disorder/i,
   sleep: /sleep apnea|\bOSA\b/i,
@@ -57,7 +58,7 @@ function factIds(facts: Fact[], re: RegExp, fields?: RegExp): string[] {
 const DX_FIELDS = /primary_diagnoses|comorbidities|chronic_conditions|chief_complaint|note\.hpi|note\.plan/;
 /** Diagnosis lists only: for conditions where a mention in a note (e.g. opioids for cancer pain) is not a diagnosis. */
 const DX_LISTS_ONLY = /primary_diagnoses|comorbidities|chronic_conditions/;
-const STRICT: Partial<Record<CondKey, true>> = { oud: true, hiv: true, psychosis: true, dementia: true, stroke: true };
+const STRICT: Partial<Record<CondKey, true>> = { oud: true, hiv: true, psychosis: true, dementia: true, delirium: true, stroke: true, heart: true, depression: true };
 
 function has(facts: Fact[], key: CondKey): string[] {
   return factIds(facts, COND[key], STRICT[key] ? DX_LISTS_ONLY : DX_FIELDS);
@@ -167,12 +168,25 @@ export function fallbackProfile(record: PatientRecord, facts: Fact[], context: P
     privacy.push({
       id: `p${privacy.length + 1}`,
       rule: "Do not name the substance, withdrawal or buprenorphine in a text message.",
-      restrictedTerms: ["opioid", "heroin", "withdrawal", "buprenorphine", "Suboxone", "substance", "methadone"],
+      restrictedTerms: ["opioid", "heroin", "withdrawal", "buprenorphine", "Suboxone", "substance", "methadone", "oxycodone", "naloxone", "Narcan", "bridge clinic", "detox"],
       channels: ["sms"],
       recipients: [],
       kind: "inferred",
       source: { factIds: oud },
       reason: "Text messages are often visible to others.",
+    });
+  }
+  const psychDx = [...dep, ...has(facts, "psychosis")];
+  if (psychDx.length) {
+    privacy.push({
+      id: `p${privacy.length + 1}`,
+      rule: "Keep psychiatric diagnoses and their medications out of text messages.",
+      restrictedTerms: ["depression", "depressive", "antidepressant", "sertraline", "fluoxetine", "schizophrenia", "antipsychotic", "psychiatric", "psychiatry", "mental health"],
+      channels: ["sms"],
+      recipients: [],
+      kind: "inferred",
+      source: { factIds: psychDx },
+      reason: "A text can be read by anyone holding the phone.",
     });
   }
   const hiv = has(facts, "hiv");
@@ -206,7 +220,7 @@ export function fallbackProfile(record: PatientRecord, facts: Fact[], context: P
       privacy.push({
         id: `p${privacy.length + 1}`,
         rule: "Mental-health care is confidential for the teen. Guardian messages cover logistics only.",
-        restrictedTerms: ["depression", "antidepressant", "mental health", "therapy", "counseling", "sertraline", "fluoxetine", "mood"],
+        restrictedTerms: ["depression", "antidepressant", "mental health", "therapy", "counseling", "sertraline", "fluoxetine", "mood", "anxiety", "menstrual", "pregnancy", "pregnant", "contraception", "birth control", "sexually transmitted", "STI"],
         channels: ["sms", "portal", "phone"],
         recipients: ["guardian"],
         kind: "inferred",
@@ -219,18 +233,23 @@ export function fallbackProfile(record: PatientRecord, facts: Fact[], context: P
   const dem = has(facts, "dementia");
   const strk = has(facts, "stroke");
   if (dem.length) {
-    cognitive.push(claim(`${seed.preferredName} lives with dementia. Speak to ${seed.preferredName} with dignity first, then co-address ${primary.name ?? "the caregiver"}.`, "fact", dem));
-    cognitive.push(claim("One idea per sentence. Short sentences, familiar words, no new rooms without a heads-up.", "inferred", dem, "Cognitive load and unfamiliar settings increase confusion."));
+    cognitive.push(claim("Dementia is on the problem list.", "fact", dem));
+    cognitive.push(claim(`Speak to ${seed.preferredName} with dignity first, then co-address ${primary.name ?? "the caregiver"}. One idea per sentence, familiar words, no new rooms without a heads-up.`, "inferred", dem, "Cognitive load and unfamiliar settings increase confusion in dementia."));
     for (const t of ["demented", "senile", "confused patient", "wanderer"]) avoid.add(t);
   }
   if (strk.length) {
-    cognitive.push(claim("After a stroke, use short sentences and pictures. Repeat the key step at the end.", "inferred", strk, "Aphasia and fatigue after stroke."));
+    cognitive.push(claim("After a stroke, use short sentences and pictures. Repeat the key step at the end.", "inferred", strk, "Aphasia and fatigue are common after stroke."));
   }
-  const bestTime = /morning/i.test(context.checkin) ? "morning" : /afternoon/i.test(context.checkin) ? "afternoon" : undefined;
+  const delir = has(facts, "delirium");
+  if (delir.length && !dem.length) {
+    cognitive.push(claim("Recent delirium is on the problem list. Keep messages short and expect confusion in new settings; co-address the caregiver.", "inferred", delir, "Delirium can recur with stress and unfamiliar environments."));
+  }
+  // Only a stated preference counts ("mornings are his best time"), not "worse in the morning".
+  const bestTime = /morning[^.]*\bbest\b|\bbest\b[^.]*morning/i.test(context.checkin) ? "morning" : /afternoon[^.]*\bbest\b|\bbest\b[^.]*afternoon/i.test(context.checkin) ? "afternoon" : undefined;
   if (bestTime) cognitive.push(claim(`Best time of day: ${bestTime}.`, "patient_stated", []));
 
   const aut = has(facts, "autism");
-  if (aut.length) cognitive.push(claim("Sensory-aware prep: pictures of the room, a quiet waiting option, and no surprises.", "inferred", aut, "Autism on the problem list; check-in mentions sensory needs."));
+  if (aut.length) cognitive.push(claim("Sensory-aware prep: pictures of the room, a quiet waiting option, and no surprises.", "inferred", aut, "Autism is on the problem list."));
 
   const wt = has(facts, "weight");
   if (wt.length) for (const t of ["obese", "overweight", "lose weight", "diet"]) avoid.add(t);
@@ -247,7 +266,7 @@ export function fallbackProfile(record: PatientRecord, facts: Fact[], context: P
   const neverSmoke = facts.find((f) => f.field === "profile.smoking_status" && /never/i.test(f.value));
   if (neverSmoke) strengths.push(claim("Never smoked.", "fact", [neverSmoke.id]));
 
-  const readingLevel = dem.length || strk.length ? 4 : context.audience === "dual_child_parent" ? 4 : 6;
+  const readingLevel = dem.length || strk.length || delir.length ? 4 : context.audience === "dual_child_parent" ? 4 : 6;
   const detailPreference: PersonaProfile["communicationNeeds"]["detailPreference"] =
     /written plan|detail|numbers|exact/i.test(context.checkin) || anx.length ? "stepwise" : dem.length ? "brief" : "brief";
 
@@ -504,7 +523,7 @@ function whenToCallFor(facts: Fact[], lang: Language): string[] {
   if (has(facts, "heart").length)
     return es
       ? ["Dolor en el pecho o falta de aire: llame al 911.", "Hinchazón nueva o aumento de 1 kilo en un día: llámenos."]
-      : ["Chest pain or trouble breathing: call 911.", "New swelling or 3 pounds up in a day: call us."];
+      : ["Chest pain or trouble breathing: call 911.", "New swelling or 2 pounds up in a day: call us."];
   if (has(facts, "diabetes").length)
     return es
       ? ["Azúcar muy baja que no sube: llame al 911.", "Vómitos o azúcar alta todo el día: llámenos."]
