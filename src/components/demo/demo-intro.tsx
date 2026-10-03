@@ -23,10 +23,10 @@ export function DemoIntro({ genericText, genericScore, steps }: { genericText: s
 
   return (
     <div className="space-y-6 pb-16">
-      <p className="text-xs font-medium uppercase tracking-[0.18em] text-teal">Guided walkthrough · about four minutes</p>
+      <p className="text-xs font-medium uppercase tracking-[0.18em] text-teal">Guided walkthrough · about three minutes</p>
       <h1 className="mt-2 text-4xl sm:text-5xl font-semibold leading-[1.05] text-balance">What a patient hears from us today.</h1>
       <p className="mt-3 max-w-2xl text-muted-foreground">
-        Below is the reminder a clinic sends now, scored by the same rules we apply to everything else. The walkthrough then follows three patients: Emily (ideal), Walter (complex) and Jake (edge).
+        Below is the reminder a clinic sends now, scored by the same rules we apply to everything else. The walkthrough then follows one patient, Emily, from her chart and her own words to the videos before and after her visit.
       </p>
 
       <Card className="mt-8 gap-4 p-6" data-demo="generic-reminder">

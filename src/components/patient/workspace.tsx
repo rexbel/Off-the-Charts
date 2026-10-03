@@ -40,8 +40,10 @@ function stagesFromRun(r: PersonaRun): StagesState {
   return s;
 }
 
-function firstInferredId(r: PersonaRun): string | null {
-  return [...r.profile.emotionalContext, ...r.profile.cognitiveSupport, ...r.profile.privacyRules].find((c) => c.kind === "inferred")?.id ?? null;
+/** The claim ?evidence=1 opens: the first inferred one, else the first in the patient's own words. */
+function firstEvidenceId(r: PersonaRun): string | null {
+  const claims = [...r.profile.emotionalContext, ...r.profile.cognitiveSupport, ...r.profile.privacyRules];
+  return (claims.find((c) => c.kind === "inferred") ?? claims.find((c) => c.kind === "patient_stated"))?.id ?? null;
 }
 const TABS = ["messages", "brief", "summary", "video", "compare"] as const;
 type Tab = (typeof TABS)[number];
@@ -65,9 +67,10 @@ export function PatientWorkspace({ bundle, user, initialTab, autoBuild, openEvid
   // The active tab lives in the URL (?tab=) so walkthrough steps and back/forward both work.
   const urlTab = searchParams.get("tab") ?? initialTab;
   const tab: Tab = TABS.includes(urlTab as Tab) ? (urlTab as Tab) : "messages";
-  // Evidence sheet: user choice wins; otherwise ?evidence=1 opens the first inferred claim of the current run once.
+  const videoStage = searchParams.get("stage") === "after" ? "after" : "before";
+  // Evidence sheet: user choice wins; otherwise ?evidence=1 opens the first inferred (else patient-stated) claim of the current run once.
   const [evidenceChoice, setEvidenceChoice] = useState<{ id: string | null } | null>(null);
-  const evidenceId = evidenceChoice ? evidenceChoice.id : openEvidence && run ? firstInferredId(run) : null;
+  const evidenceId = evidenceChoice ? evidenceChoice.id : openEvidence && run ? firstEvidenceId(run) : null;
   const setEvidenceId = (id: string | null) => setEvidenceChoice({ id });
   const [confirming, setConfirming] = useState(false);
   const [contextOpen, setContextOpen] = useState(!bundle.latest);
@@ -128,13 +131,20 @@ export function PatientWorkspace({ bundle, user, initialTab, autoBuild, openEvid
   );
 
   // Demo: ?build=cached triggers one build on arrival, then strips the param.
+  // - Started a tick later, so a mount that is torn down at once (dev Strict Mode) never sends
+  //   a build that the unmount cleanup below would abort.
+  // - The native history API updates the URL without a navigation: router.replace could swap
+  //   in a preserved copy of this page at that URL and hide this one, aborting the build.
   useEffect(() => {
     if (!autoBuild || autoBuildFired.current) return;
-    autoBuildFired.current = true;
-    const params = new URLSearchParams(searchParams.toString());
-    params.delete("build");
-    router.replace(`${pathname}${params.size ? `?${params}` : ""}`, { scroll: false });
-    void build(autoBuild);
+    const timer = window.setTimeout(() => {
+      autoBuildFired.current = true;
+      const params = new URLSearchParams(searchParams.toString());
+      params.delete("build");
+      window.history.replaceState(null, "", `${pathname}${params.size ? `?${params}` : ""}`);
+      void build(autoBuild);
+    }, 0);
+    return () => window.clearTimeout(timer);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [autoBuild]);
 
@@ -343,7 +353,7 @@ export function PatientWorkspace({ bundle, user, initialTab, autoBuild, openEvid
                 <VisitSummaryView run={run} tp={summaryTp} score={summaryScore} onAction={onAction} onOpenClaim={setEvidenceId} canApprove={canApprove} />
               </TabsContent>
               <TabsContent value="video" className="mt-4">
-                <VideoTab run={run} touchpoints={touchpoints} tpScores={tpScores} onAction={onAction} canApprove={canApprove} ageBand={patient.seed.ageBand} />
+                <VideoTab key={videoStage} initialStage={videoStage} run={run} touchpoints={touchpoints} tpScores={tpScores} onAction={onAction} canApprove={canApprove} ageBand={patient.seed.ageBand} />
               </TabsContent>
               <TabsContent value="compare" className="mt-4">
                 <RunCompare current={run} runs={runs} />

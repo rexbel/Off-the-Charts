@@ -953,7 +953,7 @@
     "synthetic": true
    },
    "statedLanguage": "en",
-   "whatMattersCheckin": "I'm a teacher; I like a written plan. I worry about my heart and the twins.",
+   "whatMattersCheckin": "I'm a teacher, so I do best with a written plan I can read before the visit. I'm nervous about the echo and what it means for my heart, so please tell me what will happen while I'm there. Afterward I need to know what to watch for at home with the twins and when to call.",
    "checkinSource": "synthetic patient-stated (seeded for demo)",
    "dementia": false,
    "ageBand": "adult",
