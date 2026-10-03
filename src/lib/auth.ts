@@ -119,7 +119,17 @@ export function assertSameSite(req: NextRequest): void {
   const site = req.headers.get("sec-fetch-site");
   if (site === "cross-site") throw new HttpError(403, "Cross-site requests are not allowed");
   const origin = req.headers.get("origin");
-  if (origin && req.nextUrl.origin && origin !== req.nextUrl.origin) throw new HttpError(403, "Cross-site requests are not allowed");
+  if (!origin) return;
+  // Compare hosts, not req.nextUrl.origin: behind a proxy (Cloudflare tunnel, the otc-edge Worker)
+  // the standalone server builds nextUrl from its own listen address and plain http.
+  const host = req.headers.get("x-forwarded-host") ?? req.headers.get("host") ?? req.nextUrl.host;
+  let originHost: string;
+  try {
+    originHost = new URL(origin).host;
+  } catch {
+    throw new HttpError(403, "Cross-site requests are not allowed");
+  }
+  if (originHost !== host) throw new HttpError(403, "Cross-site requests are not allowed");
 }
 
 /** Route guard: 401 when signed out, 403 when the role is not allowed. */
