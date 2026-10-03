@@ -88,7 +88,7 @@ cp .env.example .env.local   # then set keys (all optional)
 pnpm dev
 ```
 
-Open http://localhost:3000, which shows the public landing page; sign in with a seeded development account from the quick-fill buttons to reach the console at `/patients`. The SQLite database is created and migrated on the first request.
+Open http://localhost:3000, which shows the public landing page; sign in with a seeded development account from the quick-fill buttons to reach the console at `/patients`. Set `MONGODB_URI` first (Atlas or a local `mongod`); collections and indexes are created on the first request.
 
 ### Environment variables
 
@@ -99,7 +99,7 @@ Open http://localhost:3000, which shows the public landing page; sign in with a 
 | `OFF_THE_CHART_PROVIDER` | Force `anthropic` or `openai` when both keys exist. |
 | `OFF_THE_CHART_STAGE_TIMEOUT_MS` | Per-stage model timeout (default 90000). |
 | `ELEVENLABS_API_KEY`, `ELEVENLABS_VOICE_ID` | Studio voice for read-aloud and video narration, cached in `data/audio/`. Without it, the browser voice is used. |
-| `DATABASE_URL`, `DATABASE_AUTH_TOKEN` | libsql URL (default `file:data/offthechart.db`); Turso in production. |
+| `MONGODB_URI` | Required. MongoDB connection string (Atlas in production). `MONGODB_DB` overrides the database name (default `offthechart`). |
 | `SEED_PASSWORD` | Password for the seeded staff accounts. Defaults to a dev value outside production; required in production. |
 | `OFF_THE_CHART_DEMO` | `1`/`0` to force the guided walkthrough on or off. Default: on outside production. |
 
@@ -116,7 +116,6 @@ pnpm test           # vitest (checker, pipeline, check-in helpers)
 pnpm precompute     # regenerate src/lib/data/generated/<id>.json with the live model (retries on rate limits)
 pnpm precompute --check   # fail if any of the 20 patients lacks a valid cached file (no model calls)
 pnpm gen-scenes    # regenerate missing video illustrations in public/video with the OpenAI image API (--force to redo)
-pnpm db:push        # apply schema with drizzle-kit (migrations also run automatically)
 ```
 
 ## How the engine works
@@ -143,7 +142,7 @@ EHR record ─► extract facts (rules) ─► Persona Profile (model, schema-ch
 
 ## Stack
 
-Next.js 16 (App Router), TypeScript, Tailwind v4, shadcn/ui, Drizzle on libsql (SQLite locally, Turso-compatible), Remotion player, Zod, Vitest. Models: Claude (`@anthropic-ai/sdk`, structured outputs) or OpenAI (chat completions with JSON schema) behind one adapter. Everything else is rules.
+Next.js 16 (App Router), TypeScript, Tailwind v4, shadcn/ui, MongoDB (official Node driver), Remotion player, Zod, Vitest. Models: Claude (`@anthropic-ai/sdk`, structured outputs) or OpenAI (chat completions with JSON schema) behind one adapter. Everything else is rules.
 
 ## Roadmap
 

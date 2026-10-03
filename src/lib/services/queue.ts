@@ -1,5 +1,4 @@
-import { and, asc, eq, inArray } from "drizzle-orm";
-import { db, ready, schema } from "@/db";
+import { noId, ready } from "@/db";
 import { touchpointSchema, type Namespace, type QueueItem, type Touchpoint } from "@/lib/schemas";
 import { listPatients } from "@/lib/data/cohort";
 import { getRun } from "./runs";
@@ -10,19 +9,15 @@ import { scoreTouchpoint } from "./touchpoints";
  * per patient, with its current score so a clinician can see blocked items.
  */
 export async function approvalQueue(namespace: Namespace = "live"): Promise<QueueItem[]> {
-  await ready();
-  const rows = await db.query.touchpoints.findMany({
-    where: and(eq(schema.touchpoints.status, "pending"), eq(schema.touchpoints.namespace, namespace)),
-    orderBy: [asc(schema.touchpoints.patientId)],
-  });
+  const db = await ready();
+  const rows = await db.touchpoints.find({ status: "pending", namespace }, noId).sort({ patientId: 1 }).toArray();
   const tps = rows.map((r) => touchpointSchema.safeParse(r)).filter((p) => p.success).map((p) => p.data as Touchpoint);
   if (tps.length === 0) return [];
   // Only the latest run per patient counts (across all runs, not just those with pending items).
   const patientIds = [...new Set(tps.map((t) => t.patientId))];
-  const latest = await db
-    .select({ id: schema.personaRuns.id, patientId: schema.personaRuns.patientId, createdAt: schema.personaRuns.createdAt, source: schema.personaRuns.source })
-    .from(schema.personaRuns)
-    .where(and(inArray(schema.personaRuns.patientId, patientIds), eq(schema.personaRuns.namespace, namespace)));
+  const latest = await db.personaRuns
+    .find({ patientId: { $in: patientIds }, namespace }, { projection: { _id: 0, id: 1, patientId: 1, createdAt: 1, source: 1 } })
+    .toArray();
   const latestByPatient = new Map<number, (typeof latest)[number]>();
   for (const r of latest) {
     const cur = latestByPatient.get(r.patientId);

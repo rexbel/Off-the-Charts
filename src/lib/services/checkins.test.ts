@@ -2,8 +2,8 @@ import { describe, expect, it, vi } from "vitest";
 import type { CheckinAnswers, PatientContext } from "@/lib/schemas";
 
 // The pure helpers are tested without a database: the db module is stubbed so
-// importing the service never opens a SQLite file.
-vi.mock("@/db", () => ({ db: {}, ready: async () => undefined, schema: { patientCheckins: {} } }));
+// importing the service never connects to MongoDB.
+vi.mock("@/db", () => ({ ready: async () => ({}), noId: {} }));
 
 import { contextFromCheckin, daysUntilExpiry, newCheckinToken } from "./checkins";
 

@@ -1,5 +1,4 @@
-import { desc, eq, and } from "drizzle-orm";
-import { db, ready, schema } from "@/db";
+import { noId, ready } from "@/db";
 import { rewriteRecordSchema, type Namespace, type PatientRecord, type RewriteRecord, type RewriteRequest, type RewriteResponse, type RunSource, type User } from "@/lib/schemas";
 import { newId, nowIso } from "@/lib/ids";
 import { scoreText, stigmaMatches } from "@/lib/ti-checker";
@@ -42,9 +41,9 @@ export async function rewriteMessage(record: PatientRecord, req: RewriteRequest,
     if (!(err instanceof ModelError)) console.error("[rewrite] unexpected", err instanceof Error ? err.message : err);
   }
   const after = scoreText(rewritten, target);
-  await ready();
+  const db = await ready();
   const row = { id: newId("rw"), patientId: record.patientId, namespace, actorId: actor?.id ?? null, source, stage: req.stage, original: req.text, rewritten, beforeScore: before.score, afterScore: after.score, at: nowIso() };
-  await db.insert(schema.rewrites).values(row);
+  await db.rewrites.insertOne({ ...row });
   await audit("rewrite", { patientId: record.patientId, actorId: actor?.id ?? null }, { source, before: before.score, after: after.score, namespace });
   return {
     source,
@@ -58,8 +57,8 @@ export async function rewriteMessage(record: PatientRecord, req: RewriteRequest,
 }
 
 export async function listRewrites(patientId: number, namespace: Namespace = "live", limit = 20): Promise<RewriteRecord[]> {
-  await ready();
-  const rows = await db.query.rewrites.findMany({ where: and(eq(schema.rewrites.patientId, patientId), eq(schema.rewrites.namespace, namespace)), orderBy: [desc(schema.rewrites.at)], limit });
+  const db = await ready();
+  const rows = await db.rewrites.find({ patientId, namespace }, noId).sort({ at: -1 }).limit(limit).toArray();
   return rows.map((r) => rewriteRecordSchema.safeParse(r)).filter((p) => p.success).map((p) => p.data);
 }
 

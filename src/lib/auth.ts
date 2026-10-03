@@ -1,8 +1,8 @@
 import { randomBytes, scryptSync, timingSafeEqual } from "node:crypto";
 import { cookies } from "next/headers";
 import type { NextRequest } from "next/server";
-import { eq, lt } from "drizzle-orm";
-import { db, ready, schema } from "@/db";
+import { noId, ready } from "@/db";
+import type { UserDoc } from "@/db/schema";
 import { roleSchema, type Role, type User } from "@/lib/schemas";
 import { newId, nowIso } from "@/lib/ids";
 import { HttpError } from "@/lib/http";
@@ -45,14 +45,12 @@ let seeded: Promise<void> | null = null;
 export function ensureSeedUsers(): Promise<void> {
   if (!seeded) {
     seeded = (async () => {
-      await ready();
+      const db = await ready();
       const password = seedPassword();
       if (!password) return;
-      const existing = await db.select({ email: schema.users.email }).from(schema.users);
-      const have = new Set(existing.map((u) => u.email));
       for (const u of SEED_USERS) {
-        if (have.has(u.email)) continue;
-        await db.insert(schema.users).values({ id: newId("usr"), email: u.email, name: u.name, role: u.role, passwordHash: hashPassword(password), createdAt: nowIso() }).onConflictDoNothing();
+        // Insert-if-missing keyed on email, so concurrent first requests can't duplicate an account.
+        await db.users.updateOne({ email: u.email }, { $setOnInsert: { id: newId("usr"), email: u.email, name: u.name, role: u.role, passwordHash: hashPassword(password), createdAt: nowIso() } }, { upsert: true });
       }
     })().catch((err) => {
       seeded = null;
@@ -62,30 +60,31 @@ export function ensureSeedUsers(): Promise<void> {
   return seeded;
 }
 
-function toUser(row: typeof schema.users.$inferSelect): User {
+function toUser(row: UserDoc): User {
   return { id: row.id, email: row.email, name: row.name, role: roleSchema.parse(row.role) };
 }
 
 export async function authenticate(email: string, password: string): Promise<User | null> {
   await ensureSeedUsers();
-  const row = await db.query.users.findFirst({ where: eq(schema.users.email, email.toLowerCase().trim()) });
+  const db = await ready();
+  const row = await db.users.findOne({ email: email.toLowerCase().trim() }, noId);
   if (!row || !verifyPassword(password, row.passwordHash)) return null;
   return toUser(row);
 }
 
 export async function createSession(userId: string): Promise<{ id: string; expiresAt: Date }> {
-  await ready();
+  const db = await ready();
   const expiresAt = new Date(Date.now() + SESSION_DAYS * 24 * 3600 * 1000);
   const id = randomBytes(24).toString("hex");
-  await db.insert(schema.sessions).values({ id, userId, expiresAt: expiresAt.toISOString() });
+  await db.sessions.insertOne({ id, userId, expiresAt: expiresAt.toISOString() });
   // Opportunistic cleanup of expired sessions.
-  await db.delete(schema.sessions).where(lt(schema.sessions.expiresAt, nowIso()));
+  await db.sessions.deleteMany({ expiresAt: { $lt: nowIso() } });
   return { id, expiresAt };
 }
 
 export async function destroySession(sessionId: string): Promise<void> {
-  await ready();
-  await db.delete(schema.sessions).where(eq(schema.sessions.id, sessionId));
+  const db = await ready();
+  await db.sessions.deleteOne({ id: sessionId });
 }
 
 export function sessionCookieOptions(expiresAt: Date) {
@@ -95,9 +94,10 @@ export function sessionCookieOptions(expiresAt: Date) {
 async function userForSession(sessionId: string | undefined): Promise<User | null> {
   if (!sessionId) return null;
   await ensureSeedUsers();
-  const session = await db.query.sessions.findFirst({ where: eq(schema.sessions.id, sessionId) });
+  const db = await ready();
+  const session = await db.sessions.findOne({ id: sessionId }, noId);
   if (!session || session.expiresAt < nowIso()) return null;
-  const row = await db.query.users.findFirst({ where: eq(schema.users.id, session.userId) });
+  const row = await db.users.findOne({ id: session.userId }, noId);
   return row ? toUser(row) : null;
 }
 

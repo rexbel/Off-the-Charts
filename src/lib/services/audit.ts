@@ -1,5 +1,4 @@
-import { eq, inArray } from "drizzle-orm";
-import { db, ready, schema } from "@/db";
+import { noId, ready } from "@/db";
 import type { AuditEvent } from "@/lib/schemas";
 import { newId, nowIso } from "@/lib/ids";
 
@@ -8,8 +7,8 @@ import { newId, nowIso } from "@/lib/ids";
  * check-in text.
  */
 export async function audit(action: string, ids: { patientId?: number; runId?: string; touchpointId?: string; actorId?: string | null }, meta: Record<string, string | number | boolean | null> = {}): Promise<void> {
-  await ready();
-  await db.insert(schema.auditEvents).values({
+  const db = await ready();
+  await db.auditEvents.insertOne({
     id: newId("ev"),
     at: nowIso(),
     action,
@@ -22,14 +21,14 @@ export async function audit(action: string, ids: { patientId?: number; runId?: s
 }
 
 export async function recentAudit(opts: { patientId?: number; limit?: number } = {}): Promise<AuditEvent[]> {
-  await ready();
-  const rows = await db.query.auditEvents.findMany({
-    where: opts.patientId !== undefined ? eq(schema.auditEvents.patientId, opts.patientId) : undefined,
-    orderBy: (t, { desc }) => [desc(t.at)],
-    limit: opts.limit ?? 100,
-  });
+  const db = await ready();
+  const rows = await db.auditEvents
+    .find(opts.patientId !== undefined ? { patientId: opts.patientId } : {}, noId)
+    .sort({ at: -1 })
+    .limit(opts.limit ?? 100)
+    .toArray();
   const actorIds = [...new Set(rows.map((r) => r.actorId).filter((x): x is string => Boolean(x)))];
-  const users = actorIds.length ? await db.select({ id: schema.users.id, name: schema.users.name }).from(schema.users).where(inArray(schema.users.id, actorIds)) : [];
+  const users = actorIds.length ? await db.users.find({ id: { $in: actorIds } }, { projection: { _id: 0, id: 1, name: 1 } }).toArray() : [];
   const names = new Map(users.map((u) => [u.id, u.name]));
   return rows.map((r) => ({
     id: r.id,

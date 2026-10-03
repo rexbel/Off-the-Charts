@@ -25,12 +25,12 @@ export class OtcContainer extends Container<Env> {
   // The copy only matters during a handover; let it sleep once traffic is back on the Mac.
   sleepAfter = "15m";
 
-  constructor(ctx: DurableObjectState<{}>, env: Env) {
+  constructor(ctx: ConstructorParameters<typeof Container<Env>>[0], env: Env) {
     super(ctx, env);
-    // Production needs SEED_PASSWORD for the staff accounts; the model keys are optional
-    // (without them builds replay the committed cached output).
-    const vars: Record<string, string> = { OFF_THE_CHART_DEMO: env.OFF_THE_CHART_DEMO };
-    for (const key of ["SEED_PASSWORD", "ANTHROPIC_API_KEY", "OPENAI_API_KEY", "ELEVENLABS_API_KEY"] as const) {
+    // Production needs MONGODB_URI and SEED_PASSWORD; the model and voice keys are optional
+    // (without a model key builds replay the committed cached output).
+    const vars: Record<string, string> = { OFF_THE_CHART_DEMO: env.OFF_THE_CHART_DEMO, OFF_THE_CHART_PROVIDER: env.OFF_THE_CHART_PROVIDER };
+    for (const key of ["MONGODB_URI", "SEED_PASSWORD", "OPENAI_API_KEY", "ELEVENLABS_API_KEY"] as const) {
       const value = (env as unknown as Record<string, string | undefined>)[key];
       if (value) vars[key] = value;
     }

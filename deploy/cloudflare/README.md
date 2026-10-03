@@ -23,20 +23,20 @@ Deployed by [Workers Builds](https://developers.cloudflare.com/workers/ci-cd/bui
 
 Containers need the Workers Paid plan. The container only runs during a handover and sleeps 15 minutes after its last request.
 
-Secrets passed into the container (`npx wrangler secret put <NAME>`): `SEED_PASSWORD` (required: production refuses to seed staff accounts without it), and optionally `ANTHROPIC_API_KEY`, `OPENAI_API_KEY`, `ELEVENLABS_API_KEY`. Without a model key, builds replay the committed cached output.
+Secrets passed into the container (`npx wrangler secret put <NAME>`): `MONGODB_URI` and `SEED_PASSWORD` (required), `OPENAI_API_KEY` and `ELEVENLABS_API_KEY` (optional). `OFF_THE_CHART_PROVIDER=openai` is a plain var. Without a model key, builds replay the committed cached output.
 
 ## The Mac
 
 ```bash
 deploy/mac/build.sh   # install, build, copy static assets into .next/standalone
-deploy/mac/start.sh   # serve on 127.0.0.1:3200, secrets from .env.production.local
+deploy/mac/start.sh   # serve on 127.0.0.1:3200, secrets (MONGODB_URI, OPENAI_API_KEY, SEED_PASSWORD) from .env.production.local
 ```
 
 `deploy/mac/health.nextrex.offthechart.app.plist` runs `start.sh` at login and restarts it if it exits. After a rebuild: `launchctl kickstart -k gui/$(id -u)/health.nextrex.offthechart.app`.
 
 ## Limits
 
-- **Separate data.** The Mac (`data/offthechart.db`) and the cloud copy (SQLite inside the container, reset when it sleeps) each keep their own database. Set `DATABASE_URL`/`DATABASE_AUTH_TOKEN` to one Turso database on both to share it. Keep `max_instances` at 1 until then.
+- **Shared data.** The Mac and the cloud copy use the same MongoDB Atlas database (`offthechart` on `Cluster0`), so a handover keeps every record. Atlas network access must allow `0.0.0.0/0`, since container egress IPs vary.
 - **Writes during a hang.** If a POST times out on the Mac, the Worker returns 503 and doesn't replay it on the cloud copy, since the Mac may have received it.
 - **Mismatched builds.** A page loaded from one copy may fail to load a script from the other until it's refreshed.
 - **The Mac doesn't update itself.** Pushes redeploy the cloud copy only.

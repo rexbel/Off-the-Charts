@@ -1,6 +1,6 @@
 import { randomBytes } from "node:crypto";
-import { and, desc, eq, lt } from "drizzle-orm";
-import { db, ready, schema } from "@/db";
+import { noId, ready } from "@/db";
+import type { PatientCheckinDoc } from "@/db/schema";
 import { checkinAnswersSchema, patientCheckinSchema, type CheckinAnswers, type PatientCheckin, type PatientContext } from "@/lib/schemas";
 import { getPatient } from "@/lib/data/cohort";
 import { newId, nowIso } from "@/lib/ids";
@@ -40,7 +40,7 @@ export function daysUntilExpiry(expiresAt: string, now: Date = new Date()): numb
   return Math.max(0, Math.ceil(ms / (24 * 3600 * 1000)));
 }
 
-type Row = typeof schema.patientCheckins.$inferSelect;
+type Row = PatientCheckinDoc;
 
 function toCheckin(row: Row): PatientCheckin {
   let answers: CheckinAnswers | null = null;
@@ -65,7 +65,7 @@ function toCheckin(row: Row): PatientCheckin {
 }
 
 export async function createCheckin(patientId: number, actorId: string | null): Promise<PatientCheckin> {
-  await ready();
+  const db = await ready();
   const now = new Date();
   const row: Row = {
     id: newId("chk"),
@@ -77,34 +77,29 @@ export async function createCheckin(patientId: number, actorId: string | null): 
     expiresAt: new Date(now.getTime() + CHECKIN_TTL_DAYS * 24 * 3600 * 1000).toISOString(),
     submittedAt: null,
   };
-  await db.insert(schema.patientCheckins).values(row);
+  await db.patientCheckins.insertOne({ ...row });
   await audit("checkin.created", { patientId, actorId }, { checkinId: row.id, expiresAt: row.expiresAt });
   return toCheckin(row);
 }
 
 /** Flips "sent" links past their expiry to "expired" and persists it. Scoped by patient or token. */
 async function expireStale(scope: { patientId: number } | { token: string }): Promise<void> {
-  const where = "patientId" in scope ? eq(schema.patientCheckins.patientId, scope.patientId) : eq(schema.patientCheckins.token, scope.token);
-  await db
-    .update(schema.patientCheckins)
-    .set({ status: "expired" })
-    .where(and(where, eq(schema.patientCheckins.status, "sent"), lt(schema.patientCheckins.expiresAt, nowIso())));
+  const db = await ready();
+  const where = "patientId" in scope ? { patientId: scope.patientId } : { token: scope.token };
+  await db.patientCheckins.updateMany({ ...where, status: "sent", expiresAt: { $lt: nowIso() } }, { $set: { status: "expired" } });
 }
 
 export async function listCheckins(patientId: number): Promise<PatientCheckin[]> {
-  await ready();
+  const db = await ready();
   await expireStale({ patientId });
-  const rows = await db.query.patientCheckins.findMany({
-    where: eq(schema.patientCheckins.patientId, patientId),
-    orderBy: [desc(schema.patientCheckins.createdAt)],
-  });
+  const rows = await db.patientCheckins.find({ patientId }, noId).sort({ createdAt: -1 }).toArray();
   return rows.map(toCheckin);
 }
 
 export async function getCheckinByToken(token: string): Promise<PatientCheckin | null> {
-  await ready();
+  const db = await ready();
   await expireStale({ token });
-  const row = await db.query.patientCheckins.findFirst({ where: eq(schema.patientCheckins.token, token) });
+  const row = await db.patientCheckins.findOne({ token }, noId);
   return row ? toCheckin(row) : null;
 }
 
@@ -126,11 +121,9 @@ export async function submitCheckin(token: string, rawAnswers: CheckinAnswers): 
   if (!patient) throw new HttpError(404, "Patient not found");
 
   const submittedAt = nowIso();
-  const result = await db
-    .update(schema.patientCheckins)
-    .set({ answers: JSON.stringify(answers), status: "submitted", submittedAt })
-    .where(and(eq(schema.patientCheckins.token, token), eq(schema.patientCheckins.status, "sent")));
-  if (result.rowsAffected === 0) {
+  const db = await ready();
+  const result = await db.patientCheckins.updateOne({ token, status: "sent" }, { $set: { answers: JSON.stringify(answers), status: "submitted", submittedAt } });
+  if (result.modifiedCount === 0) {
     const latest = await getCheckinByToken(token);
     if (latest?.status === "expired") throw new HttpError(410, "This link has expired. Ask your clinic for a new one.");
     throw new HttpError(409, "These answers were already sent.");
@@ -148,8 +141,8 @@ export async function submitCheckin(token: string, rawAnswers: CheckinAnswers): 
 
 /** Latest check-in per patient (status, created, submitted), for the patients work queue. */
 export async function latestCheckinByPatient(): Promise<Map<number, { status: PatientCheckin["status"]; createdAt: string; submittedAt: string | null }>> {
-  await ready();
-  const rows = await db.query.patientCheckins.findMany({ orderBy: [desc(schema.patientCheckins.createdAt)] });
+  const db = await ready();
+  const rows = await db.patientCheckins.find({}, noId).sort({ createdAt: -1 }).toArray();
   const now = nowIso();
   const out = new Map<number, { status: PatientCheckin["status"]; createdAt: string; submittedAt: string | null }>();
   for (const r of rows) {

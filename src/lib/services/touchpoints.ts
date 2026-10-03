@@ -1,5 +1,4 @@
-import { and, desc, eq, inArray } from "drizzle-orm";
-import { db, ready, schema } from "@/db";
+import { noId, ready } from "@/db";
 import { touchpointSchema, type Namespace, type PersonaRun, type TiScore, type Touchpoint, type TouchpointAction, type User } from "@/lib/schemas";
 import { scoreText } from "@/lib/ti-checker";
 import { staffTarget, targetFor } from "@/lib/pipeline/run";
@@ -19,8 +18,8 @@ export function scoreTouchpoint(run: PersonaRun, tp: Touchpoint): TiScore {
 }
 
 export async function getTouchpoint(id: string): Promise<Touchpoint | null> {
-  await ready();
-  const row = await db.query.touchpoints.findFirst({ where: eq(schema.touchpoints.id, id) });
+  const db = await ready();
+  const row = await db.touchpoints.findOne({ id }, noId);
   if (!row) return null;
   const parsed = touchpointSchema.safeParse(row);
   return parsed.success ? parsed.data : null;
@@ -71,10 +70,11 @@ export async function applyTouchpointAction(id: string, action: TouchpointAction
       break;
   }
 
-  await db
-    .update(schema.touchpoints)
-    .set({ text: next.text, status: next.status, decidedAt: next.decidedAt, note: next.note, approvedBy: next.approvedBy, preparedBy: tp.preparedBy ?? actor?.id ?? null })
-    .where(eq(schema.touchpoints.id, id));
+  const db = await ready();
+  await db.touchpoints.updateOne(
+    { id },
+    { $set: { text: next.text, status: next.status, decidedAt: next.decidedAt, note: next.note, approvedBy: next.approvedBy, preparedBy: tp.preparedBy ?? actor?.id ?? null } },
+  );
   if (action.action === "approve") await markRunApproved(tp.runId, actor?.id ?? null);
   else await refreshRunApproval(tp.runId);
   await audit(`touchpoint.${action.action}`, { patientId: tp.patientId, runId: tp.runId, touchpointId: id, actorId: actor?.id ?? null }, { kind: tp.kind, status: next.status, edited: next.text !== next.originalText, namespace: tp.namespace });
@@ -82,10 +82,7 @@ export async function applyTouchpointAction(id: string, action: TouchpointAction
 }
 
 export async function listApprovedTouchpoints(namespace: Namespace = "live"): Promise<Touchpoint[]> {
-  await ready();
-  const rows = await db.query.touchpoints.findMany({
-    where: and(inArray(schema.touchpoints.status, ["approved", "edited"]), eq(schema.touchpoints.namespace, namespace)),
-    orderBy: [desc(schema.touchpoints.decidedAt)],
-  });
+  const db = await ready();
+  const rows = await db.touchpoints.find({ status: { $in: ["approved", "edited"] }, namespace }, noId).sort({ decidedAt: -1 }).toArray();
   return rows.map((r) => touchpointSchema.safeParse(r)).filter((p) => p.success).map((p) => p.data);
 }

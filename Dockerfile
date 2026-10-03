@@ -20,7 +20,7 @@ RUN useradd --system --uid 1001 otc
 COPY --from=build --chown=otc /app/.next/standalone ./
 COPY --from=build --chown=otc /app/.next/static ./.next/static
 COPY --from=build --chown=otc /app/public ./public
-# SQLite database and cached audio; created and migrated on the first request.
+# Cached text-to-speech audio. Everything else lives in MongoDB (MONGODB_URI).
 RUN mkdir -p data && chown otc data
 USER otc
 EXPOSE 3000

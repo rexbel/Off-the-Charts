@@ -1,134 +1,114 @@
-import { integer, sqliteTable, text, index } from "drizzle-orm/sqlite-core";
-
 /**
- * Persistence for the mutable parts of the app. The EHR cohort itself is
- * static JSON (src/lib/data/cohort.json); only what a coordinator changes or
- * what the pipeline produces is stored here. Synthetic data only.
+ * Persistence for the mutable parts of the app, one MongoDB collection per
+ * document type. The EHR cohort itself is static JSON (src/lib/data/cohort.json);
+ * only what a coordinator changes or what the pipeline produces is stored here.
+ * Synthetic data only. Every document carries its own string `id` (unique index);
+ * Mongo's `_id` is never read back.
  */
 
-export const patientContexts = sqliteTable("patient_contexts", {
-  patientId: integer("patient_id").primaryKey(),
-  checkin: text("checkin").notNull(),
-  audience: text("audience").notNull(),
-  language: text("language").notNull(),
-  channel: text("channel").notNull(),
-  updatedAt: text("updated_at").notNull(),
-});
+export type PatientContextDoc = {
+  patientId: number;
+  checkin: string;
+  audience: string;
+  language: string;
+  channel: string;
+  updatedAt: string;
+};
 
-export const personaRuns = sqliteTable(
-  "persona_runs",
-  {
-    id: text("id").primaryKey(),
-    patientId: integer("patient_id").notNull(),
-    namespace: text("namespace").notNull().default("live"),
-    createdAt: text("created_at").notNull(),
-    source: text("source").notNull(),
-    approvedAt: text("approved_at"),
-    approvedBy: text("approved_by"),
-    /** Full PersonaRun JSON (facts, profile, voice guide, outputs, scores, stages). */
-    payload: text("payload").notNull(),
-    confirmedClaimIds: text("confirmed_claim_ids").notNull().default("[]"),
-  },
-  (t) => [index("persona_runs_patient_idx").on(t.patientId, t.createdAt), index("persona_runs_ns_idx").on(t.namespace)],
-);
+export type PersonaRunDoc = {
+  id: string;
+  patientId: number;
+  namespace: string;
+  createdAt: string;
+  source: string;
+  approvedAt: string | null;
+  approvedBy: string | null;
+  /** Full PersonaRun JSON (facts, profile, voice guide, outputs, scores, stages). */
+  payload: string;
+  confirmedClaimIds: string;
+};
 
-export const touchpoints = sqliteTable(
-  "touchpoints",
-  {
-    id: text("id").primaryKey(),
-    runId: text("run_id").notNull(),
-    patientId: integer("patient_id").notNull(),
-    namespace: text("namespace").notNull().default("live"),
-    kind: text("kind").notNull(),
-    recipient: text("recipient").notNull(),
-    status: text("status").notNull(),
-    text: text("text").notNull(),
-    originalText: text("original_text").notNull(),
-    decidedAt: text("decided_at"),
-    note: text("note"),
-    preparedBy: text("prepared_by"),
-    approvedBy: text("approved_by"),
-    sentAt: text("sent_at"),
-  },
-  (t) => [index("touchpoints_run_idx").on(t.runId), index("touchpoints_status_idx").on(t.status), index("touchpoints_ns_idx").on(t.namespace)],
-);
+export type TouchpointDoc = {
+  id: string;
+  runId: string;
+  patientId: number;
+  namespace: string;
+  kind: string;
+  recipient: string;
+  status: string;
+  text: string;
+  originalText: string;
+  decidedAt: string | null;
+  note: string | null;
+  preparedBy: string | null;
+  approvedBy: string | null;
+  sentAt: string | null;
+};
 
 /** Audit trail. Never stores message text or note text, only ids and counts. */
-export const auditEvents = sqliteTable("audit_events", {
-  id: text("id").primaryKey(),
-  at: text("at").notNull(),
-  action: text("action").notNull(),
-  actorId: text("actor_id"),
-  patientId: integer("patient_id"),
-  runId: text("run_id"),
-  touchpointId: text("touchpoint_id"),
-  meta: text("meta").notNull().default("{}"),
-});
+export type AuditEventDoc = {
+  id: string;
+  at: string;
+  action: string;
+  actorId: string | null;
+  patientId: number | null;
+  runId: string | null;
+  touchpointId: string | null;
+  meta: string;
+};
 
 /** Seeded staff accounts. Passwords are scrypt hashes; never plaintext. */
-export const users = sqliteTable("users", {
-  id: text("id").primaryKey(),
-  email: text("email").notNull().unique(),
-  name: text("name").notNull(),
-  role: text("role").notNull(),
-  passwordHash: text("password_hash").notNull(),
-  createdAt: text("created_at").notNull(),
-});
+export type UserDoc = {
+  id: string;
+  email: string;
+  name: string;
+  role: string;
+  passwordHash: string;
+  createdAt: string;
+};
 
-export const sessions = sqliteTable("sessions", {
-  id: text("id").primaryKey(),
-  userId: text("user_id").notNull(),
-  expiresAt: text("expires_at").notNull(),
-});
+export type SessionDoc = {
+  id: string;
+  userId: string;
+  expiresAt: string;
+};
 
 /** Patient-facing check-in links. The token is the only credential; answers are patient-stated. */
-export const patientCheckins = sqliteTable(
-  "patient_checkins",
-  {
-    id: text("id").primaryKey(),
-    patientId: integer("patient_id").notNull(),
-    token: text("token").notNull().unique(),
-    status: text("status").notNull(),
-    answers: text("answers"),
-    createdAt: text("created_at").notNull(),
-    expiresAt: text("expires_at").notNull(),
-    submittedAt: text("submitted_at"),
-  },
-  (t) => [index("patient_checkins_patient_idx").on(t.patientId, t.createdAt)],
-);
+export type PatientCheckinDoc = {
+  id: string;
+  patientId: number;
+  token: string;
+  status: string;
+  answers: string | null;
+  createdAt: string;
+  expiresAt: string;
+  submittedAt: string | null;
+};
 
 /** Simulated sends. A vendor adapter would write vendorRef here. */
-export const outboxDeliveries = sqliteTable(
-  "outbox_deliveries",
-  {
-    id: text("id").primaryKey(),
-    touchpointId: text("touchpoint_id").notNull(),
-    patientId: integer("patient_id").notNull(),
-    namespace: text("namespace").notNull().default("live"),
-    channel: text("channel").notNull(),
-    status: text("status").notNull(),
-    reason: text("reason"),
-    vendorRef: text("vendor_ref"),
-    at: text("at").notNull(),
-  },
-  (t) => [index("outbox_deliveries_tp_idx").on(t.touchpointId), index("outbox_deliveries_ns_idx").on(t.namespace, t.at)],
-);
+export type OutboxDeliveryDoc = {
+  id: string;
+  touchpointId: string;
+  patientId: number;
+  namespace: string;
+  channel: string;
+  status: string;
+  reason: string | null;
+  vendorRef: string | null;
+  at: string;
+};
 
 /** Rewrite-tool history per patient. Stores the rewritten message (it is a draft message, not chart text). */
-export const rewrites = sqliteTable(
-  "rewrites",
-  {
-    id: text("id").primaryKey(),
-    patientId: integer("patient_id").notNull(),
-    namespace: text("namespace").notNull().default("live"),
-    actorId: text("actor_id"),
-    source: text("source").notNull(),
-    stage: text("stage").notNull(),
-    original: text("original").notNull(),
-    rewritten: text("rewritten").notNull(),
-    beforeScore: integer("before_score").notNull(),
-    afterScore: integer("after_score").notNull(),
-    at: text("at").notNull(),
-  },
-  (t) => [index("rewrites_patient_idx").on(t.patientId, t.at)],
-);
+export type RewriteDoc = {
+  id: string;
+  patientId: number;
+  namespace: string;
+  actorId: string | null;
+  source: string;
+  stage: string;
+  original: string;
+  rewritten: string;
+  beforeScore: number;
+  afterScore: number;
+  at: string;
+};

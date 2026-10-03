@@ -1,5 +1,4 @@
-import { desc, eq, inArray } from "drizzle-orm";
-import { db, ready, schema } from "@/db";
+import { noId, ready } from "@/db";
 import { outboxDeliverySchema, type Namespace, type OutboxDelivery, type Touchpoint, type User } from "@/lib/schemas";
 import { newId, nowIso } from "@/lib/ids";
 import { HttpError } from "@/lib/http";
@@ -23,7 +22,7 @@ export const simulatedVendor: VendorAdapter = {
 };
 
 export async function sendTouchpoints(ids: string[], actor: User, namespace: Namespace, vendor: VendorAdapter = simulatedVendor): Promise<OutboxDelivery[]> {
-  await ready();
+  const db = await ready();
   const out: OutboxDelivery[] = [];
   for (const id of ids) {
     const tp = await getTouchpoint(id);
@@ -56,11 +55,11 @@ export async function sendTouchpoints(ids: string[], actor: User, namespace: Nam
         const r = await vendor.send({ touchpoint: tp, channel });
         status = "sent_simulated";
         vendorRef = r.vendorRef;
-        await db.update(schema.touchpoints).set({ sentAt: base.at }).where(eq(schema.touchpoints.id, tp.id));
+        await db.touchpoints.updateOne({ id: tp.id }, { $set: { sentAt: base.at } });
       }
     }
     const row = { ...base, status, reason, vendorRef };
-    await db.insert(schema.outboxDeliveries).values(row);
+    await db.outboxDeliveries.insertOne({ ...row });
     await audit("outbox.send", { patientId: tp.patientId, runId: tp.runId, touchpointId: tp.id, actorId: actor.id }, { status, namespace, kind: tp.kind, channel });
     out.push(outboxDeliverySchema.parse(row));
   }
@@ -68,15 +67,15 @@ export async function sendTouchpoints(ids: string[], actor: User, namespace: Nam
 }
 
 export async function listDeliveries(namespace: Namespace = "live", limit = 100): Promise<OutboxDelivery[]> {
-  await ready();
-  const rows = await db.query.outboxDeliveries.findMany({ where: eq(schema.outboxDeliveries.namespace, namespace), orderBy: [desc(schema.outboxDeliveries.at)], limit });
+  const db = await ready();
+  const rows = await db.outboxDeliveries.find({ namespace }, noId).sort({ at: -1 }).limit(limit).toArray();
   return rows.map((r) => outboxDeliverySchema.safeParse(r)).filter((p) => p.success).map((p) => p.data);
 }
 
 export async function deliveriesForTouchpoints(ids: string[]): Promise<Map<string, OutboxDelivery>> {
-  await ready();
   if (!ids.length) return new Map();
-  const rows = await db.query.outboxDeliveries.findMany({ where: inArray(schema.outboxDeliveries.touchpointId, ids), orderBy: [desc(schema.outboxDeliveries.at)] });
+  const db = await ready();
+  const rows = await db.outboxDeliveries.find({ touchpointId: { $in: ids } }, noId).sort({ at: -1 }).toArray();
   const map = new Map<string, OutboxDelivery>();
   for (const r of rows) {
     const p = outboxDeliverySchema.safeParse(r);

@@ -12,11 +12,12 @@
 
   "vars": {
     "MAC_ORIGIN": "https://offthechart.nextrex.health",
-    "OFF_THE_CHART_DEMO": "1"
+    "OFF_THE_CHART_DEMO": "1",
+    "OFF_THE_CHART_PROVIDER": "openai"
   },
 
-  // The cloud copy: the repo's Dockerfile, one instance. Its SQLite file lives inside
-  // the container, so a second instance would see different data.
+  // The cloud copy: the repo's Dockerfile, one instance. Data lives in MongoDB Atlas,
+  // shared with the Mac.
   "containers": [
     {
       "class_name": "OtcContainer",
