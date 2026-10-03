@@ -1,0 +1,580 @@
+{
+ "patientId": 2311,
+ "generatedAt": "2026-10-03T07:33:15.174Z",
+ "model": "gpt-4.1-2025-04-14",
+ "context": {
+  "checkin": "(Anna) Dad gets confused in new places. Mornings are his best time.",
+  "audience": "caregiver",
+  "language": "en",
+  "channel": "sms"
+ },
+ "facts": [
+  {
+   "id": "f1",
+   "field": "demographics.age",
+   "value": "75 years old"
+  },
+  {
+   "id": "f2",
+   "field": "demographics.sex",
+   "value": "Male"
+  },
+  {
+   "id": "f3",
+   "field": "primary_diagnoses",
+   "value": "Nonexertional (classic) heat stroke"
+  },
+  {
+   "id": "f4",
+   "field": "primary_diagnoses",
+   "value": "Delirium superimposed on dementia"
+  },
+  {
+   "id": "f5",
+   "field": "comorbidities",
+   "value": "Alzheimer's disease"
+  },
+  {
+   "id": "f6",
+   "field": "profile.chronic_conditions",
+   "value": "Alzheimer's disease, moderate stage"
+  },
+  {
+   "id": "f7",
+   "field": "profile.chronic_conditions",
+   "value": "Essential hypertension"
+  },
+  {
+   "id": "f8",
+   "field": "profile.chronic_conditions",
+   "value": "Osteoarthritis, bilateral knees"
+  },
+  {
+   "id": "f9",
+   "field": "profile.chronic_conditions",
+   "value": "Benign prostatic hyperplasia"
+  },
+  {
+   "id": "f10",
+   "field": "profile.home_medications",
+   "value": "Donepezil 10 mg by mouth daily at bedtime"
+  },
+  {
+   "id": "f11",
+   "field": "profile.home_medications",
+   "value": "Memantine 10 mg by mouth twice daily"
+  },
+  {
+   "id": "f12",
+   "field": "profile.home_medications",
+   "value": "Amlodipine 5 mg by mouth daily"
+  },
+  {
+   "id": "f13",
+   "field": "profile.home_medications",
+   "value": "Tamsulosin 0.4 mg by mouth daily at bedtime"
+  },
+  {
+   "id": "f14",
+   "field": "profile.home_medications",
+   "value": "Acetaminophen 500 mg by mouth every 6 hours as needed for pain"
+  },
+  {
+   "id": "f15",
+   "field": "profile.home_medications",
+   "value": "Polyethylene glycol 3350 17 g by mouth daily as needed for constipation"
+  },
+  {
+   "id": "f16",
+   "field": "profile.allergies",
+   "value": "Penicillin (anaphylaxis)"
+  },
+  {
+   "id": "f17",
+   "field": "profile.allergies",
+   "value": "Sulfa drugs (rash)"
+  },
+  {
+   "id": "f18",
+   "field": "profile.surgical_history",
+   "value": "Cataract extraction with intraocular lens placement, bilateral (2020)"
+  },
+  {
+   "id": "f19",
+   "field": "profile.surgical_history",
+   "value": "Inguinal hernia repair, open (2016)"
+  },
+  {
+   "id": "f20",
+   "field": "profile.occupation",
+   "value": "Retired postal worker"
+  },
+  {
+   "id": "f21",
+   "field": "profile.smoking_status",
+   "value": "Former smoker, quit 2005 (25 pack-years)"
+  },
+  {
+   "id": "f22",
+   "field": "profile.alcohol_use",
+   "value": "None (abstinent since 2018 due to cognitive decline)"
+  },
+  {
+   "id": "f23",
+   "field": "profile.family_history",
+   "value": "Mother: Alzheimer dementia (onset age 79)"
+  },
+  {
+   "id": "f24",
+   "field": "profile.family_history",
+   "value": "Father: Coronary artery disease with myocardial infarction at age 76"
+  },
+  {
+   "id": "f25",
+   "field": "profile.family_history",
+   "value": "Sister: Type 2 diabetes mellitus"
+  },
+  {
+   "id": "f26",
+   "field": "encounter.visit",
+   "value": "ed visit, Emergency Medicine, Dr. James Park",
+   "encounterId": 9908,
+   "date": "2023-01-15"
+  },
+  {
+   "id": "f27",
+   "field": "encounter.chief_complaint",
+   "value": "Increased confusion and agitation over the past two days with nocturnal wandering and inability to recognize family members.",
+   "encounterId": 9908,
+   "date": "2023-01-15"
+  },
+  {
+   "id": "f28",
+   "field": "encounter.note.hpi",
+   "value": "The patient is a 75-year-old male with a known history of Alzheimer's disease (moderate stage), essential hypertension, osteoarthritis of the bilateral knees, and benign prostatic hyperplasia who presents to the emergency department for initial evaluation. He is brought by his daughter due to increased confusion and agitation over the past two days.",
+   "encounterId": 9908,
+   "date": "2023-01-15"
+  },
+  {
+   "id": "f29",
+   "field": "encounter.visit",
+   "value": "icu visit, Emergency Medicine, Dr. Amara Okafor",
+   "encounterId": 9907,
+   "date": "2025-01-15"
+  },
+  {
+   "id": "f30",
+   "field": "encounter.chief_complaint",
+   "value": "Found less responsive and confused during heatwave; altered mental status and hyperthermia.",
+   "encounterId": 9907,
+   "date": "2025-01-15"
+  },
+  {
+   "id": "f31",
+   "field": "encounter.note.hpi",
+   "value": "The patient is a 77-year-old male with moderate-stage Alzheimer's disease, essential hypertension, osteoarthritis, and benign prostatic hyperplasia who is brought to the emergency department by his family during a heatwave in July, two years after a prior episode of delirium superimposed on dementia. He resides in a nursing home without air conditioning.",
+   "encounterId": 9907,
+   "date": "2025-01-15"
+  },
+  {
+   "id": "f32",
+   "field": "encounter.note.plan",
+   "value": "The patient's core temperature and mental status do not improve significantly after initial cooling measures and fluid resuscitation.",
+   "encounterId": 9907,
+   "date": "2025-01-15"
+  },
+  {
+   "id": "f33",
+   "field": "seed.caregiver",
+   "value": "Anna Kowalski (daughter)"
+  },
+  {
+   "id": "f34",
+   "field": "seed.upcoming_visit",
+   "value": "Internal Medicine: Follow-up after hospital stay (in 5 days)"
+  },
+  {
+   "id": "f35",
+   "field": "seed.stated_language",
+   "value": "English (patient-stated)"
+  }
+ ],
+ "profile": {
+  "patientId": 2311,
+  "preferredName": "Walter",
+  "summaryLine": "Walter is a 75-year-old retired postal worker with moderate Alzheimer's, supported by his daughter Anna, who does best with morning visits and familiar settings.",
+  "audience": "caregiver",
+  "recipients": [
+   {
+    "role": "daughter",
+    "name": "Anna Kowalski",
+    "relationship": "daughter",
+    "primary": true
+   },
+   {
+    "role": "patient",
+    "name": "Walter",
+    "primary": false
+   }
+  ],
+  "communicationNeeds": {
+   "readingLevel": 4,
+   "detailPreference": "brief",
+   "language": "en",
+   "channel": "sms",
+   "bestTimeOfDay": "morning"
+  },
+  "emotionalContext": [
+   {
+    "id": "ec1",
+    "text": "Walter gets confused in new places and mornings are his best time.",
+    "kind": "patient_stated",
+    "source": {
+     "factIds": [],
+     "note": "What matters to you check-in"
+    },
+    "reason": "Anna described Walter's confusion in new environments and his best functioning in the morning."
+   },
+   {
+    "id": "ec2",
+    "text": "Walter has moderate-stage Alzheimer's disease, which affects his memory and ability to recognize family members, especially during episodes of illness or stress.",
+    "kind": "fact",
+    "source": {
+     "factIds": [
+      "f5",
+      "f6",
+      "f27",
+      "f28",
+      "f31"
+     ]
+    },
+    "reason": "EHR documents moderate Alzheimer's and episodes of confusion."
+   },
+   {
+    "id": "ec3",
+    "text": "Walter is supported by his daughter Anna, who is actively involved in his care.",
+    "kind": "fact",
+    "source": {
+     "factIds": [
+      "f28",
+      "f31",
+      "f33"
+     ]
+    },
+    "reason": "Anna is listed as caregiver and brought Walter to the hospital."
+   }
+  ],
+  "privacyRules": [
+   {
+    "id": "pr1",
+    "rule": "Keep the diagnosis name 'Alzheimer's disease', 'dementia', and related medication names out of SMS messages.",
+    "restrictedTerms": [
+     "Alzheimer's disease",
+     "dementia",
+     "Donepezil",
+     "Memantine",
+     "Namenda",
+     "Aricept"
+    ],
+    "channels": [
+     "sms"
+    ],
+    "recipients": [],
+    "kind": "fact",
+    "source": {
+     "factIds": [
+      "f5",
+      "f6",
+      "f10",
+      "f11"
+     ]
+    },
+    "reason": "To protect privacy regarding cognitive diagnoses and medications in SMS."
+   }
+  ],
+  "cognitiveSupport": [
+   {
+    "id": "cs1",
+    "text": "Anna, please help Walter by orienting him to the clinic and schedule visits in the morning when he is at his best.",
+    "kind": "patient_stated",
+    "source": {
+     "factIds": [],
+     "note": "What matters to you check-in"
+    },
+    "reason": "Anna noted Walter does best in the morning and gets confused in new places."
+   },
+   {
+    "id": "cs2",
+    "text": "Speak to Walter clearly and with respect, using simple explanations and allowing extra time for responses.",
+    "kind": "inferred",
+    "source": {
+     "factIds": [
+      "f5",
+      "f6"
+     ]
+    },
+    "reason": "Moderate Alzheimer's disease often requires clear, respectful, and patient communication."
+   }
+  ],
+  "strengths": [
+   {
+    "id": "st1",
+    "text": "Walter has a caring and attentive daughter, Anna, who advocates for his needs.",
+    "kind": "fact",
+    "source": {
+     "factIds": [
+      "f28",
+      "f31",
+      "f33"
+     ]
+    },
+    "reason": "Anna is consistently involved in Walter's care."
+   },
+   {
+    "id": "st2",
+    "text": "Walter has a history of independence as a retired postal worker.",
+    "kind": "fact",
+    "source": {
+     "factIds": [
+      "f20"
+     ]
+    },
+    "reason": "His occupational history shows past independence and routine."
+   }
+  ],
+  "avoidTerms": [
+   "non-compliant",
+   "denies",
+   "refused"
+  ],
+  "dataQualityWarnings": [
+   "Age is listed as 75 in some notes and 77 in others; confirm current age."
+  ]
+ },
+ "voiceGuide": {
+  "tone": [
+   "warm",
+   "clear",
+   "respectful"
+  ],
+  "doSay": [
+   "Anna, your support helps Walter.",
+   "Morning visits are best for Walter.",
+   "Let us know if you need help.",
+   "We can adjust the visit time.",
+   "Familiar places help Walter feel calm."
+  ],
+  "dontSay": [
+   "non-compliant",
+   "denies",
+   "refused",
+   "Alzheimer's",
+   "dementia",
+   "Donepezil",
+   "Memantine",
+   "Namenda",
+   "Aricept"
+  ],
+  "sentenceMaxWords": 10,
+  "addressing": "Speak first to Anna Kowalski, Walter’s daughter. Include Walter by name in supportive statements.",
+  "greeting": "Hello Anna,",
+  "signoff": "Your Care team",
+  "choicePhrases": [
+   "Would you like a morning or afternoon visit?",
+   "Do you want to bring a familiar item?",
+   "Would you prefer a call or a message?"
+  ],
+  "safetyPhrases": [
+   "Call us at 555-0100 for help.",
+   "Reply STOP to pause messages."
+  ]
+ },
+ "outputs": {
+  "messages": [
+   {
+    "stage": "before_7d",
+    "recipient": "daughter",
+    "persona": "Hello Anna,\nWalter’s follow-up visit is on {{weekday}}, {{date}} at {{time}}. The visit will last about 40 minutes. You can choose to bring a familiar item for Walter. We will meet together in a setting Walter knows. Call us at 555-0100 for help.\nYour Care team",
+    "claimIds": [
+     "cs1",
+     "ec1",
+     "st1"
+    ]
+   },
+   {
+    "stage": "before_2d",
+    "recipient": "daughter",
+    "persona": "Hello Anna,\nJust a reminder: Walter’s visit is on {{weekday}}, {{date}} at {{time}}. We will see you both for about 40 minutes. You can ask for a morning or afternoon time if needed. Please let us know if you need help. Call us at 555-0100 for help.\nYour Care team",
+    "claimIds": [
+     "cs1",
+     "ec1"
+    ]
+   },
+   {
+    "stage": "after_24h",
+    "recipient": "daughter",
+    "persona": "Hello Anna,\nThank you for coming with Walter yesterday. You can read a summary of the visit in your portal. We will call you about next steps soon. Call us at 555-0100 for help.\nYour Care team",
+    "claimIds": []
+   }
+  ],
+  "clinicianBrief": {
+   "lines": [
+    "Walter is a 75-year-old retired postal worker here for follow-up after a recent hospital stay, accompanied by his daughter Anna.",
+    "He has moderate cognitive impairment and does best in the morning and familiar settings.",
+    "Speak clearly, use simple explanations, and allow extra time for responses.",
+    "Anna is his main support and helps orient him; include her in all discussions.",
+    "Avoid naming cognitive diagnoses or related medications in SMS or in front of Walter unless Anna requests.",
+    "Chart check: Age listed as 75 and 77 in different notes; confirm current age."
+   ],
+   "readAloudSeconds": 29,
+   "claimIds": [
+    "ec1",
+    "ec2",
+    "ec3",
+    "cs1",
+    "cs2",
+    "pr1"
+   ]
+  },
+  "visitSummary": {
+   "headline": "Walter’s Follow-up Visit – {{date}}",
+   "whatWeTalkedAbout": [
+    {
+     "text": "How Walter is feeling after his hospital stay and what has changed at home.",
+     "claimIds": [
+      "ec3"
+     ]
+    },
+    {
+     "text": "Ways to help Walter feel comfortable, like using familiar items and keeping routines.",
+     "claimIds": [
+      "ec1",
+      "cs1"
+     ]
+    },
+    {
+     "text": "Anna’s important role in Walter’s care and how to support her.",
+     "claimIds": [
+      "st1",
+      "ec3"
+     ]
+    }
+   ],
+   "yourNextSteps": [
+    "Keep Walter’s daily routine as steady as possible.",
+    "Bring a familiar item to visits if it helps Walter.",
+    "Watch for any new confusion or changes in behavior.",
+    "Contact us if you have questions or need help."
+   ],
+   "whenToCall": [
+    "Call us if Walter seems much more confused or agitated.",
+    "Call if Walter has a fever or cannot wake up easily.",
+    "Call 555-0100 if you are worried about his health."
+   ],
+   "questionsForNextTime": [
+    "What changes should I watch for at home?",
+    "How can I make visits easier for Walter?",
+    "What other support is available for caregivers?"
+   ]
+  },
+  "videoScripts": [
+   {
+    "stage": "before",
+    "title": "Getting Ready for Walter’s Visit",
+    "scenes": [
+     {
+      "kind": "title",
+      "title": "Welcome",
+      "text": "Walter’s follow-up visit is soon.",
+      "items": [],
+      "voiceover": "Walter’s follow-up visit is coming up. We want to help you both feel ready."
+     },
+     {
+      "kind": "card",
+      "title": "What to Expect",
+      "text": "The visit is on {{weekday}}, {{date}} at {{time}}.",
+      "items": [],
+      "voiceover": "Your appointment is on {{weekday}}, {{date}} at {{time}}. The visit will last about 40 minutes."
+     },
+     {
+      "kind": "steps",
+      "title": "How to Prepare",
+      "text": "Bring a familiar item for Walter.",
+      "items": [
+       "Bring a familiar item",
+       "Arrive a little early",
+       "Ask for a morning time if needed"
+      ],
+      "voiceover": "You can bring something familiar for Walter. Arriving early and choosing a morning time can help."
+     },
+     {
+      "kind": "choice",
+      "title": "Your Choices",
+      "text": "You can ask for help or change the time.",
+      "items": [
+       "Ask for a morning or afternoon visit",
+       "Request a call or message"
+      ],
+      "voiceover": "You can ask for a different time or get help by calling us."
+     },
+     {
+      "kind": "closing",
+      "title": "See You Soon",
+      "text": "Call 555-0100 for help.",
+      "items": [],
+      "voiceover": "We look forward to seeing you both. Call us at 555-0100 if you need help."
+     }
+    ]
+   },
+   {
+    "stage": "after",
+    "title": "After Walter’s Visit: What’s Next",
+    "scenes": [
+     {
+      "kind": "title",
+      "title": "Thank You",
+      "text": "Thank you for coming with Walter.",
+      "items": [],
+      "voiceover": "Thank you for coming to the visit with Walter."
+     },
+     {
+      "kind": "card",
+      "title": "Visit Summary",
+      "text": "A summary is in your portal.",
+      "items": [],
+      "voiceover": "You can read a summary of the visit in your portal."
+     },
+     {
+      "kind": "steps",
+      "title": "Next Steps",
+      "text": "Keep routines steady and watch for changes.",
+      "items": [
+       "Keep Walter’s routine steady",
+       "Bring familiar items to visits",
+       "Watch for new confusion"
+      ],
+      "voiceover": "Keep Walter’s routine steady and bring familiar items to visits. Watch for any new confusion."
+     },
+     {
+      "kind": "choice",
+      "title": "When to Call",
+      "text": "Call if Walter is much more confused or has a fever.",
+      "items": [
+       "Call if Walter is much more confused",
+       "Call if he has a fever",
+       "Call 555-0100 if you are worried"
+      ],
+      "voiceover": "Call us if Walter is much more confused, has a fever, or if you are worried."
+     },
+     {
+      "kind": "closing",
+      "title": "We’re Here to Help",
+      "text": "Call 555-0100 for help anytime.",
+      "items": [],
+      "voiceover": "We are here to help. Call us at 555-0100 if you need anything."
+     }
+    ]
+   }
+  ]
+ }
+}

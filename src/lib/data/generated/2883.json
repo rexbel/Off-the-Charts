@@ -1,0 +1,551 @@
+{
+ "patientId": 2883,
+ "generatedAt": "2026-10-03T07:29:05.425Z",
+ "model": "gpt-4.1-2025-04-14",
+ "context": {
+  "checkin": "Please don't send my counseling info to my dad's phone.",
+  "audience": "dual_teen_guardian",
+  "language": "en",
+  "channel": "sms"
+ },
+ "facts": [
+  {
+   "id": "f1",
+   "field": "demographics.age",
+   "value": "13 years old"
+  },
+  {
+   "id": "f2",
+   "field": "demographics.sex",
+   "value": "Female"
+  },
+  {
+   "id": "f3",
+   "field": "primary_diagnoses",
+   "value": "Von Willebrand disease"
+  },
+  {
+   "id": "f4",
+   "field": "primary_diagnoses",
+   "value": "Major depressive disorder"
+  },
+  {
+   "id": "f5",
+   "field": "comorbidities",
+   "value": "Menorrhagia"
+  },
+  {
+   "id": "f6",
+   "field": "comorbidities",
+   "value": "Family History of Stroke"
+  },
+  {
+   "id": "f7",
+   "field": "profile.allergies",
+   "value": "NKDA"
+  },
+  {
+   "id": "f8",
+   "field": "profile.occupation",
+   "value": "8th grade student"
+  },
+  {
+   "id": "f9",
+   "field": "profile.smoking_status",
+   "value": "Never"
+  },
+  {
+   "id": "f10",
+   "field": "profile.alcohol_use",
+   "value": "None"
+  },
+  {
+   "id": "f11",
+   "field": "profile.family_history",
+   "value": "Mother with history of heavy menstrual bleeding and postpartum hemorrhage"
+  },
+  {
+   "id": "f12",
+   "field": "profile.family_history",
+   "value": "Maternal grandmother with major depressive disorder"
+  },
+  {
+   "id": "f13",
+   "field": "profile.family_history",
+   "value": "Paternal uncle with frequent epistaxis and easy bruising as a child"
+  },
+  {
+   "id": "f14",
+   "field": "encounter.visit",
+   "value": "outpatient visit, Medical Genetics, Dr. Sarah Chen",
+   "encounterId": 12228,
+   "date": "2020-01-15"
+  },
+  {
+   "id": "f15",
+   "field": "encounter.chief_complaint",
+   "value": "Frequent and prolonged nosebleeds over the past year",
+   "encounterId": 12228,
+   "date": "2020-01-15"
+  },
+  {
+   "id": "f16",
+   "field": "encounter.note.hpi",
+   "value": "The episodes typically occur spontaneously and last 10 to 20 minutes despite compression. The patient also reports heavy menstrual periods lasting over 7 days, often with large clots and occasional lightheadedness.",
+   "encounterId": 12228,
+   "date": "2020-01-15"
+  },
+  {
+   "id": "f17",
+   "field": "encounter.visit",
+   "value": "outpatient visit, Hematology and Oncology, Dr. Marcus Rodriguez",
+   "encounterId": 12227,
+   "date": "2020-07-15"
+  },
+  {
+   "id": "f18",
+   "field": "encounter.chief_complaint",
+   "value": "Heavy and prolonged menstrual bleeding since menarche",
+   "encounterId": 12227,
+   "date": "2020-07-15"
+  },
+  {
+   "id": "f19",
+   "field": "encounter.note.hpi",
+   "value": "The patient presents to Hematology and Oncology for evaluation of heavy and prolonged menstrual bleeding, following her prior evaluation in January 2020 for frequent and prolonged nosebleeds. Since menarche at age 12, her periods have consistently lasted 8–10 days, and she reports soaking through pads every 1–2 hours on the heaviest days.",
+   "encounterId": 12227,
+   "date": "2020-07-15"
+  },
+  {
+   "id": "f20",
+   "field": "encounter.visit",
+   "value": "outpatient visit, Psychiatry, Dr. Aisha Patel",
+   "encounterId": 12229,
+   "date": "2021-07-15"
+  },
+  {
+   "id": "f21",
+   "field": "encounter.chief_complaint",
+   "value": "Behavioral changes, irritability, and loss of interest in activities",
+   "encounterId": 12229,
+   "date": "2021-07-15"
+  },
+  {
+   "id": "f22",
+   "field": "encounter.note.hpi",
+   "value": "The patient is a 14-year-old female with Von Willebrand disease previously evaluated by Medical Genetics and Hematology/Oncology, who presents with behavioral changes. Over the past 3 months, she has become increasingly irritable, has frequent outbursts at home, and her grades have dropped significantly.",
+   "encounterId": 12229,
+   "date": "2021-07-15"
+  },
+  {
+   "id": "f23",
+   "field": "seed.caregiver",
+   "value": "Erik Lindqvist (father)"
+  },
+  {
+   "id": "f24",
+   "field": "seed.upcoming_visit",
+   "value": "Hematology: Bleeding disorder follow-up (in 4 days)"
+  },
+  {
+   "id": "f25",
+   "field": "seed.stated_language",
+   "value": "English (patient-stated)"
+  }
+ ],
+ "profile": {
+  "patientId": 2883,
+  "preferredName": "Ava",
+  "summaryLine": "Ava is a 13-year-old 8th grader with Von Willebrand disease and depression, preparing for a hematology follow-up; she wants her counseling info kept private from her father.",
+  "audience": "dual_teen_guardian",
+  "recipients": [
+   {
+    "role": "patient",
+    "name": "Ava",
+    "primary": true
+   },
+   {
+    "role": "guardian",
+    "name": "Erik Lindqvist",
+    "relationship": "father",
+    "primary": false
+   }
+  ],
+  "communicationNeeds": {
+   "readingLevel": 6,
+   "detailPreference": "brief",
+   "language": "en",
+   "channel": "sms",
+   "bestTimeOfDay": ""
+  },
+  "emotionalContext": [
+   {
+    "id": "ec1",
+    "text": "Ava is managing a chronic bleeding disorder (Von Willebrand disease) and experiences heavy menstrual bleeding and frequent nosebleeds.",
+    "kind": "fact",
+    "source": {
+     "factIds": [
+      "f3",
+      "f5",
+      "f15",
+      "f16",
+      "f18",
+      "f19"
+     ],
+     "note": ""
+    },
+    "reason": ""
+   },
+   {
+    "id": "ec2",
+    "text": "Ava has a diagnosis of major depressive disorder and has experienced behavioral changes, irritability, and loss of interest in activities.",
+    "kind": "fact",
+    "source": {
+     "factIds": [
+      "f4",
+      "f21",
+      "f22"
+     ],
+     "note": ""
+    },
+    "reason": ""
+   },
+   {
+    "id": "ec3",
+    "text": "Ava is an 8th grade student and does not use tobacco or alcohol.",
+    "kind": "fact",
+    "source": {
+     "factIds": [
+      "f8",
+      "f9",
+      "f10"
+     ],
+     "note": ""
+    },
+    "reason": ""
+   },
+   {
+    "id": "ec4",
+    "text": "Ava has expressed a clear desire for privacy regarding her counseling information, specifically not wanting it sent to her father's phone.",
+    "kind": "patient_stated",
+    "source": {
+     "factIds": [],
+     "note": "What matters to you check-in"
+    },
+    "reason": ""
+   }
+  ],
+  "privacyRules": [
+   {
+    "id": "pr1",
+    "rule": "Keep all mental health and counseling information, including diagnosis and related medications, out of guardian-facing messages.",
+    "restrictedTerms": [
+     "depression",
+     "major depressive disorder",
+     "counseling",
+     "antidepressant",
+     "therapy"
+    ],
+    "channels": [
+     "sms",
+     "portal",
+     "phone"
+    ],
+    "recipients": [
+     "guardian"
+    ],
+    "kind": "fact",
+    "source": {
+     "factIds": [
+      "f4"
+     ],
+     "note": ""
+    },
+    "reason": "Ava is a teen with a mental health diagnosis and has specifically requested privacy for counseling information."
+   },
+   {
+    "id": "pr2",
+    "rule": "For SMS messages, do not include the words 'depression', 'major depressive disorder', 'counseling', 'therapy', or names of related medications.",
+    "restrictedTerms": [
+     "depression",
+     "major depressive disorder",
+     "counseling",
+     "therapy"
+    ],
+    "channels": [
+     "sms"
+    ],
+    "recipients": [],
+    "kind": "patient_stated",
+    "source": {
+     "factIds": [],
+     "note": "What matters to you check-in"
+    },
+    "reason": "Ava requested her counseling info not be sent to her father's phone."
+   }
+  ],
+  "cognitiveSupport": [],
+  "strengths": [
+   {
+    "id": "s1",
+    "text": "Ava is engaged in her care and able to communicate her privacy needs clearly.",
+    "kind": "patient_stated",
+    "source": {
+     "factIds": [],
+     "note": "What matters to you check-in"
+    },
+    "reason": "She articulated a specific privacy request."
+   },
+   {
+    "id": "s2",
+    "text": "Ava has family support, as her father is listed as a guardian and involved in her care.",
+    "kind": "fact",
+    "source": {
+     "factIds": [
+      "f23"
+     ],
+     "note": ""
+    },
+    "reason": ""
+   }
+  ],
+  "avoidTerms": [
+   "non-compliant",
+   "denies",
+   "refused"
+  ],
+  "dataQualityWarnings": [
+   "Psychiatry note refers to Ava as 14 years old in 2021, but her current age is documented as 13."
+  ]
+ },
+ "voiceGuide": {
+  "tone": [
+   "friendly",
+   "respectful",
+   "clear"
+  ],
+  "doSay": [
+   "Hi Ava, your next visit is soon.",
+   "You can ask questions anytime.",
+   "Let us know if you need help."
+  ],
+  "dontSay": [
+   "depression",
+   "counseling",
+   "therapy",
+   "antidepressant",
+   "non-compliant",
+   "denies",
+   "refused"
+  ],
+  "sentenceMaxWords": 12,
+  "addressing": "Speak to Ava first by name. Co-address Erik Lindqvist as her father only for general or scheduling info.",
+  "greeting": "Hi Ava,",
+  "signoff": "Your Hematology team",
+  "choicePhrases": [
+   "You can bring a parent or not.",
+   "You can ask for a female provider.",
+   "You can reschedule if needed."
+  ],
+  "safetyPhrases": [
+   "Call 555-0100 to talk to us.",
+   "Reply STOP to pause messages."
+  ]
+ },
+ "outputs": {
+  "messages": [
+   {
+    "stage": "before_7d",
+    "recipient": "patient",
+    "persona": "Hi Ava,\nYour bleeding disorder follow-up is on {{weekday}}, {{date}} at {{time}}. It will take about 40 minutes. We will talk together about your bleeding and how you are doing. You can bring your dad or come in on your own. You can ask for a female provider. Call 555-0100 to talk to us.\nYour Hematology team",
+    "claimIds": []
+   },
+   {
+    "stage": "before_2d",
+    "recipient": "patient",
+    "persona": "Hi Ava,\nYour visit is coming up on {{weekday}}, {{date}} at {{time}}. We will review your bleeding and answer your questions together. You can reschedule if you need to. Call 555-0100 to talk to us.\nYour Hematology team",
+    "claimIds": []
+   },
+   {
+    "stage": "after_24h",
+    "recipient": "patient",
+    "persona": "Hi Ava,\nThank you for coming to your visit. You can read your summary in plain language. Next, we will keep working together on your care. Call 555-0100 if you have questions.\nYour Hematology team",
+    "claimIds": []
+   },
+   {
+    "stage": "before_7d",
+    "recipient": "guardian",
+    "persona": "Hi Erik,\nAva’s bleeding disorder follow-up is on {{weekday}}, {{date}} at {{time}}. The visit will last about 40 minutes. You can come with Ava or wait nearby. Part of the visit is one-on-one with Ava, which is normal for her age. Call 555-0100 to talk to us.\nYour Hematology team",
+    "claimIds": [
+     "pr1"
+    ]
+   },
+   {
+    "stage": "before_2d",
+    "recipient": "guardian",
+    "persona": "Hi Erik,\nAva’s appointment is on {{weekday}}, {{date}} at {{time}}. Please help her arrive on time and bring any questions. Some of her visit will be private, which is routine for teens. Call 555-0100 to talk to us.\nYour Hematology team",
+    "claimIds": [
+     "pr1"
+    ]
+   },
+   {
+    "stage": "after_24h",
+    "recipient": "guardian",
+    "persona": "Hi Erik,\nThank you for bringing Ava to her visit. You can read her plain-language summary. We will keep working together to support her health. Call 555-0100 if you have questions.\nYour Hematology team",
+    "claimIds": [
+     "pr1"
+    ]
+   }
+  ],
+  "clinicianBrief": {
+   "lines": [
+    "Ava is a 13-year-old 8th grader with Von Willebrand disease, heavy menstrual bleeding, and frequent nosebleeds, here for hematology follow-up.",
+    "She also has a diagnosis of major depressive disorder and has shown behavioral changes, irritability, and loss of interest in activities.",
+    "Ava values privacy regarding her mental health and does not want related info shared with her father.",
+    "Speak directly to Ava, use clear and friendly language, and avoid restricted terms in front of her father.",
+    "She is engaged in her care and communicates her needs clearly.",
+    "Words to avoid: non-compliant, denies, refused, depression, counseling, therapy, antidepressant.",
+    "Chart check: Psychiatry note lists Ava as 14 in 2021, but she is currently 13."
+   ],
+   "readAloudSeconds": 29,
+   "claimIds": [
+    "ec4",
+    "pr1"
+   ]
+  },
+  "visitSummary": {
+   "headline": "Your Bleeding Disorder Follow-Up Visit – {{date}}",
+   "whatWeTalkedAbout": [
+    {
+     "text": "How your bleeding disorder affects your daily life and school.",
+     "claimIds": []
+    },
+    {
+     "text": "Heavy periods and nosebleeds you have had recently.",
+     "claimIds": []
+    },
+    {
+     "text": "Ways to manage bleeding and stay healthy.",
+     "claimIds": []
+    }
+   ],
+   "yourNextSteps": [
+    "Track your bleeding episodes and periods.",
+    "Follow your care plan for nosebleeds and periods.",
+    "Let us know if you have new symptoms or concerns.",
+    "Ask questions at any time.",
+    "Call 555-0100 if you need help."
+   ],
+   "whenToCall": [
+    "Call us if you bleed longer than 20 minutes and it will not stop.",
+    "Call if you feel very dizzy or faint.",
+    "Call if you soak through pads every hour for more than 2 hours."
+   ],
+   "questionsForNextTime": [
+    "What can I do if my bleeding gets worse?",
+    "Are there new treatments for my condition?",
+    "How can I manage school and activities with my bleeding disorder?"
+   ]
+  },
+  "videoScripts": [
+   {
+    "stage": "before",
+    "title": "Getting Ready for Your Bleeding Disorder Visit",
+    "scenes": [
+     {
+      "kind": "title",
+      "title": "Welcome, Ava!",
+      "text": "Your visit is soon.",
+      "items": [],
+      "voiceover": "Hi Ava, your bleeding disorder follow-up is coming up soon."
+     },
+     {
+      "kind": "card",
+      "title": "When and Where",
+      "text": "Your visit is on {{weekday}}, {{date}} at {{time}}.",
+      "items": [],
+      "voiceover": "Your appointment is on {{weekday}}, {{date}} at {{time}}."
+     },
+     {
+      "kind": "steps",
+      "title": "What Will Happen",
+      "text": "We will talk about your bleeding and health.",
+      "items": [
+       "Review nosebleeds and periods",
+       "Answer your questions",
+       "Plan next steps"
+      ],
+      "voiceover": "We will talk about your nosebleeds and periods, answer your questions, and plan together."
+     },
+     {
+      "kind": "choice",
+      "title": "Your Choices",
+      "text": "You can bring your dad or come alone.",
+      "items": [
+       "Bring a parent or not",
+       "Ask for a female provider",
+       "Reschedule if needed"
+      ],
+      "voiceover": "You can bring your dad or come alone. You can ask for a female provider or reschedule if you need to."
+     },
+     {
+      "kind": "closing",
+      "title": "Need Help?",
+      "text": "Call 555-0100 to talk to us.",
+      "items": [],
+      "voiceover": "Call 555-0100 if you have any questions."
+     }
+    ]
+   },
+   {
+    "stage": "after",
+    "title": "After Your Bleeding Disorder Visit",
+    "scenes": [
+     {
+      "kind": "title",
+      "title": "Thank You, Ava!",
+      "text": "Thank you for coming in.",
+      "items": [],
+      "voiceover": "Thank you for coming to your visit, Ava."
+     },
+     {
+      "kind": "card",
+      "title": "What We Talked About",
+      "text": "We reviewed your bleeding and health plan.",
+      "items": [],
+      "voiceover": "We talked about your bleeding and made a plan together."
+     },
+     {
+      "kind": "steps",
+      "title": "Your Next Steps",
+      "text": "Keep track of your bleeding and follow your care plan.",
+      "items": [
+       "Track bleeding and periods",
+       "Follow your care plan",
+       "Ask questions anytime"
+      ],
+      "voiceover": "Keep track of your bleeding and periods. Follow your care plan and ask questions anytime."
+     },
+     {
+      "kind": "choice",
+      "title": "When to Call Us",
+      "text": "Call if you have heavy bleeding or feel faint.",
+      "items": [
+       "Bleeding won't stop",
+       "Feel very dizzy or faint",
+       "Heavy periods last too long"
+      ],
+      "voiceover": "Call us if your bleeding won't stop, you feel very dizzy, or your periods are very heavy."
+     },
+     {
+      "kind": "closing",
+      "title": "We're Here for You",
+      "text": "Call 555-0100 if you need help.",
+      "items": [],
+      "voiceover": "Call 555-0100 if you need help. We are here for you."
+     }
+    ]
+   }
+  ]
+ }
+}

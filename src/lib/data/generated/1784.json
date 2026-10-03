@@ -1,0 +1,650 @@
+{
+ "patientId": 1784,
+ "generatedAt": "2026-10-03T07:29:38.349Z",
+ "model": "gpt-4.1-2025-04-14",
+ "context": {
+  "checkin": "I like to know every step ahead of time. My partner will come.",
+  "audience": "self",
+  "language": "en",
+  "channel": "sms"
+ },
+ "facts": [
+  {
+   "id": "f1",
+   "field": "demographics.age",
+   "value": "28 years old"
+  },
+  {
+   "id": "f2",
+   "field": "demographics.sex",
+   "value": "Female"
+  },
+  {
+   "id": "f3",
+   "field": "primary_diagnoses",
+   "value": "Physiologic dyspnea of pregnancy"
+  },
+  {
+   "id": "f4",
+   "field": "primary_diagnoses",
+   "value": "Pregnancy (second trimester)"
+  },
+  {
+   "id": "f5",
+   "field": "primary_diagnoses",
+   "value": "Acute fatty liver of pregnancy"
+  },
+  {
+   "id": "f6",
+   "field": "primary_diagnoses",
+   "value": "Gastroschisis"
+  },
+  {
+   "id": "f7",
+   "field": "primary_diagnoses",
+   "value": "Myelomeningocele with Chiari II malformation and hydrocephalus"
+  },
+  {
+   "id": "f8",
+   "field": "primary_diagnoses",
+   "value": "Physiologic pruritus gravidarum"
+  },
+  {
+   "id": "f9",
+   "field": "comorbidities",
+   "value": "Pregnancy (second trimester)"
+  },
+  {
+   "id": "f10",
+   "field": "profile.chronic_conditions",
+   "value": "Polycystic ovary syndrome"
+  },
+  {
+   "id": "f11",
+   "field": "profile.chronic_conditions",
+   "value": "Iron deficiency anemia"
+  },
+  {
+   "id": "f12",
+   "field": "profile.chronic_conditions",
+   "value": "Generalized anxiety disorder"
+  },
+  {
+   "id": "f13",
+   "field": "profile.home_medications",
+   "value": "Prenatal vitamin (high-dose folic acid) 1 tablet PO daily (containing folate 4mg)"
+  },
+  {
+   "id": "f14",
+   "field": "profile.home_medications",
+   "value": "Ferrous sulfate 325mg (65mg elemental iron) PO daily"
+  },
+  {
+   "id": "f15",
+   "field": "profile.home_medications",
+   "value": "Metformin 500mg PO twice daily"
+  },
+  {
+   "id": "f16",
+   "field": "profile.allergies",
+   "value": "Latex (Type I hypersensitivity)"
+  },
+  {
+   "id": "f17",
+   "field": "profile.allergies",
+   "value": "Sulfa drugs (rash)"
+  },
+  {
+   "id": "f18",
+   "field": "profile.surgical_history",
+   "value": "Tonsillectomy (age 12)"
+  },
+  {
+   "id": "f19",
+   "field": "profile.surgical_history",
+   "value": "Laparoscopic right ovarian cystectomy (corpus luteum hemorrhage, age 24)"
+  },
+  {
+   "id": "f20",
+   "field": "profile.occupation",
+   "value": "Retail store manager"
+  },
+  {
+   "id": "f21",
+   "field": "profile.smoking_status",
+   "value": "Never smoker"
+  },
+  {
+   "id": "f22",
+   "field": "profile.alcohol_use",
+   "value": "None"
+  },
+  {
+   "id": "f23",
+   "field": "profile.family_history",
+   "value": "Maternal first cousin with myelomeningocele"
+  },
+  {
+   "id": "f24",
+   "field": "profile.family_history",
+   "value": "Paternal aunt with systemic lupus erythematosus"
+  },
+  {
+   "id": "f25",
+   "field": "profile.family_history",
+   "value": "Mother with type 2 diabetes mellitus"
+  },
+  {
+   "id": "f26",
+   "field": "profile.family_history",
+   "value": "Father with essential hypertension"
+  },
+  {
+   "id": "f27",
+   "field": "encounter.visit",
+   "value": "outpatient visit, Obstetrics & Gynecology, Dr. Sarah Chen",
+   "encounterId": 7470,
+   "date": "2020-01-15"
+  },
+  {
+   "id": "f28",
+   "field": "encounter.chief_complaint",
+   "value": "Routine prenatal visit at 16 weeks of gestation",
+   "encounterId": 7470,
+   "date": "2020-01-15"
+  },
+  {
+   "id": "f29",
+   "field": "encounter.note.hpi",
+   "value": "She reports feeling well with no complaints.",
+   "encounterId": 7470,
+   "date": "2020-01-15"
+  },
+  {
+   "id": "f30",
+   "field": "encounter.note.plan",
+   "value": "Based on the clinical scenario and the ultrasound findings,",
+   "encounterId": 7470,
+   "date": "2020-01-15"
+  },
+  {
+   "id": "f31",
+   "field": "encounter.visit",
+   "value": "outpatient visit, Obstetrics & Gynecology, Dr. Sarah Chen",
+   "encounterId": 7467,
+   "date": "2020-03-15"
+  },
+  {
+   "id": "f32",
+   "field": "encounter.chief_complaint",
+   "value": "Routine prenatal visit, feeling well with no complaints",
+   "encounterId": 7467,
+   "date": "2020-03-15"
+  },
+  {
+   "id": "f33",
+   "field": "encounter.visit",
+   "value": "outpatient visit, Obstetrics & Gynecology, Dr. Maria Rodriguez",
+   "encounterId": 7472,
+   "date": "2020-06-15"
+  },
+  {
+   "id": "f34",
+   "field": "encounter.chief_complaint",
+   "value": "Sharp, intermittent right-sided lower abdominal and pelvic pain",
+   "encounterId": 7472,
+   "date": "2020-06-15"
+  },
+  {
+   "id": "f35",
+   "field": "encounter.note.hpi",
+   "value": "The 28-year-old with PCOS and iron deficiency anemia returns for prenatal care of pregnancy with fetal gastroschisis. She reports a 5-day history of sharp, intermittent right-sided lower abdominal and pelvic pain that worsens with sudden movements and when changing positions, and that the pain sometimes radiates to her right groin and vaginal area.",
+   "encounterId": 7472,
+   "date": "2020-06-15"
+  },
+  {
+   "id": "f36",
+   "field": "encounter.note.plan",
+   "value": "The clinician suspects that her symptoms are due to stretching of a specific pelvic structure associated with the expanding uterus.",
+   "encounterId": 7472,
+   "date": "2020-06-15"
+  },
+  {
+   "id": "f37",
+   "field": "encounter.visit",
+   "value": "outpatient visit, Obstetrics & Gynecology, Dr. Aisha Patel",
+   "encounterId": 7471,
+   "date": "2023-01-15"
+  },
+  {
+   "id": "f38",
+   "field": "encounter.chief_complaint",
+   "value": "First prenatal visit at 18 weeks gestation",
+   "encounterId": 7471,
+   "date": "2023-01-15"
+  },
+  {
+   "id": "f39",
+   "field": "encounter.note.hpi",
+   "value": "This 31-year-old with PCOS and prior 2020 pregnancy complicated by gastroschisis presents at 18 weeks for initial prenatal care. She reports that she did not know she was pregnant until 2 months ago.",
+   "encounterId": 7471,
+   "date": "2023-01-15"
+  },
+  {
+   "id": "f40",
+   "field": "encounter.note.plan",
+   "value": "A defect of",
+   "encounterId": 7471,
+   "date": "2023-01-15"
+  },
+  {
+   "id": "f41",
+   "field": "encounter.visit",
+   "value": "outpatient visit, Obstetrics & Gynecology, Dr. Aisha Patel",
+   "encounterId": 7469,
+   "date": "2023-03-15"
+  },
+  {
+   "id": "f42",
+   "field": "encounter.chief_complaint",
+   "value": "Shortness of breath for the past two weeks",
+   "encounterId": 7469,
+   "date": "2023-03-15"
+  },
+  {
+   "id": "f43",
+   "field": "encounter.note.hpi",
+   "value": "The patient returns for prenatal follow-up of her current pregnancy complicated by fetal myelomeningocele, following a prior pregnancy with gastroschisis. She reports dyspnea more pronounced lying flat and improving sitting up, denying chest pain, cough, or wheezing.",
+   "encounterId": 7469,
+   "date": "2023-03-15"
+  },
+  {
+   "id": "f44",
+   "field": "encounter.visit",
+   "value": "outpatient visit, Obstetrics & Gynecology, Dr. Priya Sharma",
+   "encounterId": 7466,
+   "date": "2023-05-15"
+  },
+  {
+   "id": "f45",
+   "field": "encounter.chief_complaint",
+   "value": "Recent changes in her appearance including facial hair growth and acne",
+   "encounterId": 7466,
+   "date": "2023-05-15"
+  },
+  {
+   "id": "f46",
+   "field": "encounter.note.hpi",
+   "value": "The patient is a 31-year-old with polycystic ovary syndrome who returns for continued prenatal care following her recent evaluation for dyspnea. She presents with her husband, concerned about recent changes in her appearance.",
+   "encounterId": 7466,
+   "date": "2023-05-15"
+  },
+  {
+   "id": "f47",
+   "field": "encounter.visit",
+   "value": "inpatient visit, Obstetrics & Gynecology, Dr. James O'Brien",
+   "encounterId": 7468,
+   "date": "2023-07-15"
+  },
+  {
+   "id": "f48",
+   "field": "encounter.chief_complaint",
+   "value": "Routine prenatal visit with malaise and palpitations",
+   "encounterId": 7468,
+   "date": "2023-07-15"
+  },
+  {
+   "id": "f49",
+   "field": "encounter.note.hpi",
+   "value": "The patient with prior gastroschisis returns for prenatal care and reports feeling generally well but mentions occasional palpitations and increased sweating, which she attributes to her pregnancy.",
+   "encounterId": 7468,
+   "date": "2023-07-15"
+  },
+  {
+   "id": "f50",
+   "field": "seed.caregiver",
+   "value": "Sam Donnelly (partner)"
+  },
+  {
+   "id": "f51",
+   "field": "seed.upcoming_visit",
+   "value": "Obstetrics & Gynecology: Prenatal visit, 2nd trimester (in 2 days)"
+  },
+  {
+   "id": "f52",
+   "field": "seed.stated_language",
+   "value": "English (patient-stated)"
+  }
+ ],
+ "profile": {
+  "patientId": 1784,
+  "preferredName": "Claire",
+  "summaryLine": "Claire is a 31-year-old expectant mother in her second trimester who values knowing every step ahead and will be accompanied by her partner Sam.",
+  "audience": "self",
+  "recipients": [
+   {
+    "role": "patient",
+    "name": "Claire",
+    "relationship": "",
+    "primary": true
+   }
+  ],
+  "communicationNeeds": {
+   "readingLevel": 6,
+   "detailPreference": "stepwise",
+   "language": "en",
+   "channel": "sms",
+   "bestTimeOfDay": ""
+  },
+  "emotionalContext": [
+   {
+    "id": "ec1",
+    "text": "Claire likes to know every step ahead of time and values clear, stepwise information.",
+    "kind": "patient_stated",
+    "source": {
+     "factIds": [],
+     "note": "What matters to you check-in"
+    },
+    "reason": "She explicitly stated her preference for knowing every step ahead of time."
+   },
+   {
+    "id": "ec2",
+    "text": "Claire has generalized anxiety disorder, which may make her feel more comfortable with predictable, transparent communication.",
+    "kind": "fact",
+    "source": {
+     "factIds": [
+      "f12"
+     ],
+     "note": ""
+    },
+    "reason": "Generalized anxiety disorder is documented in her EHR."
+   },
+   {
+    "id": "ec3",
+    "text": "Claire's partner, Sam, will be present for her visit, indicating she values support during her prenatal care.",
+    "kind": "patient_stated",
+    "source": {
+     "factIds": [],
+     "note": "What matters to you check-in"
+    },
+    "reason": "She stated her partner will come."
+   }
+  ],
+  "privacyRules": [],
+  "cognitiveSupport": [],
+  "strengths": [
+   {
+    "id": "s1",
+    "text": "Claire is proactive in her care, expressing a desire to understand each step of her prenatal journey.",
+    "kind": "patient_stated",
+    "source": {
+     "factIds": [],
+     "note": "What matters to you check-in"
+    },
+    "reason": "She stated she likes to know every step ahead of time."
+   },
+   {
+    "id": "s2",
+    "text": "Claire seeks support from her partner, which can help her navigate her pregnancy and health decisions.",
+    "kind": "patient_stated",
+    "source": {
+     "factIds": [],
+     "note": "What matters to you check-in"
+    },
+    "reason": "She stated her partner will come."
+   },
+   {
+    "id": "s3",
+    "text": "Claire manages multiple health conditions and continues to attend regular prenatal care visits.",
+    "kind": "fact",
+    "source": {
+     "factIds": [
+      "f10",
+      "f11",
+      "f12",
+      "f27",
+      "f31",
+      "f33",
+      "f37",
+      "f41",
+      "f44",
+      "f47"
+     ],
+     "note": ""
+    },
+    "reason": "Her EHR documents chronic conditions and consistent prenatal care attendance."
+   }
+  ],
+  "avoidTerms": [
+   "non-compliant",
+   "denies",
+   "refused"
+  ],
+  "dataQualityWarnings": [
+   "Age is inconsistent between recent encounters (28 vs 31 years old).",
+   "\"Pregnancy (second trimester)\" appears as both a primary diagnosis and a comorbidity."
+  ]
+ },
+ "voiceGuide": {
+  "tone": [
+   "clear",
+   "reassuring",
+   "stepwise"
+  ],
+  "doSay": [
+   "Here is what happens next.",
+   "Let’s go through each step.",
+   "You and Sam are welcome.",
+   "If you have questions, just ask.",
+   "We’ll explain each part.",
+   "You can pause at any time."
+  ],
+  "dontSay": [
+   "non-compliant",
+   "denies",
+   "refused",
+   "It’s complicated, don’t worry about it.",
+   "Just trust us.",
+   "You don’t need to know this."
+  ],
+  "sentenceMaxWords": 12,
+  "addressing": "Speak directly to Claire. If Sam is present, include him by name in explanations and invitations.",
+  "greeting": "Hi Claire,",
+  "signoff": "Your OB team",
+  "choicePhrases": [
+   "You can choose a time.",
+   "Would you like Sam to join?",
+   "Let us know if you want more detail."
+  ],
+  "safetyPhrases": [
+   "Call us at 555-0100 for help.",
+   "Reply STOP to pause messages."
+  ]
+ },
+ "outputs": {
+  "messages": [
+   {
+    "stage": "before_7d",
+    "recipient": "patient",
+    "persona": "Hi Claire,\nHere is what happens next. Your prenatal visit is on {{weekday}}, {{date}} at {{time}}. The visit will take about 40 minutes. Sam is welcome to join you. You can ask for more detail at any step. Call us at 555-0100 for help.\nYour OB team",
+    "claimIds": [
+     "ec1",
+     "ec3"
+    ]
+   },
+   {
+    "stage": "before_2d",
+    "recipient": "patient",
+    "persona": "Hi Claire,\nYour prenatal visit is coming up on {{weekday}}, {{date}} at {{time}}. We will go through each step together. The visit takes about 40 minutes. You can choose to have Sam with you or step out for any part. If you have questions, just ask. Call us at 555-0100 for help.\nYour OB team",
+    "claimIds": [
+     "ec1",
+     "ec3"
+    ]
+   },
+   {
+    "stage": "after_24h",
+    "recipient": "patient",
+    "persona": "Hi Claire,\nThank you for coming to your prenatal visit. You can read your plain-language summary now. Next, we will schedule your following check-in together. Call us at 555-0100 if you need anything.\nYour OB team",
+    "claimIds": []
+   }
+  ],
+  "clinicianBrief": {
+   "lines": [
+    "Claire is a 31-year-old expectant mother in her second trimester, here for a routine prenatal visit.",
+    "She values stepwise, transparent explanations and wants to know each step ahead.",
+    "Claire has generalized anxiety disorder; clear, predictable communication helps her feel comfortable.",
+    "Her partner, Sam, will attend for support—include him in explanations and invitations.",
+    "Avoid terms like 'non-compliant' and 'denies.'",
+    "Chart check: Age is inconsistent (28 vs 31); 'Pregnancy (second trimester)' appears as both primary and comorbidity."
+   ],
+   "readAloudSeconds": 29,
+   "claimIds": [
+    "ec1",
+    "ec2",
+    "ec3"
+   ]
+  },
+  "visitSummary": {
+   "headline": "Your Prenatal Visit Summary – {{date}}",
+   "whatWeTalkedAbout": [
+    {
+     "text": "Reviewed each step of your second trimester prenatal care together.",
+     "claimIds": [
+      "ec1"
+     ]
+    },
+    {
+     "text": "Answered your questions about what to expect next.",
+     "claimIds": [
+      "ec1"
+     ]
+    },
+    {
+     "text": "Sam was present for support during your visit.",
+     "claimIds": [
+      "ec3"
+     ]
+    }
+   ],
+   "yourNextSteps": [
+    "Continue taking your prenatal vitamins and iron as directed.",
+    "Schedule your next prenatal check-in with us.",
+    "Let us know if you want more details about any part of your care.",
+    "Bring Sam or another support person if you wish next time."
+   ],
+   "whenToCall": [
+    "Call us at 555-0100 if you have new pain, bleeding, or fever.",
+    "Call if you feel very anxious or need extra support.",
+    "Call for any questions about your medicines."
+   ],
+   "questionsForNextTime": [
+    "What changes should I expect in the next trimester?",
+    "Are there new tests or steps coming up?",
+    "How can Sam help more with my care?"
+   ]
+  },
+  "videoScripts": [
+   {
+    "stage": "before",
+    "title": "Your Prenatal Visit: What to Expect",
+    "scenes": [
+     {
+      "kind": "title",
+      "title": "Welcome, Claire!",
+      "text": "Your prenatal visit is soon.",
+      "items": [],
+      "voiceover": "Hi Claire, your prenatal visit is coming up soon."
+     },
+     {
+      "kind": "card",
+      "title": "Who Will Be There?",
+      "text": "You and Sam are both welcome.",
+      "items": [],
+      "voiceover": "You and Sam are both welcome at the visit."
+     },
+     {
+      "kind": "steps",
+      "title": "What Will Happen?",
+      "text": "We will go step by step.",
+      "items": [
+       "Check-in together",
+       "Review your health",
+       "Answer your questions"
+      ],
+      "voiceover": "We will check in together, review your health, and answer your questions."
+     },
+     {
+      "kind": "choice",
+      "title": "Your Choices",
+      "text": "You can ask for more detail.",
+      "items": [
+       "Ask questions anytime",
+       "Have Sam join or step out"
+      ],
+      "voiceover": "You can ask for more detail at any time. Sam can join you or step out if you prefer."
+     },
+     {
+      "kind": "closing",
+      "title": "Need Help?",
+      "text": "Call us at 555-0100.",
+      "items": [],
+      "voiceover": "Call us at 555-0100 if you need help. We look forward to seeing you."
+     }
+    ]
+   },
+   {
+    "stage": "after",
+    "title": "After Your Prenatal Visit: Next Steps",
+    "scenes": [
+     {
+      "kind": "title",
+      "title": "Thank You, Claire!",
+      "text": "Thank you for coming in.",
+      "items": [],
+      "voiceover": "Thank you for coming to your prenatal visit, Claire."
+     },
+     {
+      "kind": "steps",
+      "title": "What We Did",
+      "text": "We reviewed each step together.",
+      "items": [
+       "Talked through your care",
+       "Answered your questions",
+       "Sam was there for support"
+      ],
+      "voiceover": "We talked through your care, answered your questions, and Sam was there for support."
+     },
+     {
+      "kind": "steps",
+      "title": "Your Next Steps",
+      "text": "Here is what happens next.",
+      "items": [
+       "Keep taking your medicines",
+       "Schedule your next visit",
+       "Call us with questions"
+      ],
+      "voiceover": "Keep taking your medicines, schedule your next visit, and call us if you have any questions."
+     },
+     {
+      "kind": "choice",
+      "title": "When to Call",
+      "text": "Call us if you have pain or worries.",
+      "items": [
+       "New pain or bleeding",
+       "Feeling very anxious",
+       "Questions about medicines"
+      ],
+      "voiceover": "Call us if you have new pain, bleeding, or feel very anxious. We are here for you."
+     },
+     {
+      "kind": "closing",
+      "title": "See You Next Time!",
+      "text": "We look forward to your next visit.",
+      "items": [],
+      "voiceover": "We look forward to your next visit, Claire."
+     }
+    ]
+   }
+  ]
+ }
+}

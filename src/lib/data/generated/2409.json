@@ -1,0 +1,489 @@
+{
+ "patientId": 2409,
+ "generatedAt": "2026-10-03T07:28:40.148Z",
+ "model": "gpt-4.1-2025-04-14",
+ "context": {
+  "checkin": "Leo does better if he sees pictures of the room first. Loud waiting rooms are hard for him.",
+  "audience": "caregiver",
+  "language": "en",
+  "channel": "sms"
+ },
+ "facts": [
+  {
+   "id": "f1",
+   "field": "demographics.age",
+   "value": "3 years old"
+  },
+  {
+   "id": "f2",
+   "field": "demographics.sex",
+   "value": "Male"
+  },
+  {
+   "id": "f3",
+   "field": "primary_diagnoses",
+   "value": "Autism spectrum disorder"
+  },
+  {
+   "id": "f4",
+   "field": "profile.chronic_conditions",
+   "value": "History of chronic otitis media"
+  },
+  {
+   "id": "f5",
+   "field": "profile.home_medications",
+   "value": "Pediatric multivitamin with iron 5 mL oral daily"
+  },
+  {
+   "id": "f6",
+   "field": "profile.allergies",
+   "value": "NKDA"
+  },
+  {
+   "id": "f7",
+   "field": "profile.occupation",
+   "value": "Daycare attendee"
+  },
+  {
+   "id": "f8",
+   "field": "profile.smoking_status",
+   "value": "Never"
+  },
+  {
+   "id": "f9",
+   "field": "profile.alcohol_use",
+   "value": "None"
+  },
+  {
+   "id": "f10",
+   "field": "profile.family_history",
+   "value": "Paternal cousin with autism spectrum disorder"
+  },
+  {
+   "id": "f11",
+   "field": "profile.family_history",
+   "value": "Maternal uncle with ADHD"
+  },
+  {
+   "id": "f12",
+   "field": "encounter.visit",
+   "value": "outpatient visit, Pediatrics, Dr. Sarah Chen",
+   "encounterId": 10380,
+   "date": "2020-01-15"
+  },
+  {
+   "id": "f13",
+   "field": "encounter.chief_complaint",
+   "value": "concerns about his development",
+   "encounterId": 10380,
+   "date": "2020-01-15"
+  },
+  {
+   "id": "f14",
+   "field": "encounter.note.hpi",
+   "value": "They report that he has not been speaking as much as his peers and often does not respond to his name. He has a few words in his vocabulary but does not combine them.",
+   "encounterId": 10380,
+   "date": "2020-01-15"
+  },
+  {
+   "id": "f15",
+   "field": "encounter.visit",
+   "value": "outpatient visit, Developmental-Behavioral Pediatrics, Dr. Marcus Johnson",
+   "encounterId": 10378,
+   "date": "2020-03-15"
+  },
+  {
+   "id": "f16",
+   "field": "encounter.chief_complaint",
+   "value": "concerns about his behavior",
+   "encounterId": 10378,
+   "date": "2020-03-15"
+  },
+  {
+   "id": "f17",
+   "field": "encounter.note.hpi",
+   "value": "The patient is a 3-year-old male with a history of chronic otitis media who returns for follow-up of behavioral concerns following a January 2020 evaluation for developmental concerns. His parents say he rarely makes eye contact, doesn’t respond to his name, and prefers to play alone.",
+   "encounterId": 10378,
+   "date": "2020-03-15"
+  },
+  {
+   "id": "f18",
+   "field": "encounter.visit",
+   "value": "outpatient visit, Pediatrics, Dr. Sarah Chen",
+   "encounterId": 10379,
+   "date": "2021-01-15"
+  },
+  {
+   "id": "f19",
+   "field": "encounter.chief_complaint",
+   "value": "concerns about his eating habits and behavior",
+   "encounterId": 10379,
+   "date": "2021-01-15"
+  },
+  {
+   "id": "f20",
+   "field": "encounter.note.hpi",
+   "value": "This 4-year-old male with a history of chronic otitis media returns for follow-up evaluation of eating habits and behavioral concerns, having presented previously for developmental and behavioral assessments in January and March 2020. His parents report that he has a very limited diet, consisting mainly of white bread, chicken nuggets, and apple juice.",
+   "encounterId": 10379,
+   "date": "2021-01-15"
+  },
+  {
+   "id": "f21",
+   "field": "seed.caregiver",
+   "value": "Dana Hartman (mother)"
+  },
+  {
+   "id": "f22",
+   "field": "seed.upcoming_visit",
+   "value": "Developmental-Behavioral Pediatrics: Follow-up: development and communication plan (in 3 days)"
+  },
+  {
+   "id": "f23",
+   "field": "seed.stated_language",
+   "value": "English (patient-stated)"
+  }
+ ],
+ "profile": {
+  "patientId": 2409,
+  "preferredName": "Leo",
+  "summaryLine": "Leo is a 3-year-old boy with autism who does better with visual supports and quieter environments; his mother Dana is the primary caregiver.",
+  "audience": "caregiver",
+  "recipients": [
+   {
+    "role": "mother",
+    "name": "Dana Hartman",
+    "relationship": "mother",
+    "primary": true
+   },
+   {
+    "role": "patient",
+    "name": "Leo",
+    "primary": false
+   }
+  ],
+  "communicationNeeds": {
+   "readingLevel": 6,
+   "detailPreference": "brief",
+   "language": "en",
+   "channel": "sms",
+   "bestTimeOfDay": ""
+  },
+  "emotionalContext": [
+   {
+    "id": "ec1",
+    "text": "Leo does better if he sees pictures of the room first.",
+    "kind": "patient_stated",
+    "source": {
+     "factIds": [],
+     "note": "What matters to you check-in"
+    },
+    "reason": "This is directly from the check-in and highlights Leo's need for visual preparation."
+   },
+   {
+    "id": "ec2",
+    "text": "Loud waiting rooms are hard for Leo.",
+    "kind": "patient_stated",
+    "source": {
+     "factIds": [],
+     "note": "What matters to you check-in"
+    },
+    "reason": "This is directly from the check-in and indicates a sensory sensitivity to noise."
+   },
+   {
+    "id": "ec3",
+    "text": "Leo has autism spectrum disorder, which may affect his communication and sensory processing.",
+    "kind": "fact",
+    "source": {
+     "factIds": [
+      "f3"
+     ],
+     "note": ""
+    },
+    "reason": "This is documented in the EHR."
+   },
+   {
+    "id": "ec4",
+    "text": "Leo prefers to play alone and rarely makes eye contact or responds to his name.",
+    "kind": "fact",
+    "source": {
+     "factIds": [
+      "f17"
+     ],
+     "note": ""
+    },
+    "reason": "This is documented in the EHR."
+   }
+  ],
+  "privacyRules": [],
+  "cognitiveSupport": [
+   {
+    "id": "cs1",
+    "text": "Dana, Leo may benefit from seeing pictures of the clinic room before the visit; this can help him feel more comfortable and prepared.",
+    "kind": "patient_stated",
+    "source": {
+     "factIds": [],
+     "note": "What matters to you check-in"
+    },
+    "reason": "Leo's check-in notes visual supports are helpful."
+   },
+   {
+    "id": "cs2",
+    "text": "If possible, try to minimize time in loud or crowded waiting areas, as Leo finds these environments challenging.",
+    "kind": "patient_stated",
+    "source": {
+     "factIds": [],
+     "note": "What matters to you check-in"
+    },
+    "reason": "Leo's check-in notes sensitivity to noise."
+   }
+  ],
+  "strengths": [
+   {
+    "id": "s1",
+    "text": "Leo's family is attentive and proactive in seeking developmental and behavioral support for him.",
+    "kind": "inferred",
+    "source": {
+     "factIds": [
+      "f13",
+      "f16",
+      "f19"
+     ],
+     "note": ""
+    },
+    "reason": "Multiple visits for developmental and behavioral concerns show strong family involvement."
+   },
+   {
+    "id": "s2",
+    "text": "Dana is engaged and communicates Leo's needs clearly.",
+    "kind": "inferred",
+    "source": {
+     "factIds": [],
+     "note": "What matters to you check-in"
+    },
+    "reason": "The check-in provides clear, specific information about Leo's needs."
+   }
+  ],
+  "avoidTerms": [
+   "non-compliant",
+   "denies",
+   "refused"
+  ],
+  "dataQualityWarnings": [
+   "Age is inconsistently documented as 3 and 4 years old across notes."
+  ]
+ },
+ "voiceGuide": {
+  "tone": [
+   "gentle",
+   "clear",
+   "supportive"
+  ],
+  "doSay": [
+   "We can send a picture of the room.",
+   "Let us know if Leo needs a quiet space.",
+   "You can ask for a break anytime."
+  ],
+  "dontSay": [
+   "non-compliant",
+   "denies",
+   "refused",
+   "He doesn't listen",
+   "He is difficult",
+   "Why can't he sit still?"
+  ],
+  "sentenceMaxWords": 10,
+  "addressing": "Speak directly to Dana Hartman as Leo's mother and main contact. Refer to Leo by name when needed.",
+  "greeting": "Hi Dana,",
+  "signoff": "Your Pediatrics team",
+  "choicePhrases": [
+   "Would you like a photo first?",
+   "Do you want to wait in the car?",
+   "Let us know your preference."
+  ],
+  "safetyPhrases": [
+   "Call 555-0100 for help.",
+   "Reply STOP to pause messages."
+  ]
+ },
+ "outputs": {
+  "messages": [
+   {
+    "stage": "before_7d",
+    "recipient": "mother",
+    "persona": "Hi Dana,\nLeo’s visit is on {{weekday}}, {{date}} at {{time}}. It will last about 40 minutes. We will talk about Leo’s development and communication. You can ask for a photo of the room or wait in the car. Call 555-0100 for help.\nYour Pediatrics team",
+    "claimIds": [
+     "ec1",
+     "cs1"
+    ]
+   },
+   {
+    "stage": "before_2d",
+    "recipient": "mother",
+    "persona": "Hi Dana,\nWe look forward to seeing Leo on {{weekday}}, {{date}} at {{time}}. The visit is about 40 minutes. We can send a picture of the room if you want. Let us know if Leo needs a quiet space. Call 555-0100 for help.\nYour Pediatrics team",
+    "claimIds": [
+     "ec1",
+     "ec2",
+     "cs1",
+     "cs2"
+    ]
+   },
+   {
+    "stage": "after_24h",
+    "recipient": "mother",
+    "persona": "Hi Dana,\nThank you for coming with Leo. Your visit summary is ready. Next, we will follow the plan together. Call 555-0100 for help.\nYour Pediatrics team",
+    "claimIds": []
+   }
+  ],
+  "clinicianBrief": {
+   "lines": [
+    "Leo is a 3-year-old boy with autism here for follow-up on development and communication.",
+    "Dana, his mother, is the main contact and communicates Leo’s needs clearly.",
+    "Leo does better with visual supports and in quieter environments; loud waiting rooms are hard for him.",
+    "He prefers to play alone and rarely makes eye contact or responds to his name.",
+    "Offer choices (photo of room, quiet space, breaks) and use gentle, clear language.",
+    "Avoid terms like 'non-compliant' or 'refused.'",
+    "Chart check: Age is inconsistently documented as 3 and 4 years old across notes."
+   ],
+   "readAloudSeconds": 29,
+   "claimIds": [
+    "ec1",
+    "ec2",
+    "cs1",
+    "cs2"
+   ]
+  },
+  "visitSummary": {
+   "headline": "Development and Communication Follow-Up for Leo – {{date}}",
+   "whatWeTalkedAbout": [
+    {
+     "text": "Leo’s development and communication progress.",
+     "claimIds": []
+    },
+    {
+     "text": "Ways to support Leo with visual tools and quiet spaces.",
+     "claimIds": [
+      "ec1",
+      "ec2",
+      "cs1",
+      "cs2"
+     ]
+    }
+   ],
+   "yourNextSteps": [
+    "Ask for a photo of the room if Leo needs it.",
+    "Let us know if Leo needs a quiet space next time.",
+    "Follow the communication plan discussed.",
+    "Bring any questions or updates to your next visit."
+   ],
+   "whenToCall": [
+    "Call us if Leo has a sudden change in behavior.",
+    "Call if Leo seems very upset and cannot calm down.",
+    "Call 555-0100 for any urgent questions."
+   ],
+   "questionsForNextTime": [
+    "How is Leo responding to visual supports?",
+    "Are there new challenges at home or school?"
+   ]
+  },
+  "videoScripts": [
+   {
+    "stage": "before",
+    "title": "Getting Ready for Leo’s Visit",
+    "scenes": [
+     {
+      "kind": "title",
+      "title": "Welcome, Dana and Leo!",
+      "text": "We are getting ready for your visit.",
+      "items": [],
+      "voiceover": "Welcome, Dana and Leo! We are getting ready for your visit."
+     },
+     {
+      "kind": "card",
+      "title": "When and Where",
+      "text": "Your visit is on {{weekday}}, {{date}} at {{time}}.",
+      "items": [],
+      "voiceover": "Your visit is on {{weekday}}, {{date}} at {{time}}."
+     },
+     {
+      "kind": "steps",
+      "title": "What Will Happen",
+      "text": "We will talk about Leo’s development and communication.",
+      "items": [
+       "Talk about Leo’s progress",
+       "Share your questions",
+       "Plan next steps"
+      ],
+      "voiceover": "We will talk about Leo’s progress, answer your questions, and plan next steps together."
+     },
+     {
+      "kind": "choice",
+      "title": "Your Choices",
+      "text": "You can ask for a photo of the room or wait in the car.",
+      "items": [
+       "Ask for a room photo",
+       "Wait in the car",
+       "Request a quiet space"
+      ],
+      "voiceover": "You can ask for a photo of the room, wait in the car, or request a quiet space for Leo."
+     },
+     {
+      "kind": "closing",
+      "title": "Need Help?",
+      "text": "Call 555-0100 for help.",
+      "items": [],
+      "voiceover": "Call 555-0100 for help if you need anything."
+     }
+    ]
+   },
+   {
+    "stage": "after",
+    "title": "After Leo’s Visit: What’s Next",
+    "scenes": [
+     {
+      "kind": "title",
+      "title": "Thank You, Dana and Leo!",
+      "text": "Thank you for coming to your visit.",
+      "items": [],
+      "voiceover": "Thank you for coming to your visit, Dana and Leo."
+     },
+     {
+      "kind": "card",
+      "title": "What We Talked About",
+      "text": "We discussed Leo’s development and support tools.",
+      "items": [],
+      "voiceover": "We talked about Leo’s development and ways to support him."
+     },
+     {
+      "kind": "steps",
+      "title": "Your Next Steps",
+      "text": "Follow the plan and ask for help if needed.",
+      "items": [
+       "Use visual supports",
+       "Ask for quiet spaces",
+       "Share updates next visit"
+      ],
+      "voiceover": "Use visual supports, ask for quiet spaces, and share any updates at your next visit."
+     },
+     {
+      "kind": "choice",
+      "title": "When to Call",
+      "text": "Call if Leo has sudden changes or is very upset.",
+      "items": [
+       "Sudden behavior changes",
+       "Very upset and cannot calm down",
+       "Urgent questions"
+      ],
+      "voiceover": "Call us if Leo has sudden behavior changes, cannot calm down, or you have urgent questions."
+     },
+     {
+      "kind": "closing",
+      "title": "See You Next Time!",
+      "text": "We look forward to seeing you again.",
+      "items": [],
+      "voiceover": "We look forward to seeing you again soon."
+     }
+    ]
+   }
+  ]
+ }
+}

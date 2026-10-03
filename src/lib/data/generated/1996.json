@@ -1,0 +1,639 @@
+{
+ "patientId": 1996,
+ "generatedAt": "2026-10-03T07:32:04.040Z",
+ "model": "gpt-4.1-2025-04-14",
+ "context": {
+  "checkin": "(Linda) Talk to Greg directly first. Changes in his behavior are hard for us.",
+  "audience": "care_partner",
+  "language": "en",
+  "channel": "sms"
+ },
+ "facts": [
+  {
+   "id": "f1",
+   "field": "demographics.age",
+   "value": "56 years old"
+  },
+  {
+   "id": "f2",
+   "field": "demographics.sex",
+   "value": "Male"
+  },
+  {
+   "id": "f3",
+   "field": "primary_diagnoses",
+   "value": "Frontotemporal dementia"
+  },
+  {
+   "id": "f4",
+   "field": "primary_diagnoses",
+   "value": "Vasospastic angina"
+  },
+  {
+   "id": "f5",
+   "field": "primary_diagnoses",
+   "value": "Status post percutaneous coronary intervention"
+  },
+  {
+   "id": "f6",
+   "field": "primary_diagnoses",
+   "value": "Hyperlipidemia"
+  },
+  {
+   "id": "f7",
+   "field": "comorbidities",
+   "value": "Hyperlipidemia"
+  },
+  {
+   "id": "f8",
+   "field": "comorbidities",
+   "value": "Essential hypertension"
+  },
+  {
+   "id": "f9",
+   "field": "profile.chronic_conditions",
+   "value": "Hypertension"
+  },
+  {
+   "id": "f10",
+   "field": "profile.chronic_conditions",
+   "value": "Hyperlipidemia"
+  },
+  {
+   "id": "f11",
+   "field": "profile.chronic_conditions",
+   "value": "Coronary Artery Disease"
+  },
+  {
+   "id": "f12",
+   "field": "profile.chronic_conditions",
+   "value": "Frontotemporal Dementia"
+  },
+  {
+   "id": "f13",
+   "field": "profile.home_medications",
+   "value": "Atorvastatin 40 mg PO daily"
+  },
+  {
+   "id": "f14",
+   "field": "profile.home_medications",
+   "value": "Lisinopril 20 mg PO daily"
+  },
+  {
+   "id": "f15",
+   "field": "profile.home_medications",
+   "value": "Amlodipine 5 mg PO daily"
+  },
+  {
+   "id": "f16",
+   "field": "profile.home_medications",
+   "value": "Aspirin 81 mg PO daily"
+  },
+  {
+   "id": "f17",
+   "field": "profile.home_medications",
+   "value": "Clopidogrel 75 mg PO daily"
+  },
+  {
+   "id": "f18",
+   "field": "profile.home_medications",
+   "value": "Nitroglycerin 0.4 mg SL PRN chest pain"
+  },
+  {
+   "id": "f19",
+   "field": "profile.allergies",
+   "value": "NKDA"
+  },
+  {
+   "id": "f20",
+   "field": "profile.surgical_history",
+   "value": "Percutaneous coronary intervention with drug-eluting stent placement (LAD)"
+  },
+  {
+   "id": "f21",
+   "field": "profile.occupation",
+   "value": "Financial Analyst"
+  },
+  {
+   "id": "f22",
+   "field": "profile.smoking_status",
+   "value": "Never smoker"
+  },
+  {
+   "id": "f23",
+   "field": "profile.alcohol_use",
+   "value": "Social (2-3 drinks per week)"
+  },
+  {
+   "id": "f24",
+   "field": "profile.family_history",
+   "value": "Father: Premature coronary artery disease (MI at age 52)"
+  },
+  {
+   "id": "f25",
+   "field": "profile.family_history",
+   "value": "Mother: Dementia with behavioral changes (onset age 78)"
+  },
+  {
+   "id": "f26",
+   "field": "profile.family_history",
+   "value": "No family history of sudden cardiac death"
+  },
+  {
+   "id": "f27",
+   "field": "encounter.visit",
+   "value": "outpatient visit, Internal Medicine, Dr. Sarah Chen",
+   "encounterId": 8269,
+   "date": "2020-01-15"
+  },
+  {
+   "id": "f28",
+   "field": "encounter.chief_complaint",
+   "value": "Comes to the clinic for routine management of hyperlipidemia.",
+   "encounterId": 8269,
+   "date": "2020-01-15"
+  },
+  {
+   "id": "f29",
+   "field": "encounter.note.plan",
+   "value": "The physician prescribes cholestyramine to help lower his cholesterol levels. Cholestyramine works through",
+   "encounterId": 8269,
+   "date": "2020-01-15"
+  },
+  {
+   "id": "f30",
+   "field": "encounter.visit",
+   "value": "outpatient visit, Internal Medicine, Dr. James Okafor",
+   "encounterId": 8265,
+   "date": "2021-01-15"
+  },
+  {
+   "id": "f31",
+   "field": "encounter.chief_complaint",
+   "value": "Presents to the clinic for a follow-up visit for hypertension management.",
+   "encounterId": 8265,
+   "date": "2021-01-15"
+  },
+  {
+   "id": "f32",
+   "field": "encounter.note.hpi",
+   "value": "The 57-year-old male with hypertension, hyperlipidemia, coronary artery disease, and frontotemporal dementia returns for hypertension management. He has been participating in a randomized controlled trial comparing the efficacy of a new antihypertensive drug to a placebo.",
+   "encounterId": 8265,
+   "date": "2021-01-15"
+  },
+  {
+   "id": "f33",
+   "field": "encounter.visit",
+   "value": "outpatient visit, Neurology, Dr. Maria Rodriguez",
+   "encounterId": 8266,
+   "date": "2023-01-15"
+  },
+  {
+   "id": "f34",
+   "field": "encounter.chief_complaint",
+   "value": "Wife reports he has become increasingly irritable and has difficulty managing finances, with new compulsive habits such as collecting and sorting objects.",
+   "encounterId": 8266,
+   "date": "2023-01-15"
+  },
+  {
+   "id": "f35",
+   "field": "encounter.note.hpi",
+   "value": "Patient returns for neurology follow-up with prior hyperlipidemia, hypertension care in 2020, 2021 who reports that over the past year, he has become increasingly irritable and has difficulty managing finances with new compulsive habits such as collecting and sorting objects.",
+   "encounterId": 8266,
+   "date": "2023-01-15"
+  },
+  {
+   "id": "f36",
+   "field": "encounter.visit",
+   "value": "follow_up visit, Cardiology, Dr. David Kim",
+   "encounterId": 8268,
+   "date": "2025-01-15"
+  },
+  {
+   "id": "f37",
+   "field": "encounter.chief_complaint",
+   "value": "Presents for follow-up after percutaneous coronary intervention with drug-eluting stent placement.",
+   "encounterId": 8268,
+   "date": "2025-01-15"
+  },
+  {
+   "id": "f38",
+   "field": "encounter.note.hpi",
+   "value": "The patient, with hypertension and hyperlipidemia managed since 2020 and 2021 and frontotemporal dementia diagnosed in 2023, returns for follow-up after undergoing percutaneous coronary intervention with placement of a drug-eluting stent (DES) in the left anterior descending artery 3 months ago. The procedure was performed after exertional angina and significant luminal narrowing on coronary angiography.",
+   "encounterId": 8268,
+   "date": "2025-01-15"
+  },
+  {
+   "id": "f39",
+   "field": "encounter.note.plan",
+   "value": "The cardiologist explains that the drug coating helps reduce the risk of in-stent restenosis, which was more common with older bare-metal stents.",
+   "encounterId": 8268,
+   "date": "2025-01-15"
+  },
+  {
+   "id": "f40",
+   "field": "encounter.visit",
+   "value": "ed visit, Emergency Medicine, Dr. Emily Johnson",
+   "encounterId": 8267,
+   "date": "2026-01-15"
+  },
+  {
+   "id": "f41",
+   "field": "encounter.chief_complaint",
+   "value": "Recurrent episodes of substernal chest discomfort occurring at rest and waking him from sleep.",
+   "encounterId": 8267,
+   "date": "2026-01-15"
+  },
+  {
+   "id": "f42",
+   "field": "encounter.note.hpi",
+   "value": "The patient is a 62-year-old male with coronary artery disease status post percutaneous coronary intervention in 2025, hypertension, hyperlipidemia, and frontotemporal dementia who presents with recurrent chest discomfort. He describes the pain as tight and pressure-like, occurring primarily at rest and sometimes waking him from sleep.",
+   "encounterId": 8267,
+   "date": "2026-01-15"
+  },
+  {
+   "id": "f43",
+   "field": "seed.caregiver",
+   "value": "Linda Novak (wife)"
+  },
+  {
+   "id": "f44",
+   "field": "seed.upcoming_visit",
+   "value": "Neurology: Memory and behavior follow-up (in 3 days)"
+  },
+  {
+   "id": "f45",
+   "field": "seed.stated_language",
+   "value": "English (patient-stated)"
+  }
+ ],
+ "profile": {
+  "patientId": 1996,
+  "preferredName": "Greg",
+  "summaryLine": "Greg is a 62-year-old former financial analyst with frontotemporal dementia, supported by his wife Linda, who values being addressed directly and is experiencing behavioral changes.",
+  "audience": "care_partner",
+  "recipients": [
+   {
+    "role": "patient",
+    "name": "Greg",
+    "primary": true
+   },
+   {
+    "role": "care_partner",
+    "name": "Linda Novak",
+    "relationship": "wife",
+    "primary": false
+   }
+  ],
+  "communicationNeeds": {
+   "readingLevel": 4,
+   "detailPreference": "brief",
+   "language": "en",
+   "channel": "sms",
+   "bestTimeOfDay": ""
+  },
+  "emotionalContext": [
+   {
+    "id": "ec1",
+    "text": "Greg has been experiencing behavioral changes, including irritability and new compulsive habits, which are difficult for both him and Linda.",
+    "kind": "fact",
+    "source": {
+     "factIds": [
+      "f34",
+      "f35"
+     ],
+     "note": ""
+    },
+    "reason": "Behavioral symptoms are documented in neurology notes and are a source of stress for the couple."
+   },
+   {
+    "id": "ec2",
+    "text": "Linda values that Greg is addressed directly first in communications, and both are finding changes in his behavior challenging.",
+    "kind": "patient_stated",
+    "source": {
+     "factIds": [],
+     "note": "What matters to you check-in"
+    },
+    "reason": "Linda's check-in explicitly requests direct communication with Greg and describes their shared difficulty."
+   }
+  ],
+  "privacyRules": [
+   {
+    "id": "pr1",
+    "rule": "Do not include the diagnosis name 'frontotemporal dementia' or related terms in SMS messages.",
+    "restrictedTerms": [
+     "frontotemporal dementia",
+     "dementia"
+    ],
+    "channels": [
+     "sms"
+    ],
+    "recipients": [],
+    "kind": "fact",
+    "source": {
+     "factIds": [
+      "f3",
+      "f12"
+     ],
+     "note": ""
+    },
+    "reason": "To protect privacy regarding sensitive diagnoses in SMS communication."
+   }
+  ],
+  "cognitiveSupport": [
+   {
+    "id": "cs1",
+    "text": "Greg, we will talk with you directly and include Linda in our conversations. Linda, please let us know if there are times of day when Greg is most comfortable or focused.",
+    "kind": "inferred",
+    "source": {
+     "factIds": [
+      "f3",
+      "f12",
+      "f34",
+      "f35",
+      "f43"
+     ],
+     "note": "What matters to you check-in"
+    },
+    "reason": "Greg has frontotemporal dementia and behavioral symptoms; Linda is a key support and requests direct communication."
+   }
+  ],
+  "strengths": [
+   {
+    "id": "s1",
+    "text": "Greg has a supportive spouse, Linda, who is actively involved in his care and communication.",
+    "kind": "fact",
+    "source": {
+     "factIds": [
+      "f34",
+      "f35",
+      "f43"
+     ],
+     "note": ""
+    },
+    "reason": "Linda is documented as his wife and care partner, and she participates in his care."
+   },
+   {
+    "id": "s2",
+    "text": "Greg has a history of professional work as a financial analyst, indicating prior strengths in organization and analysis.",
+    "kind": "fact",
+    "source": {
+     "factIds": [
+      "f21"
+     ],
+     "note": ""
+    },
+    "reason": "His occupation is documented in the record."
+   }
+  ],
+  "avoidTerms": [
+   "non-compliant",
+   "denies",
+   "refused"
+  ],
+  "dataQualityWarnings": [
+   "Age is inconsistently documented (56, 57, 62 years old in different notes).",
+   "Some encounter notes reference different years for diagnosis and age.",
+   "\"Hyperlipidemia\" appears as both a primary diagnosis and a comorbidity."
+  ]
+ },
+ "voiceGuide": {
+  "tone": [
+   "respectful",
+   "clear",
+   "warm"
+  ],
+  "doSay": [
+   "Greg, your appointment is soon.",
+   "Linda, you can join too.",
+   "Let us know if you need help.",
+   "You can choose what works best.",
+   "We are here for you."
+  ],
+  "dontSay": [
+   "non-compliant",
+   "denies",
+   "refused",
+   "frontotemporal",
+   "dementia"
+  ],
+  "sentenceMaxWords": 10,
+  "addressing": "Speak to Greg first by name. Include Linda Novak by name in all messages, as his wife and care partner.",
+  "greeting": "Hello Greg and Linda,",
+  "signoff": "Your Neurology team",
+  "choicePhrases": [
+   "Would you like to reschedule?",
+   "Do you want to bring Linda?",
+   "Would you prefer a call or text?"
+  ],
+  "safetyPhrases": [
+   "Call us at 555-0100 for help.",
+   "Reply STOP to pause messages."
+  ]
+ },
+ "outputs": {
+  "messages": [
+   {
+    "stage": "before_7d",
+    "recipient": "patient",
+    "persona": "Hello Greg and Linda,\nGreg, your neurology visit is coming up on {{weekday}}, {{date}} at {{time}}. The appointment will last about 40 minutes. Linda, you can join too. If you need to change the time, you can reschedule. We will talk together and answer your questions. Call us at 555-0100 for help.\nYour Neurology team",
+    "claimIds": [
+     "cs1",
+     "s1"
+    ]
+   },
+   {
+    "stage": "before_2d",
+    "recipient": "patient",
+    "persona": "Hello Greg and Linda,\nThis is a reminder for your neurology visit on {{weekday}}, {{date}} at {{time}}. The visit will take about 40 minutes. Greg, we will talk with you first and include Linda. You can ask for a call or text if you prefer. We are here for you. Call us at 555-0100 for help.\nYour Neurology team",
+    "claimIds": [
+     "cs1",
+     "s1"
+    ]
+   },
+   {
+    "stage": "after_24h",
+    "recipient": "patient",
+    "persona": "Hello Greg and Linda,\nThank you for coming to your visit. You can read a summary of what we talked about. Next, we will keep working together on your care. If you have questions, call us at 555-0100 for help.\nYour Neurology team",
+    "claimIds": [
+     "s1"
+    ]
+   },
+   {
+    "stage": "before_7d",
+    "recipient": "care_partner",
+    "persona": "Hello Linda,\nGreg’s neurology visit is on {{weekday}}, {{date}} at {{time}} and lasts about 40 minutes. You can join him. It helps if you are there a few minutes early and bring notes about changes you have seen. We will talk with Greg first, then include you. Call us at 555-0100 for help.\nYour Neurology team",
+    "claimIds": [
+     "cs1",
+     "s1"
+    ]
+   },
+   {
+    "stage": "before_2d",
+    "recipient": "care_partner",
+    "persona": "Hello Linda,\nThis is a reminder for Greg’s neurology visit on {{weekday}}, {{date}} at {{time}}. The visit will take about 40 minutes. You can join and share your thoughts. We will talk with Greg first, then include you. Call us at 555-0100 for help.\nYour Neurology team",
+    "claimIds": [
+     "cs1",
+     "s1"
+    ]
+   },
+   {
+    "stage": "after_24h",
+    "recipient": "care_partner",
+    "persona": "Hello Linda,\nThank you for supporting Greg at his visit. You can read the summary we sent. We will keep working together to support Greg. If you have questions, call us at 555-0100 for help.\nYour Neurology team",
+    "claimIds": [
+     "s1"
+    ]
+   }
+  ],
+  "clinicianBrief": {
+   "lines": [
+    "Greg is a 62-year-old former financial analyst here for a neurology memory and behavior follow-up, supported by his wife Linda.",
+    "He has behavioral changes: irritability, difficulty with finances, and new compulsive habits (collecting/sorting objects).",
+    "Linda values that Greg is addressed directly first; she is actively involved and finds the changes challenging.",
+    "Use clear, brief language and include Linda after speaking to Greg.",
+    "Avoid using the terms 'frontotemporal dementia' or 'dementia' in front of Greg or in SMS.",
+    "Chart check: Age is inconsistently documented; review for accuracy."
+   ],
+   "readAloudSeconds": 29,
+   "claimIds": [
+    "cs1",
+    "pr1"
+   ]
+  },
+  "visitSummary": {
+   "headline": "Memory and behavior follow-up visit summary – {{date}}",
+   "whatWeTalkedAbout": [
+    {
+     "text": "Changes in behavior, including irritability and new habits.",
+     "claimIds": []
+    },
+    {
+     "text": "How these changes affect daily life and finances.",
+     "claimIds": []
+    },
+    {
+     "text": "Ways Linda can support and share observations.",
+     "claimIds": [
+      "s1"
+     ]
+    }
+   ],
+   "yourNextSteps": [
+    "Write down any new changes you notice.",
+    "Bring questions to your next visit.",
+    "Call us if Greg’s behavior changes quickly.",
+    "Linda, keep notes about daily routines.",
+    "Let us know if you need more support."
+   ],
+   "whenToCall": [
+    "Call if Greg becomes very upset or confused suddenly.",
+    "Call if you notice new or unsafe behaviors.",
+    "Call us at 555-0100 with any urgent questions."
+   ],
+   "questionsForNextTime": [
+    "What changes should we watch for?",
+    "How can Linda help at home?",
+    "Are there new resources for support?"
+   ]
+  },
+  "videoScripts": [
+   {
+    "stage": "before",
+    "title": "Getting Ready for Greg’s Neurology Visit",
+    "scenes": [
+     {
+      "kind": "title",
+      "title": "Welcome",
+      "text": "Greg, your visit is soon.",
+      "items": [],
+      "voiceover": "Greg, your neurology visit is coming up soon. Linda, you are welcome to join."
+     },
+     {
+      "kind": "card",
+      "title": "When and Where",
+      "text": "Your visit is on {{weekday}}, {{date}} at {{time}}.",
+      "items": [],
+      "voiceover": "Your appointment is on {{weekday}}, {{date}} at {{time}}. It will last about 40 minutes."
+     },
+     {
+      "kind": "steps",
+      "title": "What Will Happen",
+      "text": "We will talk about changes and answer questions.",
+      "items": [
+       "Talk with Greg first",
+       "Include Linda in the conversation",
+       "Discuss any new changes"
+      ],
+      "voiceover": "We will talk with Greg first, then include Linda. We’ll discuss any new changes you’ve noticed."
+     },
+     {
+      "kind": "choice",
+      "title": "Your Options",
+      "text": "You can reschedule or ask for a call.",
+      "items": [
+       "Reschedule if needed",
+       "Choose call or text reminders"
+      ],
+      "voiceover": "You can reschedule if the time does not work. You can also choose call or text reminders."
+     },
+     {
+      "kind": "closing",
+      "title": "Need Help?",
+      "text": "Call us at 555-0100 for help.",
+      "items": [],
+      "voiceover": "Call us at 555-0100 if you need help."
+     }
+    ]
+   },
+   {
+    "stage": "after",
+    "title": "After Your Neurology Visit",
+    "scenes": [
+     {
+      "kind": "title",
+      "title": "Thank You",
+      "text": "Thank you for coming.",
+      "items": [],
+      "voiceover": "Thank you for coming to your visit. We appreciate working together."
+     },
+     {
+      "kind": "card",
+      "title": "What We Talked About",
+      "text": "We discussed changes and support.",
+      "items": [],
+      "voiceover": "We talked about changes in behavior and how Linda can help."
+     },
+     {
+      "kind": "steps",
+      "title": "Your Next Steps",
+      "text": "Keep notes and call with questions.",
+      "items": [
+       "Write down changes",
+       "Bring questions next time",
+       "Call if urgent"
+      ],
+      "voiceover": "Write down any new changes you notice. Bring questions to your next visit. Call us if you have urgent concerns."
+     },
+     {
+      "kind": "choice",
+      "title": "When to Call",
+      "text": "Call if Greg gets very upset or confused.",
+      "items": [
+       "Sudden confusion or upset",
+       "Unsafe behaviors"
+      ],
+      "voiceover": "Call us if Greg becomes very upset or confused, or if you notice unsafe behaviors."
+     },
+     {
+      "kind": "closing",
+      "title": "We Are Here for You",
+      "text": "Call us at 555-0100 for help.",
+      "items": [],
+      "voiceover": "We are here for you. Call us at 555-0100 for help."
+     }
+    ]
+   }
+  ]
+ }
+}

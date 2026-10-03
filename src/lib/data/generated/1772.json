@@ -1,0 +1,684 @@
+{
+ "patientId": 1772,
+ "generatedAt": "2026-10-03T07:29:47.713Z",
+ "model": "gpt-4.1-2025-04-14",
+ "context": {
+  "checkin": "Short messages please. I need to know I can say no to any exam.",
+  "audience": "self",
+  "language": "en",
+  "channel": "sms"
+ },
+ "facts": [
+  {
+   "id": "f1",
+   "field": "demographics.age",
+   "value": "28 years old"
+  },
+  {
+   "id": "f2",
+   "field": "demographics.sex",
+   "value": "Female"
+  },
+  {
+   "id": "f3",
+   "field": "primary_diagnoses",
+   "value": "Schizophrenia"
+  },
+  {
+   "id": "f4",
+   "field": "primary_diagnoses",
+   "value": "Psychogenic polydipsia"
+  },
+  {
+   "id": "f5",
+   "field": "primary_diagnoses",
+   "value": "Degenerative high myopia"
+  },
+  {
+   "id": "f6",
+   "field": "primary_diagnoses",
+   "value": "Tay-Sachs disease carrier status with indicated partner screening"
+  },
+  {
+   "id": "f7",
+   "field": "primary_diagnoses",
+   "value": "Genito-pelvic pain/penetration disorder"
+  },
+  {
+   "id": "f8",
+   "field": "primary_diagnoses",
+   "value": "Clozapine-induced seizure"
+  },
+  {
+   "id": "f9",
+   "field": "primary_diagnoses",
+   "value": "Factitious disorder imposed on self"
+  },
+  {
+   "id": "f10",
+   "field": "comorbidities",
+   "value": "Situational anxiety"
+  },
+  {
+   "id": "f11",
+   "field": "comorbidities",
+   "value": "Family History of Stroke"
+  },
+  {
+   "id": "f12",
+   "field": "comorbidities",
+   "value": "Schizophrenia"
+  },
+  {
+   "id": "f13",
+   "field": "profile.chronic_conditions",
+   "value": "Schizophrenia"
+  },
+  {
+   "id": "f14",
+   "field": "profile.chronic_conditions",
+   "value": "Degenerative high myopia"
+  },
+  {
+   "id": "f15",
+   "field": "profile.chronic_conditions",
+   "value": "Genito-pelvic pain/penetration disorder"
+  },
+  {
+   "id": "f16",
+   "field": "profile.chronic_conditions",
+   "value": "Factitious disorder imposed on self"
+  },
+  {
+   "id": "f17",
+   "field": "profile.home_medications",
+   "value": "Clozapine 300 mg PO at bedtime"
+  },
+  {
+   "id": "f18",
+   "field": "profile.allergies",
+   "value": "NKDA"
+  },
+  {
+   "id": "f19",
+   "field": "profile.surgical_history",
+   "value": "None"
+  },
+  {
+   "id": "f20",
+   "field": "profile.occupation",
+   "value": "Unemployed; previously worked as an administrative assistant"
+  },
+  {
+   "id": "f21",
+   "field": "profile.smoking_status",
+   "value": "Never smoker"
+  },
+  {
+   "id": "f22",
+   "field": "profile.alcohol_use",
+   "value": "No alcohol use"
+  },
+  {
+   "id": "f23",
+   "field": "profile.family_history",
+   "value": "Mother: Major depressive disorder"
+  },
+  {
+   "id": "f24",
+   "field": "profile.family_history",
+   "value": "Father: Degenerative myopia"
+  },
+  {
+   "id": "f25",
+   "field": "profile.family_history",
+   "value": "Sister: No known psychiatric history (primary caregiver)"
+  },
+  {
+   "id": "f26",
+   "field": "profile.family_history",
+   "value": "Maternal ancestry: Ashkenazi Jewish (patient is a carrier for Tay-Sachs disease)"
+  },
+  {
+   "id": "f27",
+   "field": "encounter.visit",
+   "value": "outpatient visit, Psychiatry, Dr. Sarah Chen",
+   "encounterId": 7394,
+   "date": "2020-01-15"
+  },
+  {
+   "id": "f28",
+   "field": "encounter.chief_complaint",
+   "value": "6-month history of auditory hallucinations and paranoid delusions",
+   "encounterId": 7394,
+   "date": "2020-01-15"
+  },
+  {
+   "id": "f29",
+   "field": "encounter.note.hpi",
+   "value": "She reports hearing voices that are not present and believes that her coworkers are conspiring against her.",
+   "encounterId": 7394,
+   "date": "2020-01-15"
+  },
+  {
+   "id": "f30",
+   "field": "encounter.visit",
+   "value": "outpatient visit, Ophthalmology, Dr. Michael Patel",
+   "encounterId": 7396,
+   "date": "2020-03-15"
+  },
+  {
+   "id": "f31",
+   "field": "encounter.chief_complaint",
+   "value": "Progressively worsening distance vision over the past two years",
+   "encounterId": 7396,
+   "date": "2020-03-15"
+  },
+  {
+   "id": "f32",
+   "field": "encounter.note.hpi",
+   "value": "The patient is a 28-year-old female with schizophrenia, recently evaluated by psychiatry in January 2020, who presents to ophthalmology for assessment of progressively worsening distance vision. She reports difficulty reading street signs and recognizing people's faces from a distance.",
+   "encounterId": 7396,
+   "date": "2020-03-15"
+  },
+  {
+   "id": "f33",
+   "field": "encounter.visit",
+   "value": "outpatient visit, Obstetrics & Gynecology, Dr. Jennifer Alvarez",
+   "encounterId": 7398,
+   "date": "2020-05-15"
+  },
+  {
+   "id": "f34",
+   "field": "encounter.chief_complaint",
+   "value": "Difficulty with sexual intercourse",
+   "encounterId": 7398,
+   "date": "2020-05-15"
+  },
+  {
+   "id": "f35",
+   "field": "encounter.note.hpi",
+   "value": "The patient returns for ongoing outpatient care following recent evaluations for auditory hallucinations and progressive distance vision loss, now presenting to the obstetrics and gynecology clinic with a 6-month history of difficulty with sexual intercourse. She reports significant pain every time her partner attempts vaginal penetration, which has led to avoidance of sexual activity.",
+   "encounterId": 7398,
+   "date": "2020-05-15"
+  },
+  {
+   "id": "f36",
+   "field": "encounter.visit",
+   "value": "outpatient visit, Obstetrics & Gynecology, Dr. Jennifer Alvarez",
+   "encounterId": 7397,
+   "date": "2020-11-15"
+  },
+  {
+   "id": "f37",
+   "field": "encounter.chief_complaint",
+   "value": "Preconception counseling regarding genetic carrier screening",
+   "encounterId": 7397,
+   "date": "2020-11-15"
+  },
+  {
+   "id": "f38",
+   "field": "encounter.note.hpi",
+   "value": "The patient returns to the obstetrics and gynecology clinic for preconception counseling with known history of schizophrenia on clozapine, degenerative high myopia, and prior evaluation for genito-pelvic pain. She is of Ashkenazi Jewish descent and is concerned about hereditary diseases.",
+   "encounterId": 7397,
+   "date": "2020-11-15"
+  },
+  {
+   "id": "f39",
+   "field": "encounter.visit",
+   "value": "ed visit, Emergency Medicine, Dr. David Okafor",
+   "encounterId": 7401,
+   "date": "2021-05-15"
+  },
+  {
+   "id": "f40",
+   "field": "encounter.chief_complaint",
+   "value": "Severe abdominal pain",
+   "encounterId": 7401,
+   "date": "2021-05-15"
+  },
+  {
+   "id": "f41",
+   "field": "encounter.note.hpi",
+   "value": "This 29-year-old female with schizophrenia and factitious disorder imposed on self, last seen in November 2020 for genetic screening, presents to the emergency department with severe abdominal pain. She reports that the pain started 2 days ago and has progressively worsened.",
+   "encounterId": 7401,
+   "date": "2021-05-15"
+  },
+  {
+   "id": "f42",
+   "field": "encounter.note.plan",
+   "value": "Further investigation reveals discrepancies in her medical history provided on previous admissions.",
+   "encounterId": 7401,
+   "date": "2021-05-15"
+  },
+  {
+   "id": "f43",
+   "field": "encounter.visit",
+   "value": "ed visit, Emergency Medicine, Dr. Rachel Kim",
+   "encounterId": 7400,
+   "date": "2021-11-15"
+  },
+  {
+   "id": "f44",
+   "field": "encounter.chief_complaint",
+   "value": "Witnessed generalized tonic-clonic seizure at home",
+   "encounterId": 7400,
+   "date": "2021-11-15"
+  },
+  {
+   "id": "f45",
+   "field": "encounter.note.hpi",
+   "value": "The patient with schizophrenia returns following a witnessed seizure. She has been stable on clozapine therapy for the past 6 months after failing to respond to two other antipsychotic medications.",
+   "encounterId": 7400,
+   "date": "2021-11-15"
+  },
+  {
+   "id": "f46",
+   "field": "encounter.visit",
+   "value": "ed visit, Emergency Medicine, Dr. James Thompson",
+   "encounterId": 7395,
+   "date": "2022-05-15"
+  },
+  {
+   "id": "f47",
+   "field": "encounter.chief_complaint",
+   "value": "Confusion and lethargy",
+   "encounterId": 7395,
+   "date": "2022-05-15"
+  },
+  {
+   "id": "f48",
+   "field": "encounter.note.hpi",
+   "value": "This 30-year-old with schizophrenia and prior clozapine-induced seizure presents with confusion and lethargy. She has been compliant with her antipsychotic medication regimen.",
+   "encounterId": 7395,
+   "date": "2022-05-15"
+  },
+  {
+   "id": "f49",
+   "field": "encounter.visit",
+   "value": "ed visit, Emergency Medicine, Dr. Sarah Chen",
+   "encounterId": 7399,
+   "date": "2022-11-15"
+  },
+  {
+   "id": "f50",
+   "field": "encounter.chief_complaint",
+   "value": "Erratic behavior and talking to herself",
+   "encounterId": 7399,
+   "date": "2022-11-15"
+  },
+  {
+   "id": "f51",
+   "field": "encounter.note.hpi",
+   "value": "The patient returns to the emergency department with established schizophrenia and recent encounters for clozapine-induced seizure and psychogenic polydipsia and is brought by her sister due to erratic behavior and talking to herself over the past 48 hours. She has been noncompliant with her medication regimen for the past month.",
+   "encounterId": 7399,
+   "date": "2022-11-15"
+  },
+  {
+   "id": "f52",
+   "field": "encounter.note.social",
+   "value": "She is currently unemployed and lives with her sister. She has no history of substance abuse",
+   "encounterId": 7399,
+   "date": "2022-11-15"
+  },
+  {
+   "id": "f53",
+   "field": "seed.caregiver",
+   "value": "Case manager (Medicaid)"
+  },
+  {
+   "id": "f54",
+   "field": "seed.upcoming_visit",
+   "value": "Obstetrics & Gynecology: Gynecology visit (exam may be offered) (in 3 days)"
+  },
+  {
+   "id": "f55",
+   "field": "seed.stated_language",
+   "value": "English (patient-stated)"
+  }
+ ],
+ "profile": {
+  "patientId": 1772,
+  "preferredName": "Rachel",
+  "summaryLine": "Rachel is a 28-year-old woman with complex medical and mental health needs who prefers brief messages and wants clear choice about exams.",
+  "audience": "self",
+  "recipients": [
+   {
+    "role": "patient",
+    "name": "Rachel",
+    "relationship": "",
+    "primary": true
+   }
+  ],
+  "communicationNeeds": {
+   "readingLevel": 6,
+   "detailPreference": "brief",
+   "language": "en",
+   "channel": "sms",
+   "bestTimeOfDay": ""
+  },
+  "emotionalContext": [
+   {
+    "id": "ec1",
+    "text": "Rachel prefers short messages and values being able to say no to any exam.",
+    "kind": "patient_stated",
+    "source": {
+     "factIds": [],
+     "note": "What matters to you check-in"
+    },
+    "reason": "She directly stated her preferences in the check-in."
+   },
+   {
+    "id": "ec2",
+    "text": "Rachel has a history of schizophrenia, which may contribute to anxiety or distress in medical settings.",
+    "kind": "fact",
+    "source": {
+     "factIds": [
+      "f3",
+      "f10"
+     ],
+     "note": ""
+    },
+    "reason": "Schizophrenia and situational anxiety are documented in her record."
+   },
+   {
+    "id": "ec3",
+    "text": "Rachel has experienced pain and avoidance related to gynecological exams in the past.",
+    "kind": "fact",
+    "source": {
+     "factIds": [
+      "f7",
+      "f34",
+      "f35"
+     ],
+     "note": ""
+    },
+    "reason": "Genito-pelvic pain/penetration disorder and prior reports of pain with exams are documented."
+   }
+  ],
+  "privacyRules": [
+   {
+    "id": "pr1",
+    "rule": "Do not include the names of psychiatric diagnoses or related medications in SMS messages.",
+    "restrictedTerms": [
+     "schizophrenia",
+     "clozapine",
+     "psychogenic polydipsia",
+     "factitious disorder"
+    ],
+    "channels": [
+     "sms"
+    ],
+    "recipients": [],
+    "kind": "fact",
+    "source": {
+     "factIds": [
+      "f3",
+      "f4",
+      "f9",
+      "f17"
+     ],
+     "note": ""
+    },
+    "reason": "To protect privacy regarding sensitive mental health and medication information in SMS."
+   }
+  ],
+  "cognitiveSupport": [],
+  "strengths": [
+   {
+    "id": "s1",
+    "text": "Rachel is able to clearly communicate her needs and preferences regarding care.",
+    "kind": "patient_stated",
+    "source": {
+     "factIds": [],
+     "note": "What matters to you check-in"
+    },
+    "reason": "She expressed her preferences directly in the check-in."
+   },
+   {
+    "id": "s2",
+    "text": "Rachel has a supportive living situation with her sister as a caregiver.",
+    "kind": "fact",
+    "source": {
+     "factIds": [
+      "f25",
+      "f52"
+     ],
+     "note": ""
+    },
+    "reason": "Her sister is documented as her primary caregiver and she lives with her."
+   }
+  ],
+  "avoidTerms": [
+   "non-compliant",
+   "denies",
+   "refused"
+  ],
+  "dataQualityWarnings": [
+   "Factitious disorder diagnosis may complicate interpretation of self-reported symptoms.",
+   "There are discrepancies in Rachel's self-reported medical history across encounters.",
+   "\"Schizophrenia\" appears as both a primary diagnosis and a comorbidity."
+  ]
+ },
+ "voiceGuide": {
+  "tone": [
+   "clear",
+   "respectful",
+   "concise"
+  ],
+  "doSay": [
+   "You can say no to any exam.",
+   "Let us know what you prefer.",
+   "You decide what happens next."
+  ],
+  "dontSay": [
+   "non-compliant",
+   "denies",
+   "refused",
+   "schizophrenia",
+   "clozapine"
+  ],
+  "sentenceMaxWords": 12,
+  "addressing": "Speak directly to Rachel by name. Do not address others unless Rachel requests it.",
+  "greeting": "Hi Rachel,",
+  "signoff": "Your Care team",
+  "choicePhrases": [
+   "You can choose yes or no.",
+   "Let us know if you want to skip.",
+   "It's your choice to continue."
+  ],
+  "safetyPhrases": [
+   "Text STOP to pause.",
+   "Call 555-0100 for help."
+  ]
+ },
+ "outputs": {
+  "messages": [
+   {
+    "stage": "before_7d",
+    "recipient": "patient",
+    "persona": "Hi Rachel,\nYou have a gynecology visit on {{weekday}}, {{date}} at {{time}}. It will take about 40 minutes. We may offer an exam, but you can choose yes or no. Let us know if you want to skip any part. Text STOP to pause or call 555-0100 for help. We will decide together what happens next.\nYour Care team",
+    "claimIds": [
+     "ec1",
+     "ec3",
+     "pr1"
+    ]
+   },
+   {
+    "stage": "before_2d",
+    "recipient": "patient",
+    "persona": "Hi Rachel,\nYour gynecology visit is coming up on {{weekday}}, {{date}} at {{time}}. We may talk about exams, but you can say no at any time. You decide what happens next. If you need to change your visit, text STOP or call 555-0100. We are here to support you together.\nYour Care team",
+    "claimIds": [
+     "ec1",
+     "ec3",
+     "pr1"
+    ]
+   },
+   {
+    "stage": "after_24h",
+    "recipient": "patient",
+    "persona": "Hi Rachel,\nThank you for coming in. You can read your plain-language summary now. If you have questions or want to talk more, call 555-0100. We will plan your next steps together.\nYour Care team",
+    "claimIds": [
+     "pr1"
+    ]
+   }
+  ],
+  "clinicianBrief": {
+   "lines": [
+    "Rachel is a 28-year-old woman here for a gynecology visit; an exam may be offered.",
+    "She prefers brief, clear communication and values being able to decline any exam.",
+    "She has a history of pain and avoidance with gynecological exams.",
+    "Rachel may experience anxiety or distress in medical settings.",
+    "Use clear, respectful language and offer choices about exams in her words: 'You can say no to any exam.'",
+    "Avoid terms like 'non-compliant,' 'denies,' and 'refused.'",
+    "Chart check: Factitious disorder and history discrepancies may affect self-reported symptoms."
+   ],
+   "readAloudSeconds": 29,
+   "claimIds": [
+    "ec1",
+    "ec2",
+    "ec3",
+    "pr1"
+   ]
+  },
+  "visitSummary": {
+   "headline": "Your Gynecology Visit Summary for {{date}}",
+   "whatWeTalkedAbout": [
+    {
+     "text": "We discussed your health and any pain with exams.",
+     "claimIds": [
+      "ec3"
+     ]
+    },
+    {
+     "text": "You were offered choices about exams and could say no.",
+     "claimIds": [
+      "ec1"
+     ]
+    },
+    {
+     "text": "We talked about what matters most to you.",
+     "claimIds": [
+      "ec1",
+      "s1"
+     ]
+    }
+   ],
+   "yourNextSteps": [
+    "Follow any instructions from your care team.",
+    "Let us know if you want to skip future exams.",
+    "Contact us if you have pain or new symptoms.",
+    "Review your summary and write down questions.",
+    "Schedule your next visit if needed."
+   ],
+   "whenToCall": [
+    "Call us if you have new or severe pain.",
+    "Contact us if you feel unwell after the visit.",
+    "Call 555-0100 if you need help or support."
+   ],
+   "questionsForNextTime": [
+    "What can make exams more comfortable for me?",
+    "Are there other ways to check my health?",
+    "Can I bring someone with me next time?"
+   ]
+  },
+  "videoScripts": [
+   {
+    "stage": "before",
+    "title": "Getting Ready for Your Gynecology Visit",
+    "scenes": [
+     {
+      "kind": "title",
+      "title": "Welcome, Rachel!",
+      "text": "Your gynecology visit is soon.",
+      "items": [],
+      "voiceover": "Hi Rachel, your gynecology visit is coming up soon."
+     },
+     {
+      "kind": "card",
+      "title": "What to Expect",
+      "text": "The visit is about 40 minutes.",
+      "items": [],
+      "voiceover": "Your visit will take about 40 minutes. We may offer an exam, but it's your choice."
+     },
+     {
+      "kind": "steps",
+      "title": "What Will Happen",
+      "text": "Here is what you can expect:",
+      "items": [
+       "Talk with your care team",
+       "Discuss your health and any pain",
+       "You can choose yes or no to exams"
+      ],
+      "voiceover": "You will talk with your care team, discuss your health, and you can choose yes or no to any exam."
+     },
+     {
+      "kind": "choice",
+      "title": "Your Choices",
+      "text": "You decide what happens next.",
+      "items": [
+       "Say yes or no to any exam",
+       "Let us know if you want to skip"
+      ],
+      "voiceover": "You decide what happens next. Let us know if you want to skip any part."
+     },
+     {
+      "kind": "closing",
+      "title": "Need Help?",
+      "text": "Call 555-0100 for help.",
+      "items": [],
+      "voiceover": "If you need help, call 555-0100. We are here together."
+     }
+    ]
+   },
+   {
+    "stage": "after",
+    "title": "Your Visit and Next Steps",
+    "scenes": [
+     {
+      "kind": "title",
+      "title": "Thank You, Rachel!",
+      "text": "Thanks for coming in.",
+      "items": [],
+      "voiceover": "Thank you for coming in, Rachel."
+     },
+     {
+      "kind": "card",
+      "title": "What We Talked About",
+      "text": "We discussed your health and choices.",
+      "items": [],
+      "voiceover": "We talked about your health and gave you choices about exams."
+     },
+     {
+      "kind": "steps",
+      "title": "Your Next Steps",
+      "text": "Here’s what to do next:",
+      "items": [
+       "Follow care team instructions",
+       "Let us know if you have pain",
+       "Review your summary"
+      ],
+      "voiceover": "Follow any instructions from your care team. Let us know if you have pain or questions. Review your summary."
+     },
+     {
+      "kind": "choice",
+      "title": "When to Call",
+      "text": "Call us if you have pain or feel unwell.",
+      "items": [
+       "New or severe pain",
+       "Feel unwell after the visit"
+      ],
+      "voiceover": "Call us if you have new or severe pain, or if you feel unwell after the visit."
+     },
+     {
+      "kind": "closing",
+      "title": "We Are Here Together",
+      "text": "Call 555-0100 if you need help.",
+      "items": [],
+      "voiceover": "Call 555-0100 if you need help. We are here together."
+     }
+    ]
+   }
+  ]
+ }
+}

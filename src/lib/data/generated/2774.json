@@ -1,0 +1,577 @@
+{
+ "patientId": 2774,
+ "generatedAt": "2026-10-03T07:31:47.622Z",
+ "model": "gpt-4.1-2025-04-14",
+ "context": {
+  "checkin": "I want to decide with my family. Please explain choices, not just one plan.",
+  "audience": "self",
+  "language": "en",
+  "channel": "sms"
+ },
+ "facts": [
+  {
+   "id": "f1",
+   "field": "demographics.age",
+   "value": "52 years old"
+  },
+  {
+   "id": "f2",
+   "field": "demographics.sex",
+   "value": "Female"
+  },
+  {
+   "id": "f3",
+   "field": "primary_diagnoses",
+   "value": "Rheumatic mitral stenosis"
+  },
+  {
+   "id": "f4",
+   "field": "primary_diagnoses",
+   "value": "Pulmonary Hypertension"
+  },
+  {
+   "id": "f5",
+   "field": "primary_diagnoses",
+   "value": "Stable Chronic Heart Failure"
+  },
+  {
+   "id": "f6",
+   "field": "comorbidities",
+   "value": "Atrial fibrillation"
+  },
+  {
+   "id": "f7",
+   "field": "comorbidities",
+   "value": "Rheumatic mitral stenosis"
+  },
+  {
+   "id": "f8",
+   "field": "comorbidities",
+   "value": "History of rheumatic fever"
+  },
+  {
+   "id": "f9",
+   "field": "comorbidities",
+   "value": "Left ventricular hypertrophy"
+  },
+  {
+   "id": "f10",
+   "field": "profile.chronic_conditions",
+   "value": "Rheumatic heart disease (severe mitral stenosis)"
+  },
+  {
+   "id": "f11",
+   "field": "profile.chronic_conditions",
+   "value": "Pulmonary hypertension (secondary to valvular disease)"
+  },
+  {
+   "id": "f12",
+   "field": "profile.chronic_conditions",
+   "value": "Chronic heart failure (New York Heart Association Class III)"
+  },
+  {
+   "id": "f13",
+   "field": "profile.chronic_conditions",
+   "value": "Paroxysmal atrial fibrillation"
+  },
+  {
+   "id": "f14",
+   "field": "profile.chronic_conditions",
+   "value": "History of acute rheumatic fever (childhood, age 8)"
+  },
+  {
+   "id": "f15",
+   "field": "profile.home_medications",
+   "value": "Warfarin 5 mg orally daily (INR goal 2.0-3.0)"
+  },
+  {
+   "id": "f16",
+   "field": "profile.home_medications",
+   "value": "Furosemide 40 mg orally daily"
+  },
+  {
+   "id": "f17",
+   "field": "profile.home_medications",
+   "value": "Metoprolol succinate 50 mg orally daily"
+  },
+  {
+   "id": "f18",
+   "field": "profile.home_medications",
+   "value": "Potassium chloride 20 mEq orally daily"
+  },
+  {
+   "id": "f19",
+   "field": "profile.allergies",
+   "value": "No known drug allergies"
+  },
+  {
+   "id": "f20",
+   "field": "profile.surgical_history",
+   "value": "Tonsillectomy (age 11)"
+  },
+  {
+   "id": "f21",
+   "field": "profile.surgical_history",
+   "value": "Wisdom teeth extraction (age 22)"
+  },
+  {
+   "id": "f22",
+   "field": "profile.occupation",
+   "value": "Administrative assistant"
+  },
+  {
+   "id": "f23",
+   "field": "profile.smoking_status",
+   "value": "Never smoker"
+  },
+  {
+   "id": "f24",
+   "field": "profile.alcohol_use",
+   "value": "None"
+  },
+  {
+   "id": "f25",
+   "field": "profile.family_history",
+   "value": "Father: Hypertension, cerebrovascular accident at age 70"
+  },
+  {
+   "id": "f26",
+   "field": "profile.family_history",
+   "value": "Mother: Type 2 diabetes mellitus, hypothyroidism"
+  },
+  {
+   "id": "f27",
+   "field": "profile.family_history",
+   "value": "No family history of congenital heart disease or rheumatic fever"
+  },
+  {
+   "id": "f28",
+   "field": "encounter.visit",
+   "value": "outpatient visit, Internal Medicine, Dr. James Okonkwo",
+   "encounterId": 11746,
+   "date": "2020-01-15"
+  },
+  {
+   "id": "f29",
+   "field": "encounter.chief_complaint",
+   "value": "Progressive dyspnea on exertion, orthopnea, and paroxysmal nocturnal dyspnea for 6 months",
+   "encounterId": 11746,
+   "date": "2020-01-15"
+  },
+  {
+   "id": "f30",
+   "field": "encounter.note.hpi",
+   "value": "She presents to the clinic with a 6-month history of progressive dyspnea on exertion, orthopnea, and paroxysmal nocturnal dyspnea. She reports a mild, persistent cough, especially when lying down, but denies any chest pain, palpitations, or lower extremity edema.",
+   "encounterId": 11746,
+   "date": "2020-01-15"
+  },
+  {
+   "id": "f31",
+   "field": "encounter.visit",
+   "value": "outpatient visit, Cardiology, Dr. Priya Sharma",
+   "encounterId": 11745,
+   "date": "2020-07-15"
+  },
+  {
+   "id": "f32",
+   "field": "encounter.chief_complaint",
+   "value": "Progressive shortness of breath and reduced exercise tolerance over the past year following recent hospitalization",
+   "encounterId": 11745,
+   "date": "2020-07-15"
+  },
+  {
+   "id": "f33",
+   "field": "encounter.note.hpi",
+   "value": "The patient returns for follow-up of severe rheumatic mitral stenosis following January 2020 presentation. She presents with progressive shortness of breath and reduced exercise tolerance over the past year.",
+   "encounterId": 11745,
+   "date": "2020-07-15"
+  },
+  {
+   "id": "f34",
+   "field": "encounter.visit",
+   "value": "outpatient visit, Cardiology, Dr. Michael Chen",
+   "encounterId": 11743,
+   "date": "2022-07-15"
+  },
+  {
+   "id": "f35",
+   "field": "encounter.chief_complaint",
+   "value": "Worsening dyspnea on exertion progressing to shortness of breath at rest with ankle swelling",
+   "encounterId": 11743,
+   "date": "2022-07-15"
+  },
+  {
+   "id": "f36",
+   "field": "encounter.note.hpi",
+   "value": "The patient returns for follow-up of rheumatic mitral stenosis, last evaluated in 2020, with progression of symptoms. She reports reduced exercise tolerance, difficulty climbing stairs, and waking up at night gasping for air.",
+   "encounterId": 11743,
+   "date": "2022-07-15"
+  },
+  {
+   "id": "f37",
+   "field": "encounter.visit",
+   "value": "outpatient visit, Cardiology, Dr. Priya Sharma",
+   "encounterId": 11742,
+   "date": "2023-07-15"
+  },
+  {
+   "id": "f38",
+   "field": "encounter.chief_complaint",
+   "value": "Progressive orthopnea, paroxysmal nocturnal dyspnea, and episode of hemoptysis",
+   "encounterId": 11742,
+   "date": "2023-07-15"
+  },
+  {
+   "id": "f39",
+   "field": "encounter.note.hpi",
+   "value": "She returns for follow-up of rheumatic mitral stenosis with progressive symptoms. She also reports a recent episode of coughing up a small amount of blood.",
+   "encounterId": 11742,
+   "date": "2023-07-15"
+  },
+  {
+   "id": "f40",
+   "field": "encounter.visit",
+   "value": "icu visit, Cardiology, Dr. Maria Gonzalez",
+   "encounterId": 11744,
+   "date": "2024-01-15"
+  },
+  {
+   "id": "f41",
+   "field": "encounter.chief_complaint",
+   "value": "Acute onset of shortness of breath, palpitations, and cough productive of pink, frothy sputum",
+   "encounterId": 11744,
+   "date": "2024-01-15"
+  },
+  {
+   "id": "f42",
+   "field": "seed.caregiver",
+   "value": "Husband and daughter"
+  },
+  {
+   "id": "f43",
+   "field": "seed.upcoming_visit",
+   "value": "Cardiology: Valve treatment options discussion (in 3 days)"
+  },
+  {
+   "id": "f44",
+   "field": "seed.stated_language",
+   "value": "English (patient-stated)"
+  }
+ ],
+ "profile": {
+  "patientId": 2774,
+  "preferredName": "Priya",
+  "summaryLine": "Priya is a 52-year-old administrative assistant with severe rheumatic mitral stenosis and heart failure who wants to understand all treatment choices and involve her family in decision-making.",
+  "audience": "self",
+  "recipients": [
+   {
+    "role": "patient",
+    "name": "Priya",
+    "relationship": "",
+    "primary": true
+   }
+  ],
+  "communicationNeeds": {
+   "readingLevel": 6,
+   "detailPreference": "stepwise",
+   "language": "en",
+   "channel": "sms",
+   "bestTimeOfDay": ""
+  },
+  "emotionalContext": [
+   {
+    "id": "ec1",
+    "text": "Priya wants to decide with her family and requests that all choices be explained, not just one plan.",
+    "kind": "patient_stated",
+    "source": {
+     "factIds": [],
+     "note": "What matters to you check-in"
+    },
+    "reason": "Directly stated in the check-in."
+   },
+   {
+    "id": "ec2",
+    "text": "Priya is facing a complex decision about valve treatment for severe heart disease, which may cause stress or uncertainty.",
+    "kind": "inferred",
+    "source": {
+     "factIds": [
+      "f3",
+      "f10",
+      "f12",
+      "f43"
+     ],
+     "note": ""
+    },
+    "reason": "Multiple severe cardiac diagnoses and upcoming treatment discussion suggest a potentially stressful context."
+   }
+  ],
+  "privacyRules": [],
+  "cognitiveSupport": [],
+  "strengths": [
+   {
+    "id": "s1",
+    "text": "Priya is actively engaged in her care and wants to understand her options.",
+    "kind": "patient_stated",
+    "source": {
+     "factIds": [],
+     "note": "What matters to you check-in"
+    },
+    "reason": "She directly requests explanation of choices and shared decision-making."
+   },
+   {
+    "id": "s2",
+    "text": "Priya has a supportive family (husband and daughter) involved in her care.",
+    "kind": "fact",
+    "source": {
+     "factIds": [
+      "f42"
+     ],
+     "note": ""
+    },
+    "reason": "Caregiver information lists husband and daughter."
+   },
+   {
+    "id": "s3",
+    "text": "Priya has managed complex health conditions over time, showing resilience.",
+    "kind": "inferred",
+    "source": {
+     "factIds": [
+      "f3",
+      "f4",
+      "f5",
+      "f10",
+      "f11",
+      "f12"
+     ],
+     "note": ""
+    },
+    "reason": "Longstanding management of multiple chronic cardiac conditions."
+   }
+  ],
+  "avoidTerms": [
+   "non-compliant",
+   "denies",
+   "refused"
+  ],
+  "dataQualityWarnings": [
+   "\"Rheumatic mitral stenosis\" appears as both a primary diagnosis and a comorbidity."
+  ]
+ },
+ "voiceGuide": {
+  "tone": [
+   "respectful",
+   "clear",
+   "supportive"
+  ],
+  "doSay": [
+   "We will explain all your options.",
+   "You can include your family in decisions.",
+   "Let us know if you have questions.",
+   "We can go step by step.",
+   "You are in control of your choices."
+  ],
+  "dontSay": [
+   "non-compliant",
+   "denies",
+   "refused",
+   "You must do this.",
+   "There is only one plan.",
+   "Just trust us."
+  ],
+  "sentenceMaxWords": 12,
+  "addressing": "Speak directly to Priya by name. If her husband or daughter joins, mention them by name and invite their questions too.",
+  "greeting": "Hello Priya,",
+  "signoff": "Your Cardiology team",
+  "choicePhrases": [
+   "Would you like to review all options?",
+   "Do you want to talk with your family first?",
+   "Would you like more details now or later?"
+  ],
+  "safetyPhrases": [
+   "You can call us at 555-0100.",
+   "Reply STOP to pause messages."
+  ]
+ },
+ "outputs": {
+  "messages": [
+   {
+    "stage": "before_7d",
+    "recipient": "patient",
+    "persona": "Hello Priya,\nWe look forward to seeing you on {{weekday}}, {{date}} at {{time}} for your 40-minute cardiology visit. We will talk about all your valve treatment options together. You can bring your husband or daughter and include them in decisions. Would you like to review all options or talk with your family first? You can call us at 555-0100 if you have questions.\nYour Cardiology team",
+    "claimIds": [
+     "ec1",
+     "s2"
+    ]
+   },
+   {
+    "stage": "before_2d",
+    "recipient": "patient",
+    "persona": "Hello Priya,\nYour cardiology visit is on {{weekday}}, {{date}} at {{time}}. We will go step by step through your valve treatment choices together. You can ask for more details now or later. Please let us know if you want your family to join. You can call us at 555-0100 anytime.\nYour Cardiology team",
+    "claimIds": [
+     "ec1",
+     "s2"
+    ]
+   },
+   {
+    "stage": "after_24h",
+    "recipient": "patient",
+    "persona": "Hello Priya,\nThank you for coming to your valve treatment options visit. You can read your plain-language summary now. Next, we will help you decide on the best plan together. Call us at 555-0100 if you have questions.\nYour Cardiology team",
+    "claimIds": [
+     "ec1"
+    ]
+   }
+  ],
+  "clinicianBrief": {
+   "lines": [
+    "Priya is a 52-year-old administrative assistant with severe rheumatic mitral stenosis, pulmonary hypertension, and chronic heart failure, here to discuss valve treatment options.",
+    "She wants all choices explained and to involve her husband and daughter in decisions.",
+    "Speak directly to Priya and invite her family to join the conversation if present.",
+    "She values stepwise explanations and being in control of her choices.",
+    "Avoid terms like 'non-compliant' and 'refused.'",
+    "Chart check: 'Rheumatic mitral stenosis' appears as both a primary diagnosis and a comorbidity."
+   ],
+   "readAloudSeconds": 29,
+   "claimIds": [
+    "ec1",
+    "s1"
+   ]
+  },
+  "visitSummary": {
+   "headline": "Your Valve Treatment Options Visit – {{date}}",
+   "whatWeTalkedAbout": [
+    {
+     "text": "We discussed your severe mitral stenosis and heart failure.",
+     "claimIds": []
+    },
+    {
+     "text": "We explained all valve treatment options step by step.",
+     "claimIds": [
+      "ec1",
+      "s1"
+     ]
+    },
+    {
+     "text": "We talked about including your family in decisions.",
+     "claimIds": [
+      "ec1",
+      "s2"
+     ]
+    }
+   ],
+   "yourNextSteps": [
+    "Review the summary with your family.",
+    "Write down any questions you have.",
+    "Decide if you want more details about any option.",
+    "Call us at 555-0100 if you need help."
+   ],
+   "whenToCall": [
+    "Call us if you have chest pain or trouble breathing.",
+    "Call if you feel dizzy or faint.",
+    "Call 555-0100 for urgent questions."
+   ],
+   "questionsForNextTime": [
+    "What are the pros and cons of each treatment?",
+    "How will each option affect my daily life?",
+    "Can my family join the next visit?"
+   ]
+  },
+  "videoScripts": [
+   {
+    "stage": "before",
+    "title": "Getting Ready for Your Valve Treatment Visit",
+    "scenes": [
+     {
+      "kind": "title",
+      "title": "Welcome, Priya!",
+      "text": "Your cardiology visit is soon.",
+      "items": [],
+      "voiceover": "Hello Priya, your cardiology visit is coming up."
+     },
+     {
+      "kind": "card",
+      "title": "What to Expect",
+      "text": "We will talk about all your valve treatment choices together.",
+      "items": [],
+      "voiceover": "We will talk about all your valve treatment choices together."
+     },
+     {
+      "kind": "steps",
+      "title": "How the Visit Works",
+      "text": "Here's what will happen:",
+      "items": [
+       "Meet your care team",
+       "Discuss your heart condition",
+       "Review all treatment options"
+      ],
+      "voiceover": "You will meet your care team, discuss your heart condition, and review all treatment options."
+     },
+     {
+      "kind": "choice",
+      "title": "Your Choices Matter",
+      "text": "You can bring your family or ask questions anytime.",
+      "items": [
+       "Bring your husband or daughter",
+       "Ask for more details now or later"
+      ],
+      "voiceover": "You can bring your husband or daughter, and ask for more details now or later."
+     },
+     {
+      "kind": "closing",
+      "title": "Questions?",
+      "text": "Call us at 555-0100 anytime.",
+      "items": [],
+      "voiceover": "If you have questions, call us at 555-0100 anytime."
+     }
+    ]
+   },
+   {
+    "stage": "after",
+    "title": "After Your Valve Treatment Visit",
+    "scenes": [
+     {
+      "kind": "title",
+      "title": "Thank You, Priya!",
+      "text": "You completed your valve treatment options visit.",
+      "items": [],
+      "voiceover": "Thank you, Priya, for coming to your valve treatment options visit."
+     },
+     {
+      "kind": "card",
+      "title": "What We Talked About",
+      "text": "We explained all your choices and included your family.",
+      "items": [],
+      "voiceover": "We explained all your choices and included your family in the discussion."
+     },
+     {
+      "kind": "steps",
+      "title": "Next Steps",
+      "text": "Here is what to do next:",
+      "items": [
+       "Review the summary with your family",
+       "Write down questions",
+       "Call us if you need help"
+      ],
+      "voiceover": "Review the summary with your family, write down any questions, and call us if you need help."
+     },
+     {
+      "kind": "choice",
+      "title": "When to Call",
+      "text": "Call if you have chest pain or trouble breathing.",
+      "items": [
+       "Chest pain or trouble breathing",
+       "Feel dizzy or faint"
+      ],
+      "voiceover": "Call us if you have chest pain, trouble breathing, or feel dizzy or faint."
+     },
+     {
+      "kind": "closing",
+      "title": "We Are Here for You",
+      "text": "Call 555-0100 with any questions.",
+      "items": [],
+      "voiceover": "We are here for you. Call 555-0100 with any questions."
+     }
+    ]
+   }
+  ]
+ }
+}

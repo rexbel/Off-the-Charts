@@ -1,0 +1,726 @@
+{
+ "patientId": 2855,
+ "generatedAt": "2026-10-03T07:33:33.097Z",
+ "model": "gpt-4.1-2025-04-14",
+ "context": {
+  "checkin": "(Robert) The aide is with Mom days; I handle appointments. Please include both of us.",
+  "audience": "multi_caregiver",
+  "language": "en",
+  "channel": "sms"
+ },
+ "facts": [
+  {
+   "id": "f1",
+   "field": "demographics.age",
+   "value": "75 years old"
+  },
+  {
+   "id": "f2",
+   "field": "demographics.sex",
+   "value": "Female"
+  },
+  {
+   "id": "f3",
+   "field": "primary_diagnoses",
+   "value": "Sinus bradycardia with non-conducted premature atrial contractions"
+  },
+  {
+   "id": "f4",
+   "field": "primary_diagnoses",
+   "value": "Stage III pressure ulcer of sacrum"
+  },
+  {
+   "id": "f5",
+   "field": "primary_diagnoses",
+   "value": "Pressure ulcer of sacrum, stage 1"
+  },
+  {
+   "id": "f6",
+   "field": "primary_diagnoses",
+   "value": "Prosthetic joint infection due to Staphylococcus epidermidis"
+  },
+  {
+   "id": "f7",
+   "field": "primary_diagnoses",
+   "value": "Severe hypoglycemia"
+  },
+  {
+   "id": "f8",
+   "field": "primary_diagnoses",
+   "value": "Adult physical abuse"
+  },
+  {
+   "id": "f9",
+   "field": "comorbidities",
+   "value": "Type 2 diabetes mellitus"
+  },
+  {
+   "id": "f10",
+   "field": "profile.chronic_conditions",
+   "value": "Type 2 diabetes mellitus"
+  },
+  {
+   "id": "f11",
+   "field": "profile.chronic_conditions",
+   "value": "Hypertension"
+  },
+  {
+   "id": "f12",
+   "field": "profile.chronic_conditions",
+   "value": "Vascular dementia"
+  },
+  {
+   "id": "f13",
+   "field": "profile.chronic_conditions",
+   "value": "Cerebrovascular accident with residual right-sided hemiparesis"
+  },
+  {
+   "id": "f14",
+   "field": "profile.chronic_conditions",
+   "value": "Osteoarthritis"
+  },
+  {
+   "id": "f15",
+   "field": "profile.chronic_conditions",
+   "value": "Status post left total knee arthroplasty"
+  },
+  {
+   "id": "f16",
+   "field": "profile.home_medications",
+   "value": "Metformin 1000 mg twice daily"
+  },
+  {
+   "id": "f17",
+   "field": "profile.home_medications",
+   "value": "Insulin glargine 24 units subcutaneously at bedtime"
+  },
+  {
+   "id": "f18",
+   "field": "profile.home_medications",
+   "value": "Insulin aspart Sliding scale subcutaneously before meals"
+  },
+  {
+   "id": "f19",
+   "field": "profile.home_medications",
+   "value": "Lisinopril 10 mg orally daily"
+  },
+  {
+   "id": "f20",
+   "field": "profile.home_medications",
+   "value": "Hydrochlorothiazide 25 mg orally daily"
+  },
+  {
+   "id": "f21",
+   "field": "profile.home_medications",
+   "value": "Aspirin 81 mg orally daily"
+  },
+  {
+   "id": "f22",
+   "field": "profile.allergies",
+   "value": "NKDA"
+  },
+  {
+   "id": "f23",
+   "field": "profile.surgical_history",
+   "value": "Left total knee arthroplasty 9 months prior to initial presentation"
+  },
+  {
+   "id": "f24",
+   "field": "profile.occupation",
+   "value": "Retired"
+  },
+  {
+   "id": "f25",
+   "field": "profile.smoking_status",
+   "value": "Former smoker, quit 15 years ago"
+  },
+  {
+   "id": "f26",
+   "field": "profile.alcohol_use",
+   "value": "None"
+  },
+  {
+   "id": "f27",
+   "field": "profile.family_history",
+   "value": "Type 2 diabetes mellitus in mother and sister"
+  },
+  {
+   "id": "f28",
+   "field": "profile.family_history",
+   "value": "Cerebrovascular accident in father"
+  },
+  {
+   "id": "f29",
+   "field": "profile.family_history",
+   "value": "Alzheimer disease in maternal grandmother"
+  },
+  {
+   "id": "f30",
+   "field": "profile.family_history",
+   "value": "Hypertension in both parents"
+  },
+  {
+   "id": "f31",
+   "field": "encounter.visit",
+   "value": "outpatient visit, Orthopedic Surgery, Dr. Sarah Chen",
+   "encounterId": 12104,
+   "date": "2020-01-15"
+  },
+  {
+   "id": "f32",
+   "field": "encounter.chief_complaint",
+   "value": "Increasing pain, swelling, and stiffness in left knee nine months after total knee arthroplasty",
+   "encounterId": 12104,
+   "date": "2020-01-15"
+  },
+  {
+   "id": "f33",
+   "field": "encounter.note.hpi",
+   "value": "Which was replaced with a prosthetic joint 9 months ago. She reports that the knee had been healing well after surgery until about 3 weeks ago, when she began noticing increasing stiffness and mild warmth.",
+   "encounterId": 12104,
+   "date": "2020-01-15"
+  },
+  {
+   "id": "f34",
+   "field": "encounter.visit",
+   "value": "outpatient visit, Cardiology, Dr. Michael Rodriguez",
+   "encounterId": 12101,
+   "date": "2020-07-15"
+  },
+  {
+   "id": "f35",
+   "field": "encounter.chief_complaint",
+   "value": "Six-month history of worsening fatigue, lightheadedness on standing, and two episodes of near-syncope",
+   "encounterId": 12101,
+   "date": "2020-07-15"
+  },
+  {
+   "id": "f36",
+   "field": "encounter.note.hpi",
+   "value": "This 75-year-old female with diabetes, hypertension, vascular dementia, right hemiparesis, and recent left knee prosthetic infection presents to the clinic with a 6-month history of increasing fatigue and episodes of lightheadedness, particularly when she stands up from a sitting position. She also reports two instances of near-syncope over the past month.",
+   "encounterId": 12101,
+   "date": "2020-07-15"
+  },
+  {
+   "id": "f37",
+   "field": "encounter.visit",
+   "value": "outpatient visit, Endocrinology, Dr. Aisha Patel",
+   "encounterId": 12105,
+   "date": "2020-10-15"
+  },
+  {
+   "id": "f38",
+   "field": "encounter.chief_complaint",
+   "value": "Episodes of morning confusion, abnormal behavior, and diaphoresis before breakfast",
+   "encounterId": 12105,
+   "date": "2020-10-15"
+  },
+  {
+   "id": "f39",
+   "field": "encounter.note.hpi",
+   "value": "The patient presents to Endocrinology in the context of Type 2 diabetes mellitus, vascular dementia, and prior cerebrovascular accident, following recent Cardiology evaluation for sinus bradycardia and prior prosthetic joint infection. She admits to occasional mild tremors and sweating during these episodes but does not recall confusion.",
+   "encounterId": 12105,
+   "date": "2020-10-15"
+  },
+  {
+   "id": "f40",
+   "field": "encounter.visit",
+   "value": "inpatient visit, Internal Medicine, Dr. James O'Brien",
+   "encounterId": 12103,
+   "date": "2021-04-15"
+  },
+  {
+   "id": "f41",
+   "field": "encounter.chief_complaint",
+   "value": "Urinary tract infection with acute weakness, bedridden status, and new sacral skin discoloration",
+   "encounterId": 12103,
+   "date": "2021-04-15"
+  },
+  {
+   "id": "f42",
+   "field": "encounter.note.hpi",
+   "value": "Following prior endocrinologic and orthopedic complications, she has been bedridden for the past week due to weakness and has a Foley catheter in place.",
+   "encounterId": 12103,
+   "date": "2021-04-15"
+  },
+  {
+   "id": "f43",
+   "field": "encounter.visit",
+   "value": "ed visit, Emergency Medicine, Dr. James O'Brien",
+   "encounterId": 12102,
+   "date": "2022-01-15"
+  },
+  {
+   "id": "f44",
+   "field": "encounter.chief_complaint",
+   "value": "Caregiver reports decreased activity, poor oral intake, and chronic sacral wound with increased drainage",
+   "encounterId": 12102,
+   "date": "2022-01-15"
+  },
+  {
+   "id": "f45",
+   "field": "encounter.note.hpi",
+   "value": "The patient with prior Stage I sacral ulcer presents with increased drainage. She is wheelchair-bound and incontinent of urine for two days.",
+   "encounterId": 12102,
+   "date": "2022-01-15"
+  },
+  {
+   "id": "f46",
+   "field": "encounter.visit",
+   "value": "ed visit, Emergency Medicine, Dr. Maria Gonzalez",
+   "encounterId": 12106,
+   "date": "2023-01-15"
+  },
+  {
+   "id": "f47",
+   "field": "encounter.chief_complaint",
+   "value": "Generalized weakness, right arm pain, and unexplained bruising in the setting of advanced dementia",
+   "encounterId": 12106,
+   "date": "2023-01-15"
+  },
+  {
+   "id": "f48",
+   "field": "encounter.note.hpi",
+   "value": "The patient is a 78-year-old female with vascular dementia, residual right-sided hemiparesis, and a history of recurrent pressure ulcers including Stage III sacral involvement documented in prior encounters. She returns to the emergency department accompanied by her son with complaints of generalized weakness and pain in her right arm.",
+   "encounterId": 12106,
+   "date": "2023-01-15"
+  },
+  {
+   "id": "f49",
+   "field": "seed.caregiver",
+   "value": "Robert Price (son) + home aide"
+  },
+  {
+   "id": "f50",
+   "field": "seed.upcoming_visit",
+   "value": "Internal Medicine: Wound and heart rhythm follow-up (in 2 days)"
+  },
+  {
+   "id": "f51",
+   "field": "seed.stated_language",
+   "value": "English (patient-stated)"
+  }
+ ],
+ "profile": {
+  "patientId": 2855,
+  "preferredName": "Dorothy",
+  "summaryLine": "Dorothy is a 75-year-old woman with vascular dementia, stroke, and complex medical needs, supported by her son Robert and a home aide.",
+  "audience": "multi_caregiver",
+  "recipients": [
+   {
+    "role": "son",
+    "name": "Robert Price",
+    "relationship": "son",
+    "primary": true
+   },
+   {
+    "role": "home_aide",
+    "name": "",
+    "relationship": "home aide",
+    "primary": false
+   },
+   {
+    "role": "patient",
+    "name": "Dorothy",
+    "primary": false
+   }
+  ],
+  "communicationNeeds": {
+   "readingLevel": 4,
+   "detailPreference": "brief",
+   "language": "en",
+   "channel": "sms",
+   "bestTimeOfDay": ""
+  },
+  "emotionalContext": [
+   {
+    "id": "ec1",
+    "text": "Dorothy is cared for by her son Robert, who handles appointments, and a home aide who is present during the day.",
+    "kind": "patient_stated",
+    "source": {
+     "factIds": [],
+     "note": "What matters to you check-in"
+    },
+    "reason": "Robert stated the division of caregiving roles in the check-in."
+   },
+   {
+    "id": "ec2",
+    "text": "Dorothy has experienced adult physical abuse in the past.",
+    "kind": "fact",
+    "source": {
+     "factIds": [
+      "f8"
+     ],
+     "note": ""
+    },
+    "reason": "Documented diagnosis of adult physical abuse."
+   },
+   {
+    "id": "ec3",
+    "text": "Dorothy is living with advanced dementia and may experience confusion, especially in the mornings.",
+    "kind": "fact",
+    "source": {
+     "factIds": [
+      "f12",
+      "f38"
+     ],
+     "note": ""
+    },
+    "reason": "Vascular dementia and episodes of morning confusion are documented."
+   },
+   {
+    "id": "ec4",
+    "text": "Dorothy is wheelchair-bound and requires assistance with daily activities.",
+    "kind": "fact",
+    "source": {
+     "factIds": [
+      "f45"
+     ],
+     "note": ""
+    },
+    "reason": "EHR notes indicate wheelchair-bound status and incontinence."
+   }
+  ],
+  "privacyRules": [
+   {
+    "id": "pr1",
+    "rule": "Keep dementia, stroke, and related medication names out of SMS messages.",
+    "restrictedTerms": [
+     "dementia",
+     "Alzheimer",
+     "stroke",
+     "hemiparesis"
+    ],
+    "channels": [
+     "sms"
+    ],
+    "recipients": [],
+    "kind": "fact",
+    "source": {
+     "factIds": [
+      "f12",
+      "f13"
+     ],
+     "note": ""
+    },
+    "reason": "To protect privacy regarding sensitive diagnoses in SMS."
+   },
+   {
+    "id": "pr2",
+    "rule": "Keep adult physical abuse and related terms out of SMS messages.",
+    "restrictedTerms": [
+     "abuse"
+    ],
+    "channels": [
+     "sms"
+    ],
+    "recipients": [],
+    "kind": "fact",
+    "source": {
+     "factIds": [
+      "f8"
+     ],
+     "note": ""
+    },
+    "reason": "To protect sensitive information in SMS."
+   }
+  ],
+  "cognitiveSupport": [
+   {
+    "id": "cs1",
+    "text": "Dorothy, we want to support you and your care team. Robert and your home aide, please help review instructions and check in with Dorothy, especially in the mornings when things may be more confusing.",
+    "kind": "inferred",
+    "source": {
+     "factIds": [
+      "f12",
+      "f13",
+      "f38"
+     ],
+     "note": ""
+    },
+    "reason": "Vascular dementia, stroke, and morning confusion are documented; including caregivers in communication supports understanding and safety."
+   }
+  ],
+  "strengths": [
+   {
+    "id": "s1",
+    "text": "Dorothy has a dedicated care team, including her son Robert and a home aide, who coordinate her care and appointments.",
+    "kind": "patient_stated",
+    "source": {
+     "factIds": [],
+     "note": "What matters to you check-in"
+    },
+    "reason": "Robert described the caregiving arrangement."
+   },
+   {
+    "id": "s2",
+    "text": "Dorothy has a history of following up with multiple specialists for her complex medical needs.",
+    "kind": "fact",
+    "source": {
+     "factIds": [
+      "f31",
+      "f34",
+      "f37",
+      "f40",
+      "f43",
+      "f46"
+     ],
+     "note": ""
+    },
+    "reason": "Multiple documented specialist visits."
+   }
+  ],
+  "avoidTerms": [
+   "non-compliant",
+   "denies",
+   "refused"
+  ],
+  "dataQualityWarnings": [
+   "Patient age is inconsistently documented as 75 and 78 in different notes.",
+   "No home aide name provided; clarify for future communications."
+  ]
+ },
+ "voiceGuide": {
+  "tone": [
+   "warm",
+   "clear",
+   "respectful"
+  ],
+  "doSay": [
+   "Please let us know if you need help.",
+   "You can reply to this message.",
+   "We are here for Dorothy.",
+   "Let us know if you have questions.",
+   "Check with Dorothy before answering."
+  ],
+  "dontSay": [
+   "non-compliant",
+   "denies",
+   "refused",
+   "dementia",
+   "Alzheimer",
+   "stroke",
+   "hemiparesis",
+   "abuse"
+  ],
+  "sentenceMaxWords": 10,
+  "addressing": "Speak to Robert Price first, as primary contact. Include Dorothy and the home aide in instructions, using their names if known.",
+  "greeting": "Hello Robert,",
+  "signoff": "Your Care team",
+  "choicePhrases": [
+   "You can choose a call or text.",
+   "Let us know if you want to reschedule.",
+   "You may ask for more details."
+  ],
+  "safetyPhrases": [
+   "Call 555-0100 for help.",
+   "Reply STOP to pause messages."
+  ]
+ },
+ "outputs": {
+  "messages": [
+   {
+    "stage": "before_7d",
+    "recipient": "son",
+    "persona": "Hello Robert,\nDorothy has a follow-up visit for her wound and heart rhythm on {{date}}, {{weekday}} at {{time}}. The visit will take about 40 minutes. You, Dorothy, and the home aide can join together. You can choose a call or text if you need to change plans. Call 555-0100 for help.\nYour Care team",
+    "claimIds": [
+     "pr1",
+     "pr2"
+    ]
+   },
+   {
+    "stage": "before_2d",
+    "recipient": "son",
+    "persona": "Hello Robert,\nThis is a reminder for Dorothy's visit on {{date}}, {{weekday}} at {{time}}. The visit will last about 40 minutes. We will check her wound and heart rhythm together. Let us know if you want to reschedule. Call 555-0100 for help.\nYour Care team",
+    "claimIds": [
+     "pr1",
+     "pr2"
+    ]
+   },
+   {
+    "stage": "after_24h",
+    "recipient": "son",
+    "persona": "Hello Robert,\nThank you for coming to Dorothy's visit. You can read a summary in plain language. Next, we will follow up as planned or call if questions come up. Call 555-0100 for help.\nYour Care team",
+    "claimIds": [
+     "pr1",
+     "pr2"
+    ]
+   },
+   {
+    "stage": "before_7d",
+    "recipient": "home_aide",
+    "persona": "Hello,\nDorothy has a follow-up visit for her wound and heart rhythm on {{date}}, {{weekday}} at {{time}}. The visit will take about 40 minutes. You, Robert, and Dorothy can join together. You can reply to this message if you have questions. Call 555-0100 for help.\nYour Care team",
+    "claimIds": [
+     "pr1",
+     "pr2"
+    ]
+   },
+   {
+    "stage": "before_2d",
+    "recipient": "home_aide",
+    "persona": "Hello,\nThis is a reminder for Dorothy's visit on {{date}}, {{weekday}} at {{time}}. The visit will last about 40 minutes. We will check her wound and heart rhythm together. Let us know if you want to reschedule. Call 555-0100 for help.\nYour Care team",
+    "claimIds": [
+     "pr1",
+     "pr2"
+    ]
+   },
+   {
+    "stage": "after_24h",
+    "recipient": "home_aide",
+    "persona": "Hello,\nThank you for helping Dorothy at her visit. You can read a summary in plain language. Next, we will follow up as planned or call if questions come up. Call 555-0100 for help.\nYour Care team",
+    "claimIds": [
+     "pr1",
+     "pr2"
+    ]
+   }
+  ],
+  "clinicianBrief": {
+   "lines": [
+    "Dorothy is a 75-year-old woman here for wound and heart rhythm follow-up. Her son Robert coordinates appointments; a home aide is present during the day.",
+    "Dorothy may be confused, especially in the morning. Speak clearly and involve Robert and the aide in instructions.",
+    "She values her care team working together. Check with Dorothy before answering, if possible.",
+    "Avoid using terms related to dementia, stroke, or abuse in front of her or in written materials.",
+    "She is wheelchair-bound and needs help with daily activities.",
+    "Chart check: Patient age is inconsistently documented; no home aide name provided—clarify for future notes."
+   ],
+   "readAloudSeconds": 29,
+   "claimIds": [
+    "pr1",
+    "pr2"
+   ]
+  },
+  "visitSummary": {
+   "headline": "Wound and Heart Rhythm Follow-Up Summary for {{date}}",
+   "whatWeTalkedAbout": [
+    {
+     "text": "We checked Dorothy's wound healing and skin care.",
+     "claimIds": []
+    },
+    {
+     "text": "We reviewed Dorothy's heart rhythm and recent symptoms.",
+     "claimIds": []
+    },
+    {
+     "text": "We talked about how Robert and the home aide can help with care.",
+     "claimIds": []
+    }
+   ],
+   "yourNextSteps": [
+    "Check Dorothy's wound daily for changes.",
+    "Help Dorothy with her medicines as directed.",
+    "Keep a list of any new symptoms.",
+    "Call if you notice redness, swelling, or fever.",
+    "Bring any questions to the next visit."
+   ],
+   "whenToCall": [
+    "Call the clinic if Dorothy has new pain, redness, or drainage from her wound.",
+    "Call if Dorothy faints or has chest pain.",
+    "Call 555-0100 for urgent help."
+   ],
+   "questionsForNextTime": [
+    "What can we do to help Dorothy heal faster?",
+    "Are there new care steps for her heart?",
+    "How can we make daily care easier?"
+   ]
+  },
+  "videoScripts": [
+   {
+    "stage": "before",
+    "title": "Getting Ready for Dorothy's Visit",
+    "scenes": [
+     {
+      "kind": "title",
+      "title": "Dorothy's Upcoming Visit",
+      "text": "Dorothy has a follow-up soon.",
+      "items": [],
+      "voiceover": "Dorothy has a follow-up visit soon. Let's get ready together."
+     },
+     {
+      "kind": "card",
+      "title": "When and Where",
+      "text": "The visit is on {{date}}, {{weekday}} at {{time}}.",
+      "items": [],
+      "voiceover": "The visit is on {{date}}, {{weekday}} at {{time}}. It will take about 40 minutes."
+     },
+     {
+      "kind": "steps",
+      "title": "Who Will Be There",
+      "text": "Dorothy, Robert, and the home aide will join.",
+      "items": [
+       "Dorothy",
+       "Robert",
+       "Home aide"
+      ],
+      "voiceover": "Dorothy, Robert, and the home aide will be there. We will work together."
+     },
+     {
+      "kind": "choice",
+      "title": "Your Choices",
+      "text": "You can choose how to join or ask questions.",
+      "items": [
+       "Choose call or text for updates",
+       "Ask to reschedule"
+      ],
+      "voiceover": "You can choose a call or text for updates. Let us know if you want to reschedule."
+     },
+     {
+      "kind": "closing",
+      "title": "Need Help?",
+      "text": "Call 555-0100 for help.",
+      "items": [],
+      "voiceover": "Call 555-0100 for help. We are here for Dorothy."
+     }
+    ]
+   },
+   {
+    "stage": "after",
+    "title": "After Dorothy's Visit: What’s Next",
+    "scenes": [
+     {
+      "kind": "title",
+      "title": "Thank You for Coming",
+      "text": "Thank you for joining Dorothy's visit.",
+      "items": [],
+      "voiceover": "Thank you for coming to Dorothy's visit. We appreciate your support."
+     },
+     {
+      "kind": "card",
+      "title": "What We Did",
+      "text": "We checked Dorothy's wound and heart rhythm.",
+      "items": [],
+      "voiceover": "We checked Dorothy's wound and heart rhythm. We talked about care steps together."
+     },
+     {
+      "kind": "steps",
+      "title": "Next Steps",
+      "text": "Here is what to do next.",
+      "items": [
+       "Check Dorothy's wound daily",
+       "Help with medicines",
+       "Watch for new symptoms"
+      ],
+      "voiceover": "Check Dorothy's wound every day. Help Dorothy with her medicines and watch for new symptoms."
+     },
+     {
+      "kind": "choice",
+      "title": "When to Call",
+      "text": "Call if you see redness, pain, or fainting.",
+      "items": [
+       "Redness or swelling",
+       "Chest pain or fainting",
+       "Urgent questions"
+      ],
+      "voiceover": "Call the clinic if Dorothy has redness, swelling, chest pain, or faints. Call 555-0100 for urgent help."
+     },
+     {
+      "kind": "closing",
+      "title": "Questions?",
+      "text": "Bring questions to the next visit.",
+      "items": [],
+      "voiceover": "Bring any questions to the next visit. We are here for Dorothy."
+     }
+    ]
+   }
+  ]
+ }
+}

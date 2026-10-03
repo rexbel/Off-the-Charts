@@ -1,0 +1,661 @@
+{
+ "patientId": 2848,
+ "generatedAt": "2026-10-03T07:34:11.677Z",
+ "model": "gpt-4.1-2025-04-14",
+ "context": {
+  "checkin": "Prefiero español. Mi hija me ayuda con el portal.",
+  "audience": "self",
+  "language": "es",
+  "channel": "sms"
+ },
+ "facts": [
+  {
+   "id": "f1",
+   "field": "demographics.age",
+   "value": "68 years old"
+  },
+  {
+   "id": "f2",
+   "field": "demographics.sex",
+   "value": "Female"
+  },
+  {
+   "id": "f3",
+   "field": "primary_diagnoses",
+   "value": "Stable Chronic Heart Failure"
+  },
+  {
+   "id": "f4",
+   "field": "primary_diagnoses",
+   "value": "Acute pulmonary edema"
+  },
+  {
+   "id": "f5",
+   "field": "primary_diagnoses",
+   "value": "Essential hypertension"
+  },
+  {
+   "id": "f6",
+   "field": "primary_diagnoses",
+   "value": "Gallbladder carcinoma"
+  },
+  {
+   "id": "f7",
+   "field": "comorbidities",
+   "value": "Anemia"
+  },
+  {
+   "id": "f8",
+   "field": "comorbidities",
+   "value": "Essential hypertension"
+  },
+  {
+   "id": "f9",
+   "field": "comorbidities",
+   "value": "Left ventricular hypertrophy"
+  },
+  {
+   "id": "f10",
+   "field": "comorbidities",
+   "value": "Obesity"
+  },
+  {
+   "id": "f11",
+   "field": "comorbidities",
+   "value": "Cholelithiasis"
+  },
+  {
+   "id": "f12",
+   "field": "profile.chronic_conditions",
+   "value": "Essential hypertension"
+  },
+  {
+   "id": "f13",
+   "field": "profile.chronic_conditions",
+   "value": "Type 2 diabetes mellitus"
+  },
+  {
+   "id": "f14",
+   "field": "profile.chronic_conditions",
+   "value": "Chronic kidney disease stage 3"
+  },
+  {
+   "id": "f15",
+   "field": "profile.chronic_conditions",
+   "value": "Chronic heart failure with reduced ejection fraction"
+  },
+  {
+   "id": "f16",
+   "field": "profile.chronic_conditions",
+   "value": "Obesity"
+  },
+  {
+   "id": "f17",
+   "field": "profile.chronic_conditions",
+   "value": "Chronic cholelithiasis"
+  },
+  {
+   "id": "f18",
+   "field": "profile.chronic_conditions",
+   "value": "Gallbladder carcinoma"
+  },
+  {
+   "id": "f19",
+   "field": "profile.home_medications",
+   "value": "Furosemide 40 mg oral daily"
+  },
+  {
+   "id": "f20",
+   "field": "profile.home_medications",
+   "value": "Amlodipine 10 mg oral daily"
+  },
+  {
+   "id": "f21",
+   "field": "profile.home_medications",
+   "value": "Metformin 500 mg oral twice daily"
+  },
+  {
+   "id": "f22",
+   "field": "profile.home_medications",
+   "value": "Irinotecan 125 mg/m² IV weekly (chemotherapy protocol)"
+  },
+  {
+   "id": "f23",
+   "field": "profile.allergies",
+   "value": "NKDA"
+  },
+  {
+   "id": "f24",
+   "field": "profile.surgical_history",
+   "value": "Biliary decompression (endoscopic stenting)"
+  },
+  {
+   "id": "f25",
+   "field": "profile.occupation",
+   "value": "Retired administrative assistant"
+  },
+  {
+   "id": "f26",
+   "field": "profile.smoking_status",
+   "value": "Never"
+  },
+  {
+   "id": "f27",
+   "field": "profile.alcohol_use",
+   "value": "None"
+  },
+  {
+   "id": "f28",
+   "field": "profile.family_history",
+   "value": "Father with coronary artery disease and hypertension"
+  },
+  {
+   "id": "f29",
+   "field": "profile.family_history",
+   "value": "Mother with type 2 diabetes mellitus"
+  },
+  {
+   "id": "f30",
+   "field": "profile.family_history",
+   "value": "Older sister with cholelithiasis"
+  },
+  {
+   "id": "f31",
+   "field": "encounter.visit",
+   "value": "ed visit, Emergency Medicine, Dr. James Chen",
+   "encounterId": 12058,
+   "date": "2020-01-15"
+  },
+  {
+   "id": "f32",
+   "field": "encounter.chief_complaint",
+   "value": "Progressively worsening exertional dyspnea and fatigue over the past several months",
+   "encounterId": 12058,
+   "date": "2020-01-15"
+  },
+  {
+   "id": "f33",
+   "field": "encounter.note.hpi",
+   "value": "She presents to the emergency department with complaints of progressively worsening exertional dyspnea and fatigue over the past several months.",
+   "encounterId": 12058,
+   "date": "2020-01-15"
+  },
+  {
+   "id": "f34",
+   "field": "encounter.visit",
+   "value": "inpatient visit, Gastroenterology, Dr. Sarah Patel",
+   "encounterId": 12060,
+   "date": "2020-04-15"
+  },
+  {
+   "id": "f35",
+   "field": "encounter.chief_complaint",
+   "value": "Progressive weight loss, abdominal discomfort, and jaundice",
+   "encounterId": 12060,
+   "date": "2020-04-15"
+  },
+  {
+   "id": "f36",
+   "field": "encounter.note.hpi",
+   "value": "This 68-year-old female with gallbladder carcinoma and essential hypertension diagnosed during an emergency department presentation three months ago for exertional dyspnea presents with progressive weight loss, abdominal discomfort, and jaundice. She undergoes biliary decompression and is initiated on combination chemotherapy that includes a newly added drug, irinotecan.",
+   "encounterId": 12060,
+   "date": "2020-04-15"
+  },
+  {
+   "id": "f37",
+   "field": "encounter.note.plan",
+   "value": "The oncologist explains that the new drug works by interfering with DNA replication and preventing tumor cell proliferation.",
+   "encounterId": 12060,
+   "date": "2020-04-15"
+  },
+  {
+   "id": "f38",
+   "field": "encounter.visit",
+   "value": "outpatient visit, Oncology, Dr. Michael Thompson",
+   "encounterId": 12059,
+   "date": "2020-10-15"
+  },
+  {
+   "id": "f39",
+   "field": "encounter.chief_complaint",
+   "value": "Mild diarrhea and fatigue during chemotherapy treatment",
+   "encounterId": 12059,
+   "date": "2020-10-15"
+  },
+  {
+   "id": "f40",
+   "field": "encounter.note.hpi",
+   "value": "This 68-year-old with gallbladder carcinoma, seen in April for jaundice, returns for irinotecan follow-up, reporting mild diarrhea and fatigue but otherwise tolerating the regimen.",
+   "encounterId": 12059,
+   "date": "2020-10-15"
+  },
+  {
+   "id": "f41",
+   "field": "encounter.note.plan",
+   "value": "The oncologist explains that the new drug works by interfering with DNA replication and preventing tumor cell proliferation. The patient expresses interest in understanding how this new medication works.",
+   "encounterId": 12059,
+   "date": "2020-10-15"
+  },
+  {
+   "id": "f42",
+   "field": "encounter.visit",
+   "value": "ed visit, Emergency Medicine, Dr. Emily Johnson",
+   "encounterId": 12057,
+   "date": "2023-01-15"
+  },
+  {
+   "id": "f43",
+   "field": "encounter.chief_complaint",
+   "value": "Acute respiratory distress with sensation of drowning",
+   "encounterId": 12057,
+   "date": "2023-01-15"
+  },
+  {
+   "id": "f44",
+   "field": "encounter.note.hpi",
+   "value": "The patient with chronic heart failure and gallbladder carcinoma on weekly chemotherapy returns with acute complaints and is brought to the emergency department by ambulance for acute respiratory distress that began suddenly while she was watching television. She describes the sensation as “drowning” and says she could not lie flat in the ambulance due to worsening breathlessness.",
+   "encounterId": 12057,
+   "date": "2023-01-15"
+  },
+  {
+   "id": "f45",
+   "field": "encounter.note.plan",
+   "value": "She is given intravenous nitrates and loop diuretics.",
+   "encounterId": 12057,
+   "date": "2023-01-15"
+  },
+  {
+   "id": "f46",
+   "field": "encounter.visit",
+   "value": "outpatient visit, Cardiology, Dr. Maria Rodriguez",
+   "encounterId": 12056,
+   "date": "2023-04-15"
+  },
+  {
+   "id": "f47",
+   "field": "encounter.chief_complaint",
+   "value": "Shortness of breath on exertion and paroxysmal nocturnal dyspnea",
+   "encounterId": 12056,
+   "date": "2023-04-15"
+  },
+  {
+   "id": "f48",
+   "field": "encounter.note.hpi",
+   "value": "The patient is a 71-year-old female with chronic heart failure, hypertension, and gallbladder carcinoma on chemotherapy, returning for cardiac follow-up. She presents complaining of shortness of breath on exertion and paroxysmal nocturnal dyspnea for the past 6 months.",
+   "encounterId": 12056,
+   "date": "2023-04-15"
+  },
+  {
+   "id": "f49",
+   "field": "seed.caregiver",
+   "value": "Daughter"
+  },
+  {
+   "id": "f50",
+   "field": "seed.upcoming_visit",
+   "value": "Cardiology: Heart failure follow-up (in 2 days)"
+  },
+  {
+   "id": "f51",
+   "field": "seed.stated_language",
+   "value": "Spanish (patient-stated)"
+  }
+ ],
+ "profile": {
+  "patientId": 2848,
+  "preferredName": "Carmen",
+  "summaryLine": "Carmen is a 68-year-old Spanish-speaking woman managing heart failure, gallbladder cancer, and other chronic conditions, with her daughter assisting her with the patient portal.",
+  "audience": "self",
+  "recipients": [
+   {
+    "role": "patient",
+    "name": "Carmen",
+    "relationship": "",
+    "primary": true
+   }
+  ],
+  "communicationNeeds": {
+   "readingLevel": 6,
+   "detailPreference": "stepwise",
+   "language": "es",
+   "channel": "sms",
+   "bestTimeOfDay": ""
+  },
+  "emotionalContext": [
+   {
+    "id": "ec1",
+    "text": "Carmen prefers to communicate in Spanish and relies on her daughter for help with the patient portal.",
+    "kind": "patient_stated",
+    "source": {
+     "factIds": [],
+     "note": "What matters to you check-in"
+    },
+    "reason": "Carmen directly stated her language preference and support system."
+   },
+   {
+    "id": "ec2",
+    "text": "She has a history of multiple chronic illnesses, including heart failure, gallbladder carcinoma, hypertension, diabetes, and chronic kidney disease, which may contribute to feelings of fatigue or overwhelm.",
+    "kind": "inferred",
+    "source": {
+     "factIds": [
+      "f3",
+      "f5",
+      "f6",
+      "f13",
+      "f14",
+      "f15",
+      "f18"
+     ],
+     "note": ""
+    },
+    "reason": "Managing several serious health conditions can be emotionally and physically taxing."
+   },
+   {
+    "id": "ec3",
+    "text": "She has experienced acute episodes of respiratory distress and describes these as frightening, such as the sensation of 'drowning.'",
+    "kind": "fact",
+    "source": {
+     "factIds": [
+      "f43",
+      "f44"
+     ],
+     "note": ""
+    },
+    "reason": "Directly documented in emergency department notes."
+   }
+  ],
+  "privacyRules": [
+   {
+    "id": "pr1",
+    "rule": "Do not include diagnosis names related to cancer, heart failure, or related medications in SMS messages.",
+    "restrictedTerms": [
+     "cancer",
+     "carcinoma",
+     "irinotecan",
+     "heart failure",
+     "furosemide",
+     "metformin",
+     "amlodipine"
+    ],
+    "channels": [
+     "sms"
+    ],
+    "recipients": [],
+    "kind": "fact",
+    "source": {
+     "factIds": [
+      "f6",
+      "f15",
+      "f19",
+      "f20",
+      "f21",
+      "f22"
+     ],
+     "note": ""
+    },
+    "reason": "Sensitive health information should not be sent via SMS for privacy and security."
+   }
+  ],
+  "cognitiveSupport": [],
+  "strengths": [
+   {
+    "id": "s1",
+    "text": "Carmen is proactive in seeking understanding about her medications and treatment.",
+    "kind": "fact",
+    "source": {
+     "factIds": [
+      "f41"
+     ],
+     "note": ""
+    },
+    "reason": "She expressed interest in learning about her chemotherapy medication."
+   },
+   {
+    "id": "s2",
+    "text": "She has a supportive daughter who assists her with technology and communication.",
+    "kind": "patient_stated",
+    "source": {
+     "factIds": [],
+     "note": "What matters to you check-in"
+    },
+    "reason": "Carmen stated her daughter helps her with the portal."
+   },
+   {
+    "id": "s3",
+    "text": "She has never smoked and does not use alcohol, which supports her overall health.",
+    "kind": "fact",
+    "source": {
+     "factIds": [
+      "f26",
+      "f27"
+     ],
+     "note": ""
+    },
+    "reason": "Documented in her social history."
+   }
+  ],
+  "avoidTerms": [
+   "non-compliant",
+   "denies",
+   "refused"
+  ],
+  "dataQualityWarnings": [
+   "Age is inconsistently documented as 68 and 71 in different notes.",
+   "\"Essential hypertension\" appears as both a primary diagnosis and a comorbidity."
+  ]
+ },
+ "voiceGuide": {
+  "tone": [
+   "amable",
+   "clara",
+   "respetuosa"
+  ],
+  "doSay": [
+   "Por favor revise su portal.",
+   "¿Necesita ayuda con su hija?",
+   "Puede responder este mensaje.",
+   "Le avisaremos de cualquier cambio.",
+   "¿Prefiere llamada o mensaje?",
+   "Estamos aquí para usted."
+  ],
+  "dontSay": [
+   "no cumple",
+   "niega",
+   "rehusó",
+   "cáncer",
+   "carcinoma",
+   "irinotecan",
+   "insuficiencia cardíaca",
+   "furosemida",
+   "metformina",
+   "amlodipina"
+  ],
+  "sentenceMaxWords": 12,
+  "addressing": "El mensaje es para Carmen, usando su nombre. Si su hija está ayudando, también puede leer el mensaje junto a ella.",
+  "greeting": "Hola Carmen,",
+  "signoff": "Su equipo de atención",
+  "choicePhrases": [
+   "¿Prefiere llamada o mensaje?",
+   "¿Quiere que su hija le ayude?",
+   "¿Desea más información en el portal?"
+  ],
+  "safetyPhrases": [
+   "Llame al 555-0100 si necesita hablar.",
+   "Responda 'pausa' para detener mensajes."
+  ]
+ },
+ "outputs": {
+  "messages": [
+   {
+    "stage": "before_7d",
+    "recipient": "patient",
+    "persona": "Hola Carmen,\nSu cita de seguimiento es en cardiología el {{weekday}}, {{date}} a las {{time}}. Durará unos 40 minutos y estaremos juntos con el equipo médico. Puede venir sola o con su hija si lo prefiere. ¿Prefiere llamada o mensaje? Si necesita ayuda, llame al 555-0100.\nSu equipo de atención",
+    "claimIds": [
+     "pr1"
+    ]
+   },
+   {
+    "stage": "before_2d",
+    "recipient": "patient",
+    "persona": "Hola Carmen,\nLe recordamos su cita de cardiología el {{weekday}}, {{date}} a las {{time}}. Estaremos juntos unos 40 minutos. Puede responder este mensaje si tiene preguntas o quiere ayuda de su hija. ¿Desea más información en el portal? Llame al 555-0100 si necesita hablar.\nSu equipo de atención",
+    "claimIds": [
+     "pr1"
+    ]
+   },
+   {
+    "stage": "after_24h",
+    "recipient": "patient",
+    "persona": "Hola Carmen,\nGracias por asistir a su cita de cardiología. Puede revisar el resumen en su portal. Le avisaremos de cualquier cambio y estamos aquí para usted. Si tiene dudas, llame al 555-0100.\nSu equipo de atención",
+    "claimIds": [
+     "pr1"
+    ]
+   }
+  ],
+  "clinicianBrief": {
+   "lines": [
+    "Carmen is a 68-year-old Spanish-speaking woman here for a cardiology follow-up.",
+    "She manages multiple chronic illnesses and prefers communication in Spanish, often with her daughter's help for technology.",
+    "She values clear, stepwise explanations and wants to understand her treatment.",
+    "Carmen has described frightening episodes of breathlessness, using terms like 'drowning.'",
+    "Avoid diagnosis names in SMS or when discussing over text; use plain, respectful language.",
+    "Chart check: Age inconsistently documented as 68 and 71; 'essential hypertension' appears variably."
+   ],
+   "readAloudSeconds": 29,
+   "claimIds": [
+    "pr1"
+   ]
+  },
+  "visitSummary": {
+   "headline": "Resumen de su cita de cardiología – {{date}}",
+   "whatWeTalkedAbout": [
+    {
+     "text": "Revisamos cómo se ha sentido últimamente y sus síntomas recientes.",
+     "claimIds": []
+    },
+    {
+     "text": "Hablamos sobre sus medicamentos y cómo tomarlos correctamente.",
+     "claimIds": []
+    },
+    {
+     "text": "Respondimos a sus preguntas sobre el tratamiento y próximos pasos.",
+     "claimIds": []
+    }
+   ],
+   "yourNextSteps": [
+    "Revise el resumen en su portal.",
+    "Tome sus medicamentos como se indicó.",
+    "Anote cualquier síntoma nuevo o cambio.",
+    "Llame si tiene dificultad para respirar o hinchazón.",
+    "Programe su próxima cita según indicación."
+   ],
+   "whenToCall": [
+    "Llame si tiene dificultad para respirar repentina.",
+    "Llame si nota hinchazón en piernas o abdomen.",
+    "Llame al 555-0100 si tiene dudas urgentes."
+   ],
+   "questionsForNextTime": [
+    "¿Cómo puedo controlar mejor mis síntomas?",
+    "¿Hay cambios en mis medicamentos?",
+    "¿Qué señales debo vigilar en casa?"
+   ]
+  },
+  "videoScripts": [
+   {
+    "stage": "before",
+    "title": "Su cita de cardiología: qué esperar",
+    "scenes": [
+     {
+      "kind": "title",
+      "title": "Bienvenida",
+      "text": "Su cita es pronto.",
+      "items": [],
+      "voiceover": "Hola Carmen, su cita de cardiología es el {{weekday}}, {{date}} a las {{time}}."
+     },
+     {
+      "kind": "card",
+      "title": "Duración y equipo",
+      "text": "La cita dura unos 40 minutos.",
+      "items": [],
+      "voiceover": "El equipo médico estará con usted unos 40 minutos para revisar cómo se siente."
+     },
+     {
+      "kind": "steps",
+      "title": "Qué haremos juntos",
+      "text": "Revisaremos síntomas y responderemos preguntas.",
+      "items": [
+       "Hablar de sus síntomas recientes",
+       "Revisar sus medicamentos",
+       "Resolver dudas"
+      ],
+      "voiceover": "Juntos revisaremos sus síntomas, medicamentos y responderemos sus preguntas."
+     },
+     {
+      "kind": "choice",
+      "title": "Sus opciones",
+      "text": "Puede venir con su hija o sola.",
+      "items": [
+       "Puede pedir llamada o mensaje",
+       "Puede traer a su hija"
+      ],
+      "voiceover": "Puede elegir si prefiere llamada o mensaje, y si quiere que su hija le acompañe."
+     },
+     {
+      "kind": "closing",
+      "title": "Contacto",
+      "text": "¿Dudas? Llame al 555-0100.",
+      "items": [],
+      "voiceover": "Si necesita ayuda, llame al 555-0100. Estamos aquí para usted."
+     }
+    ]
+   },
+   {
+    "stage": "after",
+    "title": "Su plan después de la cita",
+    "scenes": [
+     {
+      "kind": "title",
+      "title": "Gracias por venir",
+      "text": "Gracias por asistir a su cita.",
+      "items": [],
+      "voiceover": "Gracias por venir a su cita de cardiología, Carmen."
+     },
+     {
+      "kind": "card",
+      "title": "Resumen en el portal",
+      "text": "Revise el resumen en su portal.",
+      "items": [],
+      "voiceover": "Puede revisar el resumen de la cita en su portal."
+     },
+     {
+      "kind": "steps",
+      "title": "Sus próximos pasos",
+      "text": "Siga estos pasos en casa.",
+      "items": [
+       "Tome sus medicamentos",
+       "Anote síntomas nuevos",
+       "Programe la próxima cita"
+      ],
+      "voiceover": "Tome sus medicamentos como se indicó, anote cualquier síntoma nuevo y programe su próxima cita."
+     },
+     {
+      "kind": "choice",
+      "title": "Cuándo llamar",
+      "text": "Llame si tiene dificultad para respirar.",
+      "items": [
+       "Dificultad para respirar",
+       "Hinchazón en piernas o abdomen"
+      ],
+      "voiceover": "Llame al 555-0100 si tiene dificultad para respirar o nota hinchazón."
+     },
+     {
+      "kind": "closing",
+      "title": "Estamos aquí para usted",
+      "text": "¿Preguntas? Llame al 555-0100.",
+      "items": [],
+      "voiceover": "Si tiene preguntas, llame al 555-0100. Estamos aquí para usted."
+     }
+    ]
+   }
+  ]
+ }
+}

@@ -1,0 +1,730 @@
+{
+ "patientId": 2861,
+ "generatedAt": "2026-10-03T07:33:00.250Z",
+ "model": "gpt-4.1-2025-04-14",
+ "context": {
+  "checkin": "My son helps with decisions. I want to know what matters for my comfort.",
+  "audience": "self_plus_family",
+  "language": "en",
+  "channel": "sms"
+ },
+ "facts": [
+  {
+   "id": "f1",
+   "field": "demographics.age",
+   "value": "66 years old"
+  },
+  {
+   "id": "f2",
+   "field": "demographics.sex",
+   "value": "Female"
+  },
+  {
+   "id": "f3",
+   "field": "primary_diagnoses",
+   "value": "Metastatic melanoma"
+  },
+  {
+   "id": "f4",
+   "field": "primary_diagnoses",
+   "value": "Metastatic carcinoma to bone"
+  },
+  {
+   "id": "f5",
+   "field": "primary_diagnoses",
+   "value": "Malignant neoplasm of male breast"
+  },
+  {
+   "id": "f6",
+   "field": "primary_diagnoses",
+   "value": "Vitamin D deficiency"
+  },
+  {
+   "id": "f7",
+   "field": "comorbidities",
+   "value": "Anemia of chronic disease"
+  },
+  {
+   "id": "f8",
+   "field": "comorbidities",
+   "value": "Cachexia"
+  },
+  {
+   "id": "f9",
+   "field": "comorbidities",
+   "value": "Inadequate family support (caregiver burden)"
+  },
+  {
+   "id": "f10",
+   "field": "comorbidities",
+   "value": "Hypocalcemia"
+  },
+  {
+   "id": "f11",
+   "field": "comorbidities",
+   "value": "Hypoalbuminemia"
+  },
+  {
+   "id": "f12",
+   "field": "profile.chronic_conditions",
+   "value": "Stage IV invasive ductal carcinoma of the breast with widespread osseous metastases"
+  },
+  {
+   "id": "f13",
+   "field": "profile.chronic_conditions",
+   "value": "Severe vitamin D deficiency with associated osteomalacia"
+  },
+  {
+   "id": "f14",
+   "field": "profile.chronic_conditions",
+   "value": "Chronic cancer-related pain syndrome"
+  },
+  {
+   "id": "f15",
+   "field": "profile.chronic_conditions",
+   "value": "Cancer anorexia-cachexia syndrome"
+  },
+  {
+   "id": "f16",
+   "field": "profile.chronic_conditions",
+   "value": "Sarcopenia secondary to malignancy and vitamin D deficiency"
+  },
+  {
+   "id": "f17",
+   "field": "profile.chronic_conditions",
+   "value": "Opioid-induced constipation"
+  },
+  {
+   "id": "f18",
+   "field": "profile.home_medications",
+   "value": "Morphine sulfate extended-release 30 mg PO every 12 hours"
+  },
+  {
+   "id": "f19",
+   "field": "profile.home_medications",
+   "value": "Morphine sulfate immediate-release 15 mg PO every 4 hours as needed for breakthrough pain"
+  },
+  {
+   "id": "f20",
+   "field": "profile.home_medications",
+   "value": "Cholecalciferol (Vitamin D3) 50,000 units PO weekly"
+  },
+  {
+   "id": "f21",
+   "field": "profile.home_medications",
+   "value": "Calcium carbonate 600 mg PO three times daily with meals"
+  },
+  {
+   "id": "f22",
+   "field": "profile.home_medications",
+   "value": "Senna 8.6 mg PO twice daily"
+  },
+  {
+   "id": "f23",
+   "field": "profile.home_medications",
+   "value": "Docusate sodium 100 mg PO twice daily"
+  },
+  {
+   "id": "f24",
+   "field": "profile.home_medications",
+   "value": "Prochlorperazine 10 mg PO every 6 hours as needed for nausea"
+  },
+  {
+   "id": "f25",
+   "field": "profile.home_medications",
+   "value": "Mirtazapine 15 mg PO at bedtime for appetite stimulation"
+  },
+  {
+   "id": "f26",
+   "field": "profile.allergies",
+   "value": "Sulfa drugs - urticaria"
+  },
+  {
+   "id": "f27",
+   "field": "profile.allergies",
+   "value": "Iodinated contrast - anaphylaxis"
+  },
+  {
+   "id": "f28",
+   "field": "profile.surgical_history",
+   "value": "Right modified radical mastectomy with axillary lymph node dissection (5 years prior)"
+  },
+  {
+   "id": "f29",
+   "field": "profile.surgical_history",
+   "value": "Insertion of right subclavian Mediport for chemotherapy access"
+  },
+  {
+   "id": "f30",
+   "field": "profile.surgical_history",
+   "value": "Radiation therapy to chest wall and thoracic spine (non-surgical but significant history)"
+  },
+  {
+   "id": "f31",
+   "field": "profile.occupation",
+   "value": "Retired textile factory worker"
+  },
+  {
+   "id": "f32",
+   "field": "profile.smoking_status",
+   "value": "Never smoker"
+  },
+  {
+   "id": "f33",
+   "field": "profile.alcohol_use",
+   "value": "None"
+  },
+  {
+   "id": "f34",
+   "field": "profile.family_history",
+   "value": "Mother with postmenopausal breast cancer (diagnosed age 55, deceased)"
+  },
+  {
+   "id": "f35",
+   "field": "profile.family_history",
+   "value": "Maternal aunt with ovarian cancer"
+  },
+  {
+   "id": "f36",
+   "field": "profile.family_history",
+   "value": "Father with hypertension"
+  },
+  {
+   "id": "f37",
+   "field": "encounter.visit",
+   "value": "outpatient visit, Endocrinology, Dr. Priya Sharma",
+   "encounterId": 12136,
+   "date": "2020-01-15"
+  },
+  {
+   "id": "f38",
+   "field": "encounter.chief_complaint",
+   "value": "Fatigue, diffuse bone discomfort, and recent difficulty rising from a chair",
+   "encounterId": 12136,
+   "date": "2020-01-15"
+  },
+  {
+   "id": "f39",
+   "field": "encounter.note.hpi",
+   "value": "She has not seen a physician in several years.",
+   "encounterId": 12136,
+   "date": "2020-01-15"
+  },
+  {
+   "id": "f40",
+   "field": "encounter.visit",
+   "value": "outpatient visit, Medical Oncology, Dr. James O'Brien",
+   "encounterId": 12134,
+   "date": "2021-01-15"
+  },
+  {
+   "id": "f41",
+   "field": "encounter.chief_complaint",
+   "value": "Routine follow-up for metastatic breast cancer with increasing fatigue and concerns about functional status for upcoming family events",
+   "encounterId": 12134,
+   "date": "2021-01-15"
+  },
+  {
+   "id": "f42",
+   "field": "encounter.note.hpi",
+   "value": "Patient returns for cancer follow-up, seen in Endocrinology one year prior for fatigue, diffuse bone discomfort, and difficulty rising from chair. She has been on palliative chemotherapy and reports increasing fatigue and difficulty in managing her daily activities.",
+   "encounterId": 12134,
+   "date": "2021-01-15"
+  },
+  {
+   "id": "f43",
+   "field": "encounter.visit",
+   "value": "outpatient visit, Medical Oncology, Dr. Elena Vasquez",
+   "encounterId": 12135,
+   "date": "2022-01-15"
+  },
+  {
+   "id": "f44",
+   "field": "encounter.chief_complaint",
+   "value": "Increasing fatigue, anorexia, and poorly controlled pain despite oral opioid regimen",
+   "encounterId": 12135,
+   "date": "2022-01-15"
+  },
+  {
+   "id": "f45",
+   "field": "encounter.note.hpi",
+   "value": "The patient returns for follow-up of metastatic disease following initial presentation in 2020 for fatigue and bone discomfort and subsequent oncology surveillance in 2021. She is brought to the clinic by her daughter.",
+   "encounterId": 12135,
+   "date": "2022-01-15"
+  },
+  {
+   "id": "f46",
+   "field": "encounter.note.social",
+   "value": "Her daughter, who is her primary caregiver, reports feeling overwhelmed with managing her mother's medications and complex needs.",
+   "encounterId": 12135,
+   "date": "2022-01-15"
+  },
+  {
+   "id": "f47",
+   "field": "encounter.visit",
+   "value": "outpatient visit, Family Medicine, Dr. Robert Chen",
+   "encounterId": 12133,
+   "date": "2022-07-15"
+  },
+  {
+   "id": "f48",
+   "field": "encounter.chief_complaint",
+   "value": "Acute family meeting with primary care physician to discuss care goals after exhausting curative treatment options",
+   "encounterId": 12133,
+   "date": "2022-07-15"
+  },
+  {
+   "id": "f49",
+   "field": "encounter.note.hpi",
+   "value": "The patient returns for an acute family meeting to discuss care goals, following longitudinal management of Stage IV breast cancer with osseous metastases, severe vitamin D deficiency, and cancer-related symptomatology previously addressed in Endocrinology (2020) and Medical Oncology (2021, 2022). She was diagnosed with breast cancer 5 years ago, and despite multiple lines of chemotherapy and radiation therapy, her disease has progressed.",
+   "encounterId": 12133,
+   "date": "2022-07-15"
+  },
+  {
+   "id": "f50",
+   "field": "encounter.note.plan",
+   "value": "Given the patient's prognosis and her expressed wishes,",
+   "encounterId": 12133,
+   "date": "2022-07-15"
+  },
+  {
+   "id": "f51",
+   "field": "encounter.note.social",
+   "value": "She lives at home with her husband, who is her primary caregiver, but he is struggling to manage her increasing care needs.",
+   "encounterId": 12133,
+   "date": "2022-07-15"
+  },
+  {
+   "id": "f52",
+   "field": "seed.caregiver",
+   "value": "Daniel Lim (son)"
+  },
+  {
+   "id": "f53",
+   "field": "seed.upcoming_visit",
+   "value": "Medical Oncology: Treatment and comfort planning (in 3 days)"
+  },
+  {
+   "id": "f54",
+   "field": "seed.stated_language",
+   "value": "English (patient-stated)"
+  }
+ ],
+ "profile": {
+  "patientId": 2861,
+  "preferredName": "Grace",
+  "summaryLine": "Grace is a 66-year-old woman with advanced cancer whose son Daniel helps with decisions, and she values comfort and family support.",
+  "audience": "self_plus_family",
+  "recipients": [
+   {
+    "role": "patient",
+    "name": "Grace",
+    "primary": true
+   },
+   {
+    "role": "son",
+    "name": "Daniel Lim",
+    "relationship": "son",
+    "primary": false
+   }
+  ],
+  "communicationNeeds": {
+   "readingLevel": 6,
+   "detailPreference": "brief",
+   "language": "en",
+   "channel": "sms",
+   "bestTimeOfDay": ""
+  },
+  "emotionalContext": [
+   {
+    "id": "ec1",
+    "text": "Grace is living with advanced cancer and has experienced increasing fatigue, pain, and difficulty managing daily activities.",
+    "kind": "fact",
+    "source": {
+     "factIds": [
+      "f3",
+      "f4",
+      "f12",
+      "f14",
+      "f15",
+      "f16",
+      "f41",
+      "f42",
+      "f44",
+      "f45",
+      "f49"
+     ],
+     "note": ""
+    },
+    "reason": "Multiple notes document metastatic cancer, pain, fatigue, and functional decline."
+   },
+   {
+    "id": "ec2",
+    "text": "Grace values comfort and wants to know what matters for her comfort.",
+    "kind": "patient_stated",
+    "source": {
+     "factIds": [],
+     "note": "What matters to you check-in"
+    },
+    "reason": "Directly stated in her check-in."
+   },
+   {
+    "id": "ec3",
+    "text": "Grace's son Daniel helps her with decisions.",
+    "kind": "patient_stated",
+    "source": {
+     "factIds": [],
+     "note": "What matters to you check-in"
+    },
+    "reason": "Directly stated in her check-in."
+   },
+   {
+    "id": "ec4",
+    "text": "There is a history of caregiver burden and inadequate family support as her care needs have increased.",
+    "kind": "fact",
+    "source": {
+     "factIds": [
+      "f9",
+      "f46",
+      "f51"
+     ],
+     "note": ""
+    },
+    "reason": "EHR notes and comorbidity list family/caregiver strain."
+   }
+  ],
+  "privacyRules": [
+   {
+    "id": "pr1",
+    "rule": "Do not include diagnosis names or medication names related to cancer, pain, or mental health in SMS messages.",
+    "restrictedTerms": [
+     "metastatic",
+     "cancer",
+     "carcinoma",
+     "melanoma",
+     "malignant",
+     "cachexia",
+     "anemia",
+     "pain",
+     "opioid",
+     "morphine",
+     "mirtazapine",
+     "prochlorperazine",
+     "senna",
+     "docusate",
+     "cholecalciferol",
+     "vitamin D",
+     "constipation",
+     "anorexia",
+     "sarcopenia"
+    ],
+    "channels": [
+     "sms"
+    ],
+    "recipients": [],
+    "kind": "inferred",
+    "source": {
+     "factIds": [
+      "f3",
+      "f4",
+      "f12",
+      "f14",
+      "f15",
+      "f16",
+      "f17",
+      "f18",
+      "f19",
+      "f20",
+      "f21",
+      "f22",
+      "f23",
+      "f24",
+      "f25"
+     ],
+     "note": ""
+    },
+    "reason": "Sensitive diagnoses and medications should not be included in SMS for privacy and stigma prevention."
+   }
+  ],
+  "cognitiveSupport": [],
+  "strengths": [
+   {
+    "id": "s1",
+    "text": "Grace has strong involvement from her son Daniel in decision-making.",
+    "kind": "patient_stated",
+    "source": {
+     "factIds": [],
+     "note": "What matters to you check-in"
+    },
+    "reason": "Grace stated her son helps with decisions."
+   },
+   {
+    "id": "s2",
+    "text": "Grace has a history of expressing her wishes and participating in care planning.",
+    "kind": "fact",
+    "source": {
+     "factIds": [
+      "f50"
+     ],
+     "note": ""
+    },
+    "reason": "Documented in care planning notes."
+   },
+   {
+    "id": "s3",
+    "text": "Grace has never smoked and does not use alcohol.",
+    "kind": "fact",
+    "source": {
+     "factIds": [
+      "f32",
+      "f33"
+     ],
+     "note": ""
+    },
+    "reason": "EHR documents healthy lifestyle behaviors."
+   }
+  ],
+  "avoidTerms": [
+   "non-compliant",
+   "denies",
+   "refused"
+  ],
+  "dataQualityWarnings": [
+   "Diagnosis of male breast cancer (f5) is likely erroneous for a female patient.",
+   "Caregiver roles in family are inconsistently documented (daughter vs. son vs. husband).",
+   "Record lists \"Malignant neoplasm of male breast\" for a patient documented as female. Verify before use."
+  ]
+ },
+ "voiceGuide": {
+  "tone": [
+   "warm",
+   "respectful",
+   "supportive"
+  ],
+  "doSay": [
+   "We want to help you feel comfortable.",
+   "Let us know what matters most to you.",
+   "Daniel can join the conversation anytime.",
+   "You can choose what works best.",
+   "We are here for you and your family."
+  ],
+  "dontSay": [
+   "non-compliant",
+   "denies",
+   "refused",
+   "metastatic",
+   "cancer",
+   "pain",
+   "opioid",
+   "morphine",
+   "constipation",
+   "anemia"
+  ],
+  "sentenceMaxWords": 12,
+  "addressing": "Speak to Grace first by name, and include Daniel Lim in the message as her support.",
+  "greeting": "Hello Grace and Daniel,",
+  "signoff": "Your Care Team",
+  "choicePhrases": [
+   "Would you like a call or text?",
+   "Is this a good time for you?",
+   "Would you like Daniel to join?."
+  ],
+  "safetyPhrases": [
+   "You can call us at 555-0100.",
+   "Reply STOP to pause messages."
+  ]
+ },
+ "outputs": {
+  "messages": [
+   {
+    "stage": "before_7d",
+    "recipient": "patient",
+    "persona": "Hello Grace and Daniel,\nWe look forward to seeing you for your visit on {{date}}, {{weekday}} at {{time}}. The visit will last about 40 minutes. We will talk about your comfort and what matters to you. Daniel can join the conversation anytime. You can choose if you want a call or text before the visit. You can call us at 555-0100.\nYour Care Team",
+    "claimIds": [
+     "ec2",
+     "ec3",
+     "pr1"
+    ]
+   },
+   {
+    "stage": "before_2d",
+    "recipient": "patient",
+    "persona": "Hello Grace and Daniel,\nYour visit is coming up on {{date}}, {{weekday}} at {{time}}. We will meet for about 40 minutes to plan together for your comfort. Daniel is welcome to join. You can let us know if you prefer a call or text. You can call us at 555-0100.\nYour Care Team",
+    "claimIds": [
+     "ec2",
+     "ec3",
+     "pr1"
+    ]
+   },
+   {
+    "stage": "after_24h",
+    "recipient": "patient",
+    "persona": "Hello Grace and Daniel,\nThank you for coming to your visit. You can read your plain-language summary now. Next, we will keep working together on your comfort and care. You can call us at 555-0100 with any questions.\nYour Care Team",
+    "claimIds": [
+     "ec2",
+     "ec3",
+     "pr1"
+    ]
+   }
+  ],
+  "clinicianBrief": {
+   "lines": [
+    "Grace is a 66-year-old woman here for treatment and comfort planning in Medical Oncology.",
+    "Her son Daniel helps with decisions and is involved in visits.",
+    "Grace values comfort and wants to discuss what matters most to her.",
+    "She has experienced increasing fatigue and difficulty with daily activities.",
+    "There is a history of caregiver burden and family support challenges.",
+    "Speak to Grace first, include Daniel, and avoid diagnosis or medication names in SMS.",
+    "Avoid terms: non-compliant, denies, refused, and restricted terms per privacy rule.",
+    "Chart check: Diagnosis and caregiver roles are inconsistently documented; verify before use."
+   ],
+   "readAloudSeconds": 29,
+   "claimIds": [
+    "ec2",
+    "ec3",
+    "ec1",
+    "ec4",
+    "pr1"
+   ]
+  },
+  "visitSummary": {
+   "headline": "Your Treatment and Comfort Planning Visit – {{date}}",
+   "whatWeTalkedAbout": [
+    {
+     "text": "What matters most to you for comfort and support.",
+     "claimIds": [
+      "ec2"
+     ]
+    },
+    {
+     "text": "Ways Daniel can help with decisions and visits.",
+     "claimIds": [
+      "ec3",
+      "s1"
+     ]
+    },
+    {
+     "text": "How you have been feeling and changes in daily activities.",
+     "claimIds": [
+      "ec1"
+     ]
+    }
+   ],
+   "yourNextSteps": [
+    "Talk with Daniel about your care goals.",
+    "Let us know if you want a call or text before your next visit.",
+    "Share any changes in how you feel with your care team.",
+    "Read your visit summary for details.",
+    "Call us if you have any questions."
+   ],
+   "whenToCall": [
+    "Call us if you feel much more tired than usual.",
+    "Call if you have trouble with daily activities.",
+    "Call 555-0100 if you need support or have urgent questions."
+   ],
+   "questionsForNextTime": [
+    "What else can help with comfort at home?",
+    "How can Daniel or family support you better?",
+    "What changes should we watch for together?"
+   ]
+  },
+  "videoScripts": [
+   {
+    "stage": "before",
+    "title": "Getting Ready for Your Visit",
+    "scenes": [
+     {
+      "kind": "title",
+      "title": "Welcome, Grace and Daniel",
+      "text": "Your comfort and support matter to us.",
+      "items": [],
+      "voiceover": "Welcome, Grace and Daniel. We want to help you feel comfortable."
+     },
+     {
+      "kind": "card",
+      "title": "Your Upcoming Visit",
+      "text": "Your visit is on {{date}}, {{weekday}} at {{time}}.",
+      "items": [],
+      "voiceover": "Your visit is scheduled for {{date}}, {{weekday}}, at {{time}}."
+     },
+     {
+      "kind": "steps",
+      "title": "What Will Happen",
+      "text": "We will talk about your comfort and care.",
+      "items": [
+       "Share what matters to you",
+       "Plan together for comfort",
+       "Daniel can join anytime"
+      ],
+      "voiceover": "We will talk about what matters to you and plan together for your comfort. Daniel can join anytime."
+     },
+     {
+      "kind": "choice",
+      "title": "Your Choices",
+      "text": "You can choose how we connect.",
+      "items": [
+       "Call or text before visit",
+       "Daniel can join the talk"
+      ],
+      "voiceover": "You can choose if you want a call or text before the visit. Daniel is always welcome."
+     },
+     {
+      "kind": "closing",
+      "title": "Questions?",
+      "text": "Call us at 555-0100 anytime.",
+      "items": [],
+      "voiceover": "If you have questions, call us at 555-0100. We are here for you."
+     }
+    ]
+   },
+   {
+    "stage": "after",
+    "title": "After Your Visit: Next Steps",
+    "scenes": [
+     {
+      "kind": "title",
+      "title": "Thank You, Grace and Daniel",
+      "text": "We appreciate your time together.",
+      "items": [],
+      "voiceover": "Thank you, Grace and Daniel, for coming in. We appreciate your time."
+     },
+     {
+      "kind": "card",
+      "title": "What We Talked About",
+      "text": "Comfort, support, and next steps.",
+      "items": [],
+      "voiceover": "We talked about your comfort, support, and what comes next."
+     },
+     {
+      "kind": "steps",
+      "title": "Your Next Steps",
+      "text": "Here’s what to do now.",
+      "items": [
+       "Talk with Daniel about care goals",
+       "Let us know how you feel",
+       "Read your visit summary"
+      ],
+      "voiceover": "Talk with Daniel about your care goals. Let us know how you feel. Read your visit summary for details."
+     },
+     {
+      "kind": "choice",
+      "title": "When To Call Us",
+      "text": "Call if you feel much more tired or need help.",
+      "items": [
+       "Trouble with daily activities",
+       "Need support or have questions"
+      ],
+      "voiceover": "Call us if you feel much more tired or have trouble with daily activities. We are here to help."
+     },
+     {
+      "kind": "closing",
+      "title": "We Are Here For You",
+      "text": "Call 555-0100 with any questions.",
+      "items": [],
+      "voiceover": "Call 555-0100 with any questions. We are here for you and your family."
+     }
+    ]
+   }
+  ]
+ }
+}
