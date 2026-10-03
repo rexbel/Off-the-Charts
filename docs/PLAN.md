@@ -1,6 +1,6 @@
 # Off the Chart: Full-App Build Plan
 
-Status: draft for approval · 2026-10-03 · Owner: Rex Belgarde
+Status: approved and implemented through Phase 6 on 2026-10-03 (branch feat/core-app). Open: Phase 1 cache generation needs a model key; deployment needs Vercel/Turso credentials. · Owner: Rex Belgarde
 Supersedes: `BUILD_PLAN.md` (the hackathon plan). Starting point: branch `feat/core-app`, commit `9cc0f66`.
 
 ## 1. Outcome
