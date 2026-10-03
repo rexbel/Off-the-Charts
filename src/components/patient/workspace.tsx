@@ -262,9 +262,9 @@ export function PatientWorkspace({ bundle, user, initialTab, autoBuild, openEvid
         {run || building ? (
           <Collapsible open={contextOpen} onOpenChange={setContextOpen}>
             <CollapsibleTrigger asChild>
-              <Button variant="outline" className="w-full justify-between" aria-expanded={contextOpen}>
+              <Button variant="outline" className="h-auto w-full justify-between whitespace-normal py-2 text-left" aria-expanded={contextOpen}>
                 <span>
-                  Context: EHR snapshot and check-in {contextEdited ? "(edited)" : ""} · {contextOpen ? "hide" : "edit and rebuild"}
+                  Context: EHR snapshot and check-in{contextEdited ? " (edited)" : ""} · {contextOpen ? "hide" : "edit and rebuild"}
                 </span>
                 <ChevronDownIcon aria-hidden className={contextOpen ? "rotate-180 transition-transform" : "transition-transform"} />
               </Button>
