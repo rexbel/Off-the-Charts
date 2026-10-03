@@ -1,18 +1,22 @@
 "use client";
 
 import { useId, useState } from "react";
-import { CheckCircle2Icon, ClockIcon, Loader2Icon, SendIcon, TriangleAlertIcon } from "lucide-react";
+import { ArrowRightIcon, CheckCircle2Icon, ClockIcon, Loader2Icon, RotateCcwIcon, SendIcon, TriangleAlertIcon, XIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Wordmark } from "@/components/shell/wordmark";
+import { VideoPlayer } from "@/components/video-player";
 import { api, ApiRequestError } from "@/lib/client/api";
-import { bestTimeSchema, type BestTime, type CheckinAnswers, type CheckinStatus, type Language } from "@/lib/schemas";
+import { bestTimeSchema, type BestTime, type CheckinAnswers, type CheckinStatus, type Language, type VideoScript } from "@/lib/schemas";
 import { cn } from "@/lib/utils";
 
 export type CheckinInitial =
   | { kind: "invalid"; language: Language }
   | { kind: "ok"; status: CheckinStatus; expiresAt: string; patientFirstName: string; language: Language };
+
+/** The clinician-approved "before your visit" video, shown before the questions. */
+export type CheckinVideo = { script: VideoScript; preferredName: string; language: Language; backdrop: string };
 
 type View = "form" | "sending" | "success" | "error" | "expired" | "submitted" | "invalid";
 
@@ -22,6 +26,10 @@ const COPY = {
     greeting: (name: string) => `Hi ${name}.`,
     intro: "A few quick questions so your care team can talk with you the way you prefer. About two minutes.",
     introShort: "One quick question so your care team can support you.",
+    videoIntro: "First, a short video about your visit. The question comes right after.",
+    continue: "Continue",
+    replay: "Watch the video again",
+    hideVideo: "Hide video",
     whatMatters: "Help us understand what support you need before, during and after your visit?",
     whatMattersHelp: "Anything you want your care team to know, in your own words.",
     whatMattersPlaceholder: "For example: I want to understand my options before anything is decided.",
@@ -54,6 +62,10 @@ const COPY = {
     greeting: (name: string) => `Hola, ${name}.`,
     intro: "Unas preguntas breves para que su equipo de atención se comunique con usted como usted prefiera. Unos dos minutos.",
     introShort: "Una pregunta breve para que su equipo de atención pueda apoyarle.",
+    videoIntro: "Primero, un video corto sobre su visita. La pregunta viene justo después.",
+    continue: "Continuar",
+    replay: "Ver el video de nuevo",
+    hideVideo: "Ocultar el video",
     whatMatters: "¿Nos ayuda a entender qué apoyo necesita antes, durante y después de su visita?",
     whatMattersHelp: "Todo lo que quiera que su equipo sepa, en sus propias palabras.",
     whatMattersPlaceholder: "Por ejemplo: quiero entender mis opciones antes de que se decida algo.",
@@ -94,8 +106,12 @@ function initialView(initial: CheckinInitial): View {
   return "form";
 }
 
-export function CheckinForm({ token, initial, extraQuestions = false }: { token: string; initial: CheckinInitial; extraQuestions?: boolean }) {
+export function CheckinForm({ token, initial, extraQuestions = false, video = null }: { token: string; initial: CheckinInitial; extraQuestions?: boolean; video?: CheckinVideo | null }) {
   const [view, setView] = useState<View>(() => initialView(initial));
+  // With an approved video the intake opens on it; the questions follow when it ends or the patient moves on.
+  const [watching, setWatching] = useState(video !== null);
+  const [replays, setReplays] = useState(0);
+  const [replaying, setReplaying] = useState(false);
   const [language, setLanguage] = useState<Language>(initial.language);
   const [whatMatters, setWhatMatters] = useState("");
   const [includeWho, setIncludeWho] = useState("");
@@ -144,11 +160,43 @@ export function CheckinForm({ token, initial, extraQuestions = false }: { token:
         <p className="text-sm font-medium uppercase tracking-[0.16em] text-voice-muted">{t.eyebrow}</p>
       </header>
 
-      {view === "form" || view === "sending" || view === "error" ? (
+      {video && watching && view === "form" ? (
+        <section className="mt-10 flex flex-1 flex-col gap-6">
+          <div>
+            {firstName && <p className="text-2xl font-semibold leading-tight sm:text-3xl">{t.greeting(firstName)}</p>}
+            <p className="mt-2 text-lg leading-relaxed text-voice-muted">{t.videoIntro}</p>
+          </div>
+          <VideoPlayer script={video.script} preferredName={video.preferredName} language={video.language} backdrop={video.backdrop} autoPlay onEnded={() => setWatching(false)} />
+          <div className="mt-auto flex flex-col gap-3 pt-2 sm:flex-row-reverse">
+            <Button type="button" size="lg" onClick={() => setWatching(false)} className="h-14 rounded-xl text-lg sm:flex-1">
+              {t.continue} <ArrowRightIcon aria-hidden />
+            </Button>
+          </div>
+        </section>
+      ) : view === "form" || view === "sending" || view === "error" ? (
         <form onSubmit={submit} className="mt-10 flex flex-1 flex-col gap-10" noValidate aria-busy={view === "sending"}>
           <div>
             {firstName && <p className="text-2xl font-semibold leading-tight sm:text-3xl">{t.greeting(firstName)}</p>}
             <p className="mt-2 text-lg leading-relaxed text-voice-muted">{extraQuestions ? t.intro : t.introShort}</p>
+            {video && (
+              <Button
+                type="button"
+                variant="outline"
+                size="lg"
+                onClick={() => {
+                  if (replaying) return setReplaying(false);
+                  setReplays((n) => n + 1);
+                  setReplaying(true);
+                }}
+                className="mt-4 h-12 rounded-xl text-base"
+                aria-expanded={replaying}
+              >
+                {replaying ? <XIcon aria-hidden /> : <RotateCcwIcon aria-hidden />} {replaying ? t.hideVideo : t.replay}
+              </Button>
+            )}
+            {video && replaying && (
+              <VideoPlayer key={replays} className="mt-4" script={video.script} preferredName={video.preferredName} language={video.language} backdrop={video.backdrop} autoPlay />
+            )}
           </div>
 
           <div className="grid gap-3">

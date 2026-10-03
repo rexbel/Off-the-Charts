@@ -30,6 +30,8 @@ export type VideoPlayerProps = {
   autoPlay?: boolean;
   /** Fires when playback or a seek enters a different scene. */
   onSceneChange?: (index: number, scene: Scene) => void;
+  /** Fires when playback reaches the last frame. */
+  onEnded?: () => void;
   className?: string;
   /** Illustrated backdrop (public path); defaults to the adult scene. */
   backdrop?: string;
@@ -121,6 +123,7 @@ export function VideoPlayer({
   palette = patientPalette,
   autoPlay = false,
   onSceneChange,
+  onEnded: onEndedProp,
   className,
   backdrop,
 }: VideoPlayerProps) {
@@ -129,6 +132,7 @@ export function VideoPlayer({
   const playerRef = useRef<PlayerRef>(null);
   const sceneRef = useRef(0);
   const onSceneChangeRef = useRef(onSceneChange);
+  const onEndedRef = useRef(onEndedProp);
 
   const starts = useMemo(() => sceneStartFrames(script, fps), [script, fps]);
   const durations = useMemo(() => sceneDurationsInFrames(script, fps), [script, fps]);
@@ -141,7 +145,8 @@ export function VideoPlayer({
 
   useEffect(() => {
     onSceneChangeRef.current = onSceneChange;
-  }, [onSceneChange]);
+    onEndedRef.current = onEndedProp;
+  }, [onSceneChange, onEndedProp]);
 
   useEffect(() => {
     const player = playerRef.current;
@@ -180,6 +185,7 @@ export function VideoPlayer({
     const onEnded = () => {
       setIsPlaying(false);
       voice.stop();
+      onEndedRef.current?.();
     };
 
     player.addEventListener("frameupdate", onFrame);
