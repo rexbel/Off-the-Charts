@@ -12,7 +12,8 @@
     "test:watch": "vitest",
     "db:push": "drizzle-kit push",
     "db:reset": "rm -f data/offthechart.db && pnpm db:push",
-    "precompute": "tsx scripts/precompute.ts"
+    "precompute": "tsx scripts/precompute.ts",
+    "gen-scenes": "tsx scripts/gen-scenes.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.131.0",

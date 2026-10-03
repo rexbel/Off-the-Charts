@@ -22,6 +22,10 @@ export type SceneProps = {
   durationInFrames: number;
   /** 0-based position in the script. The first scene skips its fade-in. */
   index: number;
+  /** Spot illustration for this scene (public path), chosen by src/remotion/spots.ts. */
+  spot?: string;
+  /** One spot per list item, for steps scenes. */
+  itemSpots?: string[];
 };
 
 export const STAGE_LABEL: Record<Language, Record<VideoScript["stage"], string>> = {

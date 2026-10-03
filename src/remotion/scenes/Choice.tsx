@@ -1,63 +1,53 @@
-import type { VideoPalette } from "../palette";
-import {
-  bodyStyle,
-  CHOICE_LEAD,
-  contentArea,
-  headlineStyle,
-  kickerStyle,
-  useSceneMotion,
-  useStaggeredEnter,
-  type SceneProps,
-} from "./shared";
+import { Bubble, ClinicAvatar, INK, Pill, SpotPanel, usePop } from "./comic";
+import { CHOICE_LEAD, VIDEO_FONT_FAMILY, type SceneProps } from "./shared";
 
-/** Two or three option chips. The whole card reads as "you can…", never "you must". */
-export function ChoiceScene({ scene, palette, language, durationInFrames, index }: SceneProps) {
-  const { style } = useSceneMotion(durationInFrames, { fadeIn: index > 0 });
-  const options = (scene.items ?? []).slice(0, 3);
-  const headline = scene.title ?? CHOICE_LEAD[language];
-  const showLead = Boolean(scene.title);
-
+function Chip({ label, delay }: { label: string; delay: number }) {
+  const { scale, opacity } = usePop(delay, 200);
   return (
-    <div style={{ ...contentArea, alignItems: "stretch" }}>
-      <div style={{ ...style, display: "flex", flexDirection: "column", gap: 28 }}>
-        <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-          {showLead ? <p style={kickerStyle(palette)}>{CHOICE_LEAD[language]}</p> : null}
-          <h2 style={headlineStyle(palette, 56)}>{headline}</h2>
-          {scene.text && scene.text !== scene.title ? (
-            <p style={{ ...bodyStyle(palette, 32), color: palette.inkMuted }}>{scene.text}</p>
-          ) : null}
-        </div>
-        {options.length > 0 ? (
-          <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexWrap: "wrap", gap: 20 }}>
-            {options.map((option, i) => (
-              <Chip key={`${i}-${option}`} text={option} palette={palette} delay={16 + i * 12} />
-            ))}
-          </ul>
-        ) : null}
-      </div>
-    </div>
+    <span
+      style={{
+        display: "inline-flex",
+        alignItems: "center",
+        gap: 10,
+        background: "#FFFFFF",
+        border: `4px solid ${INK}`,
+        borderRadius: 999,
+        padding: "10px 22px",
+        fontFamily: VIDEO_FONT_FAMILY,
+        fontWeight: 800,
+        fontSize: 26,
+        color: INK,
+        boxShadow: `5px 5px 0 rgba(27,42,47,0.28)`,
+        transform: `scale(${0.8 + 0.2 * scale})`,
+        opacity,
+        whiteSpace: "nowrap",
+      }}
+    >
+      <span aria-hidden style={{ width: 22, height: 22, borderRadius: 11, border: `3px solid ${INK}`, background: "#CFEEDC", display: "inline-block" }} />
+      {label}
+    </span>
   );
 }
 
-function Chip({ text, palette, delay }: { text: string; palette: VideoPalette; delay: number }) {
-  const { progress, opacity } = useStaggeredEnter(delay);
+/** A real choice: the clinic offers options as tappable chips over the moment they describe. */
+export function ChoiceScene({ scene, language, spot, durationInFrames, index }: SceneProps) {
+  const items = (scene.items ?? []).slice(0, 3);
   return (
-    <li
-      style={{
-        opacity,
-        transform: `scale(${0.92 + progress * 0.08})`,
-        backgroundColor: palette.chipBackground,
-        color: palette.chipInk,
-        border: `3px solid ${palette.chipBorder}`,
-        borderRadius: 999,
-        padding: "18px 34px",
-        fontSize: 30,
-        fontWeight: 700,
-        lineHeight: 1.25,
-        maxWidth: "100%",
-      }}
-    >
-      {text}
-    </li>
+    <>
+      {spot ? <SpotPanel src={spot} durationInFrames={durationInFrames} fadeIn={index > 0} /> : null}
+      {scene.title ? (
+        <div style={{ position: "absolute", top: 36, left: 40 }}>
+          <Pill color="#C6CBF7">{scene.title}</Pill>
+        </div>
+      ) : null}
+      <Bubble x={40} y={112} width={390} delay={8} avatar={<ClinicAvatar size={52} />} fontSize={30}>
+        {scene.text || CHOICE_LEAD[language]}
+      </Bubble>
+      <div style={{ position: "absolute", left: 44, top: 262, width: 400, display: "flex", flexDirection: "column", alignItems: "flex-start", gap: 14 }}>
+        {items.map((item, i) => (
+          <Chip key={i} label={item} delay={28 + i * 14} />
+        ))}
+      </div>
+    </>
   );
 }

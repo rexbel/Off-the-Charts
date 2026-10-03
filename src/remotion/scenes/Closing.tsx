@@ -1,47 +1,27 @@
-import { interpolate } from "remotion";
-import type { Language } from "@/lib/schemas";
-import { contentArea, headlineStyle, useSceneMotion, type SceneProps } from "./shared";
+import { Bubble, ClinicAvatar, Pill, SpotPanel } from "./comic";
+import type { SceneProps } from "./shared";
 
-const SIGNOFF: Record<Language, (name: string) => string> = {
-  en: (name) => `Take care, ${name}`,
-  es: (name) => `Cuídese, ${name}`,
-};
-
-/** Warm sign-off with the contact line set in an accent pill so it is the last thing seen. */
-export function ClosingScene({ scene, palette, preferredName, language, durationInFrames, index }: SceneProps) {
-  const { frame, style } = useSceneMotion(durationInFrames, { rise: 24, fadeIn: index > 0 });
-  const pillOpacity = interpolate(frame, [16, 32], [0, 1], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-  });
-  const pillRise = interpolate(frame, [16, 36], [16, 0], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-  });
-
+/** Sign-off over the phone-call panel: a warm last message with the number as a pill. */
+export function ClosingScene({ scene, spot, durationInFrames, index }: SceneProps) {
+  const phone = `${scene.text} ${scene.voiceover}`.match(/\d{3}[-.\s]\d{4}/)?.[0];
   return (
-    <div style={{ ...contentArea, alignItems: "flex-start" }}>
-      <div style={{ ...style, display: "flex", flexDirection: "column", gap: 28, maxWidth: 1060 }}>
-        <div style={{ height: 8, width: 120, borderRadius: 4, backgroundColor: palette.accent }} />
-        <h2 style={headlineStyle(palette, 72)}>{scene.title ?? SIGNOFF[language](preferredName)}</h2>
-        <p
-          style={{
-            margin: 0,
-            opacity: pillOpacity,
-            transform: `translateY(${pillRise}px)`,
-            alignSelf: "flex-start",
-            backgroundColor: palette.accent,
-            color: palette.accentInk,
-            borderRadius: 28,
-            padding: "22px 36px",
-            fontSize: 32,
-            fontWeight: 600,
-            lineHeight: 1.35,
-          }}
-        >
-          {scene.text}
-        </p>
-      </div>
-    </div>
+    <>
+      {spot ? <SpotPanel src={spot} durationInFrames={durationInFrames} fadeIn={index > 0} /> : null}
+      {scene.title ? (
+        <div style={{ position: "absolute", top: 36, left: 40 }}>
+          <Pill>{scene.title}</Pill>
+        </div>
+      ) : null}
+      <Bubble x={40} y={112} width={390} delay={8} avatar={<ClinicAvatar size={52} />} fontSize={30}>
+        {scene.text}
+      </Bubble>
+      {phone ? (
+        <div style={{ position: "absolute", left: 52, top: 300 }}>
+          <Pill color="#FFFFFF" style={{ fontSize: 30, letterSpacing: 1 }}>
+            📞 {phone}
+          </Pill>
+        </div>
+      ) : null}
+    </>
   );
 }

@@ -2,6 +2,7 @@ import { interpolate, useCurrentFrame } from "remotion";
 import type { VideoPalette } from "../palette";
 import { countWords } from "../durations";
 import { FRAME_MARGIN, VIDEO_FONT_FAMILY } from "./shared";
+import { INK } from "./comic";
 
 /** Characters that fit on two caption lines at the caption font size, with margin. */
 export const CAPTION_MAX_CHARS = 100;
@@ -93,7 +94,7 @@ export type CaptionProps = {
 };
 
 /** Burned-in caption strip pinned to the bottom of every scene. */
-export function Caption({ text, palette, durationInFrames, fadeIn = true }: CaptionProps) {
+export function Caption({ text, durationInFrames, fadeIn = true }: CaptionProps) {
   const frame = useCurrentFrame();
   const chunks = captionChunks(text);
   const timeline = captionTimeline(chunks, durationInFrames);
@@ -134,10 +135,12 @@ export function Caption({ text, palette, durationInFrames, fadeIn = true }: Capt
     >
       <div
         style={{
-          backgroundColor: palette.captionBackground,
-          color: palette.captionInk,
-          borderRadius: 20,
-          padding: "18px 36px",
+          backgroundColor: "#FFFFFF",
+          color: INK,
+          border: `4px solid ${INK}`,
+          boxShadow: "7px 7px 0 rgba(27,42,47,0.3)",
+          borderRadius: 18,
+          padding: "16px 32px",
           minHeight: CAPTION_FONT_SIZE * CAPTION_LINE_HEIGHT * 2 + 36,
           maxWidth: "100%",
           display: "flex",

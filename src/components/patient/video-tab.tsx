@@ -6,9 +6,12 @@ import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { VideoPlayer } from "@/components/video-player";
 import { TouchpointActions, type OnTouchpointAction } from "./touchpoint-actions";
 import type { PersonaRun, TiScore, Touchpoint } from "@/lib/schemas";
+import { backdropFor, backdropSrc } from "@/remotion/backdrops";
+import type { AgeBand } from "@/lib/schemas";
 
 /** Before/after visit videos rendered in the browser from the video scripts. */
-export function VideoTab({ run, touchpoints, tpScores, onAction, canApprove = true }: { run: PersonaRun; touchpoints: Touchpoint[]; tpScores: Record<string, TiScore>; onAction: OnTouchpointAction; canApprove?: boolean }) {
+export function VideoTab({ run, touchpoints, tpScores, onAction, canApprove = true, ageBand = "adult" }: { run: PersonaRun; touchpoints: Touchpoint[]; tpScores: Record<string, TiScore>; onAction: OnTouchpointAction; canApprove?: boolean; ageBand?: AgeBand }) {
+  const backdrop = backdropSrc(backdropFor(ageBand, run.profile.audience));
   const [stage, setStage] = useState<"before" | "after">("before");
   const script = run.outputs.videoScripts.find((v) => v.stage === stage) ?? run.outputs.videoScripts[0];
   const tp = touchpoints.find((t) => t.kind === (stage === "before" ? "video_before" : "video_after"));
@@ -21,10 +24,10 @@ export function VideoTab({ run, touchpoints, tpScores, onAction, canApprove = tr
             <TabsTrigger value="after">After your visit</TabsTrigger>
           </TabsList>
         </Tabs>
-        <p className="text-xs text-muted-foreground">Rendered in the browser with Remotion. Captions burned in. Voice is the browser&apos;s own, not studio TTS.</p>
+        <p className="text-xs text-muted-foreground">Rendered in the browser with Remotion. Illustrations follow each scene&apos;s words; the opening scene matches the patient&apos;s age band. Captions burned in.</p>
       </div>
       <Card className="voice-surface gap-4 p-3 sm:p-4">
-        <VideoPlayer key={`${run.id}-${stage}`} script={script} preferredName={run.profile.preferredName} language={run.profile.communicationNeeds.language} />
+        <VideoPlayer key={`${run.id}-${stage}`} script={script} preferredName={run.profile.preferredName} language={run.profile.communicationNeeds.language} backdrop={backdrop} />
       </Card>
       <details className="rounded-lg border p-3 text-sm">
         <summary className="cursor-pointer font-medium">Script · {script.scenes.length} scenes</summary>

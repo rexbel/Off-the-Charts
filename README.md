@@ -28,10 +28,10 @@ A work queue of upcoming visits, a workbench per patient, and an approval path w
 
 ![The clinician brief with read-aloud](docs/screenshots/06-clinician-brief.jpg)
 
-**Visit summary and video.** The after-visit summary in the patient's voice at their reading level, printable. A short captioned video rendered in the browser with Remotion, narrated by the same voice.
+**Visit summary and video.** The after-visit summary in the patient's voice at their reading level, printable. A short captioned video rendered in the browser with Remotion, narrated by the same voice. It plays like an illustrated explainer: a comic greeting scene picked by age band, one picture per idea (calendar, blood pressure check, echo, phone call), and a numbered flow for the steps. Pictures are chosen from each scene's own words, in English or Spanish, and never by race or ethnicity.
 
 ![The visit summary in the patient-facing palette](docs/screenshots/07-visit-summary.jpg)
-![The before-your-visit video with its scene strip](docs/screenshots/08-video.jpg)
+![The before-your-visit video: an illustrated step-by-step flow](docs/screenshots/08-video.jpg)
 
 **Check-in.** A coordinator creates a link; the patient or caregiver answers four questions without signing in, in English or Spanish. The answers flow into the next build as patient-stated claims.
 
@@ -115,6 +115,7 @@ pnpm lint           # eslint
 pnpm test           # vitest (checker, pipeline, check-in helpers)
 pnpm precompute     # regenerate src/lib/data/generated/<id>.json with the live model (retries on rate limits)
 pnpm precompute --check   # fail if any of the 20 patients lacks a valid cached file (no model calls)
+pnpm gen-scenes    # regenerate missing video illustrations in public/video with the OpenAI image API (--force to redo)
 pnpm db:push        # apply schema with drizzle-kit (migrations also run automatically)
 ```
 

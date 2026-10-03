@@ -31,6 +31,8 @@ export type VideoPlayerProps = {
   /** Fires when playback or a seek enters a different scene. */
   onSceneChange?: (index: number, scene: Scene) => void;
   className?: string;
+  /** Illustrated backdrop (public path); defaults to the adult scene. */
+  backdrop?: string;
 };
 
 
@@ -120,6 +122,7 @@ export function VideoPlayer({
   autoPlay = false,
   onSceneChange,
   className,
+  backdrop,
 }: VideoPlayerProps) {
   const t = UI_TEXT[language];
   const fps = VIDEO_FPS;
@@ -214,7 +217,7 @@ export function VideoPlayer({
     }
   };
 
-  const inputProps: VisitVideoProps = { script, palette, preferredName, language };
+  const inputProps: VisitVideoProps = { script, palette, preferredName, language, backdrop };
 
   if (script.scenes.length === 0 || total === 0) {
     return (

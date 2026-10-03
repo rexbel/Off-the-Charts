@@ -343,7 +343,7 @@ export function PatientWorkspace({ bundle, user, initialTab, autoBuild, openEvid
                 <VisitSummaryView run={run} tp={summaryTp} score={summaryScore} onAction={onAction} onOpenClaim={setEvidenceId} canApprove={canApprove} />
               </TabsContent>
               <TabsContent value="video" className="mt-4">
-                <VideoTab run={run} touchpoints={touchpoints} tpScores={tpScores} onAction={onAction} canApprove={canApprove} />
+                <VideoTab run={run} touchpoints={touchpoints} tpScores={tpScores} onAction={onAction} canApprove={canApprove} ageBand={patient.seed.ageBand} />
               </TabsContent>
               <TabsContent value="compare" className="mt-4">
                 <RunCompare current={run} runs={runs} />
