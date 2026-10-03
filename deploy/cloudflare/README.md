@@ -44,8 +44,8 @@ deploy/mac/start.sh   # serve on 127.0.0.1:3200, secrets (MONGODB_URI, OPENAI_AP
 ## Local
 
 ```bash
-npm install
-npm run typecheck
+pnpm install
+pnpm typecheck
 npx wrangler dev --enable-containers=false --var MAC_ORIGIN:http://localhost:3200
 ```
 

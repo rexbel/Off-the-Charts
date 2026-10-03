@@ -1,0 +1,5 @@
+# Its own workspace root, so pnpm here never reaches up to the Next.js app at the repo root.
+allowBuilds:
+  esbuild: true
+  workerd: true
+  sharp: false
