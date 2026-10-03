@@ -1,0 +1,597 @@
+{
+ "patientId": 2438,
+ "generatedAt": "2026-10-03T07:29:18.881Z",
+ "model": "gpt-4.1-2025-04-14",
+ "context": {
+  "checkin": "Soccer is everything to me. Tell me straight.",
+  "audience": "dual_teen_guardian",
+  "language": "en",
+  "channel": "sms"
+ },
+ "facts": [
+  {
+   "id": "f1",
+   "field": "demographics.age",
+   "value": "14 years old"
+  },
+  {
+   "id": "f2",
+   "field": "demographics.sex",
+   "value": "Male"
+  },
+  {
+   "id": "f3",
+   "field": "primary_diagnoses",
+   "value": "Hypertrophic obstructive cardiomyopathy"
+  },
+  {
+   "id": "f4",
+   "field": "primary_diagnoses",
+   "value": "Osgood-Schlatter disease"
+  },
+  {
+   "id": "f5",
+   "field": "primary_diagnoses",
+   "value": "Musculoskeletal chest pain"
+  },
+  {
+   "id": "f6",
+   "field": "comorbidities",
+   "value": "Participation in high-impact sports"
+  },
+  {
+   "id": "f7",
+   "field": "comorbidities",
+   "value": "Family history of premature coronary artery disease"
+  },
+  {
+   "id": "f8",
+   "field": "profile.chronic_conditions",
+   "value": "Hypertrophic cardiomyopathy"
+  },
+  {
+   "id": "f9",
+   "field": "profile.home_medications",
+   "value": "Metoprolol succinate 25 mg PO daily"
+  },
+  {
+   "id": "f10",
+   "field": "profile.allergies",
+   "value": "NKDA"
+  },
+  {
+   "id": "f11",
+   "field": "profile.surgical_history",
+   "value": "None"
+  },
+  {
+   "id": "f12",
+   "field": "profile.occupation",
+   "value": "High school freshman (9th grade)"
+  },
+  {
+   "id": "f13",
+   "field": "profile.smoking_status",
+   "value": "Never smoked"
+  },
+  {
+   "id": "f14",
+   "field": "profile.alcohol_use",
+   "value": "None"
+  },
+  {
+   "id": "f15",
+   "field": "profile.family_history",
+   "value": "Father with hypertrophic cardiomyopathy"
+  },
+  {
+   "id": "f16",
+   "field": "profile.family_history",
+   "value": "Paternal uncle died suddenly at age 32 from cardiac arrest"
+  },
+  {
+   "id": "f17",
+   "field": "profile.family_history",
+   "value": "Mother healthy"
+  },
+  {
+   "id": "f18",
+   "field": "encounter.visit",
+   "value": "outpatient visit, Cardiology, Dr. Sarah Chen",
+   "encounterId": 10470,
+   "date": "2020-01-15"
+  },
+  {
+   "id": "f19",
+   "field": "encounter.chief_complaint",
+   "value": "Pre-participation sports physical for high school soccer",
+   "encounterId": 10470,
+   "date": "2020-01-15"
+  },
+  {
+   "id": "f20",
+   "field": "encounter.note.hpi",
+   "value": "He is asymptomatic and has no personal history of chest pain, syncope, or palpitations.",
+   "encounterId": 10470,
+   "date": "2020-01-15"
+  },
+  {
+   "id": "f21",
+   "field": "encounter.visit",
+   "value": "outpatient visit, Orthopedics, Dr. Michael Rodriguez",
+   "encounterId": 10471,
+   "date": "2020-05-15"
+  },
+  {
+   "id": "f22",
+   "field": "encounter.chief_complaint",
+   "value": "Right knee pain worsening with sprinting and jumping",
+   "encounterId": 10471,
+   "date": "2020-05-15"
+  },
+  {
+   "id": "f23",
+   "field": "encounter.note.hpi",
+   "value": "This 14-year-old male with known hypertrophic cardiomyopathy on metoprolol succinate, who was evaluated by cardiology four months ago for pre-participation sports clearance, presents to the orthopedic clinic with a new musculoskeletal complaint. He is brought to the clinic by his mother due to right knee pain that has been gradually worsening over the past few weeks.",
+   "encounterId": 10471,
+   "date": "2020-05-15"
+  },
+  {
+   "id": "f24",
+   "field": "encounter.visit",
+   "value": "outpatient visit, Sports Medicine, Dr. Emily Johnson",
+   "encounterId": 10472,
+   "date": "2021-03-15"
+  },
+  {
+   "id": "f25",
+   "field": "encounter.chief_complaint",
+   "value": "Persistent intermittent left-sided chest pain for 4 days",
+   "encounterId": 10472,
+   "date": "2021-03-15"
+  },
+  {
+   "id": "f26",
+   "field": "encounter.note.hpi",
+   "value": "The patient is a 15-year-old male with hypertrophic cardiomyopathy diagnosed in January 2020 and prior orthopedic evaluation in May 2020 who presents with persistent intermittent left-sided chest pain of four days duration. The pain is described as sharp, non-radiating, and comes on suddenly at rest.",
+   "encounterId": 10472,
+   "date": "2021-03-15"
+  },
+  {
+   "id": "f27",
+   "field": "encounter.visit",
+   "value": "ed visit, Emergency Medicine, Dr. James Okafor",
+   "encounterId": 10473,
+   "date": "2023-03-15"
+  },
+  {
+   "id": "f28",
+   "field": "encounter.chief_complaint",
+   "value": "Unexplained fall with brief loss of consciousness during school sports event",
+   "encounterId": 10473,
+   "date": "2023-03-15"
+  },
+  {
+   "id": "f29",
+   "field": "encounter.note.hpi",
+   "value": "The patient, with hypertrophic obstructive cardiomyopathy since his 2020 cardiology evaluation and prior assessment for exertional chest pain in 2021, presents following a syncopal episode. His parents state that he briefly lost consciousness but recovered quickly without confusion or incontinence.",
+   "encounterId": 10473,
+   "date": "2023-03-15"
+  },
+  {
+   "id": "f30",
+   "field": "encounter.note.plan",
+   "value": "An echocardiogram is ordered to evaluate the underlying cause of his symptoms.",
+   "encounterId": 10473,
+   "date": "2023-03-15"
+  },
+  {
+   "id": "f31",
+   "field": "encounter.visit",
+   "value": "ed visit, Emergency Medicine, Dr. Priya Patel",
+   "encounterId": 10469,
+   "date": "2023-11-15"
+  },
+  {
+   "id": "f32",
+   "field": "encounter.chief_complaint",
+   "value": "Sudden loss of consciousness while playing soccer preceded by chest pain and palpitations",
+   "encounterId": 10469,
+   "date": "2023-11-15"
+  },
+  {
+   "id": "f33",
+   "field": "encounter.note.hpi",
+   "value": "The patient with hypertrophic obstructive cardiomyopathy presents with recurrent exertional syncope. He reports that just before the episode, he experienced severe chest pain and palpitations.",
+   "encounterId": 10469,
+   "date": "2023-11-15"
+  },
+  {
+   "id": "f34",
+   "field": "seed.caregiver",
+   "value": "Kim Brooks (mother)"
+  },
+  {
+   "id": "f35",
+   "field": "seed.upcoming_visit",
+   "value": "Cardiology: Heart muscle follow-up and activity plan (in 2 days)"
+  },
+  {
+   "id": "f36",
+   "field": "seed.stated_language",
+   "value": "English (patient-stated)"
+  }
+ ],
+ "profile": {
+  "patientId": 2438,
+  "preferredName": "Tyler",
+  "summaryLine": "Tyler is a 14-year-old who values soccer and wants clear, direct communication as he manages hypertrophic obstructive cardiomyopathy.",
+  "audience": "dual_teen_guardian",
+  "recipients": [
+   {
+    "role": "patient",
+    "name": "Tyler",
+    "primary": true
+   },
+   {
+    "role": "guardian",
+    "name": "Kim Brooks",
+    "relationship": "mother",
+    "primary": false
+   }
+  ],
+  "communicationNeeds": {
+   "readingLevel": 6,
+   "detailPreference": "brief",
+   "language": "en",
+   "channel": "sms",
+   "bestTimeOfDay": ""
+  },
+  "emotionalContext": [
+   {
+    "id": "ec1",
+    "text": "Soccer is extremely important to Tyler and central to his identity.",
+    "kind": "patient_stated",
+    "source": {
+     "factIds": [],
+     "note": "What matters to you check-in"
+    },
+    "reason": "He stated 'Soccer is everything to me.'"
+   },
+   {
+    "id": "ec2",
+    "text": "Tyler prefers direct, straightforward communication from his care team.",
+    "kind": "patient_stated",
+    "source": {
+     "factIds": [],
+     "note": "What matters to you check-in"
+    },
+    "reason": "He stated 'Tell me straight.'"
+   },
+   {
+    "id": "ec3",
+    "text": "Recent episodes of chest pain, palpitations, and loss of consciousness during sports may cause anxiety or concern for Tyler and his mother.",
+    "kind": "inferred",
+    "source": {
+     "factIds": [
+      "f32",
+      "f33",
+      "f28",
+      "f29"
+     ],
+     "note": ""
+    },
+    "reason": "Multiple recent ED visits for syncope and cardiac symptoms during sports are likely to be distressing."
+   }
+  ],
+  "privacyRules": [
+   {
+    "id": "pr1",
+    "rule": "Keep confidential care (mental health, sexual health, substance use) out of guardian-facing messages.",
+    "restrictedTerms": [],
+    "channels": [
+     "sms",
+     "portal",
+     "phone"
+    ],
+    "recipients": [
+     "guardian"
+    ],
+    "kind": "inferred",
+    "source": {
+     "factIds": [],
+     "note": ""
+    },
+    "reason": "Dual teen/guardian audience requires privacy for confidential care."
+   }
+  ],
+  "cognitiveSupport": [],
+  "strengths": [
+   {
+    "id": "s1",
+    "text": "Tyler is actively engaged in sports and school, showing motivation and resilience.",
+    "kind": "fact",
+    "source": {
+     "factIds": [
+      "f6",
+      "f12"
+     ],
+     "note": ""
+    },
+    "reason": "Participation in high-impact sports and school attendance indicate engagement."
+   },
+   {
+    "id": "s2",
+    "text": "Tyler has a supportive mother, Kim Brooks, who attends visits and is involved in his care.",
+    "kind": "fact",
+    "source": {
+     "factIds": [
+      "f23",
+      "f34"
+     ],
+     "note": ""
+    },
+    "reason": "Mother is documented as present and involved at visits."
+   },
+   {
+    "id": "s3",
+    "text": "Tyler is able to clearly express his preferences and what matters to him.",
+    "kind": "patient_stated",
+    "source": {
+     "factIds": [],
+     "note": "What matters to you check-in"
+    },
+    "reason": "He articulated his priorities and communication style."
+   }
+  ],
+  "avoidTerms": [
+   "non-compliant",
+   "denies",
+   "refused"
+  ],
+  "dataQualityWarnings": [
+   "Patient age is listed as 14 in 2020 but as 15 in a 2021 note; verify current age."
+  ]
+ },
+ "voiceGuide": {
+  "tone": [
+   "direct",
+   "supportive",
+   "clear"
+  ],
+  "doSay": [
+   "Let us know if you have questions.",
+   "You can call us anytime.",
+   "Tell us what works for you.",
+   "We want to help you play soccer safely.",
+   "Here’s what you need to know."
+  ],
+  "dontSay": [
+   "non-compliant",
+   "denies",
+   "refused",
+   "You should have done this already.",
+   "It’s not a big deal.",
+   "Just follow instructions."
+  ],
+  "sentenceMaxWords": 12,
+  "addressing": "Speak first to Tyler by name, then include Kim Brooks as his mother in the message.",
+  "greeting": "Hi Tyler and Kim,",
+  "signoff": "Your Cardiology team",
+  "choicePhrases": [
+   "You can choose a call or text.",
+   "Let us know if you want more info.",
+   "You decide what works best."
+  ],
+  "safetyPhrases": [
+   "Call 555-0100 if you need us.",
+   "Reply STOP to pause messages."
+  ]
+ },
+ "outputs": {
+  "messages": [
+   {
+    "stage": "before_7d",
+    "recipient": "patient",
+    "persona": "Hi Tyler and Kim,\nYour heart muscle check and activity plan is on {{weekday}}, {{date}} at {{time}}. It will take about 40 minutes. We will talk together about soccer, symptoms, and your plan. You can choose a call or text if you have questions. Call 555-0100 if you need us.\nYour Cardiology team",
+    "claimIds": [
+     "ec1",
+     "ec2"
+    ]
+   },
+   {
+    "stage": "before_2d",
+    "recipient": "patient",
+    "persona": "Hi Tyler and Kim,\nYour cardiology visit is coming up on {{weekday}}, {{date}} at {{time}}. We will review your heart health and talk about playing soccer safely. You can let us know if you want more info. Call 555-0100 if you need us.\nYour Cardiology team",
+    "claimIds": [
+     "ec1",
+     "ec2"
+    ]
+   },
+   {
+    "stage": "after_24h",
+    "recipient": "patient",
+    "persona": "Hi Tyler and Kim,\nThank you for coming to your heart muscle visit. Your summary is ready. We will follow up with your activity plan. You can call 555-0100 if you have questions.\nYour Cardiology team",
+    "claimIds": []
+   },
+   {
+    "stage": "before_7d",
+    "recipient": "guardian",
+    "persona": "Hi Kim,\nTyler's cardiology visit is on {{weekday}}, {{date}} at {{time}}. It will last about 40 minutes. You can help by making sure Tyler brings any questions. Part of the visit will be one-on-one with Tyler, which is normal for teens. Call 555-0100 if you need us.\nYour Cardiology team",
+    "claimIds": [
+     "pr1"
+    ]
+   },
+   {
+    "stage": "before_2d",
+    "recipient": "guardian",
+    "persona": "Hi Kim,\nTyler's heart muscle check is on {{weekday}}, {{date}} at {{time}}. We will talk about his activity plan. You can ask for more details if you want. Tyler will have time alone with the team, which is routine for his age. Call 555-0100 if you need us.\nYour Cardiology team",
+    "claimIds": [
+     "pr1"
+    ]
+   },
+   {
+    "stage": "after_24h",
+    "recipient": "guardian",
+    "persona": "Hi Kim,\nThank you for bringing Tyler to his visit. His summary is ready. We will follow up soon about his activity plan. Call 555-0100 if you have questions.\nYour Cardiology team",
+    "claimIds": [
+     "pr1"
+    ]
+   }
+  ],
+  "clinicianBrief": {
+   "lines": [
+    "Tyler is a 14-year-old with hypertrophic obstructive cardiomyopathy, here for a heart muscle follow-up and activity plan.",
+    "He values soccer highly and wants direct, clear communication.",
+    "Tyler and his mother Kim Brooks are both engaged and present at visits.",
+    "Recent episodes of chest pain, palpitations, and syncope during sports are causing concern for both.",
+    "Use straightforward language and address Tyler directly; avoid vague reassurances.",
+    "Do not use the terms 'non-compliant,' 'denies,' or 'refused.'",
+    "Chart check: Patient age is inconsistently documented; confirm age during visit."
+   ],
+   "readAloudSeconds": 29,
+   "claimIds": [
+    "ec1",
+    "ec2",
+    "ec3"
+   ]
+  },
+  "visitSummary": {
+   "headline": "Heart Muscle Follow-Up and Activity Plan: {{date}}",
+   "whatWeTalkedAbout": [
+    {
+     "text": "Your heart muscle condition and how it affects sports.",
+     "claimIds": [
+      "ec1"
+     ]
+    },
+    {
+     "text": "Recent symptoms like chest pain and fainting during soccer.",
+     "claimIds": []
+    },
+    {
+     "text": "Your questions about staying active safely.",
+     "claimIds": [
+      "ec1",
+      "ec2"
+     ]
+    }
+   ],
+   "yourNextSteps": [
+    "Take your medicine as prescribed.",
+    "Let us know right away if you have chest pain, palpitations, or fainting.",
+    "Follow your new activity plan for sports.",
+    "Write down any questions for your next visit.",
+    "Call us if you want to talk about your plan."
+   ],
+   "whenToCall": [
+    "Call us if you have chest pain or trouble breathing.",
+    "Call if you faint or feel dizzy during activity.",
+    "Call 555-0100 if you are worried or need help."
+   ],
+   "questionsForNextTime": [
+    "Can I keep playing soccer?",
+    "What symptoms should I watch for?",
+    "How can I stay safe while being active?"
+   ]
+  },
+  "videoScripts": [
+   {
+    "stage": "before",
+    "title": "Getting Ready for Your Heart Muscle Visit",
+    "scenes": [
+     {
+      "kind": "title",
+      "title": "Your Heart Check",
+      "text": "Your heart muscle visit is coming up.",
+      "items": [],
+      "voiceover": "Your heart muscle visit is soon. We will talk about your health and activity."
+     },
+     {
+      "kind": "card",
+      "title": "Who Will Be There",
+      "text": "Tyler and Kim will meet the cardiology team.",
+      "items": [],
+      "voiceover": "You and your mom will meet with the cardiology team together."
+     },
+     {
+      "kind": "steps",
+      "title": "What Will Happen",
+      "text": "We will check your heart and talk about sports.",
+      "items": [
+       "Heart check",
+       "Talk about symptoms",
+       "Plan for activity"
+      ],
+      "voiceover": "We will check your heart, talk about any symptoms, and make a plan for sports."
+     },
+     {
+      "kind": "choice",
+      "title": "Your Choices",
+      "text": "You can ask questions or choose how we talk.",
+      "items": [
+       "Ask questions anytime",
+       "Choose call or text"
+      ],
+      "voiceover": "You can ask questions anytime and choose if you want to talk by call or text."
+     },
+     {
+      "kind": "closing",
+      "title": "Contact Us",
+      "text": "Call 555-0100 if you need us.",
+      "items": [],
+      "voiceover": "Call us at 555-0100 if you need anything before your visit."
+     }
+    ]
+   },
+   {
+    "stage": "after",
+    "title": "After Your Heart Muscle Visit",
+    "scenes": [
+     {
+      "kind": "title",
+      "title": "Thank You for Visiting",
+      "text": "Thank you for coming to your visit.",
+      "items": [],
+      "voiceover": "Thank you for coming to your heart muscle visit."
+     },
+     {
+      "kind": "card",
+      "title": "What We Talked About",
+      "text": "We reviewed your heart and activity plan.",
+      "items": [],
+      "voiceover": "We talked about your heart, your symptoms, and your activity plan."
+     },
+     {
+      "kind": "steps",
+      "title": "Your Next Steps",
+      "text": "Follow your plan and call with questions.",
+      "items": [
+       "Take your medicine",
+       "Follow your activity plan",
+       "Write down questions"
+      ],
+      "voiceover": "Take your medicine, follow your activity plan, and write down any questions for next time."
+     },
+     {
+      "kind": "choice",
+      "title": "When to Call",
+      "text": "Call if you have chest pain or fainting.",
+      "items": [
+       "Chest pain or trouble breathing",
+       "Fainting or dizziness"
+      ],
+      "voiceover": "Call us if you have chest pain, trouble breathing, or fainting."
+     },
+     {
+      "kind": "closing",
+      "title": "We Are Here for You",
+      "text": "Call 555-0100 if you need us.",
+      "items": [],
+      "voiceover": "Call 555-0100 if you need us. We are here to help."
+     }
+    ]
+   }
+  ]
+ }
+}

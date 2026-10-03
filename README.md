@@ -54,7 +54,7 @@ pnpm typecheck      # tsc --noEmit
 pnpm lint           # eslint
 pnpm test           # vitest (checker, pipeline helpers)
 pnpm precompute     # generate src/lib/data/generated/<id>.json for all 20 patients (needs a model key)
-pnpm precompute --check   # fail if the three walkthrough patients lack valid cached files (no model calls)
+pnpm precompute --check   # fail if any of the 20 patients lacks a valid cached file (no model calls)
 pnpm db:push        # apply schema with drizzle-kit (migrations also run automatically)
 ```
 

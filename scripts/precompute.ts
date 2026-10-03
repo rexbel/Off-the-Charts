@@ -6,7 +6,7 @@
  *   pnpm precompute            # all 20
  *   pnpm precompute 1672 2311  # some
  *   pnpm precompute --force    # overwrite existing files
- *   pnpm precompute --check    # exit 1 if a walkthrough patient (Emily, Walter, Jake) lacks a valid cached file (no model calls)
+ *   pnpm precompute --check    # exit 1 if any patient lacks a valid cached file (no model calls)
  */
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
@@ -33,10 +33,8 @@ async function main() {
   const argv = process.argv.slice(2);
 
   if (argv.includes("--check")) {
-    const { DEMO_PATIENT_IDS } = await import("@/lib/data/cohort");
-    const required = new Set<number>(Object.values(DEMO_PATIENT_IDS));
     let missing = 0;
-    for (const p of listPatients().filter((x) => required.has(x.patientId))) {
+    for (const p of listPatients()) {
       const file = path.join(GENERATED_DIR, `${p.patientId}.json`);
       const raw = await readFile(file, "utf8").catch(() => null);
       const ok = raw ? cachedRunSchema.safeParse(JSON.parse(raw)).success : false;
@@ -45,7 +43,7 @@ async function main() {
         console.log(`  ${p.patientId} ${p.seed.preferredName}: ${raw ? "does not match the schema" : "missing"}`);
       }
     }
-    console.log(missing ? `${missing} walkthrough patient(s) without valid cached output.` : "All walkthrough patients have valid cached output.");
+    console.log(missing ? `${missing} patient(s) without valid cached output.` : "All 20 patients have valid cached output.");
     process.exit(missing ? 1 : 0);
   }
 

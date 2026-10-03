@@ -1,0 +1,739 @@
+{
+ "patientId": 2522,
+ "generatedAt": "2026-10-03T07:30:51.309Z",
+ "model": "gpt-4.1-2025-04-14",
+ "context": {
+  "checkin": "My phone is shared. Don't name my conditions in texts.",
+  "audience": "self",
+  "language": "en",
+  "channel": "sms"
+ },
+ "facts": [
+  {
+   "id": "f1",
+   "field": "demographics.age",
+   "value": "35 years old"
+  },
+  {
+   "id": "f2",
+   "field": "demographics.sex",
+   "value": "Male"
+  },
+  {
+   "id": "f3",
+   "field": "primary_diagnoses",
+   "value": "HIV-related opportunistic skin infection"
+  },
+  {
+   "id": "f4",
+   "field": "primary_diagnoses",
+   "value": "Cryptococcal meningitis"
+  },
+  {
+   "id": "f5",
+   "field": "primary_diagnoses",
+   "value": "Candidal esophagitis"
+  },
+  {
+   "id": "f6",
+   "field": "primary_diagnoses",
+   "value": "Tuberculosis"
+  },
+  {
+   "id": "f7",
+   "field": "primary_diagnoses",
+   "value": "Cryptosporidiosis"
+  },
+  {
+   "id": "f8",
+   "field": "primary_diagnoses",
+   "value": "Cerebral toxoplasmosis"
+  },
+  {
+   "id": "f9",
+   "field": "primary_diagnoses",
+   "value": "Focal Segmental Glomerulosclerosis"
+  },
+  {
+   "id": "f10",
+   "field": "primary_diagnoses",
+   "value": "IgA nephropathy"
+  },
+  {
+   "id": "f11",
+   "field": "comorbidities",
+   "value": "Medication noncompliance"
+  },
+  {
+   "id": "f12",
+   "field": "comorbidities",
+   "value": "HIV-related opportunistic skin infection"
+  },
+  {
+   "id": "f13",
+   "field": "comorbidities",
+   "value": "Nephrotic syndrome (edema management)"
+  },
+  {
+   "id": "f14",
+   "field": "comorbidities",
+   "value": "Acute kidney injury"
+  },
+  {
+   "id": "f15",
+   "field": "comorbidities",
+   "value": "Immunosuppressed state"
+  },
+  {
+   "id": "f16",
+   "field": "comorbidities",
+   "value": "Essential hypertension"
+  },
+  {
+   "id": "f17",
+   "field": "profile.chronic_conditions",
+   "value": "HIV infection (AIDS, CD4 count <200 cells/mm³)"
+  },
+  {
+   "id": "f18",
+   "field": "profile.chronic_conditions",
+   "value": "IgA nephropathy"
+  },
+  {
+   "id": "f19",
+   "field": "profile.chronic_conditions",
+   "value": "Type 2 diabetes mellitus"
+  },
+  {
+   "id": "f20",
+   "field": "profile.chronic_conditions",
+   "value": "Hypertension"
+  },
+  {
+   "id": "f21",
+   "field": "profile.chronic_conditions",
+   "value": "Chronic kidney disease stage 3"
+  },
+  {
+   "id": "f22",
+   "field": "profile.home_medications",
+   "value": "Biktarvy (bictegravir/tenofovir alafenamide/emtricitabine) 50/200/25 mg tablet daily (prescribed, adherence poor)"
+  },
+  {
+   "id": "f23",
+   "field": "profile.home_medications",
+   "value": "Metformin 1000 mg oral tablet twice daily"
+  },
+  {
+   "id": "f24",
+   "field": "profile.home_medications",
+   "value": "Lisinopril 20 mg oral tablet daily"
+  },
+  {
+   "id": "f25",
+   "field": "profile.home_medications",
+   "value": "Trimethoprim-sulfamethoxazole 800/160 mg tablet daily (for PCP prophylaxis, prescribed)"
+  },
+  {
+   "id": "f26",
+   "field": "profile.allergies",
+   "value": "NKDA"
+  },
+  {
+   "id": "f27",
+   "field": "profile.surgical_history",
+   "value": "Appendectomy (age 22)"
+  },
+  {
+   "id": "f28",
+   "field": "profile.occupation",
+   "value": "Unemployed; formerly worked as security guard"
+  },
+  {
+   "id": "f29",
+   "field": "profile.smoking_status",
+   "value": "Current smoker, 10 cigarettes per day for 15 years"
+  },
+  {
+   "id": "f30",
+   "field": "profile.alcohol_use",
+   "value": "Occasional social use, 1-2 drinks monthly"
+  },
+  {
+   "id": "f31",
+   "field": "profile.family_history",
+   "value": "Type 2 diabetes mellitus (mother, diagnosed age 45)"
+  },
+  {
+   "id": "f32",
+   "field": "profile.family_history",
+   "value": "Hypertension (father)"
+  },
+  {
+   "id": "f33",
+   "field": "profile.family_history",
+   "value": "End-stage renal disease (maternal uncle, unknown cause)"
+  },
+  {
+   "id": "f34",
+   "field": "profile.family_history",
+   "value": "HIV-negative (partner)"
+  },
+  {
+   "id": "f35",
+   "field": "encounter.visit",
+   "value": "outpatient visit, Nephrology, Dr. Sarah Chen",
+   "encounterId": 10669,
+   "date": "2020-01-15"
+  },
+  {
+   "id": "f36",
+   "field": "encounter.chief_complaint",
+   "value": "2-day history of dark urine and mild flank pain following a recent upper respiratory infection",
+   "encounterId": 10669,
+   "date": "2020-01-15"
+  },
+  {
+   "id": "f37",
+   "field": "encounter.note.hpi",
+   "value": "He reports a recent upper respiratory infection that resolved a week ago.",
+   "encounterId": 10669,
+   "date": "2020-01-15"
+  },
+  {
+   "id": "f38",
+   "field": "encounter.visit",
+   "value": "outpatient visit, Nephrology, Dr. Sarah Chen",
+   "encounterId": 10668,
+   "date": "2020-07-15"
+  },
+  {
+   "id": "f39",
+   "field": "encounter.chief_complaint",
+   "value": "Progressive swelling in legs and occasional frothy urine over 2 months",
+   "encounterId": 10668,
+   "date": "2020-07-15"
+  },
+  {
+   "id": "f40",
+   "field": "encounter.note.hpi",
+   "value": "The patient with HIV (AIDS) and IgA nephropathy returns to nephrology clinic 6 months after diagnosis presenting with a 2-month history of progressive swelling in his legs and occasional frothy urine. He denies any recent infections, drug use, or changes in medications.",
+   "encounterId": 10668,
+   "date": "2020-07-15"
+  },
+  {
+   "id": "f41",
+   "field": "encounter.visit",
+   "value": "outpatient visit, Internal Medicine, Dr. Michael Rodriguez",
+   "encounterId": 10662,
+   "date": "2021-01-15"
+  },
+  {
+   "id": "f42",
+   "field": "encounter.chief_complaint",
+   "value": "2-week history of swelling in legs and occasional frothy urine",
+   "encounterId": 10662,
+   "date": "2021-01-15"
+  },
+  {
+   "id": "f43",
+   "field": "encounter.note.hpi",
+   "value": "The patient with HIV and CKD reports 2-week history of swelling in his legs and occasional frothy urine.",
+   "encounterId": 10662,
+   "date": "2021-01-15"
+  },
+  {
+   "id": "f44",
+   "field": "encounter.visit",
+   "value": "outpatient visit, Pulmonology, Dr. Aisha Johnson",
+   "encounterId": 10665,
+   "date": "2021-07-15"
+  },
+  {
+   "id": "f45",
+   "field": "encounter.chief_complaint",
+   "value": "3-week history of persistent cough, low-grade fever, night sweats, and 10-pound weight loss",
+   "encounterId": 10665,
+   "date": "2021-07-15"
+  },
+  {
+   "id": "f46",
+   "field": "encounter.note.hpi",
+   "value": "This 36-year-old male with HIV/AIDS and CKD stage 3, previously evaluated for IgA nephropathy and a recent opportunistic infection, presents to Pulmonology. He reports intermittent night sweats and increasing fatigue.",
+   "encounterId": 10665,
+   "date": "2021-07-15"
+  },
+  {
+   "id": "f47",
+   "field": "encounter.visit",
+   "value": "outpatient visit, Gastroenterology, Dr. David Kim",
+   "encounterId": 10664,
+   "date": "2022-01-15"
+  },
+  {
+   "id": "f48",
+   "field": "encounter.chief_complaint",
+   "value": "Painful swallowing for two weeks with 10-pound weight loss and low-grade fever",
+   "encounterId": 10664,
+   "date": "2022-01-15"
+  },
+  {
+   "id": "f49",
+   "field": "encounter.note.hpi",
+   "value": "This 37-year-old male with AIDS, IgA nephropathy, and history of opportunistic infections including tuberculosis presents with painful swallowing. He reports a weight loss of 10 pounds during this period and has a low-grade fever.",
+   "encounterId": 10664,
+   "date": "2022-01-15"
+  },
+  {
+   "id": "f50",
+   "field": "encounter.visit",
+   "value": "ed visit, Emergency Medicine, Dr. Emily Patel",
+   "encounterId": 10666,
+   "date": "2022-07-15"
+  },
+  {
+   "id": "f51",
+   "field": "encounter.chief_complaint",
+   "value": "3-week history of watery diarrhea and 10-pound weight loss",
+   "encounterId": 10666,
+   "date": "2022-07-15"
+  },
+  {
+   "id": "f52",
+   "field": "encounter.note.hpi",
+   "value": "The patient is a 37-year-old male with AIDS (complicated by poor antiretroviral adherence), IgA nephropathy with superimposed FSGS, and CKD stage 3 who presents with a 3-week history of watery diarrhea and 10-pound weight loss, occurring six months after an episode of candidal esophagitis and one year after tuberculosis. He reports no fever, blood in the stool, or recent travel.",
+   "encounterId": 10666,
+   "date": "2022-07-15"
+  },
+  {
+   "id": "f53",
+   "field": "encounter.visit",
+   "value": "ed visit, Emergency Medicine, Dr. James O'Connor",
+   "encounterId": 10663,
+   "date": "2022-10-15"
+  },
+  {
+   "id": "f54",
+   "field": "encounter.chief_complaint",
+   "value": "2-week history of headache, fever, and neck stiffness progressively worsening despite acetaminophen",
+   "encounterId": 10663,
+   "date": "2022-10-15"
+  },
+  {
+   "id": "f55",
+   "field": "encounter.note.hpi",
+   "value": "This 37-year-old male with AIDS, IgA nephropathy, and recent cryptosporidiosis returns to the emergency department with a 2-week history of headache, fever, and neck stiffness. He reports that his symptoms have progressively worsened despite taking acetaminophen.",
+   "encounterId": 10663,
+   "date": "2022-10-15"
+  },
+  {
+   "id": "f56",
+   "field": "encounter.visit",
+   "value": "ed visit, Emergency Medicine, Dr. Fatima Al-Hassan",
+   "encounterId": 10667,
+   "date": "2023-01-15"
+  },
+  {
+   "id": "f57",
+   "field": "encounter.chief_complaint",
+   "value": "2-week history of progressive headache, fever, confusion, and difficulty walking",
+   "encounterId": 10667,
+   "date": "2023-01-15"
+  },
+  {
+   "id": "f58",
+   "field": "encounter.note.hpi",
+   "value": "Patient with HIV/AIDS and prior cryptococcal meningitis presents. His partner reports he has been less responsive and has difficulty walking.",
+   "encounterId": 10667,
+   "date": "2023-01-15"
+  },
+  {
+   "id": "f59",
+   "field": "seed.upcoming_visit",
+   "value": "Infectious Diseases: Follow-up visit (in 3 days)"
+  },
+  {
+   "id": "f60",
+   "field": "seed.stated_language",
+   "value": "English (patient-stated)"
+  }
+ ],
+ "profile": {
+  "patientId": 2522,
+  "preferredName": "Marcus",
+  "summaryLine": "Marcus is a 35-year-old man with multiple complex health conditions who shares his phone and values privacy about his diagnoses in text messages.",
+  "audience": "self",
+  "recipients": [
+   {
+    "role": "patient",
+    "name": "Marcus",
+    "relationship": "self",
+    "primary": true
+   }
+  ],
+  "communicationNeeds": {
+   "readingLevel": 6,
+   "detailPreference": "brief",
+   "language": "en",
+   "channel": "sms",
+   "bestTimeOfDay": ""
+  },
+  "emotionalContext": [
+   {
+    "id": "ec1",
+    "text": "Marcus shares his phone and is concerned about privacy regarding his health conditions in text messages.",
+    "kind": "patient_stated",
+    "source": {
+     "factIds": [],
+     "note": "What matters to you check-in"
+    },
+    "reason": "He explicitly stated this in his check-in."
+   },
+   {
+    "id": "ec2",
+    "text": "Marcus has a history of complex and chronic medical conditions, which may contribute to stress or fatigue.",
+    "kind": "inferred",
+    "source": {
+     "factIds": [
+      "f3",
+      "f4",
+      "f5",
+      "f6",
+      "f7",
+      "f8",
+      "f9",
+      "f10",
+      "f13",
+      "f14",
+      "f15",
+      "f17",
+      "f18",
+      "f19",
+      "f20",
+      "f21"
+     ]
+    },
+    "reason": "Multiple serious diagnoses often impact emotional well-being."
+   },
+   {
+    "id": "ec3",
+    "text": "Marcus is currently unemployed, which may affect his sense of security or self-esteem.",
+    "kind": "fact",
+    "source": {
+     "factIds": [
+      "f28"
+     ],
+     "note": ""
+    },
+    "reason": "Unemployment is documented in the record."
+   }
+  ],
+  "privacyRules": [
+   {
+    "id": "pr1",
+    "rule": "Do not include any diagnosis names or medication names related to HIV, kidney disease, or opportunistic infections in SMS messages.",
+    "restrictedTerms": [
+     "HIV",
+     "AIDS",
+     "Biktarvy",
+     "bictegravir",
+     "tenofovir",
+     "emtricitabine",
+     "Cryptococcal meningitis",
+     "Candidal esophagitis",
+     "Tuberculosis",
+     "Cryptosporidiosis",
+     "Cerebral toxoplasmosis",
+     "Focal Segmental Glomerulosclerosis",
+     "IgA nephropathy",
+     "nephrotic syndrome",
+     "Trimethoprim-sulfamethoxazole",
+     "PCP prophylaxis",
+     "opportunistic infection"
+    ],
+    "channels": [
+     "sms"
+    ],
+    "recipients": [],
+    "kind": "patient_stated",
+    "source": {
+     "factIds": [],
+     "note": "What matters to you check-in"
+    },
+    "reason": "Marcus stated his phone is shared and does not want his conditions named in texts."
+   }
+  ],
+  "cognitiveSupport": [],
+  "strengths": [
+   {
+    "id": "s1",
+    "text": "Marcus is proactive in communicating his privacy needs to the care team.",
+    "kind": "patient_stated",
+    "source": {
+     "factIds": [],
+     "note": "What matters to you check-in"
+    },
+    "reason": "He clearly stated his preferences regarding privacy."
+   },
+   {
+    "id": "s2",
+    "text": "Marcus has maintained engagement with multiple specialty clinics over several years.",
+    "kind": "fact",
+    "source": {
+     "factIds": [
+      "f35",
+      "f38",
+      "f41",
+      "f44",
+      "f47",
+      "f50",
+      "f53",
+      "f56"
+     ],
+     "note": ""
+    },
+    "reason": "Multiple documented visits across specialties."
+   }
+  ],
+  "avoidTerms": [
+   "non-compliant",
+   "denies",
+   "refused"
+  ],
+  "dataQualityWarnings": [
+   "No explicit documentation of preferred time of day for communication.",
+   "No documentation of cognitive impairment or need for cognitive support.",
+   "\"HIV-related opportunistic skin infection\" appears as both a primary diagnosis and a comorbidity."
+  ]
+ },
+ "voiceGuide": {
+  "tone": [
+   "respectful",
+   "concise",
+   "neutral"
+  ],
+  "doSay": [
+   "We have an update for you.",
+   "Please reply if you have questions.",
+   "Let us know if you need to reschedule."
+  ],
+  "dontSay": [
+   "non-compliant",
+   "denies",
+   "refused",
+   "HIV",
+   "AIDS",
+   "Biktarvy",
+   "bictegravir",
+   "tenofovir",
+   "emtricitabine",
+   "Cryptococcal",
+   "Candidal",
+   "Tuberculosis",
+   "Cryptosporidiosis",
+   "toxoplasmosis",
+   "glomerulosclerosis",
+   "nephropathy",
+   "nephrotic",
+   "Trimethoprim",
+   "PCP",
+   "opportunistic"
+  ],
+  "sentenceMaxWords": 12,
+  "addressing": "Speak directly to Marcus using his name. Do not mention or address anyone else, as messages are for his eyes only.",
+  "greeting": "Hello Marcus,",
+  "signoff": "Your Care Team",
+  "choicePhrases": [
+   "You can reply to this message.",
+   "You may call to discuss.",
+   "Let us know if you want to change your appointment."
+  ],
+  "safetyPhrases": [
+   "Call 555-0100 for help.",
+   "Reply STOP to pause messages."
+  ]
+ },
+ "outputs": {
+  "messages": [
+   {
+    "stage": "before_7d",
+    "recipient": "patient",
+    "persona": "Hello Marcus,\nYou have a follow-up visit with Infectious Diseases on {{weekday}}, {{date}} at {{time}}. The visit will last about 40 minutes. We will check in together about your care. You can reply to this message or call if you need to reschedule. Call 555-0100 for help.\nYour Care Team",
+    "claimIds": [
+     "pr1",
+     "ec1"
+    ]
+   },
+   {
+    "stage": "before_2d",
+    "recipient": "patient",
+    "persona": "Hello Marcus,\nThis is a reminder for your Infectious Diseases visit on {{weekday}}, {{date}} at {{time}}. We will meet for about 40 minutes. You can let us know if you want to change your appointment. Please reply if you have questions. Call 555-0100 for help.\nYour Care Team",
+    "claimIds": [
+     "pr1",
+     "ec1"
+    ]
+   },
+   {
+    "stage": "after_24h",
+    "recipient": "patient",
+    "persona": "Hello Marcus,\nThank you for coming to your visit. You can read your summary in plain language. We will follow up together as planned. You may call to discuss any questions. Call 555-0100 for help.\nYour Care Team",
+    "claimIds": [
+     "pr1",
+     "ec1"
+    ]
+   }
+  ],
+  "clinicianBrief": {
+   "lines": [
+    "Marcus is a 35-year-old man here for an Infectious Diseases follow-up.",
+    "He shares his phone and values privacy—do not mention diagnoses or medications in texts.",
+    "He prefers brief, direct communication and appreciates respect for his privacy.",
+    "Marcus has multiple complex chronic conditions and is currently unemployed, which may impact stress or self-esteem.",
+    "He is proactive about communicating needs and stays engaged with care.",
+    "Avoid restricted terms in written communication, especially SMS.",
+    "Chart check: No preferred time of day documented; no cognitive impairment noted; diagnosis overlap present."
+   ],
+   "readAloudSeconds": 29,
+   "claimIds": [
+    "ec1",
+    "ec2",
+    "ec3",
+    "s1",
+    "s2",
+    "pr1"
+   ]
+  },
+  "visitSummary": {
+   "headline": "Your Infectious Diseases Follow-Up Visit on {{date}}",
+   "whatWeTalkedAbout": [
+    {
+     "text": "Reviewed your current health and recent changes.",
+     "claimIds": []
+    },
+    {
+     "text": "Talked about your care plan and next steps.",
+     "claimIds": []
+    },
+    {
+     "text": "Answered your questions about your ongoing care.",
+     "claimIds": []
+    }
+   ],
+   "yourNextSteps": [
+    "Keep your next appointments as scheduled.",
+    "Contact us if you have new symptoms or concerns.",
+    "Take your medications as discussed.",
+    "Let us know if you need to reschedule.",
+    "Call if you have questions about your care."
+   ],
+   "whenToCall": [
+    "Call us if you have fever, chest pain, or trouble breathing.",
+    "Call 555-0100 if you feel much worse suddenly.",
+    "Call if you cannot keep down fluids or food."
+   ],
+   "questionsForNextTime": [
+    "What changes should I watch for?",
+    "How can I make my care easier?",
+    "What is the plan for my next visit?"
+   ]
+  },
+  "videoScripts": [
+   {
+    "stage": "before",
+    "title": "Get Ready for Your Infectious Diseases Visit",
+    "scenes": [
+     {
+      "kind": "title",
+      "title": "Your Upcoming Visit",
+      "text": "Your follow-up is on {{date}} at {{time}}.",
+      "items": [],
+      "voiceover": "Your follow-up visit is scheduled for {{date}} at {{time}}."
+     },
+     {
+      "kind": "card",
+      "title": "What to Expect",
+      "text": "We will meet for about 40 minutes.",
+      "items": [],
+      "voiceover": "The visit will last about 40 minutes. We will check in together."
+     },
+     {
+      "kind": "steps",
+      "title": "How to Prepare",
+      "text": "Getting ready is simple.",
+      "items": [
+       "Bring questions you have.",
+       "Arrive a few minutes early.",
+       "Let us know if you need to change the time."
+      ],
+      "voiceover": "You can bring any questions. Arrive a little early. Let us know if you need to change the time."
+     },
+     {
+      "kind": "choice",
+      "title": "Your Choices",
+      "text": "You can reply or call us.",
+      "items": [
+       "Reply to this message.",
+       "Call 555-0100 for help."
+      ],
+      "voiceover": "You can reply to this message or call 555-0100 for help."
+     },
+     {
+      "kind": "closing",
+      "title": "See You Soon",
+      "text": "We look forward to seeing you.",
+      "items": [],
+      "voiceover": "We look forward to seeing you at your visit."
+     }
+    ]
+   },
+   {
+    "stage": "after",
+    "title": "After Your Infectious Diseases Visit",
+    "scenes": [
+     {
+      "kind": "title",
+      "title": "Thank You for Visiting",
+      "text": "Thank you for coming to your appointment.",
+      "items": [],
+      "voiceover": "Thank you for coming to your appointment."
+     },
+     {
+      "kind": "card",
+      "title": "What We Did",
+      "text": "We reviewed your care and next steps.",
+      "items": [],
+      "voiceover": "We reviewed your care and talked about next steps together."
+     },
+     {
+      "kind": "steps",
+      "title": "Your Next Steps",
+      "text": "Here is what to do now.",
+      "items": [
+       "Keep your next appointments.",
+       "Take your medications as discussed.",
+       "Call if you have new symptoms."
+      ],
+      "voiceover": "Keep your next appointments and take your medications as discussed. Call if you have new symptoms."
+     },
+     {
+      "kind": "choice",
+      "title": "Need Help?",
+      "text": "Call 555-0100 with questions.",
+      "items": [
+       "Call 555-0100 for help.",
+       "Read your visit summary online."
+      ],
+      "voiceover": "Call 555-0100 if you have questions. You can also read your visit summary online."
+     },
+     {
+      "kind": "closing",
+      "title": "We Are Here for You",
+      "text": "We will follow up together.",
+      "items": [],
+      "voiceover": "We will follow up together as planned."
+     }
+    ]
+   }
+  ]
+ }
+}

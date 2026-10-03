@@ -1,0 +1,724 @@
+{
+ "patientId": 2704,
+ "generatedAt": "2026-10-03T07:31:05.555Z",
+ "model": "gpt-4.1-2025-04-14",
+ "context": {
+  "checkin": "I'm in healthcare. Give me the numbers, but tell me what they mean for me.",
+  "audience": "self",
+  "language": "en",
+  "channel": "sms"
+ },
+ "facts": [
+  {
+   "id": "f1",
+   "field": "demographics.age",
+   "value": "46 years old"
+  },
+  {
+   "id": "f2",
+   "field": "demographics.sex",
+   "value": "Female"
+  },
+  {
+   "id": "f3",
+   "field": "primary_diagnoses",
+   "value": "Endometrial Hyperplasia"
+  },
+  {
+   "id": "f4",
+   "field": "primary_diagnoses",
+   "value": "Trastuzumab-induced cardiotoxicity with asymptomatic left ventricular dysfunction"
+  },
+  {
+   "id": "f5",
+   "field": "primary_diagnoses",
+   "value": "Hyperlipidemia"
+  },
+  {
+   "id": "f6",
+   "field": "primary_diagnoses",
+   "value": "Systemic menopausal syndrome"
+  },
+  {
+   "id": "f7",
+   "field": "primary_diagnoses",
+   "value": "Asymptomatic Actinomyces colonization of genital tract"
+  },
+  {
+   "id": "f8",
+   "field": "primary_diagnoses",
+   "value": "Invasive ductal carcinoma of right breast"
+  },
+  {
+   "id": "f9",
+   "field": "primary_diagnoses",
+   "value": "Cervical radiculopathy"
+  },
+  {
+   "id": "f10",
+   "field": "comorbidities",
+   "value": "History of breast cancer"
+  },
+  {
+   "id": "f11",
+   "field": "comorbidities",
+   "value": "Obesity"
+  },
+  {
+   "id": "f12",
+   "field": "comorbidities",
+   "value": "Iatrogenic immunosuppression"
+  },
+  {
+   "id": "f13",
+   "field": "comorbidities",
+   "value": "Essential hypertension"
+  },
+  {
+   "id": "f14",
+   "field": "profile.chronic_conditions",
+   "value": "Hypertension"
+  },
+  {
+   "id": "f15",
+   "field": "profile.chronic_conditions",
+   "value": "Hyperlipidemia"
+  },
+  {
+   "id": "f16",
+   "field": "profile.chronic_conditions",
+   "value": "History of Hodgkin lymphoma in remission (10 years)"
+  },
+  {
+   "id": "f17",
+   "field": "profile.chronic_conditions",
+   "value": "History of invasive ductal carcinoma of the right breast"
+  },
+  {
+   "id": "f18",
+   "field": "profile.chronic_conditions",
+   "value": "History of cervical radiculopathy"
+  },
+  {
+   "id": "f19",
+   "field": "profile.home_medications",
+   "value": "Hydrochlorothiazide 25 mg PO daily"
+  },
+  {
+   "id": "f20",
+   "field": "profile.home_medications",
+   "value": "Lisinopril 10 mg PO daily"
+  },
+  {
+   "id": "f21",
+   "field": "profile.home_medications",
+   "value": "Tamoxifen 20 mg PO daily"
+  },
+  {
+   "id": "f22",
+   "field": "profile.home_medications",
+   "value": "Trastuzumab 6 mg/kg IV every 3 weeks (maintenance therapy)"
+  },
+  {
+   "id": "f23",
+   "field": "profile.allergies",
+   "value": "NKDA"
+  },
+  {
+   "id": "f24",
+   "field": "profile.surgical_history",
+   "value": "Right breast lumpectomy with sentinel lymph node biopsy"
+  },
+  {
+   "id": "f25",
+   "field": "profile.surgical_history",
+   "value": "Radiation therapy to right breast and axilla"
+  },
+  {
+   "id": "f26",
+   "field": "profile.surgical_history",
+   "value": "Chemotherapy and radiation therapy for Hodgkin lymphoma (10 years ago)"
+  },
+  {
+   "id": "f27",
+   "field": "profile.occupation",
+   "value": "Dental hygienist"
+  },
+  {
+   "id": "f28",
+   "field": "profile.smoking_status",
+   "value": "Never"
+  },
+  {
+   "id": "f29",
+   "field": "profile.alcohol_use",
+   "value": "None"
+  },
+  {
+   "id": "f30",
+   "field": "profile.family_history",
+   "value": "Breast cancer in maternal aunt (age 52)"
+  },
+  {
+   "id": "f31",
+   "field": "profile.family_history",
+   "value": "Hypertension in mother"
+  },
+  {
+   "id": "f32",
+   "field": "profile.family_history",
+   "value": "Premature coronary artery disease in father (age 55)"
+  },
+  {
+   "id": "f33",
+   "field": "encounter.visit",
+   "value": "outpatient visit, Breast Surgery, Dr. Sarah Chen",
+   "encounterId": 11341,
+   "date": "2020-01-15"
+  },
+  {
+   "id": "f34",
+   "field": "encounter.chief_complaint",
+   "value": "2-month history of a palpable mass in her right breast with associated skin dimpling",
+   "encounterId": 11341,
+   "date": "2020-01-15"
+  },
+  {
+   "id": "f35",
+   "field": "encounter.note.hpi",
+   "value": "She reports no pain associated with the mass but has noticed some skin dimpling over the area.",
+   "encounterId": 11341,
+   "date": "2020-01-15"
+  },
+  {
+   "id": "f36",
+   "field": "encounter.note.plan",
+   "value": "During surgical planning for axillary lymph node dissection,",
+   "encounterId": 11341,
+   "date": "2020-01-15"
+  },
+  {
+   "id": "f37",
+   "field": "encounter.visit",
+   "value": "outpatient visit, Internal Medicine, Dr. Michael Rodriguez",
+   "encounterId": 11337,
+   "date": "2020-03-15"
+  },
+  {
+   "id": "f38",
+   "field": "encounter.chief_complaint",
+   "value": "Routine follow-up for hyperlipidemia and discussion of long-term effects of prior Hodgkin lymphoma treatment",
+   "encounterId": 11337,
+   "date": "2020-03-15"
+  },
+  {
+   "id": "f39",
+   "field": "encounter.note.hpi",
+   "value": "The patient returns for routine follow-up following her recent breast surgery. She has a history of Hodgkin lymphoma treated with combination chemotherapy and radiation therapy 10 years ago.",
+   "encounterId": 11337,
+   "date": "2020-03-15"
+  },
+  {
+   "id": "f40",
+   "field": "encounter.visit",
+   "value": "outpatient visit, Neurology, Dr. Jennifer Kim",
+   "encounterId": 11342,
+   "date": "2020-05-15"
+  },
+  {
+   "id": "f41",
+   "field": "encounter.chief_complaint",
+   "value": "Intermittent neck pain and tingling sensation radiating down her left arm for 6 weeks",
+   "encounterId": 11342,
+   "date": "2020-05-15"
+  },
+  {
+   "id": "f42",
+   "field": "encounter.note.hpi",
+   "value": "The patient is a 46-year-old female with a history of invasive ductal carcinoma and Hodgkin lymphoma in remission who presents to the neurology clinic following her internal medicine visit two months prior. She reports a 6-week history of intermittent neck pain and a tingling sensation radiating down her left arm.",
+   "encounterId": 11342,
+   "date": "2020-05-15"
+  },
+  {
+   "id": "f43",
+   "field": "encounter.visit",
+   "value": "outpatient visit, Obstetrics & Gynecology, Dr. Emily Johnson",
+   "encounterId": 11338,
+   "date": "2021-01-15"
+  },
+  {
+   "id": "f44",
+   "field": "encounter.chief_complaint",
+   "value": "Bothersome hot flashes and night sweats disrupting sleep for the past 6 months",
+   "encounterId": 11338,
+   "date": "2021-01-15"
+  },
+  {
+   "id": "f45",
+   "field": "encounter.note.hpi",
+   "value": "The patient is a 47-year-old female with a history of invasive ductal carcinoma on maintenance tamoxifen and trastuzumab who presents to the clinic complaining of bothersome hot flashes and night sweats that have been occurring for the past 6 months. She reports that these symptoms are disrupting her sleep and impacting her daily activities.",
+   "encounterId": 11338,
+   "date": "2021-01-15"
+  },
+  {
+   "id": "f46",
+   "field": "encounter.note.plan",
+   "value": "Based on the patient's symptoms and history,",
+   "encounterId": 11338,
+   "date": "2021-01-15"
+  },
+  {
+   "id": "f47",
+   "field": "encounter.visit",
+   "value": "outpatient visit, Oncology, Dr. Robert Singh",
+   "encounterId": 11336,
+   "date": "2021-04-15"
+  },
+  {
+   "id": "f48",
+   "field": "encounter.chief_complaint",
+   "value": "Routine oncology follow-up during trastuzumab maintenance therapy",
+   "encounterId": 11336,
+   "date": "2021-04-15"
+  },
+  {
+   "id": "f49",
+   "field": "encounter.note.hpi",
+   "value": "This 47-year-old with right breast invasive ductal carcinoma returns for routine oncology follow-up. She completed her adjuvant chemotherapy six months ago and has been on trastuzumab therapy since then.",
+   "encounterId": 11336,
+   "date": "2021-04-15"
+  },
+  {
+   "id": "f50",
+   "field": "encounter.visit",
+   "value": "outpatient visit, Obstetrics & Gynecology, Dr. Emily Johnson",
+   "encounterId": 11335,
+   "date": "2021-07-15"
+  },
+  {
+   "id": "f51",
+   "field": "encounter.chief_complaint",
+   "value": "Routine follow-up with irregular uterine bleeding for 2 months",
+   "encounterId": 11335,
+   "date": "2021-07-15"
+  },
+  {
+   "id": "f52",
+   "field": "encounter.note.hpi",
+   "value": "The patient returns for routine gynecologic follow-up, previously evaluated for vasomotor symptoms in the setting of tamoxifen therapy for breast cancer. She was diagnosed with hormone receptor-positive breast cancer 18 months ago and underwent lumpectomy followed by radiation therapy.",
+   "encounterId": 11335,
+   "date": "2021-07-15"
+  },
+  {
+   "id": "f53",
+   "field": "encounter.visit",
+   "value": "outpatient visit, Obstetrics & Gynecology, Dr. Lisa Thompson",
+   "encounterId": 11339,
+   "date": "2021-09-15"
+  },
+  {
+   "id": "f54",
+   "field": "encounter.chief_complaint",
+   "value": "Routine check-up with intermittent pelvic pain and irregular menstrual cycles over the past six months",
+   "encounterId": 11339,
+   "date": "2021-09-15"
+  },
+  {
+   "id": "f55",
+   "field": "encounter.note.hpi",
+   "value": "Returning for follow-up of endometrial hyperplasia on tamoxifen, she reports intermittent pelvic pain and irregular menstrual cycles over the past six months.",
+   "encounterId": 11339,
+   "date": "2021-09-15"
+  },
+  {
+   "id": "f56",
+   "field": "encounter.visit",
+   "value": "outpatient visit, Family Medicine, Dr. David Patel",
+   "encounterId": 11340,
+   "date": "2022-01-15"
+  },
+  {
+   "id": "f57",
+   "field": "encounter.chief_complaint",
+   "value": "Routine check-up with inquiry about new ovarian cancer screening blood test",
+   "encounterId": 11340,
+   "date": "2022-01-15"
+  },
+  {
+   "id": "f58",
+   "field": "encounter.note.hpi",
+   "value": "The patient returns for routine follow-up with breast cancer maintenance therapy and prior endometrial hyperplasia. She has no complaints and is currently asymptomatic.",
+   "encounterId": 11340,
+   "date": "2022-01-15"
+  },
+  {
+   "id": "f59",
+   "field": "encounter.note.plan",
+   "value": "You explain the test's sensitivity and specificity and how they would apply to her. The test has a sensitivity of 90% and a specificity of 95%. Based on this information,",
+   "encounterId": 11340,
+   "date": "2022-01-15"
+  },
+  {
+   "id": "f60",
+   "field": "seed.upcoming_visit",
+   "value": "Cardiology: Cardio-oncology echo review (in 4 days)"
+  },
+  {
+   "id": "f61",
+   "field": "seed.stated_language",
+   "value": "English (patient-stated)"
+  }
+ ],
+ "profile": {
+  "patientId": 2704,
+  "preferredName": "Laura",
+  "summaryLine": "Laura is a 46-year-old dental hygienist with a complex cancer and cardiac history who prefers detailed, numbers-based explanations tailored to her situation.",
+  "audience": "self",
+  "recipients": [
+   {
+    "role": "patient",
+    "name": "Laura",
+    "relationship": "",
+    "primary": true
+   }
+  ],
+  "communicationNeeds": {
+   "readingLevel": 6,
+   "detailPreference": "numbers",
+   "language": "en",
+   "channel": "sms",
+   "bestTimeOfDay": ""
+  },
+  "emotionalContext": [
+   {
+    "id": "ec1",
+    "text": "Laura works in healthcare and wants to receive the numbers, but also wants clear explanations of what those numbers mean for her personally.",
+    "kind": "patient_stated",
+    "source": {
+     "factIds": [],
+     "note": "What matters to you check-in"
+    },
+    "reason": "She directly stated her communication preference in her check-in."
+   },
+   {
+    "id": "ec2",
+    "text": "She is currently asymptomatic from her cancer and cardiac conditions.",
+    "kind": "fact",
+    "source": {
+     "factIds": [
+      "f4",
+      "f8",
+      "f58"
+     ],
+     "note": ""
+    },
+    "reason": "Recent notes document her as asymptomatic."
+   },
+   {
+    "id": "ec3",
+    "text": "Laura has experienced bothersome menopausal symptoms that have disrupted her sleep and daily activities.",
+    "kind": "fact",
+    "source": {
+     "factIds": [
+      "f44",
+      "f45"
+     ],
+     "note": ""
+    },
+    "reason": "Documented in recent OBGYN visit."
+   }
+  ],
+  "privacyRules": [
+   {
+    "id": "pr1",
+    "rule": "Do not include the names of cancer diagnoses, psychiatric diagnoses, or related medications in SMS messages.",
+    "restrictedTerms": [
+     "breast cancer",
+     "invasive ductal carcinoma",
+     "Hodgkin lymphoma",
+     "trastuzumab",
+     "tamoxifen"
+    ],
+    "channels": [
+     "sms"
+    ],
+    "recipients": [],
+    "kind": "inferred",
+    "source": {
+     "factIds": [
+      "f8",
+      "f16",
+      "f21",
+      "f22"
+     ],
+     "note": ""
+    },
+    "reason": "To protect privacy regarding sensitive cancer history and medications in SMS."
+   }
+  ],
+  "cognitiveSupport": [],
+  "strengths": [
+   {
+    "id": "s1",
+    "text": "Laura is a healthcare professional, suggesting strong baseline health literacy and comfort with medical information.",
+    "kind": "fact",
+    "source": {
+     "factIds": [
+      "f27"
+     ],
+     "note": ""
+    },
+    "reason": "Her occupation is documented as dental hygienist."
+   },
+   {
+    "id": "s2",
+    "text": "She is proactive in her care, asking about new screening tests and following up on symptoms.",
+    "kind": "fact",
+    "source": {
+     "factIds": [
+      "f57",
+      "f44",
+      "f54"
+     ],
+     "note": ""
+    },
+    "reason": "She inquired about ovarian cancer screening and reports symptoms as they arise."
+   }
+  ],
+  "avoidTerms": [
+   "non-compliant",
+   "denies",
+   "refused"
+  ],
+  "dataQualityWarnings": [
+   "Age is inconsistently documented as 46 and 47 in different encounters."
+  ]
+ },
+ "voiceGuide": {
+  "tone": [
+   "detailed",
+   "respectful",
+   "clear"
+  ],
+  "doSay": [
+   "Your recent test result is 7.2%.",
+   "This number means your risk is low.",
+   "You can contact us for more details.",
+   "Here is what this means for you.",
+   "Your next step is explained below.",
+   "Let us know if you want more numbers."
+  ],
+  "dontSay": [
+   "non-compliant",
+   "denies",
+   "refused",
+   "breast cancer",
+   "Hodgkin lymphoma",
+   "trastuzumab"
+  ],
+  "sentenceMaxWords": 16,
+  "addressing": "Speak directly to Laura by name. No other recipients need to be co-addressed.",
+  "greeting": "Hi Laura,",
+  "signoff": "Your Care team",
+  "choicePhrases": [
+   "Would you like a call or message?",
+   "Do you want more details or a summary?",
+   "You can choose your next appointment time."
+  ],
+  "safetyPhrases": [
+   "Reply STOP to pause messages.",
+   "Call 555-0100 to speak with us."
+  ]
+ },
+ "outputs": {
+  "messages": [
+   {
+    "stage": "before_7d",
+    "recipient": "patient",
+    "persona": "Hi Laura,\nYou have a cardio-oncology echo review on {{weekday}}, {{date}} at {{time}}. The visit will last about 40 minutes. We will review your heart numbers and discuss what they mean for you. You can ask for more details or a summary. Call 555-0100 to speak with us. We will look at your results together.\nYour Care team",
+    "claimIds": [
+     "ec1",
+     "ec2",
+     "s1"
+    ]
+   },
+   {
+    "stage": "before_2d",
+    "recipient": "patient",
+    "persona": "Hi Laura,\nYour cardio-oncology echo review is coming up on {{weekday}}, {{date}} at {{time}}. We will go over your echo results and answer your questions. You can choose if you want more numbers or just a summary. Reply STOP to pause messages. We will make sure you get clear answers together.\nYour Care team",
+    "claimIds": [
+     "ec1",
+     "s1"
+    ]
+   },
+   {
+    "stage": "after_24h",
+    "recipient": "patient",
+    "persona": "Hi Laura,\nThank you for coming to your cardio-oncology echo review. Your plain-language summary is ready. Next, we will plan any follow-up or changes together. Call 555-0100 if you have questions. We appreciate working with you.\nYour Care team",
+    "claimIds": [
+     "ec1",
+     "s1"
+    ]
+   }
+  ],
+  "clinicianBrief": {
+   "lines": [
+    "Laura is a 46-year-old dental hygienist here for a cardio-oncology echo review.",
+    "She has a complex cancer and cardiac history but is currently asymptomatic.",
+    "She prefers detailed, numbers-based explanations and wants to know what the numbers mean for her.",
+    "Laura is proactive, health-literate, and asks about new tests and symptoms.",
+    "She has bothersome menopausal symptoms that disrupt sleep and daily life.",
+    "Avoid restricted terms in SMS and avoid terms like 'non-compliant.'",
+    "Chart check: Age is inconsistently documented as 46 and 47 in different encounters."
+   ],
+   "readAloudSeconds": 29,
+   "claimIds": [
+    "ec1",
+    "ec2",
+    "ec3",
+    "s1",
+    "s2"
+   ]
+  },
+  "visitSummary": {
+   "headline": "Cardio-oncology Echo Review Summary – {{date}}",
+   "whatWeTalkedAbout": [
+    {
+     "text": "Your echo results and what the numbers mean for your heart health.",
+     "claimIds": [
+      "ec1",
+      "s1"
+     ]
+    },
+    {
+     "text": "How your current symptoms and medications relate to your heart.",
+     "claimIds": [
+      "ec2"
+     ]
+    },
+    {
+     "text": "Ways to manage menopausal symptoms affecting sleep and daily life.",
+     "claimIds": [
+      "ec3"
+     ]
+    }
+   ],
+   "yourNextSteps": [
+    "Review your summary and echo results.",
+    "Follow up with any new symptoms or questions.",
+    "Continue your current medications as directed.",
+    "Schedule your next visit when ready.",
+    "Contact us if you want more details or numbers."
+   ],
+   "whenToCall": [
+    "Call us if you have chest pain or trouble breathing.",
+    "Contact us if you notice new or worsening symptoms.",
+    "Call 555-0100 for urgent concerns."
+   ],
+   "questionsForNextTime": [
+    "What do my latest numbers mean for my long-term health?",
+    "Are there new tests or treatments I should consider?",
+    "How can I better manage my symptoms?"
+   ]
+  },
+  "videoScripts": [
+   {
+    "stage": "before",
+    "title": "Preview: Cardio-oncology Echo Review",
+    "scenes": [
+     {
+      "kind": "title",
+      "title": "Your Upcoming Visit",
+      "text": "Cardio-oncology echo review on {{date}}.",
+      "items": [],
+      "voiceover": "Your cardio-oncology echo review is on {{date}}."
+     },
+     {
+      "kind": "card",
+      "title": "What Will Happen?",
+      "text": "We will review your echo numbers together.",
+      "items": [],
+      "voiceover": "We will look at your echo results and talk about what the numbers mean for you."
+     },
+     {
+      "kind": "steps",
+      "title": "What To Expect",
+      "text": "The visit will last about 40 minutes.",
+      "items": [
+       "Echo results review",
+       "Personalized explanation",
+       "Time for your questions"
+      ],
+      "voiceover": "The visit will take about 40 minutes. We will review your results, explain them, and answer your questions."
+     },
+     {
+      "kind": "choice",
+      "title": "Your Choices",
+      "text": "You can ask for more details or a summary.",
+      "items": [
+       "Ask for more numbers",
+       "Request a summary"
+      ],
+      "voiceover": "You can choose if you want more numbers or just a summary. Let us know what works best for you."
+     },
+     {
+      "kind": "closing",
+      "title": "Need Help?",
+      "text": "Call 555-0100 to reach us.",
+      "items": [],
+      "voiceover": "Call 555-0100 if you have questions before your visit."
+     }
+    ]
+   },
+   {
+    "stage": "after",
+    "title": "After Your Echo Review",
+    "scenes": [
+     {
+      "kind": "title",
+      "title": "Thank You, Laura",
+      "text": "Thank you for coming to your echo review.",
+      "items": [],
+      "voiceover": "Thank you for coming to your echo review."
+     },
+     {
+      "kind": "card",
+      "title": "What We Covered",
+      "text": "We discussed your echo results and next steps.",
+      "items": [],
+      "voiceover": "We talked about your echo results and what they mean for you."
+     },
+     {
+      "kind": "steps",
+      "title": "Your Plan",
+      "text": "Here are your next steps.",
+      "items": [
+       "Review your summary",
+       "Continue your medications",
+       "Contact us with questions"
+      ],
+      "voiceover": "Please review your summary, keep taking your medications, and contact us if you have questions."
+     },
+     {
+      "kind": "choice",
+      "title": "When To Call",
+      "text": "Call us if you have chest pain or new symptoms.",
+      "items": [
+       "Chest pain",
+       "Trouble breathing",
+       "New or worse symptoms"
+      ],
+      "voiceover": "Call us if you have chest pain, trouble breathing, or new symptoms."
+     },
+     {
+      "kind": "closing",
+      "title": "We Are Here",
+      "text": "Call 555-0100 for help anytime.",
+      "items": [],
+      "voiceover": "Call 555-0100 if you need help. We are here for you."
+     }
+    ]
+   }
+  ]
+ }
+}

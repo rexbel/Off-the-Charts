@@ -1,0 +1,514 @@
+{
+ "patientId": 1818,
+ "generatedAt": "2026-10-03T07:29:28.877Z",
+ "model": "gpt-4.1-2025-04-14",
+ "context": {
+  "checkin": "I don't want the visit to be about my weight. Texts are best.",
+  "audience": "self",
+  "language": "en",
+  "channel": "sms"
+ },
+ "facts": [
+  {
+   "id": "f1",
+   "field": "demographics.age",
+   "value": "19 years old"
+  },
+  {
+   "id": "f2",
+   "field": "demographics.sex",
+   "value": "Female"
+  },
+  {
+   "id": "f3",
+   "field": "primary_diagnoses",
+   "value": "Polycystic ovary syndrome"
+  },
+  {
+   "id": "f4",
+   "field": "primary_diagnoses",
+   "value": "Acne vulgaris"
+  },
+  {
+   "id": "f5",
+   "field": "profile.chronic_conditions",
+   "value": "Polycystic ovary syndrome"
+  },
+  {
+   "id": "f6",
+   "field": "profile.chronic_conditions",
+   "value": "Insulin resistance"
+  },
+  {
+   "id": "f7",
+   "field": "profile.chronic_conditions",
+   "value": "Overweight (BMI 29 kg/m²)"
+  },
+  {
+   "id": "f8",
+   "field": "profile.home_medications",
+   "value": "Metformin 500 mg orally twice daily"
+  },
+  {
+   "id": "f9",
+   "field": "profile.home_medications",
+   "value": "Calcium carbonate with vitamin D 600 mg/400 units orally once daily"
+  },
+  {
+   "id": "f10",
+   "field": "profile.allergies",
+   "value": "No known drug allergies"
+  },
+  {
+   "id": "f11",
+   "field": "profile.surgical_history",
+   "value": "None"
+  },
+  {
+   "id": "f12",
+   "field": "profile.occupation",
+   "value": "University undergraduate student"
+  },
+  {
+   "id": "f13",
+   "field": "profile.smoking_status",
+   "value": "Never smoker"
+  },
+  {
+   "id": "f14",
+   "field": "profile.alcohol_use",
+   "value": "Occasional social use (1-2 drinks per month)"
+  },
+  {
+   "id": "f15",
+   "field": "profile.family_history",
+   "value": "Mother: Type 2 diabetes mellitus (diagnosed age 42)"
+  },
+  {
+   "id": "f16",
+   "field": "profile.family_history",
+   "value": "Maternal aunt: Polycystic ovary syndrome"
+  },
+  {
+   "id": "f17",
+   "field": "profile.family_history",
+   "value": "Father: Dyslipidemia"
+  },
+  {
+   "id": "f18",
+   "field": "encounter.visit",
+   "value": "outpatient visit, Obstetrics & Gynecology, Dr. Elena Vasquez",
+   "encounterId": 7634,
+   "date": "2020-01-15"
+  },
+  {
+   "id": "f19",
+   "field": "encounter.chief_complaint",
+   "value": "Irregular menstrual periods and concerns about excessive facial hair",
+   "encounterId": 7634,
+   "date": "2020-01-15"
+  },
+  {
+   "id": "f20",
+   "field": "encounter.note.hpi",
+   "value": "Her menarche was at age 13, but since then her periods have been consistently irregular, often occurring only once every two to three months. She also reports difficulty losing weight despite regular exercise and a healthy diet.",
+   "encounterId": 7634,
+   "date": "2020-01-15"
+  },
+  {
+   "id": "f21",
+   "field": "encounter.note.plan",
+   "value": "This patient's increased risk for endometrial adenocarcinoma later in life is primarily due to disruption of",
+   "encounterId": 7634,
+   "date": "2020-01-15"
+  },
+  {
+   "id": "f22",
+   "field": "encounter.visit",
+   "value": "outpatient visit, Dermatology, Dr. Priya Patel",
+   "encounterId": 7636,
+   "date": "2020-09-15"
+  },
+  {
+   "id": "f23",
+   "field": "encounter.chief_complaint",
+   "value": "7-month history of worsening acne on face, chest, and upper back unresponsive to over-the-counter cleansers",
+   "encounterId": 7636,
+   "date": "2020-09-15"
+  },
+  {
+   "id": "f24",
+   "field": "encounter.note.hpi",
+   "value": "The patient presents for dermatologic evaluation eight months following her diagnosis of polycystic ovary syndrome. She reports that over-the-counter cleansers have not helped.",
+   "encounterId": 7636,
+   "date": "2020-09-15"
+  },
+  {
+   "id": "f25",
+   "field": "encounter.note.plan",
+   "value": "Six weeks later, the patient reports significant improvement in her skin lesions. The physician prescribes an oral medication that is suitable for case severity. She is counseled on avoiding pregnancy during treatment due to the risk of teratogenicity.",
+   "encounterId": 7636,
+   "date": "2020-09-15"
+  },
+  {
+   "id": "f26",
+   "field": "encounter.visit",
+   "value": "outpatient visit, Dermatology, Dr. Priya Patel",
+   "encounterId": 7635,
+   "date": "2021-05-15"
+  },
+  {
+   "id": "f27",
+   "field": "encounter.chief_complaint",
+   "value": "Worsening facial acne with pain and scarring despite 6 months of topical and oral antibiotic therapy",
+   "encounterId": 7635,
+   "date": "2021-05-15"
+  },
+  {
+   "id": "f28",
+   "field": "encounter.note.hpi",
+   "value": "This 20-year-old female with polycystic ovary syndrome, insulin resistance, and overweight status (BMI 29 kg/m²) returns to the dermatology clinic for follow-up of acne initially evaluated in September 2020. She presents with a 6-month history of worsening facial acne.",
+   "encounterId": 7635,
+   "date": "2021-05-15"
+  },
+  {
+   "id": "f29",
+   "field": "encounter.note.social",
+   "value": "She denies using any hormonal contraceptives and is currently sexually active with one partner, using condoms inconsistently.",
+   "encounterId": 7635,
+   "date": "2021-05-15"
+  },
+  {
+   "id": "f30",
+   "field": "seed.upcoming_visit",
+   "value": "Endocrinology: PCOS and skin follow-up (in 5 days)"
+  },
+  {
+   "id": "f31",
+   "field": "seed.stated_language",
+   "value": "English (patient-stated)"
+  }
+ ],
+ "profile": {
+  "patientId": 1818,
+  "preferredName": "Sofia",
+  "summaryLine": "Sofia is a 19-year-old university student managing PCOS, acne, and insulin resistance, who prefers SMS and does not want her visit focused on weight.",
+  "audience": "self",
+  "recipients": [
+   {
+    "role": "patient",
+    "name": "Sofia",
+    "relationship": "",
+    "primary": true
+   }
+  ],
+  "communicationNeeds": {
+   "readingLevel": 6,
+   "detailPreference": "brief",
+   "language": "en",
+   "channel": "sms",
+   "bestTimeOfDay": ""
+  },
+  "emotionalContext": [
+   {
+    "id": "ec1",
+    "text": "Sofia prefers not to have her visit focus on her weight.",
+    "kind": "patient_stated",
+    "source": {
+     "factIds": [],
+     "note": "What matters to you check-in"
+    },
+    "reason": "She explicitly stated this in her check-in."
+   },
+   {
+    "id": "ec2",
+    "text": "She prefers text messages for communication.",
+    "kind": "patient_stated",
+    "source": {
+     "factIds": [],
+     "note": "What matters to you check-in"
+    },
+    "reason": "She stated 'Texts are best.'"
+   },
+   {
+    "id": "ec3",
+    "text": "She is a university undergraduate student, which may mean she balances health with academic responsibilities.",
+    "kind": "fact",
+    "source": {
+     "factIds": [
+      "f12"
+     ],
+     "note": ""
+    },
+    "reason": "Directly documented in EHR."
+   }
+  ],
+  "privacyRules": [],
+  "cognitiveSupport": [],
+  "strengths": [
+   {
+    "id": "s1",
+    "text": "Sofia is proactive in seeking care for her health concerns, including PCOS and acne.",
+    "kind": "fact",
+    "source": {
+     "factIds": [
+      "f18",
+      "f22",
+      "f26"
+     ],
+     "note": ""
+    },
+    "reason": "Multiple specialty visits documented."
+   },
+   {
+    "id": "s2",
+    "text": "She maintains a healthy lifestyle and regular exercise despite challenges with weight loss.",
+    "kind": "fact",
+    "source": {
+     "factIds": [
+      "f20"
+     ],
+     "note": ""
+    },
+    "reason": "Directly documented in HPI."
+   },
+   {
+    "id": "s3",
+    "text": "She has demonstrated medication adherence and follow-up for her skin condition.",
+    "kind": "fact",
+    "source": {
+     "factIds": [
+      "f25"
+     ],
+     "note": ""
+    },
+    "reason": "Reports improvement and follows prescribed plans."
+   }
+  ],
+  "avoidTerms": [
+   "non-compliant",
+   "denies",
+   "refused"
+  ],
+  "dataQualityWarnings": []
+ },
+ "voiceGuide": {
+  "tone": [
+   "friendly",
+   "respectful",
+   "encouraging"
+  ],
+  "doSay": [
+   "We can focus on your main concerns.",
+   "Let us know what you want to discuss.",
+   "Your efforts are important.",
+   "You can ask about PCOS or acne.",
+   "We respect your preferences.",
+   "Let us know if you need more info."
+  ],
+  "dontSay": [
+   "non-compliant",
+   "denies",
+   "refused",
+   "Let's talk about your weight.",
+   "Are you sure you follow instructions?",
+   "You didn't do what was recommended."
+  ],
+  "sentenceMaxWords": 12,
+  "addressing": "Speak directly to Sofia, using her name in the message. No need to address others.",
+  "greeting": "Hi Sofia,",
+  "signoff": "Your Women's Health team",
+  "choicePhrases": [
+   "Would you like to discuss acne or PCOS?",
+   "Do you want to change your plan?",
+   "Would you prefer a call or text?"
+  ],
+  "safetyPhrases": [
+   "Text STOP to pause messages.",
+   "Call 555-0100 if you need help."
+  ]
+ },
+ "outputs": {
+  "messages": [
+   {
+    "stage": "before_7d",
+    "recipient": "patient",
+    "persona": "Hi Sofia,\nYour endocrinology visit for PCOS and skin follow-up is on {{weekday}}, {{date}} at {{time}}. It will take about 40 minutes. We will focus on your main concerns together. You can ask about PCOS, acne, or anything else. Would you like to discuss acne or PCOS? Call 555-0100 if you need help.\nYour Women's Health team",
+    "claimIds": [
+     "ec1",
+     "ec2"
+    ]
+   },
+   {
+    "stage": "before_2d",
+    "recipient": "patient",
+    "persona": "Hi Sofia,\nYour visit is coming up on {{weekday}}, {{date}} at {{time}}. We will talk about your PCOS and skin care together. You can choose what to focus on. Do you want to change your plan? Text STOP to pause messages or call 555-0100 if you need help.\nYour Women's Health team",
+    "claimIds": [
+     "ec1",
+     "ec2"
+    ]
+   },
+   {
+    "stage": "after_24h",
+    "recipient": "patient",
+    "persona": "Hi Sofia,\nThank you for coming to your endocrinology visit. You can read your summary in plain language. Next, we will follow your care plan together. Let us know if you need more info. Call 555-0100 if you have questions.\nYour Women's Health team",
+    "claimIds": [
+     "ec1",
+     "ec2"
+    ]
+   }
+  ],
+  "clinicianBrief": {
+   "lines": [
+    "Sofia is a 19-year-old university student here for PCOS and acne follow-up.",
+    "She prefers not to focus on weight during visits.",
+    "She values brief, respectful, and encouraging communication by SMS.",
+    "Sofia wants to discuss her main concerns and appreciates when her efforts are recognized.",
+    "She is proactive with care and adheres to treatment plans.",
+    "Avoid focusing on weight or using judgmental terms.",
+    "Chart check: No data quality warnings noted."
+   ],
+   "readAloudSeconds": 29,
+   "claimIds": [
+    "ec1",
+    "ec2",
+    "s1",
+    "s3"
+   ]
+  },
+  "visitSummary": {
+   "headline": "Your PCOS and Skin Follow-Up Visit – {{date}}",
+   "whatWeTalkedAbout": [
+    {
+     "text": "We reviewed your PCOS and acne progress.",
+     "claimIds": []
+    },
+    {
+     "text": "We discussed your current medications and how they are working.",
+     "claimIds": []
+    },
+    {
+     "text": "We focused on your main concerns, not weight.",
+     "claimIds": [
+      "ec1"
+     ]
+    }
+   ],
+   "yourNextSteps": [
+    "Continue your current medications as prescribed.",
+    "Keep tracking your symptoms and questions.",
+    "Contact us if you notice changes in your skin or periods.",
+    "Schedule your next follow-up as advised.",
+    "Let us know if you want to discuss anything new."
+   ],
+   "whenToCall": [
+    "Call us if you have severe pain or sudden changes in your health.",
+    "Contact us if you have side effects from medications.",
+    "Call 555-0100 if you need help or have urgent questions."
+   ],
+   "questionsForNextTime": [
+    "What new treatments are available for PCOS or acne?",
+    "How can I manage symptoms during busy school times?",
+    "Are there lifestyle tips that could help my skin or cycles?"
+   ]
+  },
+  "videoScripts": [
+   {
+    "stage": "before",
+    "title": "Getting Ready for Your PCOS and Skin Visit",
+    "scenes": [
+     {
+      "kind": "title",
+      "title": "Welcome, Sofia!",
+      "text": "Your endocrinology visit is soon.",
+      "items": [],
+      "voiceover": "Hi Sofia, your endocrinology visit for PCOS and skin follow-up is coming up."
+     },
+     {
+      "kind": "card",
+      "title": "When and Where",
+      "text": "It's on {{weekday}}, {{date}} at {{time}}.",
+      "items": [],
+      "voiceover": "Your visit is scheduled for {{weekday}}, {{date}} at {{time}}. It will take about 40 minutes."
+     },
+     {
+      "kind": "steps",
+      "title": "What We'll Do",
+      "text": "We'll talk about your main concerns together.",
+      "items": [
+       "Review PCOS and acne progress",
+       "Discuss your questions",
+       "Update your care plan"
+      ],
+      "voiceover": "We will review your PCOS and acne, answer your questions, and update your plan together."
+     },
+     {
+      "kind": "choice",
+      "title": "Your Choices",
+      "text": "You can guide the visit.",
+      "items": [
+       "Ask about PCOS or acne",
+       "Choose what to focus on"
+      ],
+      "voiceover": "You can choose what we discuss. Let us know if you want to focus on PCOS or acne."
+     },
+     {
+      "kind": "closing",
+      "title": "Need Help?",
+      "text": "Call 555-0100 if you need help.",
+      "items": [],
+      "voiceover": "Call 555-0100 if you have questions before your visit."
+     }
+    ]
+   },
+   {
+    "stage": "after",
+    "title": "Your Follow-Up Plan",
+    "scenes": [
+     {
+      "kind": "title",
+      "title": "Thank You, Sofia!",
+      "text": "You completed your visit.",
+      "items": [],
+      "voiceover": "Thank you for coming to your visit, Sofia."
+     },
+     {
+      "kind": "card",
+      "title": "What We Talked About",
+      "text": "We focused on your PCOS and skin care.",
+      "items": [],
+      "voiceover": "We talked about your PCOS, acne, and your main concerns."
+     },
+     {
+      "kind": "steps",
+      "title": "Your Next Steps",
+      "text": "Here is your plan.",
+      "items": [
+       "Continue your medications",
+       "Track symptoms and questions",
+       "Schedule your next visit"
+      ],
+      "voiceover": "Keep taking your medications, track your symptoms, and schedule your next visit as advised."
+     },
+     {
+      "kind": "choice",
+      "title": "When to Call",
+      "text": "Call if you have urgent changes.",
+      "items": [
+       "Severe pain or health changes",
+       "Side effects from medication"
+      ],
+      "voiceover": "Call us if you have severe pain, sudden changes, or side effects from your medicine."
+     },
+     {
+      "kind": "closing",
+      "title": "Questions?",
+      "text": "Call 555-0100 for help.",
+      "items": [],
+      "voiceover": "Call 555-0100 if you have questions or need help."
+     }
+    ]
+   }
+  ]
+ }
+}

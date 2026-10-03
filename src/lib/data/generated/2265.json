@@ -1,0 +1,758 @@
+{
+ "patientId": 2265,
+ "generatedAt": "2026-10-03T07:32:43.710Z",
+ "model": "gpt-4.1-2025-04-14",
+ "context": {
+  "checkin": "Words come slowly now. Pictures help. Joan helps me read.",
+  "audience": "self_plus_caregiver",
+  "language": "en",
+  "channel": "sms"
+ },
+ "facts": [
+  {
+   "id": "f1",
+   "field": "demographics.age",
+   "value": "69 years old"
+  },
+  {
+   "id": "f2",
+   "field": "demographics.sex",
+   "value": "Male"
+  },
+  {
+   "id": "f3",
+   "field": "primary_diagnoses",
+   "value": "Left middle cerebral artery stroke"
+  },
+  {
+   "id": "f4",
+   "field": "primary_diagnoses",
+   "value": "Atrial fibrillation"
+  },
+  {
+   "id": "f5",
+   "field": "primary_diagnoses",
+   "value": "Acute mesenteric ischemia"
+  },
+  {
+   "id": "f6",
+   "field": "primary_diagnoses",
+   "value": "Achalasia"
+  },
+  {
+   "id": "f7",
+   "field": "primary_diagnoses",
+   "value": "Paget disease of bone"
+  },
+  {
+   "id": "f8",
+   "field": "primary_diagnoses",
+   "value": "Iliofemoral Deep Vein Thrombosis"
+  },
+  {
+   "id": "f9",
+   "field": "primary_diagnoses",
+   "value": "Acute arterial embolism of left lower extremity causing acute limb ischemia"
+  },
+  {
+   "id": "f10",
+   "field": "comorbidities",
+   "value": "Atrial fibrillation"
+  },
+  {
+   "id": "f11",
+   "field": "comorbidities",
+   "value": "Essential hypertension"
+  },
+  {
+   "id": "f12",
+   "field": "comorbidities",
+   "value": "History of rheumatic fever"
+  },
+  {
+   "id": "f13",
+   "field": "profile.chronic_conditions",
+   "value": "Hypertension"
+  },
+  {
+   "id": "f14",
+   "field": "profile.chronic_conditions",
+   "value": "Atrial fibrillation (valvular, secondary to rheumatic heart disease)"
+  },
+  {
+   "id": "f15",
+   "field": "profile.chronic_conditions",
+   "value": "History of rheumatic fever"
+  },
+  {
+   "id": "f16",
+   "field": "profile.chronic_conditions",
+   "value": "Paget disease of bone"
+  },
+  {
+   "id": "f17",
+   "field": "profile.chronic_conditions",
+   "value": "Achalasia"
+  },
+  {
+   "id": "f18",
+   "field": "profile.chronic_conditions",
+   "value": "Osteoarthritis"
+  },
+  {
+   "id": "f19",
+   "field": "profile.chronic_conditions",
+   "value": "History of intracranial hemorrhage"
+  },
+  {
+   "id": "f20",
+   "field": "profile.home_medications",
+   "value": "Lisinopril 10 mg daily"
+  },
+  {
+   "id": "f21",
+   "field": "profile.home_medications",
+   "value": "Metoprolol succinate 50 mg daily"
+  },
+  {
+   "id": "f22",
+   "field": "profile.home_medications",
+   "value": "Ibuprofen 400 mg as needed for knee pain"
+  },
+  {
+   "id": "f23",
+   "field": "profile.home_medications",
+   "value": "Rivaroxaban 20 mg daily with food"
+  },
+  {
+   "id": "f24",
+   "field": "profile.allergies",
+   "value": "No known drug allergies"
+  },
+  {
+   "id": "f25",
+   "field": "profile.occupation",
+   "value": "Retired commercial airline pilot"
+  },
+  {
+   "id": "f26",
+   "field": "profile.smoking_status",
+   "value": "Never smoker"
+  },
+  {
+   "id": "f27",
+   "field": "profile.alcohol_use",
+   "value": "Social, 1-2 drinks per week"
+  },
+  {
+   "id": "f28",
+   "field": "profile.family_history",
+   "value": "Father: atrial fibrillation, ischemic stroke"
+  },
+  {
+   "id": "f29",
+   "field": "profile.family_history",
+   "value": "Mother: Paget disease of bone"
+  },
+  {
+   "id": "f30",
+   "field": "profile.family_history",
+   "value": "Paternal grandfather: hypertension"
+  },
+  {
+   "id": "f31",
+   "field": "encounter.visit",
+   "value": "outpatient visit, Rheumatology, Dr. Sarah Chen",
+   "encounterId": 9678,
+   "date": "2020-01-15"
+  },
+  {
+   "id": "f32",
+   "field": "encounter.chief_complaint",
+   "value": "Left knee pain and difficulty walking with gradual bowing of the left leg",
+   "encounterId": 9678,
+   "date": "2020-01-15"
+  },
+  {
+   "id": "f33",
+   "field": "encounter.note.hpi",
+   "value": "He presents to the clinic with a 6-month history of increasing left knee pain and difficulty walking. He reports a gradual bowing of his left leg.",
+   "encounterId": 9678,
+   "date": "2020-01-15"
+  },
+  {
+   "id": "f34",
+   "field": "encounter.visit",
+   "value": "outpatient visit, Gastroenterology, Dr. Michael Patel",
+   "encounterId": 9677,
+   "date": "2020-03-15"
+  },
+  {
+   "id": "f35",
+   "field": "encounter.chief_complaint",
+   "value": "Progressive difficulty swallowing solids and liquids with 15-pound weight loss",
+   "encounterId": 9677,
+   "date": "2020-03-15"
+  },
+  {
+   "id": "f36",
+   "field": "encounter.note.hpi",
+   "value": "He returns following rheumatology care for Paget disease. He reports a 15-pound weight loss during this period.",
+   "encounterId": 9677,
+   "date": "2020-03-15"
+  },
+  {
+   "id": "f37",
+   "field": "encounter.visit",
+   "value": "outpatient visit, Cardiology, Dr. James O'Brien",
+   "encounterId": 9674,
+   "date": "2020-05-15"
+  },
+  {
+   "id": "f38",
+   "field": "encounter.chief_complaint",
+   "value": "Palpitations and intermittent shortness of breath for two weeks",
+   "encounterId": 9674,
+   "date": "2020-05-15"
+  },
+  {
+   "id": "f39",
+   "field": "encounter.note.hpi",
+   "value": "The patient returns after rheumatology and gastroenterology visits with palpitations and intermittent shortness of breath for the past two weeks and denies chest pain, dizziness, or syncope.",
+   "encounterId": 9674,
+   "date": "2020-05-15"
+  },
+  {
+   "id": "f40",
+   "field": "encounter.visit",
+   "value": "follow_up visit, Cardiology, Dr. James O'Brien",
+   "encounterId": 9679,
+   "date": "2021-03-15"
+  },
+  {
+   "id": "f41",
+   "field": "encounter.chief_complaint",
+   "value": "Follow-up after left leg DVT diagnosed three weeks ago following transatlantic flight",
+   "encounterId": 9679,
+   "date": "2021-03-15"
+  },
+  {
+   "id": "f42",
+   "field": "encounter.note.hpi",
+   "value": "The patient is a 70-year-old male with valvular atrial fibrillation secondary to rheumatic heart disease, Paget disease of bone, and achalasia who returns for follow-up of his left leg deep vein thrombosis. His symptoms began after a transatlantic flight, and he was started on oral rivaroxaban at the time of diagnosis.",
+   "encounterId": 9679,
+   "date": "2021-03-15"
+  },
+  {
+   "id": "f43",
+   "field": "encounter.visit",
+   "value": "ed visit, Emergency Medicine, Dr. Robert Johnson",
+   "encounterId": 9675,
+   "date": "2022-03-15"
+  },
+  {
+   "id": "f44",
+   "field": "encounter.chief_complaint",
+   "value": "Sudden-onset right arm weakness and slurred speech beginning two hours ago",
+   "encounterId": 9675,
+   "date": "2022-03-15"
+  },
+  {
+   "id": "f45",
+   "field": "encounter.note.hpi",
+   "value": "This 71-year-old male with valvular atrial fibrillation and prior DVT is brought to the emergency department due to sudden-onset right arm weakness and slurred speech that began 2 hours ago. He has not seen a physician in many years.",
+   "encounterId": 9675,
+   "date": "2022-03-15"
+  },
+  {
+   "id": "f46",
+   "field": "encounter.visit",
+   "value": "ed visit, Emergency Medicine, Dr. Emily Rodriguez",
+   "encounterId": 9676,
+   "date": "2022-09-15"
+  },
+  {
+   "id": "f47",
+   "field": "encounter.chief_complaint",
+   "value": "Sudden-onset, severe diffuse abdominal pain with nausea for three hours",
+   "encounterId": 9676,
+   "date": "2022-09-15"
+  },
+  {
+   "id": "f48",
+   "field": "encounter.note.hpi",
+   "value": "This 71-year-old with valvular atrial fibrillation presents with diffuse abdominal pain, 10/10 in intensity, and associated with nausea. He denies vomiting, diarrhea, or fever.",
+   "encounterId": 9676,
+   "date": "2022-09-15"
+  },
+  {
+   "id": "f49",
+   "field": "encounter.visit",
+   "value": "ed visit, Emergency Medicine, Dr. David Kim",
+   "encounterId": 9680,
+   "date": "2023-09-15"
+  },
+  {
+   "id": "f50",
+   "field": "encounter.chief_complaint",
+   "value": "Sudden onset of severe pain with pallor and coldness in left lower extremity",
+   "encounterId": 9680,
+   "date": "2023-09-15"
+  },
+  {
+   "id": "f51",
+   "field": "encounter.note.hpi",
+   "value": "This patient with valvular atrial fibrillation and prior mesenteric ischemia presents reporting the leg became pale and cold approximately 2 hours ago. He denies any trauma or prior similar episodes.",
+   "encounterId": 9680,
+   "date": "2023-09-15"
+  },
+  {
+   "id": "f52",
+   "field": "encounter.visit",
+   "value": "ed visit, Neurology, Dr. Maria Gonzalez",
+   "encounterId": 9673,
+   "date": "2024-09-15"
+  },
+  {
+   "id": "f53",
+   "field": "encounter.chief_complaint",
+   "value": "Sudden-onset weakness of right arm and face with inability to grip objects",
+   "encounterId": 9673,
+   "date": "2024-09-15"
+  },
+  {
+   "id": "f54",
+   "field": "encounter.note.hpi",
+   "value": "The patient with valvular atrial fibrillation on rivaroxaban and prior thromboembolic events including right arm weakness in 2022 and mesenteric ischemia is unable to grip objects with his right hand, cannot raise his right eyebrow, and has drooping of the right corner of his mouth. His right leg strength is preserved, and he has no sensory loss or visual changes.",
+   "encounterId": 9673,
+   "date": "2024-09-15"
+  },
+  {
+   "id": "f55",
+   "field": "seed.caregiver",
+   "value": "Joan Delaney (wife)"
+  },
+  {
+   "id": "f56",
+   "field": "seed.upcoming_visit",
+   "value": "Neurology: Stroke and heart rhythm follow-up (in 4 days)"
+  },
+  {
+   "id": "f57",
+   "field": "seed.stated_language",
+   "value": "English (patient-stated)"
+  }
+ ],
+ "profile": {
+  "patientId": 2265,
+  "preferredName": "Frank",
+  "summaryLine": "Frank is a 69-year-old retired pilot recovering from a left-sided stroke, with his wife Joan supporting his communication and reading.",
+  "audience": "self_plus_caregiver",
+  "recipients": [
+   {
+    "role": "patient",
+    "name": "Frank",
+    "primary": true
+   },
+   {
+    "role": "wife",
+    "name": "Joan Delaney",
+    "relationship": "wife",
+    "primary": false
+   }
+  ],
+  "communicationNeeds": {
+   "readingLevel": 4,
+   "detailPreference": "brief",
+   "language": "en",
+   "channel": "sms",
+   "bestTimeOfDay": ""
+  },
+  "emotionalContext": [
+   {
+    "id": "ec1",
+    "text": "Frank expresses that words come slowly and pictures help him communicate.",
+    "kind": "patient_stated",
+    "source": {
+     "factIds": [],
+     "note": "What matters to you check-in"
+    },
+    "reason": "Frank directly stated this in his check-in."
+   },
+   {
+    "id": "ec2",
+    "text": "Joan helps Frank read and communicate.",
+    "kind": "patient_stated",
+    "source": {
+     "factIds": [],
+     "note": "What matters to you check-in"
+    },
+    "reason": "Frank directly stated this in his check-in."
+   },
+   {
+    "id": "ec3",
+    "text": "Frank has experienced a left middle cerebral artery stroke, which likely affects his language and communication abilities.",
+    "kind": "fact",
+    "source": {
+     "factIds": [
+      "f3"
+     ]
+    },
+    "reason": "Documented diagnosis of left MCA stroke."
+   }
+  ],
+  "privacyRules": [
+   {
+    "id": "pr1",
+    "rule": "Keep diagnosis names and related medications out of SMS messages.",
+    "restrictedTerms": [
+     "stroke",
+     "atrial fibrillation",
+     "rivaroxaban",
+     "mesenteric ischemia",
+     "deep vein thrombosis",
+     "Paget disease",
+     "achalasia",
+     "hypertension",
+     "intracranial hemorrhage",
+     "metoprolol",
+     "lisinopril",
+     "ibuprofen"
+    ],
+    "channels": [
+     "sms"
+    ],
+    "recipients": [],
+    "kind": "fact",
+    "source": {
+     "factIds": [
+      "f3",
+      "f4",
+      "f5",
+      "f6",
+      "f7",
+      "f8",
+      "f9",
+      "f10",
+      "f11",
+      "f13",
+      "f14",
+      "f16",
+      "f17",
+      "f18",
+      "f19",
+      "f20",
+      "f21",
+      "f22",
+      "f23"
+     ]
+    },
+    "reason": "Sensitive medical terms should not be disclosed via SMS for privacy and security."
+   }
+  ],
+  "cognitiveSupport": [
+   {
+    "id": "cs1",
+    "text": "Frank, we will use simple words and pictures to help you understand, and Joan, thank you for helping Frank read and communicate. Please let us know if a certain time of day works best for you both.",
+    "kind": "inferred",
+    "source": {
+     "factIds": [
+      "f3"
+     ],
+     "note": "What matters to you check-in"
+    },
+    "reason": "Frank has aphasia post-stroke and benefits from visual aids and caregiver support."
+   }
+  ],
+  "strengths": [
+   {
+    "id": "s1",
+    "text": "Frank is supported by his wife Joan, who helps him communicate and read.",
+    "kind": "patient_stated",
+    "source": {
+     "factIds": [],
+     "note": "What matters to you check-in"
+    },
+    "reason": "Frank stated Joan helps him read."
+   },
+   {
+    "id": "s2",
+    "text": "Frank has a history of successful professional responsibility as a commercial airline pilot, indicating resilience and problem-solving skills.",
+    "kind": "fact",
+    "source": {
+     "factIds": [
+      "f25"
+     ]
+    },
+    "reason": "Documented occupation as a retired pilot."
+   }
+  ],
+  "avoidTerms": [
+   "non-compliant",
+   "denies",
+   "refused"
+  ],
+  "dataQualityWarnings": [
+   "Frank's age is listed as 69, but a 2021 note describes him as 70 and a 2022 note as 71.",
+   "\"Atrial fibrillation\" appears as both a primary diagnosis and a comorbidity."
+  ]
+ },
+ "voiceGuide": {
+  "tone": [
+   "warm",
+   "simple",
+   "encouraging"
+  ],
+  "doSay": [
+   "Frank and Joan, this is for you.",
+   "Let us know if you need help.",
+   "You can ask for more time.",
+   "Would you like to talk?",
+   "You can reply or call us.",
+   "We are here for you."
+  ],
+  "dontSay": [
+   "non-compliant",
+   "denies",
+   "refused",
+   "stroke",
+   "atrial fibrillation",
+   "rivaroxaban",
+   "mesenteric ischemia",
+   "deep vein thrombosis",
+   "Paget disease",
+   "achalasia",
+   "hypertension",
+   "intracranial hemorrhage",
+   "metoprolol",
+   "lisinopril",
+   "ibuprofen"
+  ],
+  "sentenceMaxWords": 10,
+  "addressing": "Speak to Frank first, using his name, and include Joan Delaney in each message as co-reader and helper.",
+  "greeting": "Hi Frank and Joan,",
+  "signoff": "Your Care team",
+  "choicePhrases": [
+   "Would you like a call or text?",
+   "Do you want to pick a time?",
+   "Would you like more info?"
+  ],
+  "safetyPhrases": [
+   "Call us at 555-0100.",
+   "Reply STOP to pause messages."
+  ]
+ },
+ "outputs": {
+  "messages": [
+   {
+    "stage": "before_7d",
+    "recipient": "patient",
+    "persona": "Hi Frank and Joan,\nYou have a neurology visit on {{date}}, {{weekday}} at {{time}}. It will take about 40 minutes. We will talk together about how you are doing. Joan can join to help with reading or talking. You can ask for a call or text. Call us at 555-0100 if you need help.\nYour Care team",
+    "claimIds": [
+     "cs1",
+     "s1"
+    ]
+   },
+   {
+    "stage": "before_7d",
+    "recipient": "wife",
+    "persona": "Hi Frank and Joan,\nFrank's neurology visit is set for {{date}}, {{weekday}} at {{time}}. It will last about 40 minutes. You can help Frank by being there to read or talk together. You can ask for a call or text. Call us at 555-0100 if you need help.\nYour Care team",
+    "claimIds": [
+     "cs1",
+     "s1"
+    ]
+   },
+   {
+    "stage": "before_2d",
+    "recipient": "patient",
+    "persona": "Hi Frank and Joan,\nYour neurology visit is in 2 days on {{date}} at {{time}}. We will check in together and Joan can help with reading. You can ask for more time or info. Call us at 555-0100 if you need help.\nYour Care team",
+    "claimIds": [
+     "cs1",
+     "s1"
+    ]
+   },
+   {
+    "stage": "before_2d",
+    "recipient": "wife",
+    "persona": "Hi Frank and Joan,\nFrank's neurology visit is in 2 days on {{date}} at {{time}}. Please join to help Frank read or talk. You can ask for more time or info. Call us at 555-0100 if you need help.\nYour Care team",
+    "claimIds": [
+     "cs1",
+     "s1"
+    ]
+   },
+   {
+    "stage": "after_24h",
+    "recipient": "patient",
+    "persona": "Hi Frank and Joan,\nThank you for coming to your visit. You can read your summary in plain words. We will plan next steps together. Call us at 555-0100 if you need help.\nYour Care team",
+    "claimIds": [
+     "cs1"
+    ]
+   },
+   {
+    "stage": "after_24h",
+    "recipient": "wife",
+    "persona": "Hi Frank and Joan,\nThank you for joining Frank at his visit. The summary is ready in plain words. We will plan next steps together. Call us at 555-0100 if you need help.\nYour Care team",
+    "claimIds": [
+     "cs1"
+    ]
+   }
+  ],
+  "clinicianBrief": {
+   "lines": [
+    "Frank is a 69-year-old retired pilot here for a neurology follow-up with his wife Joan supporting him.",
+    "He is recovering from a left-sided event affecting his communication.",
+    "Frank says words come slowly and pictures help him communicate.",
+    "Joan helps Frank read and express himself; address Frank first and include Joan as helper.",
+    "Keep language simple, use visual aids, and offer extra time if needed.",
+    "Avoid medical diagnosis terms in front of Frank; keep language warm and brief.",
+    "Chart check: Frank's age varies in records; atrial fibrillation appears as both diagnosis and comorbidity."
+   ],
+   "readAloudSeconds": 29,
+   "claimIds": [
+    "cs1",
+    "ec1",
+    "ec2",
+    "s1"
+   ]
+  },
+  "visitSummary": {
+   "headline": "Your Neurology Visit Plan for {{date}}",
+   "whatWeTalkedAbout": [
+    {
+     "text": "How Frank is feeling and doing day to day.",
+     "claimIds": [
+      "cs1"
+     ]
+    },
+    {
+     "text": "Ways Joan helps with reading and talking.",
+     "claimIds": [
+      "cs1",
+      "s1"
+     ]
+    },
+    {
+     "text": "Making sure Frank can ask questions with pictures or simple words.",
+     "claimIds": [
+      "ec1",
+      "cs1"
+     ]
+    }
+   ],
+   "yourNextSteps": [
+    "Read your visit summary together.",
+    "Write down any new questions or changes.",
+    "Use pictures or notes to help talk at home.",
+    "Call us at 555-0100 if you need help."
+   ],
+   "whenToCall": [
+    "Call if Frank has trouble talking or understanding.",
+    "Call if Frank or Joan feels worried or unsure.",
+    "Call us at 555-0100 for any urgent questions."
+   ],
+   "questionsForNextTime": [
+    "What helps most with reading or talking?",
+    "Do you want more time or pictures at visits?",
+    "Is there anything new you want to share?"
+   ]
+  },
+  "videoScripts": [
+   {
+    "stage": "before",
+    "title": "Getting Ready for Your Neurology Visit",
+    "scenes": [
+     {
+      "kind": "title",
+      "title": "Welcome, Frank and Joan",
+      "text": "Your visit is soon.",
+      "items": [],
+      "voiceover": "Hi Frank and Joan. Your neurology visit is coming up soon."
+     },
+     {
+      "kind": "card",
+      "title": "When and Where",
+      "text": "Your visit is on {{date}} at {{time}}.",
+      "items": [],
+      "voiceover": "Your appointment is on {{date}}, {{weekday}} at {{time}}."
+     },
+     {
+      "kind": "steps",
+      "title": "What Will Happen",
+      "text": "We will talk together. Joan can help with reading.",
+      "items": [
+       "Talk about how Frank is doing",
+       "Joan helps read or talk",
+       "Visit takes about 40 minutes"
+      ],
+      "voiceover": "We will talk about how Frank is doing. Joan, you can help with reading or talking."
+     },
+     {
+      "kind": "choice",
+      "title": "Your Choices",
+      "text": "You can ask for more time.",
+      "items": [
+       "Ask for a call or text",
+       "Pick a time that works"
+      ],
+      "voiceover": "You can ask for more time or a different way to talk. We are here for you."
+     },
+     {
+      "kind": "closing",
+      "title": "Need Help?",
+      "text": "Call us at 555-0100.",
+      "items": [],
+      "voiceover": "Call us at 555-0100 if you need help."
+     }
+    ]
+   },
+   {
+    "stage": "after",
+    "title": "After Your Neurology Visit",
+    "scenes": [
+     {
+      "kind": "title",
+      "title": "Thank You, Frank and Joan",
+      "text": "Thank you for coming.",
+      "items": [],
+      "voiceover": "Thank you, Frank and Joan, for coming to your visit."
+     },
+     {
+      "kind": "card",
+      "title": "What We Talked About",
+      "text": "We checked in on how Frank is doing.",
+      "items": [],
+      "voiceover": "We talked about how Frank is doing and how Joan helps."
+     },
+     {
+      "kind": "steps",
+      "title": "Your Next Steps",
+      "text": "Read your summary together.",
+      "items": [
+       "Read your summary",
+       "Write down questions",
+       "Use pictures to talk at home"
+      ],
+      "voiceover": "Read your summary together. Write down any questions or changes."
+     },
+     {
+      "kind": "choice",
+      "title": "When to Call",
+      "text": "Call if you need help.",
+      "items": [
+       "Trouble talking or understanding",
+       "Worried or unsure"
+      ],
+      "voiceover": "Call us at 555-0100 if you have trouble or feel unsure."
+     },
+     {
+      "kind": "closing",
+      "title": "See You Next Time",
+      "text": "We are here for you.",
+      "items": [],
+      "voiceover": "We are here for you. See you next time."
+     }
+    ]
+   }
+  ]
+ }
+}

@@ -1,0 +1,656 @@
+{
+ "patientId": 1976,
+ "generatedAt": "2026-10-03T07:31:34.551Z",
+ "model": "gpt-4.1-2025-04-14",
+ "context": {
+  "checkin": "I drive long haul. Will this affect my license? I need early slots.",
+  "audience": "self",
+  "language": "en",
+  "channel": "sms"
+ },
+ "facts": [
+  {
+   "id": "f1",
+   "field": "demographics.age",
+   "value": "55 years old"
+  },
+  {
+   "id": "f2",
+   "field": "demographics.sex",
+   "value": "Male"
+  },
+  {
+   "id": "f3",
+   "field": "primary_diagnoses",
+   "value": "Obstructive sleep apnea"
+  },
+  {
+   "id": "f4",
+   "field": "primary_diagnoses",
+   "value": "Hyperlipidemia"
+  },
+  {
+   "id": "f5",
+   "field": "primary_diagnoses",
+   "value": "Essential hypertension"
+  },
+  {
+   "id": "f6",
+   "field": "primary_diagnoses",
+   "value": "Type 2 diabetes mellitus"
+  },
+  {
+   "id": "f7",
+   "field": "primary_diagnoses",
+   "value": "Cervical spondylotic myelopathy"
+  },
+  {
+   "id": "f8",
+   "field": "primary_diagnoses",
+   "value": "Achalasia"
+  },
+  {
+   "id": "f9",
+   "field": "primary_diagnoses",
+   "value": "Vitreous hemorrhage"
+  },
+  {
+   "id": "f10",
+   "field": "comorbidities",
+   "value": "Metabolic syndrome"
+  },
+  {
+   "id": "f11",
+   "field": "comorbidities",
+   "value": "Hyperlipidemia"
+  },
+  {
+   "id": "f12",
+   "field": "comorbidities",
+   "value": "Essential hypertension"
+  },
+  {
+   "id": "f13",
+   "field": "comorbidities",
+   "value": "Type 2 diabetes mellitus"
+  },
+  {
+   "id": "f14",
+   "field": "profile.chronic_conditions",
+   "value": "Type 2 Diabetes Mellitus (15-year history, diagnosed age 40)"
+  },
+  {
+   "id": "f15",
+   "field": "profile.chronic_conditions",
+   "value": "Hypertension"
+  },
+  {
+   "id": "f16",
+   "field": "profile.chronic_conditions",
+   "value": "Hyperlipidemia"
+  },
+  {
+   "id": "f17",
+   "field": "profile.home_medications",
+   "value": "Metformin 1000 mg twice daily"
+  },
+  {
+   "id": "f18",
+   "field": "profile.home_medications",
+   "value": "Lisinopril 20 mg daily"
+  },
+  {
+   "id": "f19",
+   "field": "profile.home_medications",
+   "value": "Amlodipine 5 mg daily"
+  },
+  {
+   "id": "f20",
+   "field": "profile.home_medications",
+   "value": "Hydrochlorothiazide 25 mg daily"
+  },
+  {
+   "id": "f21",
+   "field": "profile.home_medications",
+   "value": "Atorvastatin 40 mg daily"
+  },
+  {
+   "id": "f22",
+   "field": "profile.allergies",
+   "value": "NKDA"
+  },
+  {
+   "id": "f23",
+   "field": "profile.surgical_history",
+   "value": "No prior surgeries"
+  },
+  {
+   "id": "f24",
+   "field": "profile.occupation",
+   "value": "Long-haul truck driver"
+  },
+  {
+   "id": "f25",
+   "field": "profile.smoking_status",
+   "value": "Former smoker, quit 8 years ago (20 pack-year history)"
+  },
+  {
+   "id": "f26",
+   "field": "profile.alcohol_use",
+   "value": "Occasional social use (1-2 drinks per month)"
+  },
+  {
+   "id": "f27",
+   "field": "profile.family_history",
+   "value": "Father: Type 2 Diabetes Mellitus, Hypertension, Obstructive Sleep Apnea"
+  },
+  {
+   "id": "f28",
+   "field": "profile.family_history",
+   "value": "Mother: Hypertension, Hyperlipidemia"
+  },
+  {
+   "id": "f29",
+   "field": "profile.family_history",
+   "value": "Paternal uncle: Coronary artery disease"
+  },
+  {
+   "id": "f30",
+   "field": "encounter.visit",
+   "value": "outpatient visit, Endocrinology, Dr. Sarah Chen",
+   "encounterId": 8131,
+   "date": "2020-01-15"
+  },
+  {
+   "id": "f31",
+   "field": "encounter.chief_complaint",
+   "value": "Routine health check-up for Type 2 diabetes mellitus with increased fatigue over past few months",
+   "encounterId": 8131,
+   "date": "2020-01-15"
+  },
+  {
+   "id": "f32",
+   "field": "encounter.note.hpi",
+   "value": "He reports no acute complaints but mentions that he has been feeling more fatigued over the past few months.",
+   "encounterId": 8131,
+   "date": "2020-01-15"
+  },
+  {
+   "id": "f33",
+   "field": "encounter.visit",
+   "value": "outpatient visit, Cardiology, Dr. Michael Rodriguez",
+   "encounterId": 8130,
+   "date": "2020-07-15"
+  },
+  {
+   "id": "f34",
+   "field": "encounter.chief_complaint",
+   "value": "Routine follow-up for essential hypertension and medication compliance verification",
+   "encounterId": 8130,
+   "date": "2020-07-15"
+  },
+  {
+   "id": "f35",
+   "field": "encounter.note.hpi",
+   "value": "The patient, a 55-year-old male with a 15-year history of Type 2 Diabetes Mellitus, Hypertension, and Hyperlipidemia, returns to cardiology for routine hypertension follow-up following his endocrinology evaluation six months ago for fatigue. He reports compliance with his medications.",
+   "encounterId": 8130,
+   "date": "2020-07-15"
+  },
+  {
+   "id": "f36",
+   "field": "encounter.visit",
+   "value": "outpatient visit, Cardiology, Dr. Michael Rodriguez",
+   "encounterId": 8129,
+   "date": "2021-01-15"
+  },
+  {
+   "id": "f37",
+   "field": "encounter.chief_complaint",
+   "value": "Follow-up visit for persistently elevated home blood pressure readings despite medication adherence",
+   "encounterId": 8129,
+   "date": "2021-01-15"
+  },
+  {
+   "id": "f38",
+   "field": "encounter.note.hpi",
+   "value": "This 56-year-old with type 2 diabetes and hypertension returns for follow-up of elevated home blood pressure following prior evaluation. He reports compliance with his current antihypertensive regimen, which includes hydrochlorothiazide and amlodipine, but notes that his home blood pressure readings have been consistently above the target range.",
+   "encounterId": 8129,
+   "date": "2021-01-15"
+  },
+  {
+   "id": "f39",
+   "field": "encounter.visit",
+   "value": "outpatient visit, Cardiology, Dr. Fatima Al-Hassan",
+   "encounterId": 8128,
+   "date": "2022-01-15"
+  },
+  {
+   "id": "f40",
+   "field": "encounter.chief_complaint",
+   "value": "Routine cardiovascular risk assessment and discussion of adjunctive lipid-lowering therapy",
+   "encounterId": 8128,
+   "date": "2022-01-15"
+  },
+  {
+   "id": "f41",
+   "field": "encounter.note.hpi",
+   "value": "The patient with diabetes, hypertension, and hyperlipidemia returns for cardiovascular risk assessment, last seen one year ago for elevated blood pressure despite adherence. He reports no new symptoms and feels generally well.",
+   "encounterId": 8128,
+   "date": "2022-01-15"
+  },
+  {
+   "id": "f42",
+   "field": "encounter.note.plan",
+   "value": "However, you are aware that the trial did not adjust for patients' smoking status, and the majority of the patients in the treatment group were non-smokers.",
+   "encounterId": 8128,
+   "date": "2022-01-15"
+  },
+  {
+   "id": "f43",
+   "field": "encounter.visit",
+   "value": "outpatient visit, Pulmonology, Dr. James Washington",
+   "encounterId": 8127,
+   "date": "2023-01-15"
+  },
+  {
+   "id": "f44",
+   "field": "encounter.chief_complaint",
+   "value": "Excessive daytime sleepiness, loud snoring, and witnessed apneas reported by wife",
+   "encounterId": 8127,
+   "date": "2023-01-15"
+  },
+  {
+   "id": "f45",
+   "field": "encounter.note.hpi",
+   "value": "This 58-year-old male with longstanding Type 2 Diabetes Mellitus, Hypertension, and Hyperlipidemia, established with Endocrinology and Cardiology, presents to Pulmonology with new sleep complaints. His wife reports that he snores loudly and occasionally stops breathing at night, which wakes her up.",
+   "encounterId": 8127,
+   "date": "2023-01-15"
+  },
+  {
+   "id": "f46",
+   "field": "encounter.visit",
+   "value": "outpatient visit, Gastroenterology, Dr. Priya Patel",
+   "encounterId": 8133,
+   "date": "2024-01-15"
+  },
+  {
+   "id": "f47",
+   "field": "encounter.chief_complaint",
+   "value": "Six-month history of progressive dysphagia to solids and liquids with occasional regurgitation",
+   "encounterId": 8133,
+   "date": "2024-01-15"
+  },
+  {
+   "id": "f48",
+   "field": "encounter.note.hpi",
+   "value": "The patient has Type 2 diabetes, hypertension, hyperlipidemia, and sleep apnea and presents with dysphagia. He reports occasional regurgitation of undigested food and a sensation of food sticking in his mid-chest after eating.",
+   "encounterId": 8133,
+   "date": "2024-01-15"
+  },
+  {
+   "id": "f49",
+   "field": "encounter.visit",
+   "value": "outpatient visit, Neurosurgery, Dr. David Kim",
+   "encounterId": 8132,
+   "date": "2025-01-15"
+  },
+  {
+   "id": "f50",
+   "field": "encounter.chief_complaint",
+   "value": "Progressive gait difficulty, hand numbness, and occasional urinary incontinence over six months",
+   "encounterId": 8132,
+   "date": "2025-01-15"
+  },
+  {
+   "id": "f51",
+   "field": "encounter.note.hpi",
+   "value": "This 60-year-old male with Type 2 Diabetes Mellitus, hypertension, and hyperlipidemia was evaluated last year for dysphagia. He presents to Neurosurgery with a 6-month history of progressive difficulty in walking, numbness in his hands, and occasional urinary incontinence.",
+   "encounterId": 8132,
+   "date": "2025-01-15"
+  },
+  {
+   "id": "f52",
+   "field": "encounter.visit",
+   "value": "ed visit, Emergency Medicine, Dr. Emily Johnson",
+   "encounterId": 8134,
+   "date": "2027-01-15"
+  },
+  {
+   "id": "f53",
+   "field": "encounter.chief_complaint",
+   "value": "Sudden painless vision loss in right eye with floaters noted earlier today",
+   "encounterId": 8134,
+   "date": "2027-01-15"
+  },
+  {
+   "id": "f54",
+   "field": "encounter.note.hpi",
+   "value": "This 62-year-old male with Type 2 Diabetes Mellitus presents to the ED. He describes seeing \"dark spots\" floating in his vision.",
+   "encounterId": 8134,
+   "date": "2027-01-15"
+  },
+  {
+   "id": "f55",
+   "field": "seed.upcoming_visit",
+   "value": "Pulmonology: Sleep apnea follow-up (in 5 days)"
+  },
+  {
+   "id": "f56",
+   "field": "seed.stated_language",
+   "value": "English (patient-stated)"
+  }
+ ],
+ "profile": {
+  "patientId": 1976,
+  "preferredName": "Darnell",
+  "summaryLine": "Darnell is a 55-year-old long-haul truck driver managing sleep apnea, diabetes, hypertension, and hyperlipidemia, who is concerned about how his sleep apnea may affect his driving license and prefers early appointment slots.",
+  "audience": "self",
+  "recipients": [
+   {
+    "role": "patient",
+    "name": "Darnell",
+    "relationship": "",
+    "primary": true
+   }
+  ],
+  "communicationNeeds": {
+   "readingLevel": 6,
+   "detailPreference": "brief",
+   "language": "en",
+   "channel": "sms",
+   "bestTimeOfDay": "early"
+  },
+  "emotionalContext": [
+   {
+    "id": "ec1",
+    "text": "Darnell is concerned about whether his sleep apnea diagnosis will affect his ability to maintain his commercial driving license.",
+    "kind": "patient_stated",
+    "source": {
+     "factIds": [],
+     "note": "What matters to you check-in"
+    },
+    "reason": "He directly asked if his condition will affect his license."
+   },
+   {
+    "id": "ec2",
+    "text": "He values early appointment times to accommodate his work schedule as a long-haul truck driver.",
+    "kind": "patient_stated",
+    "source": {
+     "factIds": [],
+     "note": "What matters to you check-in"
+    },
+    "reason": "He stated a preference for early slots."
+   },
+   {
+    "id": "ec3",
+    "text": "Darnell appears proactive about his health, attending regular follow-ups for multiple chronic conditions and reporting medication adherence.",
+    "kind": "fact",
+    "source": {
+     "factIds": [
+      "f35",
+      "f38",
+      "f41"
+     ],
+     "note": ""
+    },
+    "reason": "Multiple notes document his regular follow-ups and medication compliance."
+   }
+  ],
+  "privacyRules": [],
+  "cognitiveSupport": [],
+  "strengths": [
+   {
+    "id": "s1",
+    "text": "Darnell demonstrates responsibility in managing multiple chronic conditions, including diabetes, hypertension, and hyperlipidemia, with regular follow-ups and medication adherence.",
+    "kind": "fact",
+    "source": {
+     "factIds": [
+      "f35",
+      "f38",
+      "f41"
+     ],
+     "note": ""
+    },
+    "reason": "Documented in encounter notes."
+   },
+   {
+    "id": "s2",
+    "text": "He has successfully quit smoking for 8 years, showing commitment to his health.",
+    "kind": "fact",
+    "source": {
+     "factIds": [
+      "f25"
+     ],
+     "note": ""
+    },
+    "reason": "Former smoker, quit 8 years ago."
+   },
+   {
+    "id": "s3",
+    "text": "Darnell is actively engaged in his care, asking questions relevant to his livelihood and expressing preferences for appointment scheduling.",
+    "kind": "patient_stated",
+    "source": {
+     "factIds": [],
+     "note": "What matters to you check-in"
+    },
+    "reason": "Directly stated concerns and preferences."
+   }
+  ],
+  "avoidTerms": [
+   "non-compliant",
+   "denies",
+   "refused"
+  ],
+  "dataQualityWarnings": [
+   "Record lists \"Cervical spondylotic myelopathy\" for a patient documented as male. Verify before use.",
+   "\"Hyperlipidemia\" appears as both a primary diagnosis and a comorbidity.",
+   "\"Essential hypertension\" appears as both a primary diagnosis and a comorbidity.",
+   "\"Type 2 diabetes mellitus\" appears as both a primary diagnosis and a comorbidity."
+  ]
+ },
+ "voiceGuide": {
+  "tone": [
+   "direct",
+   "respectful",
+   "reassuring"
+  ],
+  "doSay": [
+   "You can choose an early appointment.",
+   "Let us know if you have questions.",
+   "We respect your schedule."
+  ],
+  "dontSay": [
+   "non-compliant",
+   "denies",
+   "refused",
+   "You must come in no matter what.",
+   "You did not follow instructions.",
+   "You ignored advice."
+  ],
+  "sentenceMaxWords": 12,
+  "addressing": "Speak directly to Darnell. Use his name if clarifying, but do not address others unless Darnell requests.",
+  "greeting": "Hi Darnell,",
+  "signoff": "Your Primary Care team",
+  "choicePhrases": [
+   "Would you like an early slot?",
+   "Do you want to reschedule?",
+   "Would you prefer a call or text?"
+  ],
+  "safetyPhrases": [
+   "Call us at 555-0100 for help.",
+   "Reply STOP to pause messages."
+  ]
+ },
+ "outputs": {
+  "messages": [
+   {
+    "stage": "before_7d",
+    "recipient": "patient",
+    "persona": "Hi Darnell,\nYour sleep apnea follow-up is on {{weekday}}, {{date}} at {{time}}. The visit will take about 40 minutes. We will talk about your sleep apnea and any concerns. Would you like an early slot? Call us at 555-0100 for help.\nYour Primary Care team",
+    "claimIds": []
+   },
+   {
+    "stage": "before_2d",
+    "recipient": "patient",
+    "persona": "Hi Darnell,\nWe look forward to seeing you for your sleep apnea follow-up on {{weekday}}, {{date}} at {{time}}. The visit should last about 40 minutes. You can reschedule if you need to. Let us know if you have questions. Call us at 555-0100 for help.\nYour Primary Care team",
+    "claimIds": []
+   },
+   {
+    "stage": "after_24h",
+    "recipient": "patient",
+    "persona": "Hi Darnell,\nThank you for coming to your sleep apnea follow-up. You can read your visit summary in plain language. We will contact you about your next steps. Call us at 555-0100 if you need help.\nYour Primary Care team",
+    "claimIds": []
+   }
+  ],
+  "clinicianBrief": {
+   "lines": [
+    "Darnell is a 55-year-old long-haul truck driver here for a sleep apnea follow-up.",
+    "He is concerned about how sleep apnea may affect his commercial driving license.",
+    "He prefers early appointments due to his work schedule.",
+    "Darnell is proactive, attends regular follow-ups, and reports medication adherence.",
+    "Speak directly and respectfully, keep explanations brief and clear.",
+    "Avoid terms like 'non-compliant,' 'denies,' or 'refused.'",
+    "Chart check: Confirm diagnoses and review for possible documentation errors before discussing comorbidities."
+   ],
+   "readAloudSeconds": 29,
+   "claimIds": [
+    "ec1",
+    "ec2",
+    "ec3"
+   ]
+  },
+  "visitSummary": {
+   "headline": "Sleep Apnea Follow-Up Visit Summary – {{date}}",
+   "whatWeTalkedAbout": [
+    {
+     "text": "Your sleep apnea and how it may affect your driving license.",
+     "claimIds": [
+      "ec1"
+     ]
+    },
+    {
+     "text": "Managing your diabetes, hypertension, and cholesterol.",
+     "claimIds": []
+    },
+    {
+     "text": "Your regular medication use and health habits.",
+     "claimIds": []
+    }
+   ],
+   "yourNextSteps": [
+    "Keep using your CPAP or sleep device as directed.",
+    "Take your medications every day as prescribed.",
+    "Watch for any changes in your sleep or breathing.",
+    "Schedule your next follow-up early to fit your work.",
+    "Call us if you have questions about your license or health."
+   ],
+   "whenToCall": [
+    "Call us if you feel very sleepy during the day.",
+    "Call if you have trouble breathing at night.",
+    "Call 555-0100 if you notice new symptoms."
+   ],
+   "questionsForNextTime": [
+    "How does sleep apnea affect my driving license?",
+    "Are there new treatments for sleep apnea?",
+    "What else can I do to improve my sleep?"
+   ]
+  },
+  "videoScripts": [
+   {
+    "stage": "before",
+    "title": "Get Ready for Your Sleep Apnea Follow-Up",
+    "scenes": [
+     {
+      "kind": "title",
+      "title": "Your Upcoming Visit",
+      "text": "Sleep apnea follow-up is coming up.",
+      "items": [],
+      "voiceover": "Your sleep apnea follow-up is scheduled soon."
+     },
+     {
+      "kind": "card",
+      "title": "What to Expect",
+      "text": "The visit lasts about 40 minutes.",
+      "items": [],
+      "voiceover": "The visit will take about 40 minutes. We will talk about your sleep and any concerns."
+     },
+     {
+      "kind": "steps",
+      "title": "Who Will Be There",
+      "text": "You will meet with your pulmonology team.",
+      "items": [
+       "Pulmonology doctor",
+       "Clinic staff"
+      ],
+      "voiceover": "You will meet with your pulmonology doctor and clinic staff."
+     },
+     {
+      "kind": "choice",
+      "title": "Your Choices",
+      "text": "You can ask for an early slot.",
+      "items": [
+       "Request an early appointment",
+       "Reschedule if needed"
+      ],
+      "voiceover": "You can choose an early slot or reschedule if you need to."
+     },
+     {
+      "kind": "closing",
+      "title": "Need Help?",
+      "text": "Call us at 555-0100 for help.",
+      "items": [],
+      "voiceover": "Call us at 555-0100 if you have questions."
+     }
+    ]
+   },
+   {
+    "stage": "after",
+    "title": "Your Sleep Apnea Follow-Up: What’s Next",
+    "scenes": [
+     {
+      "kind": "title",
+      "title": "Thank You for Visiting",
+      "text": "Thanks for coming to your follow-up.",
+      "items": [],
+      "voiceover": "Thank you for coming to your sleep apnea follow-up."
+     },
+     {
+      "kind": "card",
+      "title": "What We Covered",
+      "text": "We talked about your sleep apnea and health.",
+      "items": [],
+      "voiceover": "We discussed your sleep apnea, your health, and your questions."
+     },
+     {
+      "kind": "steps",
+      "title": "Next Steps",
+      "text": "Keep using your sleep device and medications.",
+      "items": [
+       "Use your CPAP as directed",
+       "Take all medications daily",
+       "Watch for changes in sleep"
+      ],
+      "voiceover": "Keep using your CPAP and medications as directed. Watch for any changes in your sleep."
+     },
+     {
+      "kind": "choice",
+      "title": "When to Call",
+      "text": "Call if you feel very sleepy or have trouble breathing.",
+      "items": [
+       "Daytime sleepiness",
+       "Night breathing problems"
+      ],
+      "voiceover": "Call us if you feel very sleepy during the day or have trouble breathing at night."
+     },
+     {
+      "kind": "closing",
+      "title": "Questions?",
+      "text": "Call us at 555-0100 for help.",
+      "items": [],
+      "voiceover": "Call us at 555-0100 if you have questions or concerns."
+     }
+    ]
+   }
+  ]
+ }
+}
