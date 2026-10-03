@@ -102,6 +102,7 @@ Open http://localhost:3000, which shows the public landing page; sign in with a 
 | `MONGODB_URI` | Required. MongoDB connection string (Atlas in production). `MONGODB_DB` overrides the database name (default `offthechart`). |
 | `SEED_PASSWORD` | Password for the seeded staff accounts. Defaults to a dev value outside production; required in production. |
 | `OFF_THE_CHART_QUICK_SIGNIN` | `1` shows one-click sign-in buttons for the seeded coordinator and clinician on the sign-in page, for a public demo. Admin always needs the password; no password is sent to the browser. |
+| `OFF_THE_CHART_CHECKIN_EXTRA_QUESTIONS` | `1` adds language, who else should get messages, and best time to reach them to the patient check-in form. Default: off, and the form asks only what support they need. |
 | `OFF_THE_CHART_DEMO` | `1`/`0` to force the guided walkthrough on or off. Default: on outside production. |
 
 Without a model key the app still works: builds use the committed cached output for that patient, otherwise the rules-based fallback, and the UI labels both.

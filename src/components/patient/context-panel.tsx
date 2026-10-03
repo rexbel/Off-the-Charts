@@ -25,6 +25,7 @@ export function ContextPanel({
   hasRun,
   cachedAvailable,
   modelAvailable,
+  checkinExtraQuestions,
 }: {
   patient: PatientRecord;
   context: PatientContext;
@@ -36,6 +37,7 @@ export function ContextPanel({
   hasRun: boolean;
   cachedAvailable: boolean;
   modelAvailable: boolean;
+  checkinExtraQuestions: boolean;
 }) {
   const { ehr, seed } = patient;
   const [openEnc, setOpenEnc] = useState<string[]>([]);
@@ -124,10 +126,10 @@ export function ContextPanel({
           </p>
         </div>
         <div className="grid gap-2">
-          <Label htmlFor="checkin">&ldquo;What matters to you?&rdquo; check-in</Label>
+          <Label htmlFor="checkin">Help us understand what support you need before, during and after the visit?</Label>
           <Textarea id="checkin" value={context.checkin} onChange={(e) => onChange({ ...context, checkin: e.target.value })} rows={4} className="font-voice text-base" />
           <p className="text-xs text-muted-foreground">{seed.checkinSource}. Patient-stated; the engine treats it as their words, not as a chart fact.</p>
-          <CheckinPanel patientId={patient.patientId} context={context} onChange={onChange} />
+          <CheckinPanel patientId={patient.patientId} context={context} onChange={onChange} extraQuestions={checkinExtraQuestions} />
         </div>
         <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
           <div className="grid gap-1.5">

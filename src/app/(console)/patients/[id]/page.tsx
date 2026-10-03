@@ -9,6 +9,7 @@ import { buildModeSchema } from "@/lib/schemas";
 import type { PatientBundle } from "@/lib/client/api";
 import { currentNamespace } from "@/lib/namespace";
 import { currentUser } from "@/lib/auth";
+import { checkinExtraQuestionsEnabled } from "@/lib/services/checkins";
 
 export const dynamic = "force-dynamic";
 
@@ -34,7 +35,7 @@ export default async function PatientPage(props: PageProps<"/patients/[id]">) {
     loadCachedRun(patientId),
   ]);
 
-  const bundle: PatientBundle = { patient, context, contextEdited: edited, latest, runs, cachedAvailable: cached !== null, modelAvailable: modelAvailable(), namespace: ns };
+  const bundle: PatientBundle = { patient, context, contextEdited: edited, latest, runs, cachedAvailable: cached !== null, modelAvailable: modelAvailable(), namespace: ns, checkinExtraQuestions: checkinExtraQuestionsEnabled() };
   const tab = typeof sp.tab === "string" ? sp.tab : undefined;
   const buildParam = typeof sp.build === "string" ? buildModeSchema.safeParse(sp.build) : null;
   const autoBuild = buildParam?.success ? buildParam.data : undefined;

@@ -280,11 +280,11 @@ export function PatientWorkspace({ bundle, user, initialTab, autoBuild, openEvid
               </Button>
             </CollapsibleTrigger>
             <CollapsibleContent className="mt-3">
-              <ContextPanel patient={patient} context={context} edited={contextEdited} onChange={saveContext} onReset={resetContext} onBuild={build} building={building} hasRun={run !== null} cachedAvailable={bundle.cachedAvailable} modelAvailable={bundle.modelAvailable} />
+              <ContextPanel patient={patient} context={context} edited={contextEdited} onChange={saveContext} onReset={resetContext} onBuild={build} building={building} hasRun={run !== null} cachedAvailable={bundle.cachedAvailable} modelAvailable={bundle.modelAvailable} checkinExtraQuestions={bundle.checkinExtraQuestions} />
             </CollapsibleContent>
           </Collapsible>
         ) : (
-          <ContextPanel patient={patient} context={context} edited={contextEdited} onChange={saveContext} onReset={resetContext} onBuild={build} building={false} hasRun={false} cachedAvailable={bundle.cachedAvailable} modelAvailable={bundle.modelAvailable} />
+          <ContextPanel patient={patient} context={context} edited={contextEdited} onChange={saveContext} onReset={resetContext} onBuild={build} building={false} hasRun={false} cachedAvailable={bundle.cachedAvailable} modelAvailable={bundle.modelAvailable} checkinExtraQuestions={bundle.checkinExtraQuestions} />
         )}
       </section>
 

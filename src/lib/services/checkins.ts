@@ -34,6 +34,15 @@ export function contextFromCheckin(existing: PatientContext, answers: CheckinAns
   return { ...existing, checkin, language: answers.language };
 }
 
+/**
+ * Language, who else and best time on the patient form. Off unless
+ * OFF_THE_CHART_CHECKIN_EXTRA_QUESTIONS=1; when off the form sends neutral
+ * defaults (current language, just me, no preference).
+ */
+export function checkinExtraQuestionsEnabled(): boolean {
+  return process.env.OFF_THE_CHART_CHECKIN_EXTRA_QUESTIONS === "1";
+}
+
 /** Whole days left before expiry, never negative. */
 export function daysUntilExpiry(expiresAt: string, now: Date = new Date()): number {
   const ms = new Date(expiresAt).getTime() - now.getTime();

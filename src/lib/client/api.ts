@@ -59,6 +59,7 @@ export type PatientBundle = {
   cachedAvailable: boolean;
   modelAvailable: boolean;
   namespace: Namespace;
+  checkinExtraQuestions: boolean;
 };
 
 export const api = {

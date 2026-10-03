@@ -21,7 +21,8 @@ const COPY = {
     eyebrow: "Before your visit",
     greeting: (name: string) => `Hi ${name}.`,
     intro: "A few quick questions so your care team can talk with you the way you prefer. About two minutes.",
-    whatMatters: "What matters to you about this visit?",
+    introShort: "One quick question so your care team can support you.",
+    whatMatters: "Help us understand what support you need before, during and after your visit?",
     whatMattersHelp: "Anything you want your care team to know, in your own words.",
     whatMattersPlaceholder: "For example: I want to understand my options before anything is decided.",
     language: "Which language do you prefer?",
@@ -52,7 +53,8 @@ const COPY = {
     eyebrow: "Antes de su visita",
     greeting: (name: string) => `Hola, ${name}.`,
     intro: "Unas preguntas breves para que su equipo de atención se comunique con usted como usted prefiera. Unos dos minutos.",
-    whatMatters: "¿Qué es lo más importante para usted en esta visita?",
+    introShort: "Una pregunta breve para que su equipo de atención pueda apoyarle.",
+    whatMatters: "¿Nos ayuda a entender qué apoyo necesita antes, durante y después de su visita?",
     whatMattersHelp: "Todo lo que quiera que su equipo sepa, en sus propias palabras.",
     whatMattersPlaceholder: "Por ejemplo: quiero entender mis opciones antes de que se decida algo.",
     language: "¿Qué idioma prefiere?",
@@ -92,7 +94,7 @@ function initialView(initial: CheckinInitial): View {
   return "form";
 }
 
-export function CheckinForm({ token, initial }: { token: string; initial: CheckinInitial }) {
+export function CheckinForm({ token, initial, extraQuestions = false }: { token: string; initial: CheckinInitial; extraQuestions?: boolean }) {
   const [view, setView] = useState<View>(() => initialView(initial));
   const [language, setLanguage] = useState<Language>(initial.language);
   const [whatMatters, setWhatMatters] = useState("");
@@ -146,7 +148,7 @@ export function CheckinForm({ token, initial }: { token: string; initial: Checki
         <form onSubmit={submit} className="mt-10 flex flex-1 flex-col gap-10" noValidate aria-busy={view === "sending"}>
           <div>
             {firstName && <p className="text-2xl font-semibold leading-tight sm:text-3xl">{t.greeting(firstName)}</p>}
-            <p className="mt-2 text-lg leading-relaxed text-voice-muted">{t.intro}</p>
+            <p className="mt-2 text-lg leading-relaxed text-voice-muted">{extraQuestions ? t.intro : t.introShort}</p>
           </div>
 
           <div className="grid gap-3">
@@ -183,44 +185,49 @@ export function CheckinForm({ token, initial }: { token: string; initial: Checki
             </div>
           </div>
 
-          <fieldset className="grid gap-3" disabled={view === "sending"}>
-            <legend id={ids.language} className="text-2xl font-semibold leading-snug sm:text-[1.75rem]">
-              {t.language}
-            </legend>
-            <div role="radiogroup" aria-labelledby={ids.language} className="grid grid-cols-2 gap-3">
-              {(["en", "es"] as Language[]).map((l) => (
-                <ChoiceCard key={l} name="language" value={l} checked={language === l} onChange={() => setLanguage(l)} label={LANGUAGE_LABEL[l]} />
-              ))}
-            </div>
-          </fieldset>
+          {/* Off by default (OFF_THE_CHART_CHECKIN_EXTRA_QUESTIONS); answers then keep their neutral defaults. */}
+          {extraQuestions && (
+            <>
+              <fieldset className="grid gap-3" disabled={view === "sending"}>
+                <legend id={ids.language} className="text-2xl font-semibold leading-snug sm:text-[1.75rem]">
+                  {t.language}
+                </legend>
+                <div role="radiogroup" aria-labelledby={ids.language} className="grid grid-cols-2 gap-3">
+                  {(["en", "es"] as Language[]).map((l) => (
+                    <ChoiceCard key={l} name="language" value={l} checked={language === l} onChange={() => setLanguage(l)} label={LANGUAGE_LABEL[l]} />
+                  ))}
+                </div>
+              </fieldset>
 
-          <div className="grid gap-3">
-            <label htmlFor={ids.includeWho} className="text-2xl font-semibold leading-snug sm:text-[1.75rem]">
-              {t.includeWho}
-            </label>
-            <p className="text-base text-voice-muted">{t.includeWhoHelp}</p>
-            <Input
-              id={ids.includeWho}
-              value={includeWho}
-              onChange={(e) => setIncludeWho(e.target.value.slice(0, MAX_INCLUDE_WHO))}
-              maxLength={MAX_INCLUDE_WHO}
-              placeholder={t.includeWhoPlaceholder}
-              autoComplete="off"
-              disabled={view === "sending"}
-              className="h-12 rounded-xl border-2 bg-voice-card px-4 text-lg md:text-lg"
-            />
-          </div>
+              <div className="grid gap-3">
+                <label htmlFor={ids.includeWho} className="text-2xl font-semibold leading-snug sm:text-[1.75rem]">
+                  {t.includeWho}
+                </label>
+                <p className="text-base text-voice-muted">{t.includeWhoHelp}</p>
+                <Input
+                  id={ids.includeWho}
+                  value={includeWho}
+                  onChange={(e) => setIncludeWho(e.target.value.slice(0, MAX_INCLUDE_WHO))}
+                  maxLength={MAX_INCLUDE_WHO}
+                  placeholder={t.includeWhoPlaceholder}
+                  autoComplete="off"
+                  disabled={view === "sending"}
+                  className="h-12 rounded-xl border-2 bg-voice-card px-4 text-lg md:text-lg"
+                />
+              </div>
 
-          <fieldset className="grid gap-3" disabled={view === "sending"}>
-            <legend id={ids.bestTime} className="text-2xl font-semibold leading-snug sm:text-[1.75rem]">
-              {t.bestTime}
-            </legend>
-            <div role="radiogroup" aria-labelledby={ids.bestTime} className="grid gap-3 sm:grid-cols-3">
-              {bestTimeSchema.options.map((b) => (
-                <ChoiceCard key={b} name="bestTime" value={b} checked={bestTime === b} onChange={() => setBestTime(b)} label={t.bestTimes[b]} />
-              ))}
-            </div>
-          </fieldset>
+              <fieldset className="grid gap-3" disabled={view === "sending"}>
+                <legend id={ids.bestTime} className="text-2xl font-semibold leading-snug sm:text-[1.75rem]">
+                  {t.bestTime}
+                </legend>
+                <div role="radiogroup" aria-labelledby={ids.bestTime} className="grid gap-3 sm:grid-cols-3">
+                  {bestTimeSchema.options.map((b) => (
+                    <ChoiceCard key={b} name="bestTime" value={b} checked={bestTime === b} onChange={() => setBestTime(b)} label={t.bestTimes[b]} />
+                  ))}
+                </div>
+              </fieldset>
+            </>
+          )}
 
           {view === "error" && (
             <div role="alert" className="rounded-xl border-2 border-bad/40 bg-bad-soft/60 p-4 text-bad">
