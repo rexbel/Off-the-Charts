@@ -73,11 +73,6 @@ const UI_TEXT = {
 } satisfies Record<Language, unknown>;
 
 const noopSubscribe = () => () => {};
-const speechSupportedSnapshot = () =>
-  typeof window !== "undefined" &&
-  "speechSynthesis" in window &&
-  typeof window.SpeechSynthesisUtterance === "function";
-
 /**
  * Voice for the scenes: the server voice (ElevenLabs, cached) when configured,
  * else the browser's own speech. `supported` is null during server render.
