@@ -240,17 +240,17 @@ export const MESSAGE_STAGE_LABEL: Record<MessageStage, string> = {
 };
 
 export const renderedMessageSchema = z.object({
-  stage: messageStageSchema,
+  stage: messageStageSchema.describe("Which touchpoint: before_7d, before_2d or after_24h"),
   /** Recipient role from the profile. */
-  recipient: z.string(),
-  persona: z.string(),
-  claimIds: z.array(z.string()),
+  recipient: z.string().describe("Recipient role key from the profile recipients, e.g. patient, daughter, guardian"),
+  persona: z.string().describe("The complete message body as it will be sent, in the patient's language: greeting, 3-6 short sentences, sign-off on its own line"),
+  claimIds: z.array(z.string()).describe("Profile claim ids (c1, c2...) and privacy rule ids (p1...) this message acted on"),
 });
 export type RenderedMessage = z.infer<typeof renderedMessageSchema>;
 
 export const clinicianBriefSchema = z.object({
   /** 4-7 short lines, about 75 words total. */
-  lines: z.array(z.string()).min(3).max(8),
+  lines: z.array(z.string()).min(3).max(8).describe("Full sentences for the clinician to read aloud, one per line"),
   readAloudSeconds: z.number(),
   claimIds: z.array(z.string()),
 });
@@ -268,10 +268,10 @@ export type VisitSummary = z.infer<typeof visitSummarySchema>;
 export const sceneKindSchema = z.enum(["title", "card", "steps", "choice", "closing"]);
 export const sceneSchema = z.object({
   kind: sceneKindSchema,
-  title: z.string().optional(),
-  text: z.string(),
-  items: z.array(z.string()).optional(),
-  voiceover: z.string(),
+  title: z.string().optional().describe("Short on-screen heading"),
+  text: z.string().describe("The on-screen line for this card, one short sentence"),
+  items: z.array(z.string()).optional().describe("List items for steps and choice scenes, 2-4 short phrases"),
+  voiceover: z.string().describe("What is spoken and captioned for this scene: one or two short sentences"),
 });
 export type Scene = z.infer<typeof sceneSchema>;
 

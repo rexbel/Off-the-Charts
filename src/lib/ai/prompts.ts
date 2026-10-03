@@ -52,7 +52,7 @@ Produce RenderedOutputs:
    - never uses any avoidTerm and never uses a restricted term on a restricted channel;
    - for a caregiver-primary audience, names the patient with dignity and gives the caregiver one concrete thing that helps (e.g. the best time of day, a quiet room);
    - the after_24h message thanks them, points to the plain-language summary, and says what happens next.
-   claimIds lists the profile claim ids (c1, c2...) and privacy rule ids (p1...) this message acted on.
+   The field "persona" holds the complete message body exactly as it will be sent (greeting, body, sign-off on its own line); it is never a name or a label. "claimIds" lists the profile claim ids (c1, c2...) and privacy rule ids (p1...) this message acted on.
 
 2. clinicianBrief: 5-7 lines for the clinician to read in 30 seconds before walking in (about 75 words total). Clinical register is fine. Lead with who the person is and why they're here, then how to talk to them, what matters to them in their words, cognitive/privacy notes, and words to avoid. If dataQualityWarnings exist, the last line starts with "Chart check:". readAloudSeconds is words divided by 2.6, rounded. claimIds as above.
 
