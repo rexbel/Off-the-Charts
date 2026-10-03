@@ -57,7 +57,7 @@ function factIds(facts: Fact[], re: RegExp, fields?: RegExp): string[] {
 const DX_FIELDS = /primary_diagnoses|comorbidities|chronic_conditions|chief_complaint|note\.hpi|note\.plan/;
 /** Diagnosis lists only: for conditions where a mention in a note (e.g. opioids for cancer pain) is not a diagnosis. */
 const DX_LISTS_ONLY = /primary_diagnoses|comorbidities|chronic_conditions/;
-const STRICT: Partial<Record<CondKey, true>> = { oud: true, hiv: true, psychosis: true, dementia: true };
+const STRICT: Partial<Record<CondKey, true>> = { oud: true, hiv: true, psychosis: true, dementia: true, stroke: true };
 
 function has(facts: Fact[], key: CondKey): string[] {
   return factIds(facts, COND[key], STRICT[key] ? DX_LISTS_ONLY : DX_FIELDS);
@@ -289,7 +289,8 @@ export function fallbackVoiceGuide(profile: PersonaProfile, record: PatientRecor
   const primary = primaryRecipient(profile.recipients);
   const patientFirst = profile.recipients[0]?.role === "patient";
   const dept = record.seed.upcomingVisit.department;
-  const cognitive = profile.cognitiveSupport.length > 0;
+  // Reading level 4 is only set for cognitive impairment or a child reader; a best-time note alone is not a reason to shorten sentences.
+  const cognitive = profile.communicationNeeds.readingLevel <= 4;
   const name = primary.name?.split(" ")[0] ?? (es ? "hola" : "there");
 
   const addressing = (() => {
@@ -315,7 +316,7 @@ export function fallbackVoiceGuide(profile: PersonaProfile, record: PatientRecor
     sentenceMaxWords: cognitive ? 9 : profile.audience === "dual_teen_guardian" ? 14 : 12,
     addressing,
     greeting: es ? `Hola ${name},` : `Hi ${name},`,
-    signoff: es ? `Su equipo de ${dept}` : `Your ${dept} team`,
+    signoff: es ? `Su equipo ${deptFriendly(dept, "es")}` : `Your ${dept} team`,
     choicePhrases: es ? ["Si quiere, puede...", "Usted decide", "Podemos esperar"] : ["If you'd like, you can...", "Your choice", "We can pause any time"],
     safetyPhrases: es ? ["Escríbanos o llame al 555-0100", "Si algo no se siente bien, díganos"] : ["Text or call us at 555-0100", "If anything feels off, tell us"],
   };
@@ -386,28 +387,28 @@ export function fallbackRender(record: PatientRecord, profile: PersonaProfile, g
       ? "Puede traer a alguien si quiere."
       : "You can bring someone if you'd like.";
 
-  const reason = record.seed.upcomingVisit.reason;
-  const reasonLower = reason.charAt(0).toLowerCase() + reason.slice(1);
+  const reason = es ? "su seguimiento" : record.seed.upcomingVisit.reason;
+  const reasonLower = es ? "su seguimiento" : reason.charAt(0).toLowerCase() + reason.slice(1);
 
   const m7 = es
-    ? `${greeting} ${toCaregiver ? `${name} tiene` : "usted tiene"} una visita ${friendly} el {{date}} a las {{time}}. Es para: ${reasonLower}. Dura unos 40 minutos. ${bring} ${safety}\n${signoff}`
-    : `${greeting} ${toCaregiver ? `${name} has` : "you have"} a ${friendly} visit on {{date}} at {{time}}. It's for: ${reasonLower}. It takes about 40 minutes. ${bring} ${safety}\n${signoff}`;
+    ? `${greeting} ${toCaregiver ? `${name} tiene` : "tiene"} una visita ${friendly}. Es el {{date}} a las {{time}}. Dura unos 40 minutos. ${bring} Vemos el plan juntos. ${safety}\n${signoff}`
+    : `${greeting} ${toCaregiver ? `${name} has` : "you have"} a ${friendly} visit on {{date}} at {{time}}. It's for: ${reasonLower}. It takes about 40 minutes. ${bring} We'll go over the plan together. ${safety}\n${signoff}`;
 
   const steps = es
-    ? ["Llegue 10 minutos antes.", "Le tomaremos la presión.", `Luego hablará con el equipo sobre ${reasonLower}.`]
-    : ["Arrive 10 minutes early.", "We'll check blood pressure first.", `Then you'll talk through ${reasonLower} with the team.`];
+    ? ["Llegue 10 minutos antes.", "Le tomaremos la presión.", "Luego hablará con el equipo."]
+    : ["Arrive 10 minutes early.", "We'll check blood pressure first.", "Then you'll talk through the plan with the team."];
   const quietLine = profile.cognitiveSupport.length
     ? es
-      ? " Podemos ofrecer una sala tranquila."
+      ? " Hay una sala tranquila si la quiere."
       : ` We can set up a quiet room for ${toCaregiver ? name : "you"}.`
     : "";
   const m2 = es
-    ? `${greeting} recordatorio: {{weekday}} a las {{time}}, visita ${friendly}. Qué va a pasar: ${steps.join(" ")}${quietLine} Si prefiere otra hora, díganos. ${safety}\n${signoff}`
+    ? `${greeting} recordatorio: {{weekday}} a las {{time}}. Qué va a pasar: ${steps.join(" ")}${quietLine} Si prefiere otra hora, díganos. ${safety}\n${signoff}`
     : `${greeting} a quick note for {{weekday}} at {{time}}, the ${friendly} visit. What will happen: ${steps.join(" ")}${quietLine} If another time works better, just say so. ${safety}\n${signoff}`;
 
   const m24 = es
-    ? `${greeting} gracias por venir hoy. Su resumen está en el portal, en palabras sencillas. Siga tomando sus medicinas igual. Si algo no se siente bien, escríbanos. Decidimos los próximos pasos juntos.\n${signoff}`
-    : `${greeting} thanks for coming in today. Your summary is in the portal, written in plain words. Keep taking your medicines the same way. If anything feels off, text us. We'll decide next steps together.\n${signoff}`;
+    ? `${greeting} gracias por venir hoy. Su resumen está en el portal, en palabras sencillas. Siga tomando sus medicinas igual. Le llamaremos en 2 días con los resultados. Si quiere, puede traer preguntas. Si algo no se siente bien, escríbanos. Decidimos los próximos pasos juntos.\n${signoff}`
+    : `${greeting} thanks for coming in today. Your summary is in the portal, written in plain words. Keep taking your medicines the same way. We'll call in 2 days with results. If you'd like, bring questions next time. If anything feels off, text us. We'll decide next steps together.\n${signoff}`;
 
   const messages: RenderedMessage[] = [
     { stage: "before_7d", recipient: primary.role, persona: scrub(m7), claimIds: [...statedIds, ...claimIds(/support|works as/i), ...privacyIds] },
@@ -424,8 +425,8 @@ export function fallbackRender(record: PatientRecord, profile: PersonaProfile, g
       ? `Hola ${gName}, ${name} tiene una visita ${friendly} el {{date}} a las {{time}}. Dura unos 40 minutos. Puede venir con ${name} o esperar en la sala. Escríbanos al 555-0100 si tiene preguntas.\n${signoff}`
       : `Hi ${gName}, ${name} has a ${friendly} visit on {{date}} at {{time}}. It takes about 40 minutes. You can come in with ${name} or wait in the lobby. Text us at 555-0100 with any questions.\n${signoff}`;
     const g2 = es
-      ? `Hola ${gName}, recordatorio: ${name} tiene cita el {{weekday}} a las {{time}}. Llegue 10 minutos antes. Parte de la visita es a solas con ${name}; es lo normal a esta edad. Si prefiere otra hora, díganos. Escríbanos al 555-0100 si tiene preguntas.\n${signoff}`
-      : `Hi ${gName}, a quick note: ${name}'s visit is {{weekday}} at {{time}}. Arrive 10 minutes early. Part of the visit is one-on-one with ${name}; that's normal at this age. If another time works better, just say so. Text us at 555-0100 with questions.\n${signoff}`;
+      ? `Hola ${gName}, recordatorio: ${name} tiene cita el {{weekday}} a las {{time}}. Llegue 10 minutos antes. Parte de la visita es a solas con ${name}; es lo normal a esta edad. Puede esperar con ${name} o en la sala. Si prefiere otra hora, díganos. Planeamos juntos. Escríbanos al 555-0100 si tiene preguntas.\n${signoff}`
+      : `Hi ${gName}, a quick note: ${name}'s visit is {{weekday}} at {{time}}. Arrive 10 minutes early. Part of the visit is one-on-one with ${name}; that's normal at this age. You can wait with ${name} or in the lobby. If another time works better, just say so. We plan together. Text us at 555-0100 with questions.\n${signoff}`;
     const g24 = es
       ? `Hola ${gName}, gracias por traer a ${name} hoy. Los próximos pasos están en el portal. Si tiene preguntas sobre la logística, escríbanos. Decidimos los siguientes pasos juntos.\n${signoff}`
       : `Hi ${gName}, thanks for bringing ${name} in today. Next steps are in the portal. If you have questions about scheduling, text us. We'll plan the next steps together.\n${signoff}`;
