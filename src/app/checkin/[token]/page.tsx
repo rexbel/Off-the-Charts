@@ -1,6 +1,6 @@
 import { CheckinForm, type CheckinInitial } from "@/components/checkin/checkin-form";
 import { getPatient } from "@/lib/data/cohort";
-import { getCheckinByToken } from "@/lib/services/checkins";
+import { checkinExtraQuestionsEnabled, getCheckinByToken } from "@/lib/services/checkins";
 import { getContext } from "@/lib/services/context";
 
 export const metadata = { title: "Before your visit", robots: { index: false, follow: false }, referrer: "no-referrer" };
@@ -28,7 +28,7 @@ export default async function CheckinPage(props: PageProps<"/checkin/[token]">) 
 
   return (
     <main className="voice-surface flex min-h-screen flex-1 flex-col">
-      <CheckinForm token={token} initial={initial} />
+      <CheckinForm token={token} initial={initial} extraQuestions={checkinExtraQuestionsEnabled()} />
     </main>
   );
 }

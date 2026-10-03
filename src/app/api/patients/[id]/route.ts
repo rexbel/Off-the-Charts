@@ -7,6 +7,7 @@ import { defaultContext, getContext } from "@/lib/services/context";
 import { latestRunForPatient, listRunsForPatient } from "@/lib/services/runs";
 import { loadCachedRun } from "@/lib/pipeline/cached";
 import { modelAvailable } from "@/lib/ai/provider";
+import { checkinExtraQuestionsEnabled } from "@/lib/services/checkins";
 
 export async function GET(req: NextRequest, ctx: RouteContext<"/api/patients/[id]">) {
   return handle(async () => {
@@ -22,6 +23,6 @@ export async function GET(req: NextRequest, ctx: RouteContext<"/api/patients/[id
       listRunsForPatient(patientId, ns),
       loadCachedRun(patientId),
     ]);
-    return json({ patient, context, contextEdited: edited, latest, runs, cachedAvailable: cached !== null, modelAvailable: modelAvailable(), namespace: ns });
+    return json({ patient, context, contextEdited: edited, latest, runs, cachedAvailable: cached !== null, modelAvailable: modelAvailable(), namespace: ns, checkinExtraQuestions: checkinExtraQuestionsEnabled() });
   });
 }

@@ -29,7 +29,7 @@ function fmtDate(iso: string): string {
   return new Date(iso).toLocaleString([], { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" });
 }
 
-export function CheckinPanel({ patientId, context, onChange }: { patientId: number; context: PatientContext; onChange: (c: PatientContext) => void }) {
+export function CheckinPanel({ patientId, context, onChange, extraQuestions }: { patientId: number; context: PatientContext; onChange: (c: PatientContext) => void; extraQuestions: boolean }) {
   const [checkins, setCheckins] = useState<PatientCheckin[] | null>(null);
   const [loadError, setLoadError] = useState<string | null>(null);
   const [creating, setCreating] = useState(false);
@@ -192,23 +192,25 @@ export function CheckinPanel({ patientId, context, onChange }: { patientId: numb
             <span className="text-xs text-muted-foreground">Submitted {latest.submittedAt ? fmtDate(latest.submittedAt) : ""}</span>
           </div>
           <div>
-            <dt className="text-xs text-muted-foreground">What matters</dt>
+            <dt className="text-xs text-muted-foreground">Support needed</dt>
             <dd className="font-voice whitespace-pre-wrap">{latest.answers.whatMatters}</dd>
           </div>
-          <div className="grid gap-2 sm:grid-cols-3">
-            <div>
-              <dt className="text-xs text-muted-foreground">Language</dt>
-              <dd>{latest.answers.language === "es" ? "Spanish" : "English"}</dd>
+          {extraQuestions && (
+            <div className="grid gap-2 sm:grid-cols-3">
+              <div>
+                <dt className="text-xs text-muted-foreground">Language</dt>
+                <dd>{latest.answers.language === "es" ? "Spanish" : "English"}</dd>
+              </div>
+              <div>
+                <dt className="text-xs text-muted-foreground">Who else</dt>
+                <dd>{latest.answers.includeWho || "Just me"}</dd>
+              </div>
+              <div>
+                <dt className="text-xs text-muted-foreground">Best time</dt>
+                <dd>{BEST_TIME_LABEL[latest.answers.bestTime]}</dd>
+              </div>
             </div>
-            <div>
-              <dt className="text-xs text-muted-foreground">Who else</dt>
-              <dd>{latest.answers.includeWho || "Just me"}</dd>
-            </div>
-            <div>
-              <dt className="text-xs text-muted-foreground">Best time</dt>
-              <dd>{BEST_TIME_LABEL[latest.answers.bestTime]}</dd>
-            </div>
-          </div>
+          )}
         </dl>
       )}
     </section>
