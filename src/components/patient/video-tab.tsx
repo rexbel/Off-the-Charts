@@ -10,9 +10,9 @@ import { backdropFor, backdropSrc } from "@/remotion/backdrops";
 import type { AgeBand } from "@/lib/schemas";
 
 /** Before/after visit videos rendered in the browser from the video scripts. */
-export function VideoTab({ run, touchpoints, tpScores, onAction, canApprove = true, ageBand = "adult" }: { run: PersonaRun; touchpoints: Touchpoint[]; tpScores: Record<string, TiScore>; onAction: OnTouchpointAction; canApprove?: boolean; ageBand?: AgeBand }) {
+export function VideoTab({ run, touchpoints, tpScores, onAction, canApprove = true, ageBand = "adult", initialStage = "before" }: { run: PersonaRun; touchpoints: Touchpoint[]; tpScores: Record<string, TiScore>; onAction: OnTouchpointAction; canApprove?: boolean; ageBand?: AgeBand; initialStage?: "before" | "after" }) {
   const backdrop = backdropSrc(backdropFor(ageBand, run.profile.audience));
-  const [stage, setStage] = useState<"before" | "after">("before");
+  const [stage, setStage] = useState<"before" | "after">(initialStage);
   const script = run.outputs.videoScripts.find((v) => v.stage === stage) ?? run.outputs.videoScripts[0];
   const tp = touchpoints.find((t) => t.kind === (stage === "before" ? "video_before" : "video_after"));
   return (

@@ -1,9 +1,9 @@
 {
  "patientId": 1672,
- "generatedAt": "2026-10-03T07:28:19.590Z",
+ "generatedAt": "2026-10-03T19:47:12.150Z",
  "model": "gpt-4.1-2025-04-14",
  "context": {
-  "checkin": "I'm a teacher; I like a written plan. I worry about my heart and the twins.",
+  "checkin": "I'm a teacher, so I do best with a written plan I can read before the visit. I'm nervous about the echo and what it means for my heart, so please tell me what will happen while I'm there. Afterward I need to know what to watch for at home with the twins and when to call.",
   "audience": "self",
   "language": "en",
   "channel": "sms"
@@ -368,13 +368,13 @@
  "profile": {
   "patientId": 1672,
   "preferredName": "Emily",
-  "summaryLine": "Emily is a 32-year-old teacher and mother of twins with a history of peripartum cardiomyopathy, who values written plans and is concerned about her heart and her children.",
+  "summaryLine": "Emily is a 32-year-old teacher and mother of twins with a history of peripartum cardiomyopathy, who prefers written plans and is anxious about her upcoming heart echo.",
   "audience": "self",
   "recipients": [
    {
     "role": "patient",
     "name": "Emily",
-    "relationship": "self",
+    "relationship": "",
     "primary": true
    }
   ],
@@ -388,46 +388,58 @@
   "emotionalContext": [
    {
     "id": "ec1",
-    "text": "Emily is concerned about her heart health and her twins.",
+    "text": "Emily feels nervous about her upcoming echocardiogram and wants to know what will happen during the visit.",
     "kind": "patient_stated",
     "source": {
      "factIds": [],
      "note": "What matters to you check-in"
     },
-    "reason": "Directly stated in her check-in."
+    "reason": "Emily directly stated her anxiety and desire for information about the procedure."
    },
    {
     "id": "ec2",
-    "text": "Emily prefers having a written plan for her care.",
+    "text": "She prefers to have a written plan she can review before her visit, reflecting her comfort with structured information.",
     "kind": "patient_stated",
     "source": {
      "factIds": [],
      "note": "What matters to you check-in"
     },
-    "reason": "Directly stated in her check-in."
+    "reason": "Emily stated she does best with a written plan she can read ahead of time."
    },
    {
     "id": "ec3",
-    "text": "Emily experiences significant anxiety, especially related to her health and childbirth.",
+    "text": "She is concerned about what to watch for at home with her twins and when to seek help after the visit.",
+    "kind": "patient_stated",
+    "source": {
+     "factIds": [],
+     "note": "What matters to you check-in"
+    },
+    "reason": "Emily asked to be told what to watch for at home and when to call."
+   },
+   {
+    "id": "ec4",
+    "text": "Emily has a diagnosis of generalized anxiety disorder, which may increase her baseline anxiety about medical procedures and results.",
     "kind": "fact",
     "source": {
      "factIds": [
       "f18",
-      "f56",
       "f57"
      ],
      "note": ""
     },
-    "reason": "Generalized anxiety disorder is diagnosed and anxiety about labor and delivery is documented."
+    "reason": "Generalized anxiety disorder is documented in her medical record."
    }
   ],
   "privacyRules": [
    {
     "id": "pr1",
-    "rule": "Do not include diagnosis names related to mental health or psychiatric medications in SMS messages.",
+    "rule": "Do not include the diagnosis names or medication names related to psychiatric or cardiac conditions in SMS messages.",
     "restrictedTerms": [
+     "peripartum cardiomyopathy",
      "generalized anxiety disorder",
-     "sertraline"
+     "sertraline",
+     "enalapril",
+     "carvedilol"
     ],
     "channels": [
      "sms"
@@ -437,52 +449,52 @@
     "source": {
      "factIds": [
       "f18",
+      "f19",
+      "f20",
       "f22"
      ],
      "note": ""
     },
-    "reason": "To protect privacy regarding psychiatric diagnoses and medications in SMS."
+    "reason": "To protect privacy regarding psychiatric and cardiac diagnoses and medications over SMS."
    }
   ],
   "cognitiveSupport": [],
   "strengths": [
    {
     "id": "s1",
-    "text": "Emily is proactive in her healthcare and seeks clear, written plans.",
-    "kind": "patient_stated",
-    "source": {
-     "factIds": [],
-     "note": "What matters to you check-in"
-    },
-    "reason": "She states she likes a written plan."
-   },
-   {
-    "id": "s2",
-    "text": "Emily is engaged in her role as a mother and teacher.",
-    "kind": "patient_stated",
-    "source": {
-     "factIds": [],
-     "note": "What matters to you check-in"
-    },
-    "reason": "She identifies herself as a teacher and expresses concern for her twins."
-   },
-   {
-    "id": "s3",
-    "text": "Emily consistently attends follow-up visits and manages multiple health conditions.",
+    "text": "Emily is an elementary school teacher, indicating strong organizational and communication skills.",
     "kind": "fact",
     "source": {
      "factIds": [
-      "f37",
-      "f40",
-      "f43",
-      "f46",
-      "f49",
-      "f52",
-      "f55"
+      "f28"
      ],
      "note": ""
     },
-    "reason": "Multiple documented follow-up visits for various health concerns."
+    "reason": "Her occupation is documented as a teacher."
+   },
+   {
+    "id": "s2",
+    "text": "She is proactive in seeking information and planning for her health and her family's well-being.",
+    "kind": "patient_stated",
+    "source": {
+     "factIds": [],
+     "note": "What matters to you check-in"
+    },
+    "reason": "Emily asked for a written plan and specific guidance for home care."
+   },
+   {
+    "id": "s3",
+    "text": "Emily is exclusively breastfeeding her twins, showing commitment to her children's health.",
+    "kind": "fact",
+    "source": {
+     "factIds": [
+      "f7",
+      "f12",
+      "f54"
+     ],
+     "note": ""
+    },
+    "reason": "Exclusive breastfeeding is documented in her record."
    }
   ],
   "avoidTerms": [
@@ -491,6 +503,7 @@
    "refused"
   ],
   "dataQualityWarnings": [
+   "Age listed as 32 years old may not match the most recent encounter dates.",
    "\"Exclusive breastfeeding\" appears as both a primary diagnosis and a comorbidity."
   ]
  },
@@ -501,31 +514,33 @@
    "supportive"
   ],
   "doSay": [
-   "Here is your step-by-step plan.",
-   "Let us know if you want more details.",
-   "You can choose what works best for you.",
-   "Your care is important to us.",
-   "We are here to support you."
+   "Here’s your step-by-step plan.",
+   "You can review this anytime.",
+   "Let us know if you have questions.",
+   "You can bring someone with you.",
+   "We’ll explain each step at your visit.",
+   "Watch for changes and call if unsure."
   ],
   "dontSay": [
    "non-compliant",
    "denies",
    "refused",
-   "generalized anxiety disorder",
-   "sertraline"
+   "Your diagnosis is...",
+   "Your medication is...",
+   "You have heart failure."
   ],
   "sentenceMaxWords": 12,
-  "addressing": "Speak directly to Emily by name. No other recipients need to be addressed.",
+  "addressing": "Speak directly to Emily by name. If others are present, refer to them as 'your support person' or 'your family.'",
   "greeting": "Hi Emily,",
   "signoff": "Your Cardiology team",
   "choicePhrases": [
-   "Would you like to see your plan?",
-   "Do you want to talk to a nurse?",
-   "Would you prefer written or phone follow-up?"
+   "Would you like us to call?",
+   "Do you want to bring someone?",
+   "Would you like reminders by text?"
   ],
   "safetyPhrases": [
-   "Reply STOP to pause messages.",
-   "Call 555-0100 for help."
+   "Call 555-0100 if you need help.",
+   "Reply STOP to pause messages."
   ]
  },
  "outputs": {
@@ -533,88 +548,97 @@
    {
     "stage": "before_7d",
     "recipient": "patient",
-    "persona": "Hi Emily,\nYour heart follow-up with echo is on {{date}}, {{weekday}} at {{time}}. The visit will take about 40 minutes. We will check your heart and talk about your care plan together. You can ask for your plan in writing or talk with us by phone. Call 555-0100 for help.\nYour Cardiology team",
+    "persona": "Hi Emily,\nYour heart follow-up is on {{weekday}}, {{date}} at {{time}}. We’ll do an ultrasound of your heart. The visit will take about 40 minutes. You can bring a support person if you want. Would you like reminders by text? Call 555-0100 if you need help.\nYour Cardiology team",
     "claimIds": [
+     "ec1",
      "ec2",
-     "ec1"
+     "pr1"
     ]
    },
    {
     "stage": "before_2d",
     "recipient": "patient",
-    "persona": "Hi Emily,\nYour cardiology visit is coming up on {{date}}, {{weekday}} at {{time}}. We will do an echo and review your care plan together. The visit should last about 40 minutes. Would you like a written summary after? Call 555-0100 for help.\nYour Cardiology team",
+    "persona": "Hi Emily,\nHere’s your step-by-step plan for {{weekday}}, {{date}} at {{time}}. We’ll check in, then do your heart ultrasound. We’ll explain each step at your visit. You can review this anytime. Would you like us to call? Call 555-0100 if you need help.\nYour Cardiology team",
     "claimIds": [
-     "ec2"
+     "ec1",
+     "ec2",
+     "pr1"
     ]
    },
    {
     "stage": "after_24h",
     "recipient": "patient",
-    "persona": "Hi Emily,\nThank you for coming to your heart follow-up. You can read your plain-language summary now. Next, we will keep checking your heart and update your plan together. Call 555-0100 if you have questions.\nYour Cardiology team",
+    "persona": "Hi Emily,\nThank you for coming in. Your visit summary is ready to review. Watch for changes and call if unsure. We’ll reach out about your next steps. Call 555-0100 if you need help.\nYour Cardiology team",
     "claimIds": [
-     "ec2"
+     "ec3",
+     "pr1"
     ]
    }
   ],
   "clinicianBrief": {
    "lines": [
-    "Emily is a 32-year-old teacher and mother of twins here for a post-pregnancy cardiology follow-up and echo after peripartum cardiomyopathy.",
-    "She values stepwise, written plans and prefers clear, supportive communication.",
-    "Emily is concerned about her heart health and her twins' well-being.",
-    "She experiences significant anxiety, especially around health and childbirth; avoid discussing psychiatric diagnoses or medications in SMS or aloud unless necessary.",
-    "Use reassuring, clear language and offer written summaries.",
-    "Words to avoid: non-compliant, denies, refused, generalized anxiety disorder, sertraline.",
-    "Chart check: \"Exclusive breastfeeding\" appears as both a primary diagnosis and a comorbidity."
+    "Emily is a teacher and mother of twins here for a post-pregnancy heart follow-up with echo.",
+    "She feels anxious about the procedure and wants clear, stepwise information.",
+    "She prefers written plans and wants to know what to watch for at home with her twins.",
+    "Speak directly to Emily, use supportive language, and avoid naming cardiac or psychiatric diagnoses aloud or in writing.",
+    "Do not use terms like 'non-compliant' or 'refused.'",
+    "Chart check: Age may not match recent encounters; exclusive breastfeeding appears in multiple sections."
    ],
    "readAloudSeconds": 29,
    "claimIds": [
     "ec1",
     "ec2",
     "ec3",
+    "ec4",
+    "s1",
     "pr1"
    ]
   },
   "visitSummary": {
-   "headline": "Your Heart Follow-Up Visit Summary for {{date}}",
+   "headline": "Your Heart Follow-Up Visit Summary – {{date}}",
    "whatWeTalkedAbout": [
     {
-     "text": "We checked your heart with an echo after pregnancy.",
-     "claimIds": []
+     "text": "We reviewed your heart health and did an ultrasound scan.",
+     "claimIds": [
+      "ec1"
+     ]
     },
     {
-     "text": "We reviewed your care plan together.",
+     "text": "We talked about what to expect during the visit and answered your questions.",
      "claimIds": [
+      "ec1",
       "ec2"
      ]
     },
     {
-     "text": "We talked about your concerns for your heart and your twins.",
+     "text": "We discussed what to watch for at home with your twins and when to call for help.",
      "claimIds": [
-      "ec1"
+      "ec3"
      ]
     }
    ],
    "yourNextSteps": [
-    "Follow your written care plan.",
-    "Take your medications as prescribed.",
-    "Schedule your next heart check.",
-    "Contact us if you have new symptoms."
+    "Review your visit summary and written plan.",
+    "Watch for new swelling, shortness of breath, or chest pain.",
+    "Keep caring for yourself and your twins as discussed.",
+    "Call us if you have any questions or concerns.",
+    "Schedule your next heart check if needed."
    ],
    "whenToCall": [
-    "Call if you have chest pain or trouble breathing.",
-    "Call if you feel faint or very weak.",
-    "Call 555-0100 for any urgent concerns."
+    "Call us if you notice sudden swelling in your legs or feet.",
+    "Call if you feel shortness of breath that is new or worse.",
+    "Call 555-0100 if you need help right away."
    ],
    "questionsForNextTime": [
-    "What changes should I watch for in my heart health?",
-    "How can I support my twins while caring for my heart?",
-    "Can I adjust my plan if my symptoms change?"
+    "What changes should I watch for as my twins grow?",
+    "How often do I need heart checks now?",
+    "What activities are safe for me?"
    ]
   },
   "videoScripts": [
    {
     "stage": "before",
-    "title": "Getting Ready for Your Heart Follow-Up",
+    "title": "Getting Ready for Your Heart Echo Visit",
     "scenes": [
      {
       "kind": "title",
@@ -625,85 +649,87 @@
      },
      {
       "kind": "card",
-      "title": "What to Expect",
-      "text": "We will check your heart with an echo.",
+      "title": "What Will Happen?",
+      "text": "We’ll check in and do a heart ultrasound.",
       "items": [],
-      "voiceover": "We will check your heart with an echo and talk about your care plan together."
+      "voiceover": "We’ll check you in and do an ultrasound to look at your heart."
      },
      {
       "kind": "steps",
-      "title": "How Long and Who Will Be There",
-      "text": "The visit takes about 40 minutes.",
+      "title": "Step-by-Step Plan",
+      "text": "Here’s what to expect:",
       "items": [
-       "Cardiology team will see you",
-       "Echo test during visit"
+       "Arrive on time for check-in",
+       "Meet your care team",
+       "Have your heart ultrasound",
+       "Ask any questions"
       ],
-      "voiceover": "The visit will take about 40 minutes. Our cardiology team will be with you."
+      "voiceover": "Arrive on time, meet your care team, and have your heart ultrasound. You can ask questions at any time."
      },
      {
       "kind": "choice",
       "title": "Your Choices",
-      "text": "You can ask for a written plan.",
+      "text": "You can bring a support person.",
       "items": [
-       "Ask for written summary",
-       "Choose phone or in-person follow-up"
+       "Bring someone with you",
+       "Ask for reminders by text"
       ],
-      "voiceover": "You can ask for a written summary or choose how you want to follow up."
+      "voiceover": "You can bring a support person if you want. Would you like reminders by text?"
      },
      {
       "kind": "closing",
       "title": "Need Help?",
-      "text": "Call 555-0100 for questions.",
+      "text": "Call 555-0100 if you need help.",
       "items": [],
-      "voiceover": "Call 555-0100 if you need help. We are here to support you."
+      "voiceover": "Call 555-0100 if you need help. We’re here for you."
      }
     ]
    },
    {
     "stage": "after",
-    "title": "Your Heart Visit Recap",
+    "title": "After Your Heart Echo Visit",
     "scenes": [
      {
       "kind": "title",
       "title": "Thank You, Emily!",
-      "text": "You finished your heart follow-up.",
+      "text": "Your visit summary is ready.",
       "items": [],
-      "voiceover": "Thank you, Emily, for coming to your heart follow-up."
+      "voiceover": "Thank you, Emily. Your visit summary is ready to review."
      },
      {
       "kind": "card",
-      "title": "What We Did",
-      "text": "We checked your heart and reviewed your plan.",
+      "title": "What We Talked About",
+      "text": "We reviewed your heart health and home care.",
       "items": [],
-      "voiceover": "We checked your heart and reviewed your care plan together."
+      "voiceover": "We talked about your heart health and what to watch for at home."
      },
      {
       "kind": "steps",
-      "title": "Next Steps",
-      "text": "Follow your written plan and take your medicines.",
+      "title": "Your Next Steps",
+      "text": "Here’s what to do next:",
       "items": [
-       "Follow your written plan",
-       "Take your medicines",
-       "Schedule your next check"
+       "Read your written plan",
+       "Watch for swelling or shortness of breath",
+       "Call if you have questions"
       ],
-      "voiceover": "Follow your written plan, take your medicines, and schedule your next check."
+      "voiceover": "Read your written plan, watch for swelling or shortness of breath, and call if you have questions."
      },
      {
       "kind": "choice",
       "title": "When to Call",
-      "text": "Call if you have chest pain or trouble breathing.",
+      "text": "Call 555-0100 for help.",
       "items": [
-       "Chest pain or trouble breathing",
-       "Feeling faint or weak"
+       "Sudden swelling",
+       "New or worse shortness of breath"
       ],
-      "voiceover": "Call us if you have chest pain, trouble breathing, or feel faint."
+      "voiceover": "Call 555-0100 if you notice sudden swelling or new shortness of breath."
      },
      {
       "kind": "closing",
-      "title": "Questions?",
-      "text": "Call 555-0100 for help.",
+      "title": "We’re Here for You",
+      "text": "We’ll reach out about next steps.",
       "items": [],
-      "voiceover": "Call 555-0100 if you have any questions. We are here to help."
+      "voiceover": "We’ll reach out about your next steps. We’re here for you."
      }
     ]
    }

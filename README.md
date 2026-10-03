@@ -43,7 +43,7 @@ A work queue of upcoming visits, a workbench per patient, and an approval path w
 ![The outbox with simulated sending and before-and-after numbers](docs/screenshots/10-outbox.jpg)
 ![The audit log](docs/screenshots/11-audit.jpg)
 
-**Guided walkthrough.** A 14-step tour through Emily (ideal), Walter (complex) and Jake (edge), replaying cached output in its own data workspace with a reset that never touches real work. Off in production unless `OFF_THE_CHART_DEMO=1`.
+**Guided walkthrough.** A 10-step, three-minute tour that follows Emily from her chart and check-in to the videos before and after her visit, replaying cached output in its own data workspace with a reset that never touches real work. Off in production unless `OFF_THE_CHART_DEMO=1`.
 
 ![The walkthrough's opening screen: today's generic reminder, scored](docs/screenshots/13-walkthrough.jpg)
 

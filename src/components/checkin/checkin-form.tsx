@@ -106,14 +106,27 @@ function initialView(initial: CheckinInitial): View {
   return "form";
 }
 
-export function CheckinForm({ token, initial, extraQuestions = false, video = null }: { token: string; initial: CheckinInitial; extraQuestions?: boolean; video?: CheckinVideo | null }) {
+export function CheckinForm({
+  token,
+  initial,
+  extraQuestions = false,
+  video = null,
+  preview,
+}: {
+  token: string;
+  initial: CheckinInitial;
+  extraQuestions?: boolean;
+  video?: CheckinVideo | null;
+  /** Walkthrough only: prefills the answer and never submits. */
+  preview?: { answer: string };
+}) {
   const [view, setView] = useState<View>(() => initialView(initial));
   // With an approved video the intake opens on it; the questions follow when it ends or the patient moves on.
   const [watching, setWatching] = useState(video !== null);
   const [replays, setReplays] = useState(0);
   const [replaying, setReplaying] = useState(false);
   const [language, setLanguage] = useState<Language>(initial.language);
-  const [whatMatters, setWhatMatters] = useState("");
+  const [whatMatters, setWhatMatters] = useState(preview?.answer ?? "");
   const [includeWho, setIncludeWho] = useState("");
   const [bestTime, setBestTime] = useState<BestTime>("no_preference");
   const [fieldError, setFieldError] = useState<string | null>(null);
@@ -128,6 +141,7 @@ export function CheckinForm({ token, initial, extraQuestions = false, video = nu
 
   const submit = async (e?: React.FormEvent) => {
     e?.preventDefault();
+    if (preview) return;
     const body = answers();
     if (!body.whatMatters) {
       setFieldError(t.required);
@@ -287,7 +301,7 @@ export function CheckinForm({ token, initial, extraQuestions = false, video = nu
           )}
 
           <div className="mt-auto flex flex-col gap-3 pt-2">
-            <Button type="submit" size="lg" disabled={view === "sending"} className="h-14 rounded-xl text-lg">
+            <Button type="submit" size="lg" disabled={view === "sending" || Boolean(preview)} className="h-14 rounded-xl text-lg">
               {view === "sending" ? <Loader2Icon aria-hidden className="animate-spin" /> : <SendIcon aria-hidden />}
               {view === "sending" ? t.sending : view === "error" ? t.retry : t.submit}
             </Button>

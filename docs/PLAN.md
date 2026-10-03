@@ -9,7 +9,7 @@ Supersedes: `BUILD_PLAN.md` (the hackathon plan). Starting point: branch `feat/c
 
 One user, one trigger, one outcome: *a visit is scheduled → the care team approves communications written for that person, at template speed.*
 
-**Demo mode.** A presenter clicks "Run the demo" and a 14-step guided walkthrough replays precomputed output for Emily, Walter and Jake, isolated from real runs, with a one-click reset.
+**Demo mode.** A presenter clicks "Run the demo" and a 10-step guided walkthrough (about three minutes) replays precomputed output for Emily, isolated from real runs, with a one-click reset.
 
 ## 2. What carries over from the hackathon plan
 
