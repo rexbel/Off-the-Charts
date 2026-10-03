@@ -76,26 +76,41 @@ export async function listRunsForPatient(patientId: number, namespace: Namespace
 }
 
 /** Latest run id per patient plus approval counts, for the cohort board. */
-export async function latestRunSummaries(namespace: Namespace = "live"): Promise<Map<number, { id: string; createdAt: string; source: PersonaRun["source"]; approvedCount: number; touchpointCount: number }>> {
+export type RunSummary = { id: string; createdAt: string; source: PersonaRun["source"]; summaryLine: string; approvedCount: number; pendingCount: number; sentCount: number; touchpointCount: number; lastActivity: string };
+
+export async function latestRunSummaries(namespace: Namespace = "live"): Promise<Map<number, RunSummary>> {
   await ready();
   const rows = await db
-    .select({ id: schema.personaRuns.id, patientId: schema.personaRuns.patientId, createdAt: schema.personaRuns.createdAt, source: schema.personaRuns.source })
+    .select({ id: schema.personaRuns.id, patientId: schema.personaRuns.patientId, createdAt: schema.personaRuns.createdAt, source: schema.personaRuns.source, payload: schema.personaRuns.payload })
     .from(schema.personaRuns)
     .where(eq(schema.personaRuns.namespace, namespace))
     .orderBy(desc(schema.personaRuns.createdAt));
   const latest = new Map<number, (typeof rows)[number]>();
   for (const r of rows) if (!latest.has(r.patientId)) latest.set(r.patientId, r);
   const ids = [...latest.values()].map((r) => r.id);
-  const tps = ids.length ? await db.select({ runId: schema.touchpoints.runId, status: schema.touchpoints.status }).from(schema.touchpoints).where(inArray(schema.touchpoints.runId, ids)) : [];
-  const out = new Map<number, { id: string; createdAt: string; source: PersonaRun["source"]; approvedCount: number; touchpointCount: number }>();
+  const tps = ids.length
+    ? await db.select({ runId: schema.touchpoints.runId, status: schema.touchpoints.status, decidedAt: schema.touchpoints.decidedAt, sentAt: schema.touchpoints.sentAt }).from(schema.touchpoints).where(inArray(schema.touchpoints.runId, ids))
+    : [];
+  const out = new Map<number, RunSummary>();
   for (const [pid, r] of latest) {
     const mine = tps.filter((t) => t.runId === r.id);
+    let summaryLine = "";
+    try {
+      summaryLine = String((JSON.parse(r.payload) as { profile?: { summaryLine?: string } }).profile?.summaryLine ?? "");
+    } catch {
+      summaryLine = "";
+    }
+    const stamps = [r.createdAt, ...mine.map((t) => t.decidedAt ?? ""), ...mine.map((t) => t.sentAt ?? "")].filter(Boolean).sort();
     out.set(pid, {
       id: r.id,
       createdAt: r.createdAt,
       source: r.source as PersonaRun["source"],
+      summaryLine,
       approvedCount: mine.filter((t) => t.status === "approved" || t.status === "edited").length,
+      pendingCount: mine.filter((t) => t.status === "pending").length,
+      sentCount: mine.filter((t) => t.sentAt).length,
       touchpointCount: mine.length,
+      lastActivity: stamps[stamps.length - 1] ?? r.createdAt,
     });
   }
   return out;

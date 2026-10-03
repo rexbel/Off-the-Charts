@@ -634,7 +634,10 @@ export type PatientSummary = {
   dementia: boolean;
   demoRole: DemoRole;
   encounterCount: number;
-  latestRun: { id: string; createdAt: string; source: RunSource; approvedCount: number; touchpointCount: number } | null;
+  latestRun: { id: string; createdAt: string; source: RunSource; summaryLine: string; approvedCount: number; pendingCount: number; sentCount: number; touchpointCount: number } | null;
+  checkin: { status: CheckinStatus; createdAt: string; submittedAt: string | null } | null;
+  /** Latest activity on this patient, for sorting and the Updated column. */
+  updatedAt: string | null;
 };
 
 export type OutboxMetrics = {

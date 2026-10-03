@@ -38,7 +38,7 @@ export function LoginForm({ quickFill, seedPassword }: { quickFill: { email: str
     setError(null);
     try {
       await api.login({ email, password });
-      router.push("/");
+      router.push("/patients");
       router.refresh();
     } catch (err) {
       setError(err instanceof ApiRequestError && err.status !== 500 ? err.message : "Could not sign in. Check the email and password and try again.");

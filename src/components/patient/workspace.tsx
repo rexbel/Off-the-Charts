@@ -218,9 +218,9 @@ export function PatientWorkspace({ bundle, user, initialTab, autoBuild, openEvid
   const building = status === "running";
 
   return (
-    <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 py-6 sm:py-8 pb-32">
+    <div className="space-y-6">
       <nav aria-label="Breadcrumb" className="text-sm">
-        <Link href="/" className="inline-flex items-center gap-1 text-muted-foreground hover:text-foreground">
+        <Link href="/patients" className="inline-flex items-center gap-1 text-muted-foreground hover:text-foreground">
           <ChevronLeftIcon aria-hidden className="size-4" /> Patients
         </Link>
       </nav>
@@ -233,13 +233,13 @@ export function PatientWorkspace({ bundle, user, initialTab, autoBuild, openEvid
             </span>
           </h1>
           <p className="mt-1 text-muted-foreground">
-            <span className="text-teal">{patient.seed.personaArchetype}.</span> {patient.seed.upcomingVisit.department} visit {daysUntilLabel(patient.seed.upcomingVisit.daysUntil)}: {patient.seed.upcomingVisit.reason.toLowerCase()}.
+            {patient.seed.upcomingVisit.department} visit {daysUntilLabel(patient.seed.upcomingVisit.daysUntil)}: {patient.seed.upcomingVisit.reason.toLowerCase()}.
           </p>
           <div className="mt-2 flex flex-wrap gap-1.5">
             <AudienceBadge audience={context.audience} />
             {patient.seed.dementia && <DementiaBadge />}
             <LanguageBadge language={context.language} />
-            <DemoRoleBadge role={patient.seed.demoRole} />
+            {bundle.namespace === "demo" && <DemoRoleBadge role={patient.seed.demoRole} />}
           </div>
         </div>
         {run && (

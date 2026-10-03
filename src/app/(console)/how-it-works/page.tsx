@@ -18,7 +18,7 @@ const STAGES = [
 
 export default function HowItWorksPage() {
   return (
-    <div className="mx-auto w-full max-w-5xl px-4 sm:px-6 py-8 sm:py-10 pb-32">
+    <div className="space-y-6">
       <p className="text-xs font-medium uppercase tracking-[0.18em] text-teal">Architecture</p>
       <h1 className="mt-2 text-3xl sm:text-4xl font-semibold">How it works</h1>
       <p className="mt-2 max-w-2xl text-muted-foreground">

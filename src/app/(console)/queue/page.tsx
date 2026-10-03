@@ -14,7 +14,7 @@ export default async function QueuePage() {
   const blocked = items.filter((i) => i.blocked).length;
   const approver = canApprove(user);
   return (
-    <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 py-8 sm:py-10 pb-24">
+    <div className="space-y-6">
       <p className="text-xs font-medium uppercase tracking-[0.18em] text-teal">Approval queue · human review</p>
       <h1 className="mt-2 text-3xl sm:text-4xl font-semibold text-balance">
         Waiting for a decision{" "}

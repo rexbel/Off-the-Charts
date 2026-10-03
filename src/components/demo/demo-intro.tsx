@@ -21,7 +21,7 @@ export function DemoIntro({ genericText, genericScore, steps }: { genericText: s
   }, []);
 
   return (
-    <div className="mx-auto w-full max-w-5xl px-4 sm:px-6 py-10 pb-40">
+    <div className="space-y-6 pb-16">
       <p className="text-xs font-medium uppercase tracking-[0.18em] text-teal">Guided walkthrough · about four minutes</p>
       <h1 className="mt-2 text-4xl sm:text-5xl font-semibold leading-[1.05] text-balance">What a patient hears from us today.</h1>
       <p className="mt-3 max-w-2xl text-muted-foreground">

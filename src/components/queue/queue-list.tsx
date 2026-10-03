@@ -151,7 +151,7 @@ export function QueueList({ items, canApprove }: { items: QueueItem[]; canApprov
         <p className="mt-2 font-medium">Nothing waiting.</p>
         <p className="text-sm text-muted-foreground">Build a persona and its touchpoints land here.</p>
         <Button asChild className="mt-4">
-          <Link href="/">
+          <Link href="/patients">
             Go to patients <ArrowUpRightIcon aria-hidden />
           </Link>
         </Button>

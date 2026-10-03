@@ -16,7 +16,7 @@ export default async function AuditPage(props: PageProps<"/audit">) {
   const events = await recentAudit({ patientId, limit: 200 });
   const selected = patientId ? patients.find((p) => p.id === patientId) : undefined;
   return (
-    <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 py-8 sm:py-10 pb-24">
+    <div className="space-y-6">
       <p className="text-xs font-medium uppercase tracking-[0.18em] text-teal">Audit · every decision on record</p>
       <h1 className="mt-2 text-3xl sm:text-4xl font-semibold text-balance">
         Who did what, and when{" "}

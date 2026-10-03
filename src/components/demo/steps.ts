@@ -38,8 +38,8 @@ export const DEMO_STEPS: DemoStep[] = [
     title: "The cohort",
     narration: "Twenty synthetic patients, ages 3 to 75, each with an upcoming visit. Badges show who the messages go to: the patient, a caregiver, or a teen and guardian separately.",
     why: "EHR records come from an MIT-licensed synthetic hospital dataset. Names, visits and check-ins are seeded. Nothing here is a real person.",
-    route: "/",
-    spotlight: "cohort-board",
+    route: "/patients",
+    spotlight: "patients-table",
   },
   {
     id: "context",

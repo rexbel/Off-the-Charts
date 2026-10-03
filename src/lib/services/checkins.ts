@@ -145,3 +145,19 @@ export async function submitCheckin(token: string, rawAnswers: CheckinAnswers): 
   );
   return { ...checkin, answers, status: "submitted", submittedAt };
 }
+
+/** Latest check-in per patient (status, created, submitted), for the patients work queue. */
+export async function latestCheckinByPatient(): Promise<Map<number, { status: PatientCheckin["status"]; createdAt: string; submittedAt: string | null }>> {
+  await ready();
+  const rows = await db.query.patientCheckins.findMany({ orderBy: [desc(schema.patientCheckins.createdAt)] });
+  const now = nowIso();
+  const out = new Map<number, { status: PatientCheckin["status"]; createdAt: string; submittedAt: string | null }>();
+  for (const r of rows) {
+    if (out.has(r.patientId)) continue;
+    const c = toCheckin(r);
+    // Expiry is computed here rather than persisted; the per-patient and token paths persist it.
+    const status = c.status === "sent" && c.expiresAt < now ? "expired" : c.status;
+    out.set(r.patientId, { status, createdAt: c.createdAt, submittedAt: c.submittedAt });
+  }
+  return out;
+}

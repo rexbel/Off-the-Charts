@@ -14,7 +14,7 @@ const WHAT_IT_DOES: { icon: LucideIcon; text: string }[] = [
 ];
 
 export default async function LoginPage() {
-  if (await currentUser()) redirect("/");
+  if (await currentUser()) redirect("/patients");
   // Quick-fill only when the built-in dev default is in use; a real SEED_PASSWORD never reaches the browser.
   const devDefault = process.env.NODE_ENV !== "production" && !process.env.SEED_PASSWORD ? seedPassword() : null;
   const quickFill = devDefault ? SEED_USERS.map((u) => ({ email: u.email, name: u.name, role: u.role })) : [];

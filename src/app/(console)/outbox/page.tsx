@@ -18,24 +18,18 @@ export default async function OutboxPage() {
   const deliveries = await deliveriesForTouchpoints(approved.map((t) => t.id));
   const names = new Map(listPatients().map((p) => [p.patientId, p.seed.displayName]));
   return (
-    <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 py-8 sm:py-10 pb-32">
-      <p className="text-xs font-medium uppercase tracking-[0.18em] text-teal">Outbox · simulated sending</p>
-      <h1 className="mt-2 text-3xl sm:text-4xl font-semibold">What&apos;s approved, and what changed</h1>
-      <p className="mt-2 max-w-2xl text-muted-foreground">
-        Nothing here is actually sent. Approved touchpoints queue in the outbox exactly as a reminder vendor or portal would receive them. The numbers are measured on stored runs by the same deterministic checker.
-      </p>
+    <div className="space-y-6">
+      <div>
+        <h1 className="text-3xl font-semibold tracking-tight">Outbox</h1>
+        <p className="mt-1 text-base text-muted-foreground">
+          Approved touchpoints, grouped by patient. Sending is simulated: a delivery record is written and privacy is re-checked, nothing leaves the building.
+        </p>
+      </div>
 
-      <section className="mt-8" aria-labelledby="impact-heading">
-        <h2 id="impact-heading" className="sr-only">
-          Impact
-        </h2>
-        <ImpactPanel metrics={metrics} />
-      </section>
-
-      <section className="mt-8" aria-labelledby="approved-heading">
+      <section aria-labelledby="approved-heading">
         <div className="flex items-end justify-between gap-2">
           <h2 id="approved-heading" className="text-2xl font-semibold">
-            Approved touchpoints <span className="font-sans text-base font-normal text-muted-foreground tabular-nums">({approved.length})</span>
+            Approved <span className="font-sans text-base font-normal text-muted-foreground tabular-nums">({approved.length})</span>
           </h2>
         </div>
         {approved.length === 0 ? (
@@ -44,12 +38,22 @@ export default async function OutboxPage() {
             <p className="mt-2 font-medium">Nothing approved yet</p>
             <p className="text-sm text-muted-foreground">Build a persona, review the messages, and approve the ones you&apos;d send.</p>
             <Button asChild className="mt-4">
-              <Link href="/patients/1672">Start with Emily</Link>
+              <Link href="/patients">Go to patients</Link>
             </Button>
           </div>
         ) : (
           <OutboxList approved={approved} names={Object.fromEntries(names)} deliveries={Object.fromEntries(deliveries)} canSend={canApprove(user)} />
         )}
+      </section>
+
+      <section aria-labelledby="impact-heading" className="space-y-3 border-t pt-6">
+        <div>
+          <h2 id="impact-heading" className="text-xl font-semibold">
+            Before and after
+          </h2>
+          <p className="text-sm text-muted-foreground">Measured on the latest run per patient by the same deterministic checker, against a synthetic composite of common clinic templates.</p>
+        </div>
+        <ImpactPanel metrics={metrics} />
       </section>
     </div>
   );
