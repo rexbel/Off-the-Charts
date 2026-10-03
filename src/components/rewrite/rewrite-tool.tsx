@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ArrowRightIcon, Loader2Icon, SparklesIcon } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
@@ -12,7 +12,7 @@ import { ScorePill, SourceBadge } from "@/components/badges";
 import { HighlightedText } from "@/components/patient/highlighted-text";
 import { TiFindings } from "@/components/patient/ti-findings";
 import { api, ApiRequestError } from "@/lib/client/api";
-import type { RewriteResponse } from "@/lib/schemas";
+import type { RewriteRecord, RewriteResponse } from "@/lib/schemas";
 
 type Option = { patientId: number; label: string; sample: string };
 
@@ -21,6 +21,22 @@ export function RewriteTool({ patients }: { patients: Option[] }) {
   const [text, setText] = useState(patients.find((p) => p.patientId === patientId)?.sample ?? "");
   const [busy, setBusy] = useState(false);
   const [result, setResult] = useState<RewriteResponse | null>(null);
+  const [history, setHistory] = useState<RewriteRecord[] | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    api
+      .rewrites(patientId)
+      .then((r) => {
+        if (!cancelled) setHistory(r.rewrites);
+      })
+      .catch(() => {
+        if (!cancelled) setHistory([]);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [patientId, result?.recordId]);
 
   const submit = async () => {
     if (!text.trim()) return;
@@ -78,6 +94,27 @@ export function RewriteTool({ patients }: { patients: Option[] }) {
         <Card className="p-5 text-sm text-muted-foreground" aria-live="polite">
           Rewriting with the Persona Profile and Voice Guide…
         </Card>
+      )}
+
+      {history && history.length > 0 && !result && (
+        <section aria-label="Recent rewrites" className="grid gap-2">
+          <h2 className="text-xs font-medium uppercase tracking-[0.12em] text-muted-foreground font-sans">Recent rewrites for this patient</h2>
+          <ul className="grid gap-2" role="list">
+            {history.slice(0, 5).map((h) => (
+              <li key={h.id} className="rounded-lg border p-3 text-sm">
+                <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
+                  <span>{new Date(h.at).toLocaleString([], { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" })}</span>
+                  <span className="tabular-nums">{h.beforeScore} → {h.afterScore}</span>
+                  <SourceBadge source={h.source} />
+                  <Button variant="ghost" size="xs" className="ml-auto" onClick={() => setText(h.original)}>
+                    Use original again
+                  </Button>
+                </div>
+                <p className="mt-1 line-clamp-2 font-voice">{h.rewritten}</p>
+              </li>
+            ))}
+          </ul>
+        </section>
       )}
 
       {result && (

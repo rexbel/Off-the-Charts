@@ -6,6 +6,7 @@
  *   pnpm precompute            # all 20
  *   pnpm precompute 1672 2311  # some
  *   pnpm precompute --force    # overwrite existing files
+ *   pnpm precompute --check    # exit 1 if any patient lacks a valid cached file (no model calls)
  */
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
@@ -29,12 +30,28 @@ async function main() {
   const { defaultContext } = await import("@/lib/services/context");
   const { GENERATED_DIR, cachedRunSchema } = await import("@/lib/pipeline/cached");
   const { modelAvailable, modelId } = await import("@/lib/ai/provider");
+  const argv = process.argv.slice(2);
+
+  if (argv.includes("--check")) {
+    let missing = 0;
+    for (const p of listPatients()) {
+      const file = path.join(GENERATED_DIR, `${p.patientId}.json`);
+      const raw = await readFile(file, "utf8").catch(() => null);
+      const ok = raw ? cachedRunSchema.safeParse(JSON.parse(raw)).success : false;
+      if (!ok) {
+        missing += 1;
+        console.log(`  ${p.patientId} ${p.seed.preferredName}: ${raw ? "does not match the schema" : "missing"}`);
+      }
+    }
+    console.log(missing ? `${missing} patient(s) without valid cached output.` : "All 20 patients have valid cached output.");
+    process.exit(missing ? 1 : 0);
+  }
 
   if (!modelAvailable()) {
     console.error("No ANTHROPIC_API_KEY (or ant auth profile). Precompute needs the live model.");
     process.exit(1);
   }
-  const args = process.argv.slice(2);
+  const args = argv;
   const force = args.includes("--force");
   const ids = args.filter((a) => /^\d+$/.test(a)).map(Number);
   const patients = listPatients().filter((p) => ids.length === 0 || ids.includes(p.patientId));

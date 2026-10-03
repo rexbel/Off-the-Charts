@@ -113,3 +113,22 @@ export const outboxDeliveries = sqliteTable(
   },
   (t) => [index("outbox_deliveries_tp_idx").on(t.touchpointId), index("outbox_deliveries_ns_idx").on(t.namespace, t.at)],
 );
+
+/** Rewrite-tool history per patient. Stores the rewritten message (it is a draft message, not chart text). */
+export const rewrites = sqliteTable(
+  "rewrites",
+  {
+    id: text("id").primaryKey(),
+    patientId: integer("patient_id").notNull(),
+    namespace: text("namespace").notNull().default("live"),
+    actorId: text("actor_id"),
+    source: text("source").notNull(),
+    stage: text("stage").notNull(),
+    original: text("original").notNull(),
+    rewritten: text("rewritten").notNull(),
+    beforeScore: integer("before_score").notNull(),
+    afterScore: integer("after_score").notNull(),
+    at: text("at").notNull(),
+  },
+  (t) => [index("rewrites_patient_idx").on(t.patientId, t.at)],
+);

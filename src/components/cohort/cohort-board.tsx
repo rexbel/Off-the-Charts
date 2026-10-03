@@ -54,7 +54,7 @@ export function CohortBoard({ patients }: { patients: PatientSummary[] }) {
         </div>
       </div>
 
-      <Tabs value={band} onValueChange={(v) => setBand(v as AgeBand | "all")} className="mt-4">
+      <Tabs activationMode="manual" value={band} onValueChange={(v) => setBand(v as AgeBand | "all")} className="mt-4">
         <TabsList aria-label="Filter by age band" className="flex-wrap h-auto">
           {BANDS.map((b) => (
             <TabsTrigger key={b.key} value={b.key}>

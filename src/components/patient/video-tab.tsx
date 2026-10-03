@@ -15,7 +15,7 @@ export function VideoTab({ run, touchpoints, tpScores, onAction, canApprove = tr
   return (
     <div className="grid gap-4" data-demo="video">
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <Tabs value={stage} onValueChange={(v) => setStage(v === "after" ? "after" : "before")}>
+        <Tabs activationMode="manual" value={stage} onValueChange={(v) => setStage(v === "after" ? "after" : "before")}>
           <TabsList aria-label="Which video">
             <TabsTrigger value="before">Before your visit</TabsTrigger>
             <TabsTrigger value="after">After your visit</TabsTrigger>

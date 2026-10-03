@@ -97,7 +97,7 @@ export function scoreRun(profile: PersonaProfile, guide: VoiceGuide, outputs: Re
   const messages = outputs.messages.map((m) => {
     const target = targetFor(profile, guide, m.recipient, channel);
     const g = generic.messages.find((x) => x.stage === m.stage)?.text ?? "";
-    return { stage: m.stage, generic: scoreText(g, target), persona: scoreText(m.persona, target) };
+    return { stage: m.stage, recipient: m.recipient, generic: scoreText(g, target), persona: scoreText(m.persona, target) };
   });
   const summaryTarget = targetFor(profile, guide, primary, "portal");
   const summaryText = [

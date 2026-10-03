@@ -285,7 +285,8 @@ export type VideoScript = z.infer<typeof videoScriptSchema>;
 
 /** What the render stage returns. */
 export const renderedOutputsSchema = z.object({
-  messages: z.array(renderedMessageSchema).length(3),
+  /** Three stages for the primary recipient; for a teen/guardian split, three more for the guardian. */
+  messages: z.array(renderedMessageSchema).min(3).max(6),
   clinicianBrief: clinicianBriefSchema,
   visitSummary: visitSummarySchema,
   videoScripts: z.array(videoScriptSchema).length(2),
@@ -452,7 +453,7 @@ export const STAGE_LABEL: Record<StageName, string> = {
 
 export const scoresSchema = z.object({
   messages: z.array(
-    z.object({ stage: messageStageSchema, generic: tiScoreSchema, persona: tiScoreSchema }),
+    z.object({ stage: messageStageSchema, recipient: z.string().default("patient"), generic: tiScoreSchema, persona: tiScoreSchema }),
   ),
   brief: tiScoreSchema,
   summary: z.object({ generic: tiScoreSchema, persona: tiScoreSchema }),
@@ -590,6 +591,21 @@ export const rewriteRequestSchema = z.object({
 });
 export type RewriteRequest = z.infer<typeof rewriteRequestSchema>;
 
+export const rewriteRecordSchema = z.object({
+  id: z.string(),
+  patientId: z.number(),
+  namespace: namespaceSchema,
+  actorId: z.string().nullable(),
+  source: runSourceSchema,
+  stage: messageStageSchema,
+  original: z.string(),
+  rewritten: z.string(),
+  beforeScore: z.number(),
+  afterScore: z.number(),
+  at: z.string(),
+});
+export type RewriteRecord = z.infer<typeof rewriteRecordSchema>;
+
 export const rewriteResponseSchema = z.object({
   source: runSourceSchema,
   original: z.string(),
@@ -597,6 +613,7 @@ export const rewriteResponseSchema = z.object({
   before: tiScoreSchema,
   after: tiScoreSchema,
   claimIds: z.array(z.string()),
+  recordId: z.string().optional(),
 });
 export type RewriteResponse = z.infer<typeof rewriteResponseSchema>;
 

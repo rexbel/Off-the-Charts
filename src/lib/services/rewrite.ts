@@ -1,4 +1,7 @@
-import type { PatientRecord, RewriteRequest, RewriteResponse, RunSource } from "@/lib/schemas";
+import { desc, eq, and } from "drizzle-orm";
+import { db, ready, schema } from "@/db";
+import { rewriteRecordSchema, type Namespace, type PatientRecord, type RewriteRecord, type RewriteRequest, type RewriteResponse, type RunSource, type User } from "@/lib/schemas";
+import { newId, nowIso } from "@/lib/ids";
 import { scoreText, stigmaMatches } from "@/lib/ti-checker";
 import { ModelError, completeText } from "@/lib/ai/provider";
 import { rewriteSystem } from "@/lib/ai/prompts";
@@ -14,8 +17,8 @@ import { audit } from "./audit";
  * using their latest profile and voice guide (or the rules-based profile when
  * no run exists yet), then scores before and after with the same checker.
  */
-export async function rewriteMessage(record: PatientRecord, req: RewriteRequest): Promise<RewriteResponse> {
-  const latest = await latestRunForPatient(record.patientId);
+export async function rewriteMessage(record: PatientRecord, req: RewriteRequest, actor: User | null = null, namespace: Namespace = "live"): Promise<RewriteResponse> {
+  const latest = await latestRunForPatient(record.patientId, namespace);
   const { context } = await getContext(record);
   const facts = latest?.run.facts ?? extractFacts(record);
   const profile = latest?.run.profile ?? fallbackProfile(record, facts, context);
@@ -39,7 +42,10 @@ export async function rewriteMessage(record: PatientRecord, req: RewriteRequest)
     if (!(err instanceof ModelError)) console.error("[rewrite] unexpected", err instanceof Error ? err.message : err);
   }
   const after = scoreText(rewritten, target);
-  await audit("rewrite", { patientId: record.patientId }, { source, before: before.score, after: after.score });
+  await ready();
+  const row = { id: newId("rw"), patientId: record.patientId, namespace, actorId: actor?.id ?? null, source, stage: req.stage, original: req.text, rewritten, beforeScore: before.score, afterScore: after.score, at: nowIso() };
+  await db.insert(schema.rewrites).values(row);
+  await audit("rewrite", { patientId: record.patientId, actorId: actor?.id ?? null }, { source, before: before.score, after: after.score, namespace });
   return {
     source,
     original: req.text,
@@ -47,14 +53,33 @@ export async function rewriteMessage(record: PatientRecord, req: RewriteRequest)
     before,
     after,
     claimIds: [...profile.emotionalContext, ...profile.cognitiveSupport].map((c) => c.id).slice(0, 4),
+    recordId: row.id,
   };
+}
+
+export async function listRewrites(patientId: number, namespace: Namespace = "live", limit = 20): Promise<RewriteRecord[]> {
+  await ready();
+  const rows = await db.query.rewrites.findMany({ where: and(eq(schema.rewrites.patientId, patientId), eq(schema.rewrites.namespace, namespace)), orderBy: [desc(schema.rewrites.at)], limit });
+  return rows.map((r) => rewriteRecordSchema.safeParse(r)).filter((p) => p.success).map((p) => p.data);
 }
 
 /** Rules-only rewrite: swap stigma terms, scrub privacy, wrap in the voice guide. */
 export function fallbackRewrite(text: string, profile: ReturnType<typeof fallbackProfile>, guide: ReturnType<typeof fallbackVoiceGuide>): string {
   const lang = profile.communicationNeeds.language;
   const primary = primaryRecipient(profile.recipients);
-  let body = text.replace(/\s+/g, " ").trim();
+  // Drop whole sentences that carry a restricted term or threatening boilerplate; a policy line is not worth saving.
+  const restricted = profile.privacyRules
+    .filter((r) => r.channels.includes(profile.communicationNeeds.channel) && (r.recipients.length === 0 || r.recipients.includes(primary.role)))
+    .flatMap((r) => r.restrictedTerms.map((t) => t.toLowerCase()));
+  const sentences = text.replace(/\s+/g, " ").trim().split(/(?<=[.!?])\s+/);
+  let body = sentences
+    .filter((sentence) => {
+      const low = sentence.toLowerCase();
+      if (restricted.some((t) => low.includes(t))) return false;
+      if (/^(patients? (who|with)|per clinic policy|do not reply|this inbox|non-?compliance)/i.test(sentence)) return false;
+      return true;
+    })
+    .join(" ");
   // Replace stigma terms with their suggested alternatives, right to left so indexes stay valid.
   const matches = stigmaMatches(body, lang).sort((a, b) => b.index - a.index);
   for (const m of matches) {

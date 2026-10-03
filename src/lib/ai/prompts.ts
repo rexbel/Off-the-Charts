@@ -41,7 +41,7 @@ export const RENDER_SYSTEM = `You render patient touchpoints for a clinic from a
 
 Produce RenderedOutputs:
 
-1. messages (exactly three; stages before_7d, before_2d, after_24h), addressed to the primary recipient (recipient = that role). Each is a text message in the patient's language that:
+1. messages: three stages (before_7d, before_2d, after_24h) addressed to the primary recipient (recipient = that role). When audience is dual_teen_guardian, add three more for the guardian (recipient "guardian"): logistics only, confidential care never named, one line normalizing that part of the visit is one-on-one with the teen. Each is a text message in the patient's language that:
    - opens with the voice guide greeting and closes with its signoff on its own line;
    - says what will happen, when (use the {{date}}, {{weekday}} and {{time}} tokens exactly as supplied), how long, and who will be there;
    - offers at least one real choice ("you can...");

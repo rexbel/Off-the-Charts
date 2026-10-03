@@ -415,6 +415,27 @@ export function fallbackRender(record: PatientRecord, profile: PersonaProfile, g
     { stage: "after_24h", recipient: primary.role, persona: scrub(m24), claimIds: [...statedIds] },
   ];
 
+  // Teen/guardian split: the guardian gets logistics only, with confidential care kept out by the privacy rule.
+  const guardian = profile.audience === "dual_teen_guardian" ? profile.recipients.find((r) => r.role === "guardian") : undefined;
+  if (guardian) {
+    const gName = guardian.name?.split(" ")[0] ?? (es ? "hola" : "there");
+    const gScrub = (t: string) => scrubForPrivacy(t, profile.privacyRules, profile.communicationNeeds.channel, "guardian", lang);
+    const g7 = es
+      ? `Hola ${gName}, ${name} tiene una visita ${friendly} el {{date}} a las {{time}}. Dura unos 40 minutos. Puede venir con ${name} o esperar en la sala. Escríbanos al 555-0100 si tiene preguntas.\n${signoff}`
+      : `Hi ${gName}, ${name} has a ${friendly} visit on {{date}} at {{time}}. It takes about 40 minutes. You can come in with ${name} or wait in the lobby. Text us at 555-0100 with any questions.\n${signoff}`;
+    const g2 = es
+      ? `Hola ${gName}, recordatorio: ${name} tiene cita el {{weekday}} a las {{time}}. Llegue 10 minutos antes. Parte de la visita es a solas con ${name}; es lo normal a esta edad. Si prefiere otra hora, díganos. Escríbanos al 555-0100 si tiene preguntas.\n${signoff}`
+      : `Hi ${gName}, a quick note: ${name}'s visit is {{weekday}} at {{time}}. Arrive 10 minutes early. Part of the visit is one-on-one with ${name}; that's normal at this age. If another time works better, just say so. Text us at 555-0100 with questions.\n${signoff}`;
+    const g24 = es
+      ? `Hola ${gName}, gracias por traer a ${name} hoy. Los próximos pasos están en el portal. Si tiene preguntas sobre la logística, escríbanos. Decidimos los siguientes pasos juntos.\n${signoff}`
+      : `Hi ${gName}, thanks for bringing ${name} in today. Next steps are in the portal. If you have questions about scheduling, text us. We'll plan the next steps together.\n${signoff}`;
+    messages.push(
+      { stage: "before_7d", recipient: "guardian", persona: gScrub(g7), claimIds: privacyIds },
+      { stage: "before_2d", recipient: "guardian", persona: gScrub(g2), claimIds: privacyIds },
+      { stage: "after_24h", recipient: "guardian", persona: gScrub(g24), claimIds: privacyIds },
+    );
+  }
+
   const latest = latestEncounter(record);
   const topDx = record.ehr.primary_diagnoses[0] ?? latest?.chief_complaint ?? "";
   const briefLines = [

@@ -40,5 +40,5 @@ export default async function PatientPage(props: PageProps<"/patients/[id]">) {
   const autoBuild = buildParam?.success ? buildParam.data : undefined;
   const openEvidence = sp.evidence === "1";
 
-  return <PatientWorkspace key={`${patientId}-${ns}`} bundle={bundle} user={user} initialTab={tab} autoBuild={autoBuild} openEvidence={openEvidence} />;
+  return <PatientWorkspace key={`${patientId}-${ns}-${openEvidence ? "e" : ""}`} bundle={bundle} user={user} initialTab={tab} autoBuild={autoBuild} openEvidence={openEvidence} />;
 }

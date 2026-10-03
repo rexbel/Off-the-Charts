@@ -21,6 +21,7 @@ import { MessageCompare } from "./message-compare";
 import { ClinicianBrief } from "./clinician-brief";
 import { VisitSummaryView } from "./visit-summary";
 import { VideoTab } from "./video-tab";
+import { RunCompare } from "./run-compare";
 import { daysUntilLabel } from "@/lib/visit";
 
 type BuildStatus = "idle" | "running" | "done" | "error";
@@ -42,7 +43,7 @@ function stagesFromRun(r: PersonaRun): StagesState {
 function firstInferredId(r: PersonaRun): string | null {
   return [...r.profile.emotionalContext, ...r.profile.cognitiveSupport, ...r.profile.privacyRules].find((c) => c.kind === "inferred")?.id ?? null;
 }
-const TABS = ["messages", "brief", "summary", "video"] as const;
+const TABS = ["messages", "brief", "summary", "video", "compare"] as const;
 type Tab = (typeof TABS)[number];
 
 export function PatientWorkspace({ bundle, user, initialTab, autoBuild, openEvidence }: { bundle: PatientBundle; user: User | null; initialTab?: string; autoBuild?: BuildMode; openEvidence?: boolean }) {
@@ -93,8 +94,8 @@ export function PatientWorkspace({ bundle, user, initialTab, autoBuild, openEvid
               setRun(event.run);
               setTouchpoints(event.touchpoints);
               setTpScores({});
-              setRuns((prev) => [{ id: event.run.id, createdAt: event.run.createdAt, source: event.run.source }, ...prev]);
-              setContextEdited(true);
+              setRuns((prev) => [{ id: event.run.id, createdAt: event.run.createdAt, source: event.run.source, approvedAt: null }, ...prev]);
+              if (bundle.namespace === "live") setContextEdited(true);
               setStatus("done");
               if (openEvidence) setEvidenceId(firstInferredId(event.run));
               toast.success(`Persona built for ${event.run.profile.preferredName}. ${event.touchpoints.length} touchpoints ready to review.`);
@@ -247,6 +248,7 @@ export function PatientWorkspace({ bundle, user, initialTab, autoBuild, openEvid
                   {runs.map((r) => (
                     <SelectItem key={r.id} value={r.id}>
                       {new Date(r.createdAt).toLocaleString([], { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" })} · {r.source}
+                      {r.approvedAt ? " · approved" : ""}
                     </SelectItem>
                   ))}
                 </SelectContent>
@@ -313,12 +315,13 @@ export function PatientWorkspace({ bundle, user, initialTab, autoBuild, openEvid
             <PersonaCard run={run} stages={stages} onOpenClaim={setEvidenceId} />
           </section>
           <section className="mt-6">
-            <Tabs value={tab} onValueChange={selectTab}>
+            <Tabs activationMode="manual" value={tab} onValueChange={selectTab}>
               <TabsList aria-label="Touchpoints" className="flex-wrap h-auto">
                 <TabsTrigger value="messages">Messages</TabsTrigger>
                 <TabsTrigger value="brief">Clinician brief</TabsTrigger>
                 <TabsTrigger value="summary">Visit summary</TabsTrigger>
                 <TabsTrigger value="video">Video</TabsTrigger>
+                {runs.length > 1 && <TabsTrigger value="compare">Compare runs</TabsTrigger>}
               </TabsList>
               <TabsContent value="messages" className="mt-4">
                 <MessageCompare run={run} touchpoints={touchpoints} tpScores={tpScores} onAction={onAction} onOpenClaim={setEvidenceId} canApprove={canApprove} />
@@ -331,6 +334,9 @@ export function PatientWorkspace({ bundle, user, initialTab, autoBuild, openEvid
               </TabsContent>
               <TabsContent value="video" className="mt-4">
                 <VideoTab run={run} touchpoints={touchpoints} tpScores={tpScores} onAction={onAction} canApprove={canApprove} />
+              </TabsContent>
+              <TabsContent value="compare" className="mt-4">
+                <RunCompare current={run} runs={runs} />
               </TabsContent>
             </Tabs>
           </section>

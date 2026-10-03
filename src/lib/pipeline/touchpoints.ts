@@ -46,14 +46,10 @@ export function touchpointsForRun(run: PersonaRun): Touchpoint[] {
     approvedBy: null,
     sentAt: null,
   });
-  const byStage = (stage: "before_7d" | "before_2d" | "after_24h") => run.outputs.messages.find((m) => m.stage === stage);
-  const m7 = byStage("before_7d");
-  const m2 = byStage("before_2d");
-  const m24 = byStage("after_24h");
+  const STAGE_KIND = { before_7d: "message_before_7d", before_2d: "message_before_2d", after_24h: "message_after_24h" } as const;
+  const messages = run.outputs.messages.map((m) => make(STAGE_KIND[m.stage], m.recipient || primary, m.persona));
   return [
-    make("message_before_7d", m7?.recipient ?? primary, m7?.persona ?? ""),
-    make("message_before_2d", m2?.recipient ?? primary, m2?.persona ?? ""),
-    make("message_after_24h", m24?.recipient ?? primary, m24?.persona ?? ""),
+    ...messages,
     make("brief", "clinician", run.outputs.clinicianBrief.lines.join("\n")),
     make("summary", primary, summaryToText(run.outputs.visitSummary)),
     make("video_before", primary, videoToText(run.outputs, "before")),

@@ -15,6 +15,7 @@ import type {
   PatientSummary,
   PersonaRun,
   RewriteRequest,
+  RewriteRecord,
   RewriteResponse,
   TiScore,
   Touchpoint,
@@ -50,7 +51,7 @@ export type PatientBundle = {
   context: PatientContext;
   contextEdited: boolean;
   latest: { run: PersonaRun; touchpoints: Touchpoint[] } | null;
-  runs: Pick<PersonaRun, "id" | "createdAt" | "source">[];
+  runs: Pick<PersonaRun, "id" | "createdAt" | "source" | "approvedAt">[];
   cachedAvailable: boolean;
   modelAvailable: boolean;
   namespace: Namespace;
@@ -73,6 +74,7 @@ export const api = {
   confirmClaim: (runId: string, claimId: string) => request<{ confirmedClaimIds: string[] }>(`/api/runs/${runId}/claims/${claimId}/confirm`, { method: "POST" }),
   touchpoint: (id: string, action: TouchpointAction) => request<{ touchpoint: Touchpoint; score: TiScore }>(`/api/touchpoints/${id}`, { method: "POST", body: JSON.stringify(action) }),
   rewrite: (body: RewriteRequest) => request<RewriteResponse>("/api/rewrite", { method: "POST", body: JSON.stringify(body) }),
+  rewrites: (patientId: number) => request<{ rewrites: RewriteRecord[] }>(`/api/rewrite?patientId=${patientId}`),
   outbox: () => request<{ approved: Touchpoint[]; metrics: OutboxMetrics; deliveries: Record<string, OutboxDelivery> }>("/api/outbox"),
   resetDemo: () => request<{ runs: number; touchpoints: number; deliveries: number }>("/api/demo/reset", { method: "POST" }),
 };
