@@ -20,6 +20,10 @@ import type {
   TiScore,
   Touchpoint,
   TouchpointAction,
+  CheckinAnswers,
+  CheckinStatus,
+  Language,
+  PatientCheckin,
 } from "@/lib/schemas";
 
 export class ApiRequestError extends Error {
@@ -77,7 +81,15 @@ export const api = {
   rewrites: (patientId: number) => request<{ rewrites: RewriteRecord[] }>(`/api/rewrite?patientId=${patientId}`),
   outbox: () => request<{ approved: Touchpoint[]; metrics: OutboxMetrics; deliveries: Record<string, OutboxDelivery> }>("/api/outbox"),
   resetDemo: () => request<{ runs: number; touchpoints: number; deliveries: number }>("/api/demo/reset", { method: "POST" }),
+  checkins: (patientId: number) => request<{ checkins: PatientCheckin[] }>(`/api/patients/${patientId}/checkins`),
+  createCheckin: (patientId: number) => request<{ checkin: PatientCheckin }>(`/api/patients/${patientId}/checkins`, { method: "POST" }),
+  checkinStatus: (token: string) => request<{ checkin: CheckinPublic }>(`/api/checkin/${encodeURIComponent(token)}`),
+  checkinSubmit: (token: string, answers: CheckinAnswers) =>
+    request<{ checkin: { status: CheckinStatus; submittedAt: string | null } }>(`/api/checkin/${encodeURIComponent(token)}`, { method: "POST", body: JSON.stringify({ answers }) }),
 };
+
+/** What the patient-facing GET /api/checkin/[token] returns. Never includes the answers. */
+export type CheckinPublic = { status: CheckinStatus; expiresAt: string; patientFirstName: string; language: Language };
 
 /**
  * Streams the build. Resolves when the stream ends; every parsed line is

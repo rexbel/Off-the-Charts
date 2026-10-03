@@ -113,7 +113,7 @@ export function PatientWorkspace({ bundle, user, initialTab, autoBuild, openEvid
         setStatus("error");
       }
     },
-    [patient.patientId, context, status, openEvidence],
+    [patient.patientId, context, status, openEvidence, bundle.namespace],
   );
 
   // Demo: ?build=cached triggers one build on arrival, then strips the param.

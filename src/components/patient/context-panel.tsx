@@ -12,6 +12,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Textarea } from "@/components/ui/textarea";
 import { AUDIENCE_LABEL, audienceSchema, type BuildMode, type PatientContext, type PatientRecord } from "@/lib/schemas";
 import { cn } from "@/lib/utils";
+import { CheckinPanel } from "./checkin-panel";
 
 export function ContextPanel({
   patient,
@@ -126,6 +127,7 @@ export function ContextPanel({
           <Label htmlFor="checkin">&ldquo;What matters to you?&rdquo; check-in</Label>
           <Textarea id="checkin" value={context.checkin} onChange={(e) => onChange({ ...context, checkin: e.target.value })} rows={4} className="font-voice text-base" />
           <p className="text-xs text-muted-foreground">{seed.checkinSource}. Patient-stated; the engine treats it as their words, not as a chart fact.</p>
+          <CheckinPanel patientId={patient.patientId} context={context} onChange={onChange} />
         </div>
         <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
           <div className="grid gap-1.5">
