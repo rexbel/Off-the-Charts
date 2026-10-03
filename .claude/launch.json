@@ -1,14 +1,6 @@
 {
   "version": "0.0.1",
   "configurations": [
-    {
-      "name": "otc-dev",
-      "runtimeExecutable": "bash",
-      "runtimeArgs": [
-        "-lc",
-        "export NVM_DIR=\"$HOME/.nvm\"; . \"$NVM_DIR/nvm.sh\"; nvm use 22 >/dev/null; pnpm dev -p 3100"
-      ],
-      "port": 3100
-    }
+    { "name": "otc-dev", "runtimeExecutable": "npx", "runtimeArgs": ["-y", "pnpm@12.8.1", "dev"], "port": 3300, "autoPort": true }
   ]
 }
