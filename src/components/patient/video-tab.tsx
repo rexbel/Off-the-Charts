@@ -8,7 +8,7 @@ import { TouchpointActions, type OnTouchpointAction } from "./touchpoint-actions
 import type { PersonaRun, TiScore, Touchpoint } from "@/lib/schemas";
 
 /** Before/after visit videos rendered in the browser from the video scripts. */
-export function VideoTab({ run, touchpoints, tpScores, onAction }: { run: PersonaRun; touchpoints: Touchpoint[]; tpScores: Record<string, TiScore>; onAction: OnTouchpointAction }) {
+export function VideoTab({ run, touchpoints, tpScores, onAction, canApprove = true }: { run: PersonaRun; touchpoints: Touchpoint[]; tpScores: Record<string, TiScore>; onAction: OnTouchpointAction; canApprove?: boolean }) {
   const [stage, setStage] = useState<"before" | "after">("before");
   const script = run.outputs.videoScripts.find((v) => v.stage === stage) ?? run.outputs.videoScripts[0];
   const tp = touchpoints.find((t) => t.kind === (stage === "before" ? "video_before" : "video_after"));
@@ -41,7 +41,7 @@ export function VideoTab({ run, touchpoints, tpScores, onAction }: { run: Person
           ))}
         </ol>
       </details>
-      {tp && <TouchpointActions tp={tp} score={tpScores[tp.id] ?? null} onAction={onAction} editLabel="Edit script text" />}
+      {tp && <TouchpointActions tp={tp} score={tpScores[tp.id] ?? null} onAction={onAction} editLabel="Edit script text" canApprove={canApprove} />}
     </div>
   );
 }

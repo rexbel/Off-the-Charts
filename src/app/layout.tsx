@@ -2,9 +2,6 @@ import type { Metadata } from "next";
 import { Fraunces, Geist, Geist_Mono, Nunito } from "next/font/google";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { AppShell } from "@/components/shell/app-shell";
-import { DemoProvider } from "@/components/demo/demo-provider";
-import { modelAvailable } from "@/lib/ai/provider";
 import "./globals.css";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
@@ -21,11 +18,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable} ${nunito.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
-        <TooltipProvider delayDuration={150}>
-          <DemoProvider>
-            <AppShell modelAvailable={modelAvailable()}>{children}</AppShell>
-          </DemoProvider>
-        </TooltipProvider>
+        <TooltipProvider delayDuration={150}>{children}</TooltipProvider>
         <Toaster richColors closeButton position="bottom-right" />
       </body>
     </html>

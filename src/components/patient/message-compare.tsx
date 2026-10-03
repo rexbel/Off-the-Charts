@@ -16,7 +16,7 @@ const STAGE_TO_KIND: Record<MessageStage, keyof typeof MESSAGE_KIND_TO_STAGE> = 
 };
 
 /** Generic vs Persona, side by side, scored by the same rules. */
-export function MessageCompare({ run, touchpoints, tpScores, onAction, onOpenClaim }: { run: PersonaRun; touchpoints: Touchpoint[]; tpScores: Record<string, TiScore>; onAction: OnTouchpointAction; onOpenClaim: (id: string) => void }) {
+export function MessageCompare({ run, touchpoints, tpScores, onAction, onOpenClaim, canApprove = true }: { run: PersonaRun; touchpoints: Touchpoint[]; tpScores: Record<string, TiScore>; onAction: OnTouchpointAction; onOpenClaim: (id: string) => void; canApprove?: boolean }) {
   return (
     <div className="grid gap-4" data-demo="messages">
       {run.outputs.messages.map((m) => {
@@ -82,7 +82,7 @@ export function MessageCompare({ run, touchpoints, tpScores, onAction, onOpenCla
                 )}
                 {tp && (
                   <div className="mt-4 font-sans">
-                    <TouchpointActions tp={tp} score={personaScore} onAction={onAction} demoKey={m.stage === "before_2d" ? "approve-2d" : undefined} />
+                    <TouchpointActions tp={tp} score={personaScore} onAction={onAction} demoKey={m.stage === "before_2d" ? "approve-2d" : undefined} canApprove={canApprove} />
                   </div>
                 )}
               </section>

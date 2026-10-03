@@ -2,20 +2,24 @@
 
 import { createContext, useCallback, useContext, useMemo, useSyncExternalStore } from "react";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
+import { api } from "@/lib/client/api";
 import { DEMO_STEPS, type DemoStep } from "./steps";
 
 type DemoState = { active: boolean; index: number };
 
 type DemoContextValue = {
+  enabled: boolean;
   active: boolean;
   index: number;
   step: DemoStep | null;
   total: number;
-  start: () => void;
+  start: () => Promise<void>;
   next: () => void;
   prev: () => void;
   goTo: (index: number) => void;
-  exit: () => void;
+  exit: () => Promise<void>;
+  reset: () => Promise<void>;
 };
 
 const DemoContext = createContext<DemoContextValue | null>(null);
@@ -25,7 +29,8 @@ const INACTIVE: DemoState = { active: false, index: 0 };
 /**
  * Tiny external store backed by sessionStorage, so the walkthrough survives
  * navigation and reloads within a tab without a hydration mismatch (the
- * server snapshot is always "inactive").
+ * server snapshot is always "inactive"). Starting the demo also switches the
+ * server-side namespace cookie so demo data stays isolated.
  */
 let current: DemoState | null = null;
 const listeners = new Set<() => void>();
@@ -65,7 +70,7 @@ function setState(next: DemoState): void {
   listeners.forEach((l) => l());
 }
 
-export function DemoProvider({ children }: { children: React.ReactNode }) {
+export function DemoProvider({ children, enabled }: { children: React.ReactNode; enabled: boolean }) {
   const router = useRouter();
   const state = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
@@ -78,19 +83,49 @@ export function DemoProvider({ children }: { children: React.ReactNode }) {
     [router],
   );
 
+  const start = useCallback(async () => {
+    try {
+      await api.demoStart();
+    } catch {
+      toast.error("Could not switch to the demo workspace.");
+      return;
+    }
+    goTo(0);
+    router.refresh();
+  }, [goTo, router]);
+
+  const exit = useCallback(async () => {
+    setState(INACTIVE);
+    try {
+      await api.demoExit();
+    } catch {
+      /* cookie may already be gone */
+    }
+    router.refresh();
+  }, [router]);
+
+  const reset = useCallback(async () => {
+    const r = await api.resetDemo();
+    toast.success(`Demo reset. Cleared ${r.runs} runs and ${r.touchpoints} touchpoints.`);
+    goTo(0);
+    router.refresh();
+  }, [goTo, router]);
+
   const value = useMemo<DemoContextValue>(
     () => ({
-      active: state.active,
+      enabled,
+      active: enabled && state.active,
       index: state.index,
-      step: state.active ? DEMO_STEPS[state.index] : null,
+      step: enabled && state.active ? DEMO_STEPS[state.index] : null,
       total: DEMO_STEPS.length,
-      start: () => goTo(0),
+      start,
       next: () => goTo(state.index + 1),
       prev: () => goTo(state.index - 1),
       goTo,
-      exit: () => setState(INACTIVE),
+      exit,
+      reset,
     }),
-    [state, goTo],
+    [enabled, state, goTo, start, exit, reset],
   );
 
   return <DemoContext.Provider value={value}>{children}</DemoContext.Provider>;

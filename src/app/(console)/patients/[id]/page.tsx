@@ -7,6 +7,8 @@ import { loadCachedRun } from "@/lib/pipeline/cached";
 import { modelAvailable } from "@/lib/ai/provider";
 import { buildModeSchema } from "@/lib/schemas";
 import type { PatientBundle } from "@/lib/client/api";
+import { currentNamespace } from "@/lib/namespace";
+import { currentUser } from "@/lib/auth";
 
 export const dynamic = "force-dynamic";
 
@@ -24,18 +26,19 @@ export default async function PatientPage(props: PageProps<"/patients/[id]">) {
   const patient = patientId ? getPatient(patientId) : undefined;
   if (!patient || !patientId) notFound();
 
+  const [ns, user] = await Promise.all([currentNamespace(), currentUser()]);
   const [{ context, edited }, latest, runs, cached] = await Promise.all([
     getContext(patient),
-    latestRunForPatient(patientId),
-    listRunsForPatient(patientId),
+    latestRunForPatient(patientId, ns),
+    listRunsForPatient(patientId, ns),
     loadCachedRun(patientId),
   ]);
 
-  const bundle: PatientBundle = { patient, context, contextEdited: edited, latest, runs, cachedAvailable: cached !== null, modelAvailable: modelAvailable() };
+  const bundle: PatientBundle = { patient, context, contextEdited: edited, latest, runs, cachedAvailable: cached !== null, modelAvailable: modelAvailable(), namespace: ns };
   const tab = typeof sp.tab === "string" ? sp.tab : undefined;
   const buildParam = typeof sp.build === "string" ? buildModeSchema.safeParse(sp.build) : null;
   const autoBuild = buildParam?.success ? buildParam.data : undefined;
   const openEvidence = sp.evidence === "1";
 
-  return <PatientWorkspace key={patientId} bundle={bundle} initialTab={tab} autoBuild={autoBuild} openEvidence={openEvidence} />;
+  return <PatientWorkspace key={`${patientId}-${ns}`} bundle={bundle} user={user} initialTab={tab} autoBuild={autoBuild} openEvidence={openEvidence} />;
 }

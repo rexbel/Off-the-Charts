@@ -5,7 +5,6 @@ import { usePathname } from "next/navigation";
 import { ChevronLeftIcon, ChevronRightIcon, RotateCcwIcon, XIcon } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
-import { api } from "@/lib/client/api";
 import { useDemo } from "./demo-provider";
 import { cn } from "@/lib/utils";
 
@@ -46,7 +45,7 @@ export function DemoBar() {
       if (e.target instanceof HTMLElement && ["INPUT", "TEXTAREA", "SELECT"].includes(e.target.tagName)) return;
       if (e.key === "ArrowRight" && e.altKey) demo.next();
       if (e.key === "ArrowLeft" && e.altKey) demo.prev();
-      if (e.key === "Escape") demo.exit();
+      if (e.key === "Escape") void demo.exit();
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
@@ -58,9 +57,7 @@ export function DemoBar() {
   const reset = async () => {
     setResetting(true);
     try {
-      const r = await api.resetDemo();
-      toast.success(`Demo reset. Cleared ${r.runs} runs and ${r.touchpoints} touchpoints.`);
-      demo.goTo(0);
+      await demo.reset();
     } catch {
       toast.error("Could not reset. Try again.");
     } finally {
@@ -99,10 +96,10 @@ export function DemoBar() {
           <Button variant="outline" size="sm" onClick={demo.prev} disabled={demo.index === 0} aria-label="Previous step">
             <ChevronLeftIcon aria-hidden /> Back
           </Button>
-          <Button size="sm" onClick={isLast ? demo.exit : demo.next} aria-label={isLast ? "Finish walkthrough" : "Next step"}>
+          <Button size="sm" onClick={isLast ? () => void demo.exit() : demo.next} aria-label={isLast ? "Finish walkthrough" : "Next step"}>
             {isLast ? "Finish" : "Next"} {!isLast && <ChevronRightIcon aria-hidden />}
           </Button>
-          <Button variant="ghost" size="icon-sm" onClick={demo.exit} aria-label="Exit walkthrough">
+          <Button variant="ghost" size="icon-sm" onClick={() => void demo.exit()} aria-label="Exit walkthrough">
             <XIcon />
           </Button>
         </div>

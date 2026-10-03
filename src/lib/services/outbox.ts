@@ -1,5 +1,6 @@
+import { eq } from "drizzle-orm";
 import { db, ready, schema } from "@/db";
-import type { OutboxMetrics, PersonaRun, Touchpoint } from "@/lib/schemas";
+import type { Namespace, OutboxMetrics, PersonaRun, Touchpoint } from "@/lib/schemas";
 import { listAllRuns } from "./runs";
 import { listApprovedTouchpoints } from "./touchpoints";
 
@@ -10,14 +11,14 @@ import { listApprovedTouchpoints } from "./touchpoints";
  * the Persona message; "privacy rules enforced" counts rules that the
  * generic text violated and the Persona text did not.
  */
-export async function outboxMetrics(): Promise<OutboxMetrics> {
+export async function outboxMetrics(namespace: Namespace = "live"): Promise<OutboxMetrics> {
   await ready();
-  const runs = await listAllRuns();
+  const runs = await listAllRuns(namespace);
   const latest = new Map<number, PersonaRun>();
   for (const r of runs) if (!latest.has(r.patientId)) latest.set(r.patientId, r);
   const rows = [...latest.values()];
 
-  const tps = await db.select({ status: schema.touchpoints.status }).from(schema.touchpoints);
+  const tps = await db.select({ status: schema.touchpoints.status }).from(schema.touchpoints).where(eq(schema.touchpoints.namespace, namespace));
   let gradeG = 0, gradeP = 0, scoreG = 0, scoreP = 0, n = 0, stigma = 0, privacy = 0;
   for (const run of rows) {
     for (const m of run.scores.messages) {
@@ -36,6 +37,7 @@ export async function outboxMetrics(): Promise<OutboxMetrics> {
   }
   const avg = (x: number) => (n ? Math.round((x / n) * 10) / 10 : 0);
   return {
+    namespace,
     patientsWithRuns: rows.length,
     touchpointsTotal: tps.length,
     touchpointsApproved: tps.filter((t) => t.status === "approved" || t.status === "edited").length,
@@ -49,7 +51,7 @@ export async function outboxMetrics(): Promise<OutboxMetrics> {
   };
 }
 
-export async function outbox(): Promise<{ approved: Touchpoint[]; metrics: OutboxMetrics }> {
-  const [approved, metrics] = await Promise.all([listApprovedTouchpoints(), outboxMetrics()]);
+export async function outbox(namespace: Namespace = "live"): Promise<{ approved: Touchpoint[]; metrics: OutboxMetrics }> {
+  const [approved, metrics] = await Promise.all([listApprovedTouchpoints(namespace), outboxMetrics(namespace)]);
   return { approved, metrics };
 }

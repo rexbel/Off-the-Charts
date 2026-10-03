@@ -48,7 +48,7 @@ export function DemoIntro({ genericText, genericScore, steps }: { genericText: s
       </Card>
 
       <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-start">
-        <Button size="lg" onClick={demo.active ? demo.next : demo.start} data-demo="demo-start">
+        <Button size="lg" onClick={demo.active ? demo.next : () => void demo.start()} data-demo="demo-start">
           <PlayIcon aria-hidden /> {demo.active ? "Continue" : "Start the walkthrough"}
         </Button>
         <ol className="grid flex-1 grid-cols-1 gap-x-6 gap-y-1 text-sm text-muted-foreground sm:grid-cols-2">

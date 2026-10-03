@@ -12,7 +12,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { AudienceBadge, DementiaBadge, DemoRoleBadge, LanguageBadge, SourceBadge } from "@/components/badges";
 import { api, streamBuild, ApiRequestError, type PatientBundle } from "@/lib/client/api";
-import type { BuildMode, PatientContext, PersonaRun, TiScore, Touchpoint, TouchpointAction } from "@/lib/schemas";
+import type { BuildMode, PatientContext, PersonaRun, TiScore, Touchpoint, TouchpointAction, User } from "@/lib/schemas";
 import { ContextPanel } from "./context-panel";
 import { PipelineSteps, idleStages, type StagesState } from "./pipeline-steps";
 import { PersonaCard } from "./persona-card";
@@ -45,7 +45,8 @@ function firstInferredId(r: PersonaRun): string | null {
 const TABS = ["messages", "brief", "summary", "video"] as const;
 type Tab = (typeof TABS)[number];
 
-export function PatientWorkspace({ bundle, initialTab, autoBuild, openEvidence }: { bundle: PatientBundle; initialTab?: string; autoBuild?: BuildMode; openEvidence?: boolean }) {
+export function PatientWorkspace({ bundle, user, initialTab, autoBuild, openEvidence }: { bundle: PatientBundle; user: User | null; initialTab?: string; autoBuild?: BuildMode; openEvidence?: boolean }) {
+  const canApprove = user?.role === "clinician" || user?.role === "admin";
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -144,7 +145,7 @@ export function PatientWorkspace({ bundle, initialTab, autoBuild, openEvidence }
         const verb = { approve: "Approved", reject: "Rejected", edit: "Edited and re-scored", reset: "Reset" }[action.action];
         toast.success(`${verb}. ${action.action === "approve" ? "Sending is simulated; it's in the outbox." : ""}`.trim());
       } catch (err) {
-        if (err instanceof ApiRequestError && err.status === 409) {
+        if (err instanceof ApiRequestError && (err.status === 409 || err.status === 403)) {
           toast.error(err.message);
         } else {
           toast.error(err instanceof Error ? err.message : "That didn't save. Try again.");
@@ -320,16 +321,16 @@ export function PatientWorkspace({ bundle, initialTab, autoBuild, openEvidence }
                 <TabsTrigger value="video">Video</TabsTrigger>
               </TabsList>
               <TabsContent value="messages" className="mt-4">
-                <MessageCompare run={run} touchpoints={touchpoints} tpScores={tpScores} onAction={onAction} onOpenClaim={setEvidenceId} />
+                <MessageCompare run={run} touchpoints={touchpoints} tpScores={tpScores} onAction={onAction} onOpenClaim={setEvidenceId} canApprove={canApprove} />
               </TabsContent>
               <TabsContent value="brief" className="mt-4">
-                <ClinicianBrief run={run} tp={briefTp} score={briefScore} onAction={onAction} />
+                <ClinicianBrief run={run} tp={briefTp} score={briefScore} onAction={onAction} canApprove={canApprove} />
               </TabsContent>
               <TabsContent value="summary" className="mt-4">
-                <VisitSummaryView run={run} tp={summaryTp} score={summaryScore} onAction={onAction} onOpenClaim={setEvidenceId} />
+                <VisitSummaryView run={run} tp={summaryTp} score={summaryScore} onAction={onAction} onOpenClaim={setEvidenceId} canApprove={canApprove} />
               </TabsContent>
               <TabsContent value="video" className="mt-4">
-                <VideoTab run={run} touchpoints={touchpoints} tpScores={tpScores} onAction={onAction} />
+                <VideoTab run={run} touchpoints={touchpoints} tpScores={tpScores} onAction={onAction} canApprove={canApprove} />
               </TabsContent>
             </Tabs>
           </section>

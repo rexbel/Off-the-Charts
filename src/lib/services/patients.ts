@@ -1,9 +1,9 @@
 import { listPatients, getPatient } from "@/lib/data/cohort";
-import type { PatientSummary } from "@/lib/schemas";
+import type { Namespace, PatientSummary } from "@/lib/schemas";
 import { latestRunSummaries } from "./runs";
 
-export async function patientSummaries(): Promise<PatientSummary[]> {
-  const runs = await latestRunSummaries();
+export async function patientSummaries(namespace: Namespace = "live"): Promise<PatientSummary[]> {
+  const runs = await latestRunSummaries(namespace);
   return listPatients().map((p) => ({
     patientId: p.patientId,
     displayName: p.seed.displayName,

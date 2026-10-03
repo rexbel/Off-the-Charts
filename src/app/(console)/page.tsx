@@ -5,11 +5,13 @@ import { CohortBoard } from "@/components/cohort/cohort-board";
 import { patientSummaries } from "@/lib/services/patients";
 import { outboxMetrics } from "@/lib/services/outbox";
 import { DEMO_PATIENT_IDS } from "@/lib/data/cohort";
+import { currentNamespace } from "@/lib/namespace";
 
 export const dynamic = "force-dynamic";
 
 export default async function CohortPage() {
-  const [patients, metrics] = await Promise.all([patientSummaries(), outboxMetrics()]);
+  const ns = await currentNamespace();
+  const [patients, metrics] = await Promise.all([patientSummaries(ns), outboxMetrics(ns)]);
   return (
     <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 py-8 sm:py-10">
       <section className="grid gap-6 lg:grid-cols-[1.4fr_1fr] lg:items-end">

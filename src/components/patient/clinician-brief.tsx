@@ -10,7 +10,7 @@ import type { PersonaRun, TiScore, Touchpoint } from "@/lib/schemas";
 import { speak, stopSpeaking, useSpeechAvailable } from "@/lib/client/speech";
 
 /** The 30-second read before the clinician walks in. */
-export function ClinicianBrief({ run, tp, score, onAction }: { run: PersonaRun; tp: Touchpoint | undefined; score: TiScore | null; onAction: OnTouchpointAction }) {
+export function ClinicianBrief({ run, tp, score, onAction, canApprove = true }: { run: PersonaRun; tp: Touchpoint | undefined; score: TiScore | null; onAction: OnTouchpointAction; canApprove?: boolean }) {
   const [speaking, setSpeaking] = useState(false);
   const canSpeak = useSpeechAvailable();
   useEffect(() => () => stopSpeaking(), []);
@@ -53,7 +53,7 @@ export function ClinicianBrief({ run, tp, score, onAction }: { run: PersonaRun; 
         ))}
       </ol>
       {score && <TiFindings score={score} label="Language check (staff target)" />}
-      {tp && <TouchpointActions tp={tp} score={score} onAction={onAction} />}
+      {tp && <TouchpointActions tp={tp} score={score} onAction={onAction} canApprove={canApprove} />}
     </Card>
   );
 }

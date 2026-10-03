@@ -1,13 +1,13 @@
-import { desc, eq, inArray } from "drizzle-orm";
+import { and, desc, eq, inArray } from "drizzle-orm";
 import { db, ready, schema } from "@/db";
-import { personaRunSchema, touchpointSchema, type PersonaRun, type Touchpoint } from "@/lib/schemas";
+import { personaRunSchema, touchpointSchema, type Namespace, type PersonaRun, type Touchpoint } from "@/lib/schemas";
 import { touchpointsForRun } from "@/lib/pipeline/touchpoints";
 import { audit } from "./audit";
 
 function rowToRun(row: typeof schema.personaRuns.$inferSelect): PersonaRun | null {
   try {
     const payload = JSON.parse(row.payload);
-    const parsed = personaRunSchema.safeParse({ ...payload, id: row.id, patientId: row.patientId, createdAt: row.createdAt, source: row.source, confirmedClaimIds: JSON.parse(row.confirmedClaimIds) });
+    const parsed = personaRunSchema.safeParse({ ...payload, id: row.id, patientId: row.patientId, createdAt: row.createdAt, source: row.source, namespace: row.namespace, approvedAt: row.approvedAt, approvedBy: row.approvedBy, confirmedClaimIds: JSON.parse(row.confirmedClaimIds) });
     return parsed.success ? parsed.data : null;
   } catch {
     return null;
@@ -20,18 +20,24 @@ function rowToTouchpoint(row: typeof schema.touchpoints.$inferSelect): Touchpoin
 }
 
 /** Persists a finished run and its pending touchpoints. Idempotent on run id. */
-export async function saveRun(run: PersonaRun): Promise<Touchpoint[]> {
+export async function saveRun(run: PersonaRun, actorId: string | null = null): Promise<Touchpoint[]> {
   await ready();
-  const tps = touchpointsForRun(run);
+  const tps = touchpointsForRun(run).map((t) => ({ ...t, preparedBy: actorId }));
   await db.transaction(async (tx) => {
     await tx
       .insert(schema.personaRuns)
-      .values({ id: run.id, patientId: run.patientId, createdAt: run.createdAt, source: run.source, payload: JSON.stringify(run), confirmedClaimIds: JSON.stringify(run.confirmedClaimIds) })
+      .values({ id: run.id, patientId: run.patientId, namespace: run.namespace, createdAt: run.createdAt, source: run.source, payload: JSON.stringify(run), confirmedClaimIds: JSON.stringify(run.confirmedClaimIds) })
       .onConflictDoNothing();
     if (tps.length) await tx.insert(schema.touchpoints).values(tps).onConflictDoNothing();
   });
-  await audit("run.saved", { patientId: run.patientId, runId: run.id }, { source: run.source, touchpoints: tps.length, stages: run.stages.map((s) => `${s.stage}:${s.source}`).join(",") });
+  await audit("run.saved", { patientId: run.patientId, runId: run.id, actorId }, { source: run.source, namespace: run.namespace, touchpoints: tps.length, stages: run.stages.map((s) => `${s.stage}:${s.source}`).join(",") });
   return tps;
+}
+
+/** Marks a run as approved (first clinician approval wins; later ones refresh the time). */
+export async function markRunApproved(runId: string, actorId: string | null): Promise<void> {
+  await ready();
+  await db.update(schema.personaRuns).set({ approvedAt: new Date().toISOString(), approvedBy: actorId }).where(eq(schema.personaRuns.id, runId));
 }
 
 export async function getRun(runId: string): Promise<{ run: PersonaRun; touchpoints: Touchpoint[] } | null> {
@@ -44,29 +50,30 @@ export async function getRun(runId: string): Promise<{ run: PersonaRun; touchpoi
   return { run, touchpoints: sortTouchpoints(tps) };
 }
 
-export async function latestRunForPatient(patientId: number): Promise<{ run: PersonaRun; touchpoints: Touchpoint[] } | null> {
+export async function latestRunForPatient(patientId: number, namespace: Namespace = "live"): Promise<{ run: PersonaRun; touchpoints: Touchpoint[] } | null> {
   await ready();
-  const row = await db.query.personaRuns.findFirst({ where: eq(schema.personaRuns.patientId, patientId), orderBy: [desc(schema.personaRuns.createdAt)] });
+  const row = await db.query.personaRuns.findFirst({ where: and(eq(schema.personaRuns.patientId, patientId), eq(schema.personaRuns.namespace, namespace)), orderBy: [desc(schema.personaRuns.createdAt)] });
   if (!row) return null;
   return getRun(row.id);
 }
 
-export async function listRunsForPatient(patientId: number): Promise<Pick<PersonaRun, "id" | "createdAt" | "source">[]> {
+export async function listRunsForPatient(patientId: number, namespace: Namespace = "live"): Promise<Pick<PersonaRun, "id" | "createdAt" | "source" | "approvedAt">[]> {
   await ready();
   const rows = await db
-    .select({ id: schema.personaRuns.id, createdAt: schema.personaRuns.createdAt, source: schema.personaRuns.source })
+    .select({ id: schema.personaRuns.id, createdAt: schema.personaRuns.createdAt, source: schema.personaRuns.source, approvedAt: schema.personaRuns.approvedAt })
     .from(schema.personaRuns)
-    .where(eq(schema.personaRuns.patientId, patientId))
+    .where(and(eq(schema.personaRuns.patientId, patientId), eq(schema.personaRuns.namespace, namespace)))
     .orderBy(desc(schema.personaRuns.createdAt));
-  return rows.map((r) => ({ id: r.id, createdAt: r.createdAt, source: r.source as PersonaRun["source"] }));
+  return rows.map((r) => ({ id: r.id, createdAt: r.createdAt, source: r.source as PersonaRun["source"], approvedAt: r.approvedAt }));
 }
 
 /** Latest run id per patient plus approval counts, for the cohort board. */
-export async function latestRunSummaries(): Promise<Map<number, { id: string; createdAt: string; source: PersonaRun["source"]; approvedCount: number; touchpointCount: number }>> {
+export async function latestRunSummaries(namespace: Namespace = "live"): Promise<Map<number, { id: string; createdAt: string; source: PersonaRun["source"]; approvedCount: number; touchpointCount: number }>> {
   await ready();
   const rows = await db
     .select({ id: schema.personaRuns.id, patientId: schema.personaRuns.patientId, createdAt: schema.personaRuns.createdAt, source: schema.personaRuns.source })
     .from(schema.personaRuns)
+    .where(eq(schema.personaRuns.namespace, namespace))
     .orderBy(desc(schema.personaRuns.createdAt));
   const latest = new Map<number, (typeof rows)[number]>();
   for (const r of rows) if (!latest.has(r.patientId)) latest.set(r.patientId, r);
@@ -86,7 +93,7 @@ export async function latestRunSummaries(): Promise<Map<number, { id: string; cr
   return out;
 }
 
-export async function confirmClaim(runId: string, claimId: string): Promise<string[] | null> {
+export async function confirmClaim(runId: string, claimId: string, actorId: string | null = null): Promise<string[] | null> {
   await ready();
   const row = await db.query.personaRuns.findFirst({ where: eq(schema.personaRuns.id, runId) });
   if (!row) return null;
@@ -94,7 +101,7 @@ export async function confirmClaim(runId: string, claimId: string): Promise<stri
   ids.add(claimId);
   const next = [...ids];
   await db.update(schema.personaRuns).set({ confirmedClaimIds: JSON.stringify(next) }).where(eq(schema.personaRuns.id, runId));
-  await audit("claim.confirmed", { patientId: row.patientId, runId }, { claimId });
+  await audit("claim.confirmed", { patientId: row.patientId, runId, actorId }, { claimId });
   return next;
 }
 
@@ -103,8 +110,8 @@ export function sortTouchpoints(tps: Touchpoint[]): Touchpoint[] {
   return [...tps].sort((a, b) => KIND_ORDER.indexOf(a.kind) - KIND_ORDER.indexOf(b.kind));
 }
 
-export async function listAllRuns(): Promise<PersonaRun[]> {
+export async function listAllRuns(namespace: Namespace = "live"): Promise<PersonaRun[]> {
   await ready();
-  const rows = await db.query.personaRuns.findMany({ orderBy: [desc(schema.personaRuns.createdAt)] });
+  const rows = await db.query.personaRuns.findMany({ where: eq(schema.personaRuns.namespace, namespace), orderBy: [desc(schema.personaRuns.createdAt)] });
   return rows.map(rowToRun).filter((r): r is PersonaRun => r !== null);
 }

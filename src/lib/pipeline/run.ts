@@ -6,6 +6,7 @@ import {
   type BuildMode,
   type Fact,
   type GenericBaseline,
+  type Namespace,
   type PatientContext,
   type PatientRecord,
   type PersonaProfile,
@@ -46,6 +47,8 @@ export type RunOptions = {
   now?: Date;
   /** Leave {{date}} / {{weekday}} / {{time}} tokens in place (precompute writes cache files this way). */
   keepDateTokens?: boolean;
+  /** "demo" isolates the guided walkthrough's data. Default "live". */
+  namespace?: Namespace;
 };
 
 type StageOutcome<T> = { value: T; source: RunSource; model?: string; warning?: string };
@@ -223,6 +226,9 @@ export async function runPipeline(record: PatientRecord, context: PatientContext
     id: newId("run"),
     patientId: record.patientId,
     createdAt: nowIso(),
+    namespace: opts.namespace ?? "live",
+    approvedAt: null,
+    approvedBy: null,
     source,
     context,
     facts,

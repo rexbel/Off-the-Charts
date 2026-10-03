@@ -29,7 +29,7 @@ export function TouchpointStatusBadge({ status }: { status: Touchpoint["status"]
  * Approve / Edit / Reject / Reset for one touchpoint. Approval is disabled
  * while a privacy rule is violated, and the reason is spelled out.
  */
-export function TouchpointActions({ tp, score, onAction, editLabel = "Edit", demoKey }: { tp: Touchpoint; score: TiScore | null; onAction: OnTouchpointAction; editLabel?: string; demoKey?: string }) {
+export function TouchpointActions({ tp, score, onAction, editLabel = "Edit", demoKey, canApprove = true }: { tp: Touchpoint; score: TiScore | null; onAction: OnTouchpointAction; editLabel?: string; demoKey?: string; canApprove?: boolean }) {
   const [busy, setBusy] = useState<string | null>(null);
   const [editing, setEditing] = useState(false);
   const [draft, setDraft] = useState(tp.text);
@@ -48,7 +48,10 @@ export function TouchpointActions({ tp, score, onAction, editLabel = "Edit", dem
   return (
     <div className="flex flex-wrap items-center gap-1.5" data-demo={demoKey}>
       <TouchpointStatusBadge status={tp.status} />
-      {!decided || tp.status === "rejected" ? (
+      {(!decided || tp.status === "rejected") && !canApprove ? (
+        <span className="text-xs text-muted-foreground">Needs a clinician to approve</span>
+      ) : null}
+      {(!decided || tp.status === "rejected") && canApprove ? (
         <Tooltip>
           <TooltipTrigger asChild>
             <span>
@@ -82,6 +85,7 @@ export function TouchpointActions({ tp, score, onAction, editLabel = "Edit", dem
         </Button>
       )}
 
+      {tp.sentAt && <span className="text-xs text-muted-foreground">Sent (simulated) {new Date(tp.sentAt).toLocaleString([], { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" })}</span>}
       <Dialog open={editing} onOpenChange={setEditing}>
         <DialogContent className="sm:max-w-xl">
           <DialogHeader>

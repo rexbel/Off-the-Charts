@@ -5,12 +5,17 @@ import { OutboxList } from "@/components/outbox/outbox-list";
 import { outbox } from "@/lib/services/outbox";
 import { listPatients } from "@/lib/data/cohort";
 import { ImpactPanel } from "@/components/outbox/impact-panel";
+import { currentNamespace } from "@/lib/namespace";
+import { currentUser, canApprove } from "@/lib/auth";
+import { deliveriesForTouchpoints } from "@/lib/services/deliveries";
 
 export const metadata = { title: "Outbox" };
 export const dynamic = "force-dynamic";
 
 export default async function OutboxPage() {
-  const { approved, metrics } = await outbox();
+  const [ns, user] = await Promise.all([currentNamespace(), currentUser()]);
+  const { approved, metrics } = await outbox(ns);
+  const deliveries = await deliveriesForTouchpoints(approved.map((t) => t.id));
   const names = new Map(listPatients().map((p) => [p.patientId, p.seed.displayName]));
   return (
     <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 py-8 sm:py-10 pb-32">
@@ -43,7 +48,7 @@ export default async function OutboxPage() {
             </Button>
           </div>
         ) : (
-          <OutboxList approved={approved} names={Object.fromEntries(names)} />
+          <OutboxList approved={approved} names={Object.fromEntries(names)} deliveries={Object.fromEntries(deliveries)} canSend={canApprove(user)} />
         )}
       </section>
     </div>

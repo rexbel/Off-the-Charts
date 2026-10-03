@@ -359,6 +359,80 @@ export const tiTargetSchema = z.object({
 export type TiTarget = z.infer<typeof tiTargetSchema>;
 
 // ---------------------------------------------------------------------------
+// Users, roles, namespaces
+// ---------------------------------------------------------------------------
+
+export const roleSchema = z.enum(["coordinator", "clinician", "admin"]);
+export type Role = z.infer<typeof roleSchema>;
+
+export const ROLE_LABEL: Record<Role, string> = { coordinator: "Care coordinator", clinician: "Clinician", admin: "Admin" };
+
+export const userSchema = z.object({ id: z.string(), email: z.string(), name: z.string(), role: roleSchema });
+export type User = z.infer<typeof userSchema>;
+
+export const loginSchema = z.object({ email: z.string().email().max(200), password: z.string().min(1).max(200) });
+export type LoginRequest = z.infer<typeof loginSchema>;
+
+/** Demo runs live in their own namespace so the walkthrough never touches real work. */
+export const namespaceSchema = z.enum(["live", "demo"]);
+export type Namespace = z.infer<typeof namespaceSchema>;
+
+// ---------------------------------------------------------------------------
+// Patient check-in intake
+// ---------------------------------------------------------------------------
+
+export const checkinStatusSchema = z.enum(["sent", "submitted", "expired"]);
+export type CheckinStatus = z.infer<typeof checkinStatusSchema>;
+
+export const bestTimeSchema = z.enum(["morning", "afternoon", "no_preference"]);
+export type BestTime = z.infer<typeof bestTimeSchema>;
+
+export const checkinAnswersSchema = z.object({
+  whatMatters: z.string().min(1).max(2000),
+  language: languageSchema,
+  /** Who else should get messages, in the patient's own words. Empty means only the patient. */
+  includeWho: z.string().max(120),
+  bestTime: bestTimeSchema,
+});
+export type CheckinAnswers = z.infer<typeof checkinAnswersSchema>;
+
+export const patientCheckinSchema = z.object({
+  id: z.string(),
+  patientId: z.number(),
+  token: z.string(),
+  status: checkinStatusSchema,
+  answers: checkinAnswersSchema.nullable(),
+  createdAt: z.string(),
+  expiresAt: z.string(),
+  submittedAt: z.string().nullable(),
+});
+export type PatientCheckin = z.infer<typeof patientCheckinSchema>;
+
+// ---------------------------------------------------------------------------
+// Outbox deliveries (simulated sending)
+// ---------------------------------------------------------------------------
+
+export const deliveryStatusSchema = z.enum(["queued", "sent_simulated", "blocked"]);
+export type DeliveryStatus = z.infer<typeof deliveryStatusSchema>;
+
+export const outboxDeliverySchema = z.object({
+  id: z.string(),
+  touchpointId: z.string(),
+  patientId: z.number(),
+  namespace: namespaceSchema,
+  channel: channelSchema,
+  status: deliveryStatusSchema,
+  reason: z.string().nullable(),
+  /** Simulated vendor reference, e.g. "sim_ab12". */
+  vendorRef: z.string().nullable(),
+  at: z.string(),
+});
+export type OutboxDelivery = z.infer<typeof outboxDeliverySchema>;
+
+export const sendRequestSchema = z.object({ touchpointIds: z.array(z.string()).min(1).max(50) });
+export type SendRequest = z.infer<typeof sendRequestSchema>;
+
+// ---------------------------------------------------------------------------
 // Runs and touchpoints (persisted)
 // ---------------------------------------------------------------------------
 
@@ -397,6 +471,10 @@ export const personaRunSchema = z.object({
   id: z.string(),
   patientId: z.number(),
   createdAt: z.string(),
+  namespace: namespaceSchema.default("live"),
+  /** Set when a clinician approves a touchpoint of this run: the "latest approved" marker. */
+  approvedAt: z.string().nullable().default(null),
+  approvedBy: z.string().nullable().default(null),
   /** Overall: "live" only when every model stage was live. */
   source: runSourceSchema,
   context: patientContextSchema,
@@ -439,6 +517,7 @@ export const touchpointSchema = z.object({
   id: z.string(),
   runId: z.string(),
   patientId: z.number(),
+  namespace: namespaceSchema.default("live"),
   kind: touchpointKindSchema,
   recipient: z.string(),
   status: touchpointStatusSchema,
@@ -447,8 +526,26 @@ export const touchpointSchema = z.object({
   originalText: z.string(),
   decidedAt: z.string().nullable(),
   note: z.string().nullable(),
+  preparedBy: z.string().nullable().default(null),
+  approvedBy: z.string().nullable().default(null),
+  sentAt: z.string().nullable().default(null),
 });
 export type Touchpoint = z.infer<typeof touchpointSchema>;
+
+/** One row of the cross-patient approval queue. */
+export type QueueItem = { touchpoint: Touchpoint; patientName: string; runSource: RunSource; runCreatedAt: string; blocked: boolean; score: number };
+
+export type AuditEvent = {
+  id: string;
+  at: string;
+  action: string;
+  actorId: string | null;
+  actorName: string | null;
+  patientId: number | null;
+  runId: string | null;
+  touchpointId: string | null;
+  meta: Record<string, string | number | boolean | null>;
+};
 
 export const touchpointActionSchema = z.object({
   action: z.enum(["approve", "reject", "edit", "reset"]),
@@ -524,6 +621,7 @@ export type PatientSummary = {
 };
 
 export type OutboxMetrics = {
+  namespace: Namespace;
   patientsWithRuns: number;
   touchpointsTotal: number;
   touchpointsApproved: number;

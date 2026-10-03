@@ -14,7 +14,7 @@ import { TouchpointActions, type OnTouchpointAction } from "./touchpoint-actions
 import type { PersonaRun, TiScore, Touchpoint } from "@/lib/schemas";
 
 /** Patient-facing after-visit summary in the "voice" palette. Printable. */
-export function VisitSummaryView({ run, tp, score, onAction, onOpenClaim }: { run: PersonaRun; tp: Touchpoint | undefined; score: TiScore | null; onAction: OnTouchpointAction; onOpenClaim: (id: string) => void }) {
+export function VisitSummaryView({ run, tp, score, onAction, onOpenClaim, canApprove = true }: { run: PersonaRun; tp: Touchpoint | undefined; score: TiScore | null; onAction: OnTouchpointAction; onOpenClaim: (id: string) => void; canApprove?: boolean }) {
   const [showGeneric, setShowGeneric] = useState(false);
   const s = run.outputs.visitSummary;
   const es = run.profile.communicationNeeds.language === "es";
@@ -140,7 +140,7 @@ export function VisitSummaryView({ run, tp, score, onAction, onOpenClaim }: { ru
       )}
       {tp && (
         <div className="no-print">
-          <TouchpointActions tp={tp} score={score} onAction={onAction} />
+          <TouchpointActions tp={tp} score={score} onAction={onAction} canApprove={canApprove} />
         </div>
       )}
     </div>

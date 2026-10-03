@@ -34,6 +34,7 @@ export function touchpointsForRun(run: PersonaRun): Touchpoint[] {
     id: newId("tp"),
     runId: run.id,
     patientId: run.patientId,
+    namespace: run.namespace,
     kind,
     recipient,
     status: "pending",
@@ -41,6 +42,9 @@ export function touchpointsForRun(run: PersonaRun): Touchpoint[] {
     originalText: text,
     decidedAt: null,
     note: null,
+    preparedBy: null,
+    approvedBy: null,
+    sentAt: null,
   });
   const byStage = (stage: "before_7d" | "before_2d" | "after_24h") => run.outputs.messages.find((m) => m.stage === stage);
   const m7 = byStage("before_7d");

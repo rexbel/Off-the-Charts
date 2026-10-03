@@ -1,5 +1,12 @@
 import type {
   ApiError,
+  AuditEvent,
+  LoginRequest,
+  Namespace,
+  OutboxDelivery,
+  QueueItem,
+  SendRequest,
+  User,
   BuildEvent,
   BuildRequest,
   OutboxMetrics,
@@ -46,9 +53,18 @@ export type PatientBundle = {
   runs: Pick<PersonaRun, "id" | "createdAt" | "source">[];
   cachedAvailable: boolean;
   modelAvailable: boolean;
+  namespace: Namespace;
 };
 
 export const api = {
+  me: () => request<{ user: User | null; namespace: Namespace; demoEnabled: boolean }>("/api/me"),
+  login: (body: LoginRequest) => request<{ user: User }>("/api/auth/login", { method: "POST", body: JSON.stringify(body) }),
+  logout: () => request<{ ok: true }>("/api/auth/logout", { method: "POST" }),
+  queue: () => request<{ items: QueueItem[] }>("/api/queue"),
+  audit: (patientId?: number) => request<{ events: AuditEvent[] }>(`/api/audit${patientId ? `?patientId=${patientId}` : ""}`),
+  send: (body: SendRequest) => request<{ deliveries: OutboxDelivery[] }>("/api/outbox/send", { method: "POST", body: JSON.stringify(body) }),
+  demoStart: () => request<{ namespace: Namespace }>("/api/demo/start", { method: "POST" }),
+  demoExit: () => request<{ namespace: Namespace }>("/api/demo/exit", { method: "POST" }),
   patients: () => request<{ patients: PatientSummary[] }>("/api/patients"),
   patient: (id: number) => request<PatientBundle>(`/api/patients/${id}`),
   saveContext: (id: number, context: PatientContext) => request<{ context: PatientContext; contextEdited: boolean }>(`/api/patients/${id}/context`, { method: "PUT", body: JSON.stringify(context) }),
@@ -57,8 +73,8 @@ export const api = {
   confirmClaim: (runId: string, claimId: string) => request<{ confirmedClaimIds: string[] }>(`/api/runs/${runId}/claims/${claimId}/confirm`, { method: "POST" }),
   touchpoint: (id: string, action: TouchpointAction) => request<{ touchpoint: Touchpoint; score: TiScore }>(`/api/touchpoints/${id}`, { method: "POST", body: JSON.stringify(action) }),
   rewrite: (body: RewriteRequest) => request<RewriteResponse>("/api/rewrite", { method: "POST", body: JSON.stringify(body) }),
-  outbox: () => request<{ approved: Touchpoint[]; metrics: OutboxMetrics }>("/api/outbox"),
-  resetDemo: () => request<{ runs: number; touchpoints: number; contexts: number }>("/api/demo/reset", { method: "POST" }),
+  outbox: () => request<{ approved: Touchpoint[]; metrics: OutboxMetrics; deliveries: Record<string, OutboxDelivery> }>("/api/outbox"),
+  resetDemo: () => request<{ runs: number; touchpoints: number; deliveries: number }>("/api/demo/reset", { method: "POST" }),
 };
 
 /**
