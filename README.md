@@ -8,7 +8,7 @@ Off the Chart is a care-team console that turns a patient's EHR and their own "W
 
 ## What it does
 
-1. **Cohort board.** Twenty synthetic patients, ages 3 to 75, each with an upcoming visit and badges for who the messages go to (patient, caregiver, teen and guardian, several caregivers).
+1. **Patients.** A work queue of upcoming visits, soonest first, with who the messages go to, check-in status and persona status (not built, to review, approved, sent). Filter by stage or age band, or search.
 2. **Patient workspace.** The EHR snapshot on the left, the patient-stated check-in, audience, language and channel on the right. **Build Persona** runs four visible stages: extract facts (rules), Persona Profile (model), Voice Guide (model), render (model), then check and score (rules).
 3. **Review.** Messages side by side with today's template, each scored 0 to 100 with the reasons. Clinician brief with read-aloud. Visit summary in the patient's voice, printable. Before/after visit video rendered in the browser. Every claim chip opens an evidence sheet pointing at the encounter and field; inferred claims need a click to confirm; a privacy hit blocks approval.
 4. **Approve and send.** Coordinators prepare and edit, clinicians approve. Approved items land in the outbox, where sending is simulated and privacy is re-checked at send time. An audit trail records who did what, with ids and counts only.
@@ -28,7 +28,7 @@ cp .env.example .env.local   # then set one model key (optional)
 pnpm dev
 ```
 
-Open http://localhost:3000 and sign in with a seeded development account from the quick-fill buttons (coordinator, clinician, admin). The SQLite database is created and migrated on the first request.
+Open http://localhost:3000, which shows the public landing page; sign in with a seeded development account from the quick-fill buttons (coordinator, clinician, admin) to reach the console at /patients. The SQLite database is created and migrated on the first request.
 
 ### Environment variables
 
