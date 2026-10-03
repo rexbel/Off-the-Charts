@@ -41,6 +41,13 @@ export async function markRunApproved(runId: string, actorId: string | null): Pr
   await db.update(schema.personaRuns).set({ approvedAt: new Date().toISOString(), approvedBy: actorId }).where(eq(schema.personaRuns.id, runId));
 }
 
+/** Clears the marker when no approved touchpoint remains on the run. */
+export async function refreshRunApproval(runId: string): Promise<void> {
+  await ready();
+  const remaining = await db.select({ id: schema.touchpoints.id }).from(schema.touchpoints).where(and(eq(schema.touchpoints.runId, runId), inArray(schema.touchpoints.status, ["approved", "edited"]))).limit(1);
+  if (remaining.length === 0) await db.update(schema.personaRuns).set({ approvedAt: null, approvedBy: null }).where(eq(schema.personaRuns.id, runId));
+}
+
 export async function getRun(runId: string): Promise<{ run: PersonaRun; touchpoints: Touchpoint[] } | null> {
   await ready();
   const row = await db.query.personaRuns.findFirst({ where: eq(schema.personaRuns.id, runId) });

@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { PatientWorkspace } from "@/components/patient/workspace";
 import { getPatient, parsePatientId } from "@/lib/data/cohort";
-import { getContext } from "@/lib/services/context";
+import { defaultContext, getContext } from "@/lib/services/context";
 import { latestRunForPatient, listRunsForPatient } from "@/lib/services/runs";
 import { loadCachedRun } from "@/lib/pipeline/cached";
 import { modelAvailable } from "@/lib/ai/provider";
@@ -28,7 +28,7 @@ export default async function PatientPage(props: PageProps<"/patients/[id]">) {
 
   const [ns, user] = await Promise.all([currentNamespace(), currentUser()]);
   const [{ context, edited }, latest, runs, cached] = await Promise.all([
-    getContext(patient),
+    ns === "live" ? getContext(patient) : Promise.resolve({ context: defaultContext(patient), edited: false }),
     latestRunForPatient(patientId, ns),
     listRunsForPatient(patientId, ns),
     loadCachedRun(patientId),
@@ -40,5 +40,5 @@ export default async function PatientPage(props: PageProps<"/patients/[id]">) {
   const autoBuild = buildParam?.success ? buildParam.data : undefined;
   const openEvidence = sp.evidence === "1";
 
-  return <PatientWorkspace key={`${patientId}-${ns}-${openEvidence ? "e" : ""}`} bundle={bundle} user={user} initialTab={tab} autoBuild={autoBuild} openEvidence={openEvidence} />;
+  return <PatientWorkspace key={`${patientId}-${ns}`} bundle={bundle} user={user} initialTab={tab} autoBuild={autoBuild} openEvidence={openEvidence} />;
 }

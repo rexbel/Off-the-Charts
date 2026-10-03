@@ -137,6 +137,16 @@ describe("runPipeline (cached mode, no model)", () => {
     expect(rescored.messages[1].persona.score).toBe(twoDay.persona.score);
   });
 
+  it("renders Spanish-stated patients in Spanish at 85 or higher on the fallback", async () => {
+    for (const id of [2696, 2848]) {
+      const p = getPatient(id)!;
+      const run = await runPipeline(p, defaultContext(p), () => {}, { mode: "cached", cachedStageDelayMs: 0, now: FIXED_NOW });
+      expect(run.profile.communicationNeeds.language).toBe("es");
+      for (const m of run.scores.messages) expect(m.persona.score).toBeGreaterThanOrEqual(85);
+      expect(run.outputs.messages[0].persona).toMatch(/^Hola /);
+    }
+  });
+
   it("keeps date tokens when asked (precompute mode)", async () => {
     const emily = getPatient(1672)!;
     const run = await runPipeline(emily, defaultContext(emily), () => {}, { mode: "cached", cachedStageDelayMs: 0, now: FIXED_NOW, keepDateTokens: true });

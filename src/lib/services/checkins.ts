@@ -26,7 +26,12 @@ export function newCheckinToken(): string {
 
 /** Pure merge: the patient's answer replaces the check-in text and language; audience and channel stay. */
 export function contextFromCheckin(existing: PatientContext, answers: CheckinAnswers): PatientContext {
-  return { ...existing, checkin: answers.whatMatters, language: answers.language };
+  const extras: string[] = [];
+  if (answers.includeWho.trim()) extras.push(`Please also include: ${answers.includeWho.trim()}.`);
+  if (answers.bestTime === "morning") extras.push("Best time to reach me: morning.");
+  if (answers.bestTime === "afternoon") extras.push("Best time to reach me: afternoon.");
+  const checkin = [answers.whatMatters.trim(), ...extras].join(" ").slice(0, 2000);
+  return { ...existing, checkin, language: answers.language };
 }
 
 /** Whole days left before expiry, never negative. */

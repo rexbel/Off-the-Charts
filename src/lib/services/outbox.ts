@@ -1,4 +1,4 @@
-import { eq } from "drizzle-orm";
+import { eq, inArray, and } from "drizzle-orm";
 import { db, ready, schema } from "@/db";
 import type { Namespace, OutboxMetrics, PersonaRun, Touchpoint } from "@/lib/schemas";
 import { listAllRuns } from "./runs";
@@ -18,7 +18,10 @@ export async function outboxMetrics(namespace: Namespace = "live"): Promise<Outb
   for (const r of runs) if (!latest.has(r.patientId)) latest.set(r.patientId, r);
   const rows = [...latest.values()];
 
-  const tps = await db.select({ status: schema.touchpoints.status }).from(schema.touchpoints).where(eq(schema.touchpoints.namespace, namespace));
+  const latestIds = rows.map((r) => r.id);
+  const tps = latestIds.length
+    ? await db.select({ status: schema.touchpoints.status }).from(schema.touchpoints).where(and(eq(schema.touchpoints.namespace, namespace), inArray(schema.touchpoints.runId, latestIds)))
+    : [];
   let gradeG = 0, gradeP = 0, scoreG = 0, scoreP = 0, n = 0, stigma = 0, privacy = 0;
   for (const run of rows) {
     for (const m of run.scores.messages) {

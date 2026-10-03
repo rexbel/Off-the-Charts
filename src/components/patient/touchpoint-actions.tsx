@@ -63,7 +63,7 @@ export function TouchpointActions({ tp, score, onAction, editLabel = "Edit", dem
       {(!decided || tp.status === "rejected") && canApprove ? (
         <Tooltip>
           <TooltipTrigger asChild>
-            <span>
+            <span tabIndex={blocked ? 0 : -1} aria-label={blocked ? "Approve is unavailable: a privacy rule is violated" : undefined}>
               <Button size="sm" onClick={() => run({ action: "approve" })} disabled={blocked || busy !== null} aria-disabled={blocked}>
                 {blocked ? <ShieldAlertIcon aria-hidden /> : <CheckIcon aria-hidden />} Approve
               </Button>

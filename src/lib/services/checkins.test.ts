@@ -11,9 +11,11 @@ const existing: PatientContext = { checkin: "Seeded check-in text", audience: "s
 const answers: CheckinAnswers = { whatMatters: "I want my daughter to hear the plan too.", language: "es", includeWho: "My daughter Rosa", bestTime: "morning" };
 
 describe("contextFromCheckin", () => {
-  it("replaces the check-in text and language with the patient's answers", () => {
+  it("replaces the check-in text and language with the patient's answers, appending who-else and best-time as their words", () => {
     const merged = contextFromCheckin(existing, answers);
-    expect(merged.checkin).toBe(answers.whatMatters);
+    expect(merged.checkin.startsWith(answers.whatMatters)).toBe(true);
+    expect(merged.checkin).toContain("Please also include: My daughter Rosa.");
+    expect(merged.checkin).toContain("Best time to reach me: morning.");
     expect(merged.language).toBe("es");
   });
 
@@ -23,7 +25,7 @@ describe("contextFromCheckin", () => {
     expect(merged.channel).toBe("portal");
   });
 
-  it("does not copy who-else or best-time into the context and does not mutate its inputs", () => {
+  it("adds no extra context fields and does not mutate its inputs", () => {
     const before = structuredClone(existing);
     const merged = contextFromCheckin(existing, answers);
     expect(Object.keys(merged).sort()).toEqual(["audience", "channel", "checkin", "language"]);

@@ -5,6 +5,7 @@ import { CohortBoard } from "@/components/cohort/cohort-board";
 import { patientSummaries } from "@/lib/services/patients";
 import { outboxMetrics } from "@/lib/services/outbox";
 import { DEMO_PATIENT_IDS } from "@/lib/data/cohort";
+import { demoEnabled } from "@/lib/namespace";
 import { currentNamespace } from "@/lib/namespace";
 
 export const dynamic = "force-dynamic";
@@ -29,11 +30,13 @@ export default async function CohortPage() {
                 Start with Emily <ArrowRightIcon aria-hidden />
               </Link>
             </Button>
-            <Button asChild size="lg" variant="outline">
-              <Link href="/demo">
-                <PlayIcon aria-hidden /> Guided walkthrough
-              </Link>
-            </Button>
+            {demoEnabled() && (
+              <Button asChild size="lg" variant="outline">
+                <Link href="/demo">
+                  <PlayIcon aria-hidden /> Guided walkthrough
+                </Link>
+              </Button>
+            )}
           </div>
         </div>
         <MetricStrip metrics={metrics} />

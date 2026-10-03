@@ -7,7 +7,7 @@ import { MESSAGE_KIND_TO_STAGE } from "@/lib/pipeline/touchpoints";
 import { nowIso } from "@/lib/ids";
 import { HttpError } from "@/lib/http";
 import { audit } from "./audit";
-import { getRun, markRunApproved } from "./runs";
+import { getRun, markRunApproved, refreshRunApproval } from "./runs";
 import { canApprove } from "@/lib/auth";
 import { unconfirmedInferred } from "@/lib/pipeline/provenance";
 
@@ -76,6 +76,7 @@ export async function applyTouchpointAction(id: string, action: TouchpointAction
     .set({ text: next.text, status: next.status, decidedAt: next.decidedAt, note: next.note, approvedBy: next.approvedBy, preparedBy: tp.preparedBy ?? actor?.id ?? null })
     .where(eq(schema.touchpoints.id, id));
   if (action.action === "approve") await markRunApproved(tp.runId, actor?.id ?? null);
+  else await refreshRunApproval(tp.runId);
   await audit(`touchpoint.${action.action}`, { patientId: tp.patientId, runId: tp.runId, touchpointId: id, actorId: actor?.id ?? null }, { kind: tp.kind, status: next.status, edited: next.text !== next.originalText, namespace: tp.namespace });
   return { touchpoint: next, score: scoreTouchpoint(run, next) };
 }

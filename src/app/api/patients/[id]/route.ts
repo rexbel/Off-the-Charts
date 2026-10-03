@@ -3,7 +3,7 @@ import { handle, HttpError, json } from "@/lib/http";
 import { requireUser } from "@/lib/auth";
 import { namespaceFromRequest } from "@/lib/namespace";
 import { getPatient, parsePatientId } from "@/lib/data/cohort";
-import { getContext } from "@/lib/services/context";
+import { defaultContext, getContext } from "@/lib/services/context";
 import { latestRunForPatient, listRunsForPatient } from "@/lib/services/runs";
 import { loadCachedRun } from "@/lib/pipeline/cached";
 import { modelAvailable } from "@/lib/ai/provider";
@@ -17,7 +17,7 @@ export async function GET(req: NextRequest, ctx: RouteContext<"/api/patients/[id
     const patient = patientId ? getPatient(patientId) : undefined;
     if (!patient || !patientId) throw new HttpError(404, "Patient not found");
     const [{ context, edited }, latest, runs, cached] = await Promise.all([
-      getContext(patient),
+      ns === "live" ? getContext(patient) : Promise.resolve({ context: defaultContext(patient), edited: false }),
       latestRunForPatient(patientId, ns),
       listRunsForPatient(patientId, ns),
       loadCachedRun(patientId),

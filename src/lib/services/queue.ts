@@ -17,12 +17,12 @@ export async function approvalQueue(namespace: Namespace = "live"): Promise<Queu
   });
   const tps = rows.map((r) => touchpointSchema.safeParse(r)).filter((p) => p.success).map((p) => p.data as Touchpoint);
   if (tps.length === 0) return [];
-  const runIds = [...new Set(tps.map((t) => t.runId))];
-  // Only the latest run per patient counts; older runs' pending items are stale.
+  // Only the latest run per patient counts (across all runs, not just those with pending items).
+  const patientIds = [...new Set(tps.map((t) => t.patientId))];
   const latest = await db
     .select({ id: schema.personaRuns.id, patientId: schema.personaRuns.patientId, createdAt: schema.personaRuns.createdAt, source: schema.personaRuns.source })
     .from(schema.personaRuns)
-    .where(inArray(schema.personaRuns.id, runIds));
+    .where(and(inArray(schema.personaRuns.patientId, patientIds), eq(schema.personaRuns.namespace, namespace)));
   const latestByPatient = new Map<number, (typeof latest)[number]>();
   for (const r of latest) {
     const cur = latestByPatient.get(r.patientId);

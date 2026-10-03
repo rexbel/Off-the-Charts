@@ -62,8 +62,13 @@ export function PatientWorkspace({ bundle, user, initialTab, autoBuild, openEvid
   const [status, setStatus] = useState<BuildStatus>("idle");
   const [stages, setStages] = useState<StagesState>(() => (bundle.latest ? stagesFromRun(bundle.latest.run) : idleStages()));
   const [buildError, setBuildError] = useState<string | null>(null);
-  const [tab, setTab] = useState<Tab>(TABS.includes(initialTab as Tab) ? (initialTab as Tab) : "messages");
-  const [evidenceId, setEvidenceId] = useState<string | null>(() => (openEvidence && bundle.latest ? firstInferredId(bundle.latest.run) : null));
+  // The active tab lives in the URL (?tab=) so walkthrough steps and back/forward both work.
+  const urlTab = searchParams.get("tab") ?? initialTab;
+  const tab: Tab = TABS.includes(urlTab as Tab) ? (urlTab as Tab) : "messages";
+  // Evidence sheet: user choice wins; otherwise ?evidence=1 opens the first inferred claim of the current run once.
+  const [evidenceChoice, setEvidenceChoice] = useState<{ id: string | null } | null>(null);
+  const evidenceId = evidenceChoice ? evidenceChoice.id : openEvidence && run ? firstInferredId(run) : null;
+  const setEvidenceId = (id: string | null) => setEvidenceChoice({ id });
   const [confirming, setConfirming] = useState(false);
   const [contextOpen, setContextOpen] = useState(!bundle.latest);
   const abortRef = useRef<AbortController | null>(null);
@@ -89,15 +94,16 @@ export function PatientWorkspace({ bundle, user, initialTab, autoBuild, openEvid
                 ...prev,
                 [event.stage]: event.status === "start" ? { status: "running" } : { status: "done", source: event.source, durationMs: event.durationMs, warning: event.warning, data: event.data },
               }));
-              if (event.status === "done" && event.warning) toast.warning(event.warning, { duration: 6000 });
+              // In cached (walkthrough) mode the stage row already labels the source; no toast per stage.
+              if (event.status === "done" && event.warning && mode !== "cached") toast.warning(event.warning, { duration: 6000 });
             } else if (event.type === "complete") {
               setRun(event.run);
               setTouchpoints(event.touchpoints);
               setTpScores({});
               setRuns((prev) => [{ id: event.run.id, createdAt: event.run.createdAt, source: event.run.source, approvedAt: null }, ...prev]);
-              if (bundle.namespace === "live") setContextEdited(true);
+              if (bundle.namespace === "live" && JSON.stringify(context) !== JSON.stringify(bundle.context)) setContextEdited(true);
               setStatus("done");
-              if (openEvidence) setEvidenceId(firstInferredId(event.run));
+              setEvidenceChoice(null);
               toast.success(`Persona built for ${event.run.profile.preferredName}. ${event.touchpoints.length} touchpoints ready to review.`);
             } else if (event.type === "error") {
               setBuildError(event.message);
@@ -108,12 +114,17 @@ export function PatientWorkspace({ bundle, user, initialTab, autoBuild, openEvid
         );
         setStatus((s) => (s === "running" ? "done" : s));
       } catch (err) {
-        if (controller.signal.aborted) return;
+        if (controller.signal.aborted) {
+          // Cancelled: go back to the last saved run (or the empty state) so a new build can start.
+          setStatus("idle");
+          setStages(run ? stagesFromRun(run) : idleStages());
+          return;
+        }
         setBuildError(err instanceof ApiRequestError ? err.message : "The build could not reach the server. Nothing was sent.");
         setStatus("error");
       }
     },
-    [patient.patientId, context, status, openEvidence, bundle.namespace],
+    [patient.patientId, context, status, bundle.namespace, bundle.context, run],
   );
 
   // Demo: ?build=cached triggers one build on arrival, then strips the param.
@@ -131,7 +142,6 @@ export function PatientWorkspace({ bundle, user, initialTab, autoBuild, openEvid
 
   const selectTab = (t: string) => {
     const next = TABS.includes(t as Tab) ? (t as Tab) : "messages";
-    setTab(next);
     const params = new URLSearchParams(searchParams.toString());
     params.set("tab", next);
     router.replace(`${pathname}?${params}`, { scroll: false });
@@ -283,7 +293,7 @@ export function PatientWorkspace({ bundle, user, initialTab, autoBuild, openEvid
           <div className="mb-2 flex items-center justify-between">
             <h2 className="text-lg font-semibold">{building ? "Building the Persona" : "Build stopped"}</h2>
             {building && (
-              <Button variant="ghost" size="sm" onClick={() => abortRef.current?.abort()}>
+              <Button variant="ghost" size="sm" onClick={() => abortRef.current?.abort()} aria-label="Cancel this build">
                 Cancel
               </Button>
             )}
@@ -340,7 +350,7 @@ export function PatientWorkspace({ bundle, user, initialTab, autoBuild, openEvid
               </TabsContent>
             </Tabs>
           </section>
-          <EvidenceSheet run={run} itemId={evidenceId} onOpenChange={(o) => !o && setEvidenceId(null)} onConfirm={onConfirm} confirming={confirming} />
+          <EvidenceSheet run={run} itemId={evidenceId} onOpenChange={(o) => !o && setEvidenceChoice({ id: null })} onConfirm={onConfirm} confirming={confirming} />
         </>
       )}
 

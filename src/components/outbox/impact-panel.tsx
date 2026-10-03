@@ -7,7 +7,7 @@ export function ImpactPanel({ metrics }: { metrics: OutboxMetrics }) {
   return (
     <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4" data-demo="impact">
       <Card className="gap-1 p-4">
-        <p className="text-xs text-muted-foreground">Reading grade · 2-day messages</p>
+        <p className="text-xs text-muted-foreground">Reading grade · all message stages</p>
         <p className="font-heading text-3xl tabular-nums leading-none">
           {empty ? "—" : (
             <>

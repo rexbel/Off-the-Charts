@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowDownIcon, CheckCircle2Icon, CpuIcon, DatabaseIcon, ShieldCheckIcon, SlidersHorizontalIcon, UserCheckIcon } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { demoEnabled } from "@/lib/namespace";
 
 export const metadata = { title: "How it works" };
 
@@ -96,9 +97,11 @@ export default function HowItWorksPage() {
       </section>
 
       <div className="mt-10 flex flex-wrap gap-2">
-        <Button asChild>
-          <Link href="/demo">Run the guided walkthrough</Link>
-        </Button>
+        {demoEnabled() && (
+          <Button asChild>
+            <Link href="/demo">Run the guided walkthrough</Link>
+          </Button>
+        )}
         <Button asChild variant="outline">
           <Link href="/rewrite">Try the rewrite tool</Link>
         </Button>

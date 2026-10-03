@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { ChevronLeftIcon, ChevronRightIcon, RotateCcwIcon, XIcon } from "lucide-react";
 import { toast } from "sonner";
@@ -51,6 +51,23 @@ export function DemoBar() {
     return () => window.removeEventListener("keydown", onKey);
   }, [demo]);
 
+  const barRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (!demo.active) return;
+    const el = barRef.current;
+    if (!el) return;
+    const apply = () => {
+      document.body.style.paddingBottom = `${el.getBoundingClientRect().height + 16}px`;
+    };
+    apply();
+    const ro = new ResizeObserver(apply);
+    ro.observe(el);
+    return () => {
+      ro.disconnect();
+      document.body.style.paddingBottom = "";
+    };
+  }, [demo.active, step]);
+
   if (!demo.active || !step) return null;
   const isLast = demo.index === demo.total - 1;
 
@@ -66,7 +83,7 @@ export function DemoBar() {
   };
 
   return (
-    <div role="region" aria-label="Guided walkthrough" className="no-print fixed inset-x-0 bottom-0 z-50 border-t border-teal/30 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/85">
+    <div ref={barRef} role="region" aria-label="Guided walkthrough" className="no-print fixed inset-x-0 bottom-0 z-50 border-t border-teal/30 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/85">
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-3 px-4 py-3 sm:px-6 md:flex-row md:items-center md:gap-6">
         <div className="flex items-center gap-3 md:w-44 shrink-0">
           <span className="font-heading text-lg leading-none text-teal tabular-nums">

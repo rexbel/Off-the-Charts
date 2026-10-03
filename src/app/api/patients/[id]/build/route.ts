@@ -4,7 +4,7 @@ import { userFromRequest } from "@/lib/auth";
 import { namespaceFromRequest } from "@/lib/namespace";
 import { getPatient, parsePatientId } from "@/lib/data/cohort";
 import { buildRequestSchema, type BuildEvent } from "@/lib/schemas";
-import { getContext, saveContext } from "@/lib/services/context";
+import { defaultContext, getContext, saveContext } from "@/lib/services/context";
 import { runPipeline } from "@/lib/pipeline/run";
 import { saveRun } from "@/lib/services/runs";
 import { audit } from "@/lib/services/audit";
@@ -35,8 +35,10 @@ export async function POST(req: NextRequest, ctx: RouteContext<"/api/patients/[i
     return errorResponse(400, err instanceof Error ? err.message : "Invalid request");
   }
 
-  const context = body.context ?? (await getContext(patient)).context;
-  if (body.context && ns === "live") await saveContext(patientId, body.context);
+  // Demo builds always start from the seeded check-in so the walkthrough reads the same every time.
+  const stored = ns === "live" ? (await getContext(patient)).context : defaultContext(patient);
+  const context = ns === "live" && body.context ? body.context : stored;
+  if (ns === "live" && body.context && JSON.stringify(body.context) !== JSON.stringify(stored)) await saveContext(patientId, body.context);
 
   const encoder = new TextEncoder();
   const stream = new ReadableStream<Uint8Array>({
