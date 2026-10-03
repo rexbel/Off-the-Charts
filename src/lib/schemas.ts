@@ -41,7 +41,7 @@ export type Language = z.infer<typeof languageSchema>;
 export const channelSchema = z.enum(["sms", "portal", "phone"]);
 export type Channel = z.infer<typeof channelSchema>;
 
-export const ageBandSchema = z.enum(["pediatric", "teen", "young_adult", "adult", "older_adult"]);
+export const ageBandSchema = z.enum(["pediatric", "adolescent", "young_adult", "adult", "midlife", "older_adult"]);
 export type AgeBand = z.infer<typeof ageBandSchema>;
 
 export const demoRoleSchema = z.enum(["ideal", "complex", "edge"]).nullable();

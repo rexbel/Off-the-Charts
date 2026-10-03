@@ -15,9 +15,10 @@ import { cn } from "@/lib/utils";
 const BANDS: { key: AgeBand | "all"; label: string }[] = [
   { key: "all", label: "All ages" },
   { key: "pediatric", label: "Children" },
-  { key: "teen", label: "Teens" },
+  { key: "adolescent", label: "Teens" },
   { key: "young_adult", label: "Young adults" },
   { key: "adult", label: "Adults" },
+  { key: "midlife", label: "Midlife" },
   { key: "older_adult", label: "Older adults" },
 ];
 

@@ -106,7 +106,8 @@ export function scoreRun(profile: PersonaProfile, guide: VoiceGuide, outputs: Re
   ].join(" ");
   return {
     messages,
-    brief: scoreText(outputs.clinicianBrief.lines.join(" "), staffTarget(profile)),
+    // The brief quotes the avoid-terms on purpose; score the guidance lines, not the word list or the chart check.
+    brief: scoreText(outputs.clinicianBrief.lines.filter((l) => !/^(Avoid|Chart check|Privacy):/i.test(l)).join(" "), staffTarget(profile)),
     summary: { generic: scoreText(generic.summary, summaryTarget), persona: scoreText(summaryText, summaryTarget) },
   };
 }
@@ -116,6 +117,7 @@ async function modelStage<T>(
     name: Exclude<StageName, "extract" | "score">;
     live: () => Promise<{ value: T; model: string }>;
     cached: () => T | null;
+    cachedModel?: string;
     fallback: () => T;
     mode: BuildMode;
     delayMs: number;
@@ -124,7 +126,7 @@ async function modelStage<T>(
   if (args.mode === "cached") {
     await sleep(args.delayMs);
     const c = args.cached();
-    if (c) return { value: c, source: "cached" };
+    if (c) return { value: c, source: "cached", model: args.cachedModel };
     return { value: args.fallback(), source: "fallback", warning: "No cached output for this patient; used the rules-based fallback." };
   }
   try {
@@ -133,7 +135,7 @@ async function modelStage<T>(
   } catch (err) {
     const reason = err instanceof ModelError ? err.message : "Model stage failed";
     const c = args.cached();
-    if (c) return { value: c, source: "cached", warning: `${reason}. Showing cached output.` };
+    if (c) return { value: c, source: "cached", model: args.cachedModel, warning: `${reason}. Showing cached output.` };
     return { value: args.fallback(), source: "fallback", warning: `${reason}. Used the rules-based fallback.` };
   }
 }
@@ -171,6 +173,7 @@ export async function runPipeline(record: PatientRecord, context: PatientContext
         return { value: { ...r.value, patientId: record.patientId, dataQualityWarnings: dedupe([...r.value.dataQualityWarnings, ...fallbackProfile(record, facts, context).dataQualityWarnings]) }, model: r.model };
       },
       cached: () => cacheMatches?.profile ?? null,
+      cachedModel: cacheMatches?.model,
       fallback: () => fallbackProfile(record, facts, context),
     }),
   );
@@ -185,6 +188,7 @@ export async function runPipeline(record: PatientRecord, context: PatientContext
         return { value: r.value, model: r.model };
       },
       cached: () => cacheMatches?.voiceGuide ?? null,
+      cachedModel: cacheMatches?.model,
       fallback: () => fallbackVoiceGuide(profile, record),
     }),
   );
@@ -204,6 +208,7 @@ export async function runPipeline(record: PatientRecord, context: PatientContext
         return { value: r.value, model: r.model };
       },
       cached: () => cacheMatches?.outputs ?? null,
+      cachedModel: cacheMatches?.model,
       fallback: () => fallbackRender(record, profile, guide, facts, context),
     });
     return { ...out, value: opts.keepDateTokens ? out.value : fillDateTokens(out.value, slot) };

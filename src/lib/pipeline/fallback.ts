@@ -32,7 +32,7 @@ const COND = {
   depression: /depress|\bMDD\b/i,
   dementia: /dementia|alzheimer|delirium|frontotemporal/i,
   stroke: /stroke|\bMCA\b|aphasia|hemipare/i,
-  oud: /opioid|heroin|substance use|withdrawal/i,
+  oud: /opioid (?:use disorder|withdrawal|dependence)|heroin|substance use disorder|\bOUD\b/i,
   hiv: /\bHIV\b|\bAIDS\b|antiretroviral/i,
   pregnancy: /pregnan|peripartum|postpartum|twin/i,
   cancer: /cancer|carcinoma|metasta|neoplasm|lymphoma|hodgkin|melanoma|chemo|trastuzumab/i,
@@ -55,9 +55,12 @@ function factIds(facts: Fact[], re: RegExp, fields?: RegExp): string[] {
 }
 
 const DX_FIELDS = /primary_diagnoses|comorbidities|chronic_conditions|chief_complaint|note\.hpi|note\.plan/;
+/** Diagnosis lists only: for conditions where a mention in a note (e.g. opioids for cancer pain) is not a diagnosis. */
+const DX_LISTS_ONLY = /primary_diagnoses|comorbidities|chronic_conditions/;
+const STRICT: Partial<Record<CondKey, true>> = { oud: true, hiv: true, psychosis: true, dementia: true };
 
 function has(facts: Fact[], key: CondKey): string[] {
-  return factIds(facts, COND[key], DX_FIELDS);
+  return factIds(facts, COND[key], STRICT[key] ? DX_LISTS_ONLY : DX_FIELDS);
 }
 
 // ---------------------------------------------------------------------------

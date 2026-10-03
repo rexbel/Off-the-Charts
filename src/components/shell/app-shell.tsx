@@ -34,7 +34,7 @@ export function AppShell({ children, modelAvailable }: { children: React.ReactNo
                 href={item.href}
                 aria-current={isActive(item.href) ? "page" : undefined}
                 className={cn(
-                  "rounded-md px-2.5 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground hover:bg-muted outline-none focus-visible:ring-3 focus-visible:ring-ring/50",
+                  "whitespace-nowrap rounded-md px-2.5 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground hover:bg-muted outline-none focus-visible:ring-3 focus-visible:ring-ring/50",
                   isActive(item.href) && "text-foreground bg-muted",
                 )}
               >
@@ -45,7 +45,7 @@ export function AppShell({ children, modelAvailable }: { children: React.ReactNo
           <div className="ml-auto flex items-center gap-2">
             <Tooltip>
               <TooltipTrigger asChild>
-                <Badge variant="outline" className="hidden sm:inline-flex gap-1 text-muted-foreground">
+                <Badge variant="outline" className="hidden lg:inline-flex gap-1 text-muted-foreground">
                   <FlaskConicalIcon aria-hidden /> Synthetic data
                 </Badge>
               </TooltipTrigger>
@@ -53,7 +53,7 @@ export function AppShell({ children, modelAvailable }: { children: React.ReactNo
             </Tooltip>
             <Tooltip>
               <TooltipTrigger asChild>
-                <Badge variant="outline" className={cn("hidden sm:inline-flex gap-1", modelAvailable ? "text-teal border-teal/40" : "text-warn border-warn/40")}>
+                <Badge variant="outline" className={cn("hidden lg:inline-flex gap-1", modelAvailable ? "text-teal border-teal/40" : "text-warn border-warn/40")}>
                   {modelAvailable ? <CpuIcon aria-hidden /> : <DatabaseIcon aria-hidden />}
                   {modelAvailable ? "Model: live" : "Model: cached"}
                 </Badge>
