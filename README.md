@@ -39,6 +39,7 @@ Open http://localhost:3000, which shows the public landing page; sign in with a 
 | `OFF_THE_CHART_PROVIDER` | Force `anthropic` or `openai` when both keys exist. |
 | `OFF_THE_CHART_STAGE_TIMEOUT_MS` | Per-stage model timeout (default 90000). |
 | `DATABASE_URL`, `DATABASE_AUTH_TOKEN` | libsql URL (default `file:data/offthechart.db`); Turso in production. |
+| `ELEVENLABS_API_KEY`, `ELEVENLABS_VOICE_ID` | Studio voice for read-aloud and the video narration, cached in `data/audio/`. Without it, the browser voice is used. |
 | `SEED_PASSWORD` | Password for the seeded staff accounts. Defaults to a dev value outside production; required in production. |
 | `OFF_THE_CHART_DEMO` | `1`/`0` to force the guided demo on or off. Default: on outside production. |
 
@@ -53,7 +54,7 @@ pnpm typecheck      # tsc --noEmit
 pnpm lint           # eslint
 pnpm test           # vitest (checker, pipeline helpers)
 pnpm precompute     # generate src/lib/data/generated/<id>.json for all 20 patients (needs a model key)
-pnpm precompute --check   # fail if cached files are missing or no longer match the schema (no model calls)
+pnpm precompute --check   # fail if the three walkthrough patients lack valid cached files (no model calls)
 pnpm db:push        # apply schema with drizzle-kit (migrations also run automatically)
 ```
 
@@ -64,7 +65,7 @@ pnpm db:push        # apply schema with drizzle-kit (migrations also run automat
 | The EHR records (synthetic dataset, used as-is) | Names, caregivers, upcoming visits, check-ins |
 | Model generation and schema validation | Sending: the outbox writes delivery records, nothing leaves |
 | The trauma-informed scoring, approval state, audit | Staff accounts (seeded) |
-| Browser speech for read-aloud and video voice | Studio TTS and MP4 export (not built) |
+| Read-aloud and video voice: ElevenLabs when configured, else browser speech | MP4 export (not built) |
 
 Not claimed: clinical validation or regulatory compliance. A pilot would measure no-shows, portal engagement and teach-back comprehension.
 

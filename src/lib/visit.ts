@@ -7,7 +7,7 @@ import type { Language, UpcomingVisit } from "@/lib/schemas";
  */
 export type VisitSlot = {
   date: Date;
-  /** "Thursday, October 9" */
+  /** "October 9" (the weekday is a separate token so text never doubles it) */
   longDate: string;
   /** "Thursday" */
   weekday: string;
@@ -33,7 +33,7 @@ export function visitSlot(
   const isMorning = preferMorning || patientId % 3 === 0;
   const hhmm = isMorning ? morningSlots[idx] : afternoonSlots[idx];
   const locale = language === "es" ? "es-ES" : "en-US";
-  const longDate = date.toLocaleDateString(locale, { weekday: "long", month: "long", day: "numeric" });
+  const longDate = date.toLocaleDateString(locale, { month: "long", day: "numeric" });
   const weekday = date.toLocaleDateString(locale, { weekday: "long" });
   const time =
     language === "es"

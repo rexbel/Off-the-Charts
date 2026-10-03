@@ -19,13 +19,13 @@ export function genericBaseline(record: PatientRecord, now = new Date()): Generi
   const policyLine = policyLineFor(ehr);
 
   const before7 =
-    `Reminder: ${seed.displayName} has an upcoming appointment with ${dept} on ${slot.longDate} at ${slot.time}. ` +
+    `Reminder: ${seed.displayName} has an upcoming appointment with ${dept} on ${slot.weekday}, ${slot.longDate} at ${slot.time}. ` +
     `Reason for visit: ${seed.upcomingVisit.reason} (${reasonLine}). ` +
     `Please arrive 15 minutes early with your insurance card, photo ID, and a list of all current medications. ` +
     `Patients who fail to cancel 24 hours in advance may be charged a no-show fee.`;
 
   const before2 =
-    `Appointment reminder: ${dept} in ${seed.upcomingVisit.daysUntil} day(s), ${slot.longDate} ${slot.time}. ` +
+    `Appointment reminder: ${dept} in ${seed.upcomingVisit.daysUntil} day(s), ${slot.weekday} ${slot.longDate} ${slot.time}. ` +
     `Dx: ${reasonLine}. ${policyLine}Reply C to confirm or X to cancel. Do not reply with questions; this inbox is not monitored.`;
 
   const after24 =

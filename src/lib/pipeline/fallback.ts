@@ -410,8 +410,8 @@ export function fallbackRender(record: PatientRecord, profile: PersonaProfile, g
   const reasonLower = es ? "su seguimiento" : reason.charAt(0).toLowerCase() + reason.slice(1);
 
   const m7 = es
-    ? `${greeting} ${toCaregiver ? `${name} tiene` : "tiene"} una visita ${friendly}. Es el {{date}} a las {{time}}. Dura unos 40 minutos. ${bring} Vemos el plan juntos. ${safety}\n${signoff}`
-    : `${greeting} ${toCaregiver ? `${name} has` : "you have"} a ${friendly} visit on {{date}} at {{time}}. It's for: ${reasonLower}. It takes about 40 minutes. ${bring} We'll go over the plan together. ${safety}\n${signoff}`;
+    ? `${greeting} ${toCaregiver ? `${name} tiene` : "tiene"} una visita ${friendly}. Es el {{weekday}} {{date}} a las {{time}}. Dura unos 40 minutos. ${bring} Vemos el plan juntos. ${safety}\n${signoff}`
+    : `${greeting} ${toCaregiver ? `${name} has` : "you have"} a ${friendly} visit on {{weekday}}, {{date}} at {{time}}. It's for: ${reasonLower}. It takes about 40 minutes. ${bring} We'll go over the plan together. ${safety}\n${signoff}`;
 
   const steps = es
     ? ["Llegue 10 minutos antes.", "Le tomaremos la presión.", "Luego hablará con el equipo."]
@@ -441,8 +441,8 @@ export function fallbackRender(record: PatientRecord, profile: PersonaProfile, g
     const gName = guardian.name?.split(" ")[0] ?? (es ? "hola" : "there");
     const gScrub = (t: string) => scrubForPrivacy(t, profile.privacyRules, profile.communicationNeeds.channel, "guardian", lang);
     const g7 = es
-      ? `Hola ${gName}, ${name} tiene una visita ${friendly} el {{date}} a las {{time}}. Dura unos 40 minutos. Puede venir con ${name} o esperar en la sala. Escríbanos al 555-0100 si tiene preguntas.\n${signoff}`
-      : `Hi ${gName}, ${name} has a ${friendly} visit on {{date}} at {{time}}. It takes about 40 minutes. You can come in with ${name} or wait in the lobby. Text us at 555-0100 with any questions.\n${signoff}`;
+      ? `Hola ${gName}, ${name} tiene una visita ${friendly} el {{weekday}} {{date}} a las {{time}}. Dura unos 40 minutos. Puede venir con ${name} o esperar en la sala. Escríbanos al 555-0100 si tiene preguntas.\n${signoff}`
+      : `Hi ${gName}, ${name} has a ${friendly} visit on {{weekday}}, {{date}} at {{time}}. It takes about 40 minutes. You can come in with ${name} or wait in the lobby. Text us at 555-0100 with any questions.\n${signoff}`;
     const g2 = es
       ? `Hola ${gName}, recordatorio: ${name} tiene cita el {{weekday}} a las {{time}}. Llegue 10 minutos antes. Parte de la visita es a solas con ${name}; es lo normal a esta edad. Puede esperar con ${name} o en la sala. Si prefiere otra hora, díganos. Planeamos juntos. Escríbanos al 555-0100 si tiene preguntas.\n${signoff}`
       : `Hi ${gName}, a quick note: ${name}'s visit is {{weekday}} at {{time}}. Arrive 10 minutes early. Part of the visit is one-on-one with ${name}; that's normal at this age. You can wait with ${name} or in the lobby. If another time works better, just say so. We plan together. Text us at 555-0100 with questions.\n${signoff}`;
@@ -477,7 +477,7 @@ export function fallbackRender(record: PatientRecord, profile: PersonaProfile, g
 
   const whenToCall = whenToCallFor(facts, lang);
   const visitSummary: VisitSummary = {
-    headline: es ? `Su visita ${friendly}, {{date}}` : `Your ${friendly} visit, {{date}}`,
+    headline: es ? `Su visita ${friendly}, {{weekday}} {{date}}` : `Your ${friendly} visit, {{weekday}}, {{date}}`,
     whatWeTalkedAbout: [
       { text: es ? `Hablamos de: ${reasonLower}.` : `We talked about: ${reasonLower}.`, claimIds: [] },
       ...(latest ? [{ text: es ? `Su última visita fue por: ${latest.chief_complaint.toLowerCase()}.` : `Your last visit was about: ${latest.chief_complaint.toLowerCase()}.`, claimIds: [] }] : []),
@@ -497,7 +497,7 @@ export function fallbackRender(record: PatientRecord, profile: PersonaProfile, g
       title: es ? `Antes de su visita, ${name}` : `Before your visit, ${name}`,
       scenes: [
         { kind: "title", title: es ? "Antes de su visita" : "Before your visit", text: es ? `Hola, ${name}.` : `Hi, ${name}.`, voiceover: es ? `Hola ${name}. Esto es lo que va a pasar en su visita.` : `Hi ${name}. Here is what will happen at your visit.` },
-        { kind: "card", title: es ? "Cuándo y dónde" : "When and where", text: `{{date}}, {{time}}`, voiceover: es ? `Su visita es el {{date}} a las {{time}}. Dura unos 40 minutos.` : `Your visit is {{date}} at {{time}}. It takes about 40 minutes.` },
+        { kind: "card", title: es ? "Cuándo y dónde" : "When and where", text: `{{weekday}}, {{date}} · {{time}}`, voiceover: es ? `Su visita es el {{weekday}} {{date}} a las {{time}}. Dura unos 40 minutos.` : `Your visit is {{weekday}}, {{date}} at {{time}}. It takes about 40 minutes.` },
         { kind: "steps", title: es ? "Qué va a pasar" : "What will happen", text: "", items: steps, voiceover: steps.join(" ") },
         { kind: "choice", title: es ? "Usted decide" : "Your choice", text: es ? "Puede..." : "You can...", items: es ? ["Traer a alguien", "Pedir una pausa", "Hacer preguntas"] : ["Bring someone", "Ask for a break", "Ask questions any time"], voiceover: es ? "Puede traer a alguien, pedir una pausa o hacer preguntas en cualquier momento." : "You can bring someone, ask for a break, or ask questions any time." },
         { kind: "closing", title: es ? "Estamos aquí" : "We're here", text: safety, voiceover: es ? `Si tiene preguntas antes, escríbanos. Nos vemos pronto.` : `If you have questions before then, text us. See you soon.` },

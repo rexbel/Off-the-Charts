@@ -8,7 +8,7 @@ import { ScorePill } from "@/components/badges";
 import { HighlightedText } from "@/components/patient/highlighted-text";
 import type { TiScore } from "@/lib/schemas";
 import { useDemo } from "./demo-provider";
-import { speak, useSpeechAvailable } from "@/lib/client/speech";
+import { probeServerVoice, readAloud, useSpeechAvailable } from "@/lib/client/speech";
 
 export function DemoIntro({ genericText, genericScore, steps }: { genericText: string; genericScore: TiScore; steps: { id: string; title: string }[] }) {
   const demo = useDemo();
@@ -16,6 +16,7 @@ export function DemoIntro({ genericText, genericScore, steps }: { genericText: s
 
   // Landing on /demo while a walkthrough is active means step 0; otherwise show the launcher.
   useEffect(() => {
+    probeServerVoice();
     if (demo.active && demo.index !== 0) demo.goTo(0);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -40,7 +41,7 @@ export function DemoIntro({ genericText, genericScore, steps }: { genericText: s
           <span>Reading grade {genericScore.readingGrade.toFixed(1)}.</span>
           <span>{genericScore.findings.filter((f) => !f.passed).length} rules failed.</span>
           {canSpeak && (
-            <Button variant="outline" size="sm" onClick={() => speak(genericText, "en")} className="ml-auto">
+            <Button variant="outline" size="sm" onClick={() => void readAloud(genericText, "en")} className="ml-auto">
               <Volume2Icon aria-hidden /> Read it aloud
             </Button>
           )}

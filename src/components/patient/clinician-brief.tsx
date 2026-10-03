@@ -7,13 +7,17 @@ import { Card } from "@/components/ui/card";
 import { TiFindings } from "./ti-findings";
 import { TouchpointActions, type OnTouchpointAction } from "./touchpoint-actions";
 import type { PersonaRun, TiScore, Touchpoint } from "@/lib/schemas";
-import { speak, stopSpeaking, useSpeechAvailable } from "@/lib/client/speech";
+import { probeServerVoice, readAloud, stopSpeaking, useSpeechAvailable, useVoiceSource } from "@/lib/client/speech";
 
 /** The 30-second read before the clinician walks in. */
 export function ClinicianBrief({ run, tp, score, onAction, canApprove = true }: { run: PersonaRun; tp: Touchpoint | undefined; score: TiScore | null; onAction: OnTouchpointAction; canApprove?: boolean }) {
   const [speaking, setSpeaking] = useState(false);
   const canSpeak = useSpeechAvailable();
-  useEffect(() => () => stopSpeaking(), []);
+  const voiceSource = useVoiceSource();
+  useEffect(() => {
+    probeServerVoice();
+    return () => stopSpeaking();
+  }, []);
   const lines = tp ? tp.text.split("\n").filter(Boolean) : run.outputs.clinicianBrief.lines;
   const words = lines.join(" ").split(/\s+/).length;
   const seconds = Math.round(words / 2.6);
@@ -25,7 +29,7 @@ export function ClinicianBrief({ run, tp, score, onAction, canApprove = true }: 
       return;
     }
     setSpeaking(true);
-    speak(lines.join(". "), "en", () => setSpeaking(false));
+    void readAloud(lines.join(" "), "en", () => setSpeaking(false));
   };
 
   return (
@@ -39,9 +43,12 @@ export function ClinicianBrief({ run, tp, score, onAction, canApprove = true }: 
           </p>
         </div>
         {canSpeak && (
-          <Button variant={speaking ? "secondary" : "outline"} onClick={toggle} aria-pressed={speaking} data-demo="read-aloud">
-            {speaking ? <SquareIcon aria-hidden /> : <Volume2Icon aria-hidden />} {speaking ? "Stop" : "Read aloud"}
-          </Button>
+          <div className="flex flex-col items-end gap-1">
+            <Button variant={speaking ? "secondary" : "outline"} onClick={toggle} aria-pressed={speaking} data-demo="read-aloud">
+              {speaking ? <SquareIcon aria-hidden /> : <Volume2Icon aria-hidden />} {speaking ? "Stop" : "Read aloud"}
+            </Button>
+            <span className="text-xs text-muted-foreground">{voiceSource === "elevenlabs" ? "Studio voice (ElevenLabs)" : "Browser voice"}</span>
+          </div>
         )}
       </div>
       <ol className="grid gap-2.5 text-base sm:text-lg leading-snug" aria-label="Brief lines">

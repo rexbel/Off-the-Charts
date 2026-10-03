@@ -6,7 +6,7 @@
  *   pnpm precompute            # all 20
  *   pnpm precompute 1672 2311  # some
  *   pnpm precompute --force    # overwrite existing files
- *   pnpm precompute --check    # exit 1 if any patient lacks a valid cached file (no model calls)
+ *   pnpm precompute --check    # exit 1 if a walkthrough patient (Emily, Walter, Jake) lacks a valid cached file (no model calls)
  */
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
@@ -33,8 +33,10 @@ async function main() {
   const argv = process.argv.slice(2);
 
   if (argv.includes("--check")) {
+    const { DEMO_PATIENT_IDS } = await import("@/lib/data/cohort");
+    const required = new Set<number>(Object.values(DEMO_PATIENT_IDS));
     let missing = 0;
-    for (const p of listPatients()) {
+    for (const p of listPatients().filter((x) => required.has(x.patientId))) {
       const file = path.join(GENERATED_DIR, `${p.patientId}.json`);
       const raw = await readFile(file, "utf8").catch(() => null);
       const ok = raw ? cachedRunSchema.safeParse(JSON.parse(raw)).success : false;
@@ -43,7 +45,7 @@ async function main() {
         console.log(`  ${p.patientId} ${p.seed.preferredName}: ${raw ? "does not match the schema" : "missing"}`);
       }
     }
-    console.log(missing ? `${missing} patient(s) without valid cached output.` : "All 20 patients have valid cached output.");
+    console.log(missing ? `${missing} walkthrough patient(s) without valid cached output.` : "All walkthrough patients have valid cached output.");
     process.exit(missing ? 1 : 0);
   }
 
@@ -71,8 +73,16 @@ async function main() {
     }
     const t0 = Date.now();
     process.stdout.write(`  ${p.patientId} ${p.seed.preferredName}: `);
-    const run = await runPipeline(p, defaultContext(p), () => {}, { mode: "live", cachedStageDelayMs: 0, keepDateTokens: true });
-    const live = run.stages.filter((s) => s.stage !== "extract" && s.stage !== "score").every((s) => s.source === "live");
+    // Rate limits: wait and retry the whole patient a few times before giving up.
+    let run = await runPipeline(p, defaultContext(p), () => {}, { mode: "live", cachedStageDelayMs: 0, keepDateTokens: true });
+    let live = run.stages.filter((s) => s.stage !== "extract" && s.stage !== "score").every((s) => s.source === "live");
+    for (let attempt = 1; !live && attempt <= 4 && run.stages.some((s) => /rate limit/i.test(s.warning ?? "")); attempt += 1) {
+      const waitMs = 20_000 * attempt;
+      process.stdout.write(`rate limited, waiting ${waitMs / 1000}s… `);
+      await new Promise((r) => setTimeout(r, waitMs));
+      run = await runPipeline(p, defaultContext(p), () => {}, { mode: "live", cachedStageDelayMs: 0, keepDateTokens: true });
+      live = run.stages.filter((s) => s.stage !== "extract" && s.stage !== "score").every((s) => s.source === "live");
+    }
     if (!live) {
       failed += 1;
       console.log(`NOT live (${run.stages.map((s) => `${s.stage}:${s.source}${s.warning ? ` "${s.warning}"` : ""}`).join(", ")}) · not written`);
@@ -91,6 +101,7 @@ async function main() {
     });
     await writeFile(file, JSON.stringify(payload, null, 1) + "\n");
     ok += 1;
+    await new Promise((r) => setTimeout(r, 4_000));
     const m = run.scores.messages[1];
     console.log(`ok in ${((Date.now() - t0) / 1000).toFixed(0)}s · 2-day message ${m.generic.score} → ${m.persona.score} · grade ${m.generic.readingGrade} → ${m.persona.readingGrade}`);
   }

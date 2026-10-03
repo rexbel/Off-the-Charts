@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import { Player, type PlayerRef } from "@remotion/player";
 import type { Language, Scene, VideoScript } from "@/lib/schemas";
+import { prefetchSpeech, probeServerVoice, readAloud, stopSpeaking, useVoiceSource } from "@/lib/client/speech";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import {
@@ -32,7 +33,6 @@ export type VideoPlayerProps = {
   className?: string;
 };
 
-const SPEECH_LANG: Record<Language, string> = { en: "en-US", es: "es-ES" };
 
 /**
  * Frames into a scene that the strip seeks to. Scenes fade in over the first
@@ -48,8 +48,8 @@ const KIND_LABEL: Record<Language, Record<Scene["kind"], string>> = {
 const UI_TEXT = {
   en: {
     scenes: "Scenes",
-    voice: "Browser voice",
-    voiceHint: "Reads each card aloud with the voice built into this browser.",
+    voice: "Voice",
+    voiceHint: "Reads each card aloud.",
     captionsOnly: "Captions only on this device",
     sceneOf: (n: number, total: number) => `Scene ${n} of ${total}`,
     noScenes: "This video has no scenes yet.",
@@ -60,8 +60,8 @@ const UI_TEXT = {
   },
   es: {
     scenes: "Escenas",
-    voice: "Voz del navegador",
-    voiceHint: "Lee cada tarjeta en voz alta con la voz incluida en este navegador.",
+    voice: "Voz",
+    voiceHint: "Lee cada tarjeta en voz alta.",
     captionsOnly: "Solo subtítulos en este dispositivo",
     sceneOf: (n: number, total: number) => `Escena ${n} de ${total}`,
     noScenes: "Este video aún no tiene escenas.",
@@ -72,59 +72,38 @@ const UI_TEXT = {
   },
 } satisfies Record<Language, unknown>;
 
-function normalizeLang(tag: string) {
-  return tag.replace("_", "-").toLowerCase();
-}
-
 const noopSubscribe = () => () => {};
 const speechSupportedSnapshot = () =>
   typeof window !== "undefined" &&
   "speechSynthesis" in window &&
   typeof window.SpeechSynthesisUtterance === "function";
 
-/** Web Speech API wrapper. `supported` is null during server render and hydration. */
-function useBrowserVoice(language: Language) {
-  const supported = useSyncExternalStore<boolean | null>(noopSubscribe, speechSupportedSnapshot, () => null);
-  const voicesRef = useRef<SpeechSynthesisVoice[]>([]);
+/**
+ * Voice for the scenes: the server voice (ElevenLabs, cached) when configured,
+ * else the browser's own speech. `supported` is null during server render.
+ */
+function useSceneVoice(language: Language) {
+  // null during server render; after hydration the toggle is offered and read-aloud picks the best available voice.
+  const supported = useSyncExternalStore<boolean | null>(noopSubscribe, () => true, () => null);
+  const source = useVoiceSource();
 
   useEffect(() => {
-    if (!supported) return;
-    const synth = window.speechSynthesis;
-    const load = () => {
-      voicesRef.current = synth.getVoices();
-    };
-    load();
-    synth.addEventListener("voiceschanged", load);
-    return () => {
-      synth.removeEventListener("voiceschanged", load);
-      synth.cancel();
-    };
-  }, [supported]);
+    probeServerVoice();
+    return () => stopSpeaking();
+  }, []);
 
   const stop = useCallback(() => {
-    if (speechSupportedSnapshot()) window.speechSynthesis.cancel();
+    stopSpeaking();
   }, []);
 
   const speak = useCallback(
     (text: string) => {
-      if (!speechSupportedSnapshot()) return;
-      const synth = window.speechSynthesis;
-      synth.cancel();
-      const utterance = new SpeechSynthesisUtterance(text);
-      const target = normalizeLang(SPEECH_LANG[language]);
-      const voices = voicesRef.current.length ? voicesRef.current : synth.getVoices();
-      const voice =
-        voices.find((v) => normalizeLang(v.lang) === target) ??
-        voices.find((v) => normalizeLang(v.lang).startsWith(language));
-      if (voice) utterance.voice = voice;
-      utterance.lang = voice?.lang ?? SPEECH_LANG[language];
-      utterance.rate = 0.95;
-      synth.speak(utterance);
+      void readAloud(text, language);
     },
     [language],
   );
 
-  return { supported, speak, stop };
+  return { supported, speak, stop, source };
 }
 
 function sceneLabel(scene: Scene): string {
@@ -160,7 +139,7 @@ export function VideoPlayer({
   const [currentScene, setCurrentScene] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [voiceOn, setVoiceOn] = useState(false);
-  const voice = useBrowserVoice(language);
+  const voice = useSceneVoice(language);
 
   useEffect(() => {
     onSceneChangeRef.current = onSceneChange;
@@ -232,6 +211,7 @@ export function VideoPlayer({
       voice.stop();
       return;
     }
+    prefetchSpeech(script.scenes.map((s) => s.voiceover), language);
     const player = playerRef.current;
     if (player?.isPlaying()) {
       const scene = script.scenes[sceneIndexAtFrame(starts, player.getCurrentFrame())];

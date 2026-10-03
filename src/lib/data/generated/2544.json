@@ -1,0 +1,542 @@
+{
+ "patientId": 2544,
+ "generatedAt": "2026-10-03T07:29:57.138Z",
+ "model": "gpt-4.1-2025-04-14",
+ "context": {
+  "checkin": "I've been judged before. Just tell me what happens and that I won't be in withdrawal.",
+  "audience": "self",
+  "language": "en",
+  "channel": "sms"
+ },
+ "facts": [
+  {
+   "id": "f1",
+   "field": "demographics.age",
+   "value": "29 years old"
+  },
+  {
+   "id": "f2",
+   "field": "demographics.sex",
+   "value": "Male"
+  },
+  {
+   "id": "f3",
+   "field": "primary_diagnoses",
+   "value": "Opioid Withdrawal"
+  },
+  {
+   "id": "f4",
+   "field": "comorbidities",
+   "value": "Intravenous Drug Use (Substance Use Disorder)"
+  },
+  {
+   "id": "f5",
+   "field": "comorbidities",
+   "value": "Chronic back pain"
+  },
+  {
+   "id": "f6",
+   "field": "profile.chronic_conditions",
+   "value": "Chronic lower back pain"
+  },
+  {
+   "id": "f7",
+   "field": "profile.chronic_conditions",
+   "value": "Major depressive disorder"
+  },
+  {
+   "id": "f8",
+   "field": "profile.chronic_conditions",
+   "value": "Opioid use disorder"
+  },
+  {
+   "id": "f9",
+   "field": "profile.home_medications",
+   "value": "Sertraline 50 mg PO daily"
+  },
+  {
+   "id": "f10",
+   "field": "profile.home_medications",
+   "value": "Oxycodone 5-10 mg PO every 6 hours as needed for back pain"
+  },
+  {
+   "id": "f11",
+   "field": "profile.home_medications",
+   "value": "Ibuprofen 600 mg PO every 8 hours as needed for pain"
+  },
+  {
+   "id": "f12",
+   "field": "profile.allergies",
+   "value": "NKDA"
+  },
+  {
+   "id": "f13",
+   "field": "profile.surgical_history",
+   "value": "Lumbar microdiscectomy L5-S1 (2 years ago)"
+  },
+  {
+   "id": "f14",
+   "field": "profile.occupation",
+   "value": "Construction laborer"
+  },
+  {
+   "id": "f15",
+   "field": "profile.smoking_status",
+   "value": "Current smoker, 1/2 pack per day"
+  },
+  {
+   "id": "f16",
+   "field": "profile.alcohol_use",
+   "value": "Occasional, 2-3 beers on weekends"
+  },
+  {
+   "id": "f17",
+   "field": "profile.family_history",
+   "value": "Father: Alcohol use disorder, hypertension"
+  },
+  {
+   "id": "f18",
+   "field": "profile.family_history",
+   "value": "Mother: Major depressive disorder, fibromyalgia"
+  },
+  {
+   "id": "f19",
+   "field": "profile.family_history",
+   "value": "Older brother: Chronic low back pain"
+  },
+  {
+   "id": "f20",
+   "field": "encounter.visit",
+   "value": "ed visit, Emergency Medicine, Dr. Sarah Chen",
+   "encounterId": 10786,
+   "date": "2020-01-15"
+  },
+  {
+   "id": "f21",
+   "field": "encounter.chief_complaint",
+   "value": "Nausea, abdominal cramps, and diarrhea",
+   "encounterId": 10786,
+   "date": "2020-01-15"
+  },
+  {
+   "id": "f22",
+   "field": "encounter.note.hpi",
+   "value": "He presents to the emergency department with a 2-day history of nausea, abdominal cramps, and diarrhea. He reports feeling extremely anxious and has not been able to sleep due to restlessness.",
+   "encounterId": 10786,
+   "date": "2020-01-15"
+  },
+  {
+   "id": "f23",
+   "field": "encounter.visit",
+   "value": "ed visit, Emergency Medicine, Dr. Marcus Johnson",
+   "encounterId": 10785,
+   "date": "2020-07-15"
+  },
+  {
+   "id": "f24",
+   "field": "encounter.chief_complaint",
+   "value": "Increasing anxiety, abdominal cramps, nausea, and diarrhea",
+   "encounterId": 10785,
+   "date": "2020-07-15"
+  },
+  {
+   "id": "f25",
+   "field": "encounter.note.hpi",
+   "value": "The patient with opioid use disorder returns with symptoms similar to his January 2020 presentation. He reports muscle aches, runny nose, inability to stop yawning, and feeling unusually hot and cold.",
+   "encounterId": 10785,
+   "date": "2020-07-15"
+  },
+  {
+   "id": "f26",
+   "field": "encounter.visit",
+   "value": "ed visit, Emergency Medicine, Dr. Priya Patel",
+   "encounterId": 10787,
+   "date": "2021-01-15"
+  },
+  {
+   "id": "f27",
+   "field": "encounter.chief_complaint",
+   "value": "Increasing muscle and joint aches, nausea, diarrhea, and abdominal cramping",
+   "encounterId": 10787,
+   "date": "2021-01-15"
+  },
+  {
+   "id": "f28",
+   "field": "encounter.note.hpi",
+   "value": "The patient with chronic lower back pain on oxycodone returns with recurrent symptoms similar to prior presentations in January and July 2020. He reports a runny nose and excessive tearing.",
+   "encounterId": 10787,
+   "date": "2021-01-15"
+  },
+  {
+   "id": "f29",
+   "field": "seed.upcoming_visit",
+   "value": "Internal Medicine: Bridge clinic follow-up after ER visit (in 1 days)"
+  },
+  {
+   "id": "f30",
+   "field": "seed.stated_language",
+   "value": "English (patient-stated)"
+  }
+ ],
+ "profile": {
+  "patientId": 2544,
+  "preferredName": "Jake",
+  "summaryLine": "Jake is a 29-year-old construction laborer following up after an ER visit for opioid withdrawal, seeking clear, nonjudgmental communication and reassurance about withdrawal management.",
+  "audience": "self",
+  "recipients": [
+   {
+    "role": "patient",
+    "name": "Jake",
+    "relationship": "",
+    "primary": true
+   }
+  ],
+  "communicationNeeds": {
+   "readingLevel": 6,
+   "detailPreference": "brief",
+   "language": "en",
+   "channel": "sms",
+   "bestTimeOfDay": ""
+  },
+  "emotionalContext": [
+   {
+    "id": "ec1",
+    "text": "Jake has experienced judgment in the past and values being treated without stigma.",
+    "kind": "patient_stated",
+    "source": {
+     "factIds": [],
+     "note": "What matters to you check-in"
+    },
+    "reason": "Jake explicitly stated he has been judged before."
+   },
+   {
+    "id": "ec2",
+    "text": "Jake wants to know what will happen during his care and seeks reassurance that he will not be in withdrawal.",
+    "kind": "patient_stated",
+    "source": {
+     "factIds": [],
+     "note": "What matters to you check-in"
+    },
+    "reason": "Jake directly stated his desire for information and reassurance."
+   },
+   {
+    "id": "ec3",
+    "text": "Jake has a history of opioid use disorder and multiple ER visits for withdrawal symptoms, which may contribute to anxiety about his care.",
+    "kind": "fact",
+    "source": {
+     "factIds": [
+      "f3",
+      "f8",
+      "f22",
+      "f25",
+      "f28"
+     ],
+     "note": ""
+    },
+    "reason": "Multiple documented ER visits for withdrawal and anxiety."
+   },
+   {
+    "id": "ec4",
+    "text": "Jake may be sensitive to stigma due to his history of substance use disorder and past experiences with judgment.",
+    "kind": "inferred",
+    "source": {
+     "factIds": [
+      "f4",
+      "f8"
+     ],
+     "note": ""
+    },
+    "reason": "Substance use disorder is often associated with stigma, and Jake voiced concern about being judged."
+   }
+  ],
+  "privacyRules": [
+   {
+    "id": "pr1",
+    "rule": "Do not include diagnosis names related to substance use, psychiatric conditions, or related medications in SMS messages.",
+    "restrictedTerms": [
+     "opioid use disorder",
+     "opioid withdrawal",
+     "major depressive disorder",
+     "sertraline",
+     "oxycodone"
+    ],
+    "channels": [
+     "sms"
+    ],
+    "recipients": [],
+    "kind": "fact",
+    "source": {
+     "factIds": [
+      "f3",
+      "f7",
+      "f8",
+      "f9",
+      "f10"
+     ],
+     "note": ""
+    },
+    "reason": "To protect privacy regarding sensitive diagnoses and medications in SMS communication."
+   }
+  ],
+  "cognitiveSupport": [],
+  "strengths": [
+   {
+    "id": "s1",
+    "text": "Jake is proactive in communicating his needs and concerns about his care.",
+    "kind": "patient_stated",
+    "source": {
+     "factIds": [],
+     "note": "What matters to you check-in"
+    },
+    "reason": "Jake clearly articulated his concerns and preferences."
+   },
+   {
+    "id": "s2",
+    "text": "Jake has demonstrated the ability to seek medical care when experiencing withdrawal or pain.",
+    "kind": "fact",
+    "source": {
+     "factIds": [
+      "f20",
+      "f23",
+      "f26"
+     ],
+     "note": ""
+    },
+    "reason": "Multiple ER visits for symptom management show help-seeking behavior."
+   }
+  ],
+  "avoidTerms": [
+   "non-compliant",
+   "denies",
+   "refused"
+  ],
+  "dataQualityWarnings": []
+ },
+ "voiceGuide": {
+  "tone": [
+   "clear",
+   "nonjudgmental",
+   "reassuring"
+  ],
+  "doSay": [
+   "We are here for you.",
+   "Let us know how you feel.",
+   "You can ask questions anytime.",
+   "You are not alone.",
+   "Your comfort matters to us."
+  ],
+  "dontSay": [
+   "non-compliant",
+   "denies",
+   "refused",
+   "opioid use disorder",
+   "opioid withdrawal",
+   "major depressive disorder",
+   "sertraline",
+   "oxycodone"
+  ],
+  "sentenceMaxWords": 12,
+  "addressing": "Speak directly to Jake by name. No other recipients are included.",
+  "greeting": "Hi Jake,",
+  "signoff": "Your Care team",
+  "choicePhrases": [
+   "You can choose a call or text.",
+   "Let us know if you want to reschedule.",
+   "Tell us if you want more info."
+  ],
+  "safetyPhrases": [
+   "Call 555-0100 to talk now.",
+   "Reply STOP to pause messages."
+  ]
+ },
+ "outputs": {
+  "messages": [
+   {
+    "stage": "before_7d",
+    "recipient": "patient",
+    "persona": "Hi Jake,\nYour follow-up visit is on {{date}}, {{weekday}} at {{time}}. It will last about 40 minutes. We will talk together about how you are feeling and your next steps. You can choose a call or text if you have questions. Call 555-0100 to talk now.\nYour Care team",
+    "claimIds": [
+     "ec2",
+     "s1"
+    ]
+   },
+   {
+    "stage": "before_2d",
+    "recipient": "patient",
+    "persona": "Hi Jake,\nWe look forward to seeing you on {{date}}, {{weekday}} at {{time}}. The visit will take about 40 minutes. We will check in together about your comfort and answer your questions. Let us know if you want to reschedule. Call 555-0100 to talk now.\nYour Care team",
+    "claimIds": [
+     "ec2",
+     "s1"
+    ]
+   },
+   {
+    "stage": "after_24h",
+    "recipient": "patient",
+    "persona": "Hi Jake,\nThank you for coming in. You can read your summary for plain-language details. We will plan your next steps together. Tell us if you want more info. Call 555-0100 to talk now.\nYour Care team",
+    "claimIds": [
+     "ec2",
+     "s1"
+    ]
+   }
+  ],
+  "clinicianBrief": {
+   "lines": [
+    "Jake is a 29-year-old construction laborer here for a Bridge clinic follow-up after a recent ER visit.",
+    "He values clear, nonjudgmental, and reassuring communication.",
+    "Jake wants to know what will happen and seeks reassurance that he will not be in withdrawal.",
+    "He has experienced stigma before and is sensitive to judgment about his history.",
+    "Use plain, brief explanations and avoid restricted terms or stigmatizing language.",
+    "Jake is proactive in sharing his needs and concerns."
+   ],
+   "readAloudSeconds": 29,
+   "claimIds": [
+    "ec1",
+    "ec2",
+    "ec3",
+    "ec4",
+    "s1"
+   ]
+  },
+  "visitSummary": {
+   "headline": "Your Bridge Clinic Follow-Up Visit – {{date}}",
+   "whatWeTalkedAbout": [
+    {
+     "text": "How you have been feeling since your ER visit.",
+     "claimIds": [
+      "ec2"
+     ]
+    },
+    {
+     "text": "Ways to help you stay comfortable and manage symptoms.",
+     "claimIds": [
+      "ec2",
+      "s1"
+     ]
+    },
+    {
+     "text": "Your questions and what matters most to you.",
+     "claimIds": [
+      "ec1",
+      "ec2",
+      "s1"
+     ]
+    }
+   ],
+   "yourNextSteps": [
+    "Follow the plan we discussed for your comfort.",
+    "Reach out if you feel unwell or have new symptoms.",
+    "Let us know if you have questions or want more information.",
+    "Schedule your next follow-up as needed."
+   ],
+   "whenToCall": [
+    "Call us if you feel much worse or cannot manage symptoms.",
+    "Contact us if you have trouble getting your medications.",
+    "Call 555-0100 any time for help."
+   ],
+   "questionsForNextTime": [
+    "What else can help me stay comfortable?",
+    "Are there other options for my symptoms?",
+    "How can I prepare for my next visit?"
+   ]
+  },
+  "videoScripts": [
+   {
+    "stage": "before",
+    "title": "What to Expect: Your Bridge Clinic Visit",
+    "scenes": [
+     {
+      "kind": "title",
+      "title": "Welcome, Jake!",
+      "text": "Your Bridge Clinic visit is soon.",
+      "items": [],
+      "voiceover": "Hi Jake, your Bridge Clinic follow-up is coming up soon."
+     },
+     {
+      "kind": "card",
+      "title": "When and Where",
+      "text": "Your visit is on {{date}}, {{weekday}} at {{time}}.",
+      "items": [],
+      "voiceover": "Your appointment is on {{date}}, {{weekday}} at {{time}}."
+     },
+     {
+      "kind": "steps",
+      "title": "What Will Happen",
+      "text": "We will talk about how you feel and your comfort.",
+      "items": [
+       "Check in together",
+       "Talk about your comfort",
+       "Answer your questions"
+      ],
+      "voiceover": "We will check in together, talk about your comfort, and answer your questions."
+     },
+     {
+      "kind": "choice",
+      "title": "Your Choices",
+      "text": "You can ask questions or reschedule.",
+      "items": [
+       "Ask questions any time",
+       "Choose a call or text",
+       "Let us know if you need to change your visit"
+      ],
+      "voiceover": "You can ask questions any time or let us know if you need to change your visit."
+     },
+     {
+      "kind": "closing",
+      "title": "Need Help?",
+      "text": "Call 555-0100 to talk now.",
+      "items": [],
+      "voiceover": "Call 555-0100 to talk now. We are here for you."
+     }
+    ]
+   },
+   {
+    "stage": "after",
+    "title": "Your Visit Recap and Next Steps",
+    "scenes": [
+     {
+      "kind": "title",
+      "title": "Thank You, Jake!",
+      "text": "Thank you for coming in.",
+      "items": [],
+      "voiceover": "Thank you for coming in, Jake."
+     },
+     {
+      "kind": "card",
+      "title": "What We Talked About",
+      "text": "We discussed your comfort and next steps.",
+      "items": [],
+      "voiceover": "We talked about your comfort and what matters to you."
+     },
+     {
+      "kind": "steps",
+      "title": "Your Next Steps",
+      "text": "Follow your plan and reach out if needed.",
+      "items": [
+       "Follow your comfort plan",
+       "Contact us if you feel worse",
+       "Schedule your next visit"
+      ],
+      "voiceover": "Follow your comfort plan. Contact us if you feel worse or need help."
+     },
+     {
+      "kind": "choice",
+      "title": "Questions?",
+      "text": "You can ask for more info.",
+      "items": [
+       "Ask questions any time",
+       "Call 555-0100 for help"
+      ],
+      "voiceover": "You can ask for more information or call 555-0100 for help."
+     },
+     {
+      "kind": "closing",
+      "title": "We Are Here for You",
+      "text": "We will plan your next steps together.",
+      "items": [],
+      "voiceover": "We will plan your next steps together. You are not alone."
+     }
+    ]
+   }
+  ]
+ }
+}

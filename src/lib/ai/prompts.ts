@@ -106,7 +106,7 @@ export function renderUserPrompt(args: {
     `VoiceGuide:\n${JSON.stringify(args.guide, null, 1)}`,
     ``,
     `Upcoming visit: ${args.visit.department}, "${args.visit.reason}", in ${args.visit.daysUntil} days.`,
-    `Wherever the visit date, weekday or time appears, write these tokens verbatim and nothing else: {{date}} for the date, {{weekday}} for the weekday, {{time}} for the time. They are replaced before anything is shown. Assume the visit takes about 40 minutes.`,
+    `Wherever the visit date, weekday or time appears, write these tokens verbatim and nothing else: {{weekday}} for the weekday, {{date}} for the month and day (the two are separate; write "{{weekday}}, {{date}}" for a full date), {{time}} for the time. They are replaced before anything is shown. Assume the visit takes about 40 minutes.`,
     ``,
     `Cited facts you may rely on:\n${factsBlock(cited)}`,
     args.profile.dataQualityWarnings.length ? `Chart check (staff only, never mention to the patient): ${args.profile.dataQualityWarnings.join(" ")}` : "",

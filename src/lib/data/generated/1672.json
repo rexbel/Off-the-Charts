@@ -1,0 +1,712 @@
+{
+ "patientId": 1672,
+ "generatedAt": "2026-10-03T07:28:19.590Z",
+ "model": "gpt-4.1-2025-04-14",
+ "context": {
+  "checkin": "I'm a teacher; I like a written plan. I worry about my heart and the twins.",
+  "audience": "self",
+  "language": "en",
+  "channel": "sms"
+ },
+ "facts": [
+  {
+   "id": "f1",
+   "field": "demographics.age",
+   "value": "32 years old"
+  },
+  {
+   "id": "f2",
+   "field": "demographics.sex",
+   "value": "Female"
+  },
+  {
+   "id": "f3",
+   "field": "primary_diagnoses",
+   "value": "Peripartum cardiomyopathy"
+  },
+  {
+   "id": "f4",
+   "field": "primary_diagnoses",
+   "value": "Dichorionic diamniotic twin pregnancy"
+  },
+  {
+   "id": "f5",
+   "field": "primary_diagnoses",
+   "value": "Postpartum thyroiditis, hyperthyroid phase"
+  },
+  {
+   "id": "f6",
+   "field": "primary_diagnoses",
+   "value": "Impaired glucose tolerance"
+  },
+  {
+   "id": "f7",
+   "field": "primary_diagnoses",
+   "value": "Exclusive breastfeeding"
+  },
+  {
+   "id": "f8",
+   "field": "primary_diagnoses",
+   "value": "Term Pregnancy Requiring Delivery"
+  },
+  {
+   "id": "f9",
+   "field": "primary_diagnoses",
+   "value": "Vasa previa"
+  },
+  {
+   "id": "f10",
+   "field": "comorbidities",
+   "value": "Multiparity"
+  },
+  {
+   "id": "f11",
+   "field": "comorbidities",
+   "value": "Personal History of Cholelithiasis"
+  },
+  {
+   "id": "f12",
+   "field": "comorbidities",
+   "value": "Exclusive breastfeeding"
+  },
+  {
+   "id": "f13",
+   "field": "comorbidities",
+   "value": "Primiparity"
+  },
+  {
+   "id": "f14",
+   "field": "profile.chronic_conditions",
+   "value": "History of peripartum cardiomyopathy"
+  },
+  {
+   "id": "f15",
+   "field": "profile.chronic_conditions",
+   "value": "Impaired glucose tolerance"
+  },
+  {
+   "id": "f16",
+   "field": "profile.chronic_conditions",
+   "value": "History of gestational diabetes mellitus"
+  },
+  {
+   "id": "f17",
+   "field": "profile.chronic_conditions",
+   "value": "History of postpartum thyroiditis"
+  },
+  {
+   "id": "f18",
+   "field": "profile.chronic_conditions",
+   "value": "Generalized anxiety disorder"
+  },
+  {
+   "id": "f19",
+   "field": "profile.home_medications",
+   "value": "Enalapril 10 mg PO twice daily"
+  },
+  {
+   "id": "f20",
+   "field": "profile.home_medications",
+   "value": "Carvedilol 6.25 mg PO twice daily"
+  },
+  {
+   "id": "f21",
+   "field": "profile.home_medications",
+   "value": "Metformin 500 mg PO twice daily"
+  },
+  {
+   "id": "f22",
+   "field": "profile.home_medications",
+   "value": "Sertraline 50 mg PO daily"
+  },
+  {
+   "id": "f23",
+   "field": "profile.home_medications",
+   "value": "Prenatal vitamin 1 tablet PO daily"
+  },
+  {
+   "id": "f24",
+   "field": "profile.allergies",
+   "value": "Sulfa drugs"
+  },
+  {
+   "id": "f25",
+   "field": "profile.allergies",
+   "value": "Latex"
+  },
+  {
+   "id": "f26",
+   "field": "profile.surgical_history",
+   "value": "Cesarean section (secondary to vasa previa with twin gestation)"
+  },
+  {
+   "id": "f27",
+   "field": "profile.surgical_history",
+   "value": "Dilation and curettage"
+  },
+  {
+   "id": "f28",
+   "field": "profile.occupation",
+   "value": "Elementary school teacher"
+  },
+  {
+   "id": "f29",
+   "field": "profile.smoking_status",
+   "value": "Never smoker"
+  },
+  {
+   "id": "f30",
+   "field": "profile.alcohol_use",
+   "value": "None"
+  },
+  {
+   "id": "f31",
+   "field": "profile.family_history",
+   "value": "Mother with type 2 diabetes mellitus"
+  },
+  {
+   "id": "f32",
+   "field": "profile.family_history",
+   "value": "Maternal aunt with autoimmune thyroid disease"
+  },
+  {
+   "id": "f33",
+   "field": "profile.family_history",
+   "value": "Paternal grandmother with dilated cardiomyopathy"
+  },
+  {
+   "id": "f34",
+   "field": "encounter.visit",
+   "value": "outpatient visit, Obstetrics & Gynecology, Dr. Elena Rodriguez",
+   "encounterId": 6802,
+   "date": "2020-01-15"
+  },
+  {
+   "id": "f35",
+   "field": "encounter.chief_complaint",
+   "value": "Persistent vaginal bleeding 4 weeks after spontaneous vaginal delivery",
+   "encounterId": 6802,
+   "date": "2020-01-15"
+  },
+  {
+   "id": "f36",
+   "field": "encounter.note.hpi",
+   "value": "She reports persistent vaginal bleeding since delivery, which she describes as initially heavy and red, but now lighter and brownish. She denies any fever, abdominal pain, or foul-smelling discharge.",
+   "encounterId": 6802,
+   "date": "2020-01-15"
+  },
+  {
+   "id": "f37",
+   "field": "encounter.visit",
+   "value": "outpatient visit, Cardiology, Dr. Michael Chen",
+   "encounterId": 6797,
+   "date": "2020-02-15"
+  },
+  {
+   "id": "f38",
+   "field": "encounter.chief_complaint",
+   "value": "Gradually worsening shortness of breath since final weeks of pregnancy",
+   "encounterId": 6797,
+   "date": "2020-02-15"
+  },
+  {
+   "id": "f39",
+   "field": "encounter.note.hpi",
+   "value": "The patient presents to the cardiology clinic six weeks after delivering a healthy baby via spontaneous vaginal delivery at term, returning for evaluation after her obstetrics visit four weeks prior for postpartum bleeding. She has a history of peripartum cardiomyopathy, impaired glucose tolerance, and postpartum thyroiditis, and reports gradually worsening shortness of breath which started during the final weeks of her pregnancy and has continued to worsen since childbirth.",
+   "encounterId": 6797,
+   "date": "2020-02-15"
+  },
+  {
+   "id": "f40",
+   "field": "encounter.visit",
+   "value": "ed visit, Emergency Medicine, Dr. Fatima Al-Hassan",
+   "encounterId": 6798,
+   "date": "2020-04-15"
+  },
+  {
+   "id": "f41",
+   "field": "encounter.chief_complaint",
+   "value": "Progressive shortness of breath, orthopnea, and bilateral leg swelling",
+   "encounterId": 6798,
+   "date": "2020-04-15"
+  },
+  {
+   "id": "f42",
+   "field": "encounter.note.hpi",
+   "value": "The patient presents to the emergency department with worsening symptoms in the context of her known peripartum cardiomyopathy, previously evaluated by cardiology two months prior. She presents with a 2-week history of progressive shortness of breath, orthopnea, and bilateral leg swelling.",
+   "encounterId": 6798,
+   "date": "2020-04-15"
+  },
+  {
+   "id": "f43",
+   "field": "encounter.visit",
+   "value": "outpatient visit, Endocrinology, Dr. Robert Taylor",
+   "encounterId": 6800,
+   "date": "2020-06-15"
+  },
+  {
+   "id": "f44",
+   "field": "encounter.chief_complaint",
+   "value": "Palpitations, irritability, and 10-pound weight loss despite increased appetite",
+   "encounterId": 6800,
+   "date": "2020-06-15"
+  },
+  {
+   "id": "f45",
+   "field": "encounter.note.hpi",
+   "value": "Patient with peripartum cardiomyopathy, seen in April, presents to the clinic 5 months postpartum. She denies any pain or discomfort in her neck.",
+   "encounterId": 6800,
+   "date": "2020-06-15"
+  },
+  {
+   "id": "f46",
+   "field": "encounter.visit",
+   "value": "outpatient visit, Obstetrics & Gynecology, Dr. Elena Rodriguez",
+   "encounterId": 6799,
+   "date": "2020-12-15"
+  },
+  {
+   "id": "f47",
+   "field": "encounter.chief_complaint",
+   "value": "Routine prenatal visit at 18 weeks of gestation with twin pregnancy",
+   "encounterId": 6799,
+   "date": "2020-12-15"
+  },
+  {
+   "id": "f48",
+   "field": "encounter.note.hpi",
+   "value": "The patient is a 32-year-old female with a history of peripartum cardiomyopathy and postpartum thyroiditis following her delivery earlier this year who returns to the obstetrics clinic for routine prenatal care at 18 weeks gestation with a twin pregnancy. She presents to the obstetrics clinic.",
+   "encounterId": 6799,
+   "date": "2020-12-15"
+  },
+  {
+   "id": "f49",
+   "field": "encounter.visit",
+   "value": "ed visit, Emergency Medicine, Dr. James Wilson",
+   "encounterId": 6804,
+   "date": "2021-03-15"
+  },
+  {
+   "id": "f50",
+   "field": "encounter.chief_complaint",
+   "value": "Sudden onset of painless vaginal bleeding after feeling a pop in her abdomen",
+   "encounterId": 6804,
+   "date": "2021-03-15"
+  },
+  {
+   "id": "f51",
+   "field": "encounter.note.hpi",
+   "value": "The patient, with a history of peripartum cardiomyopathy and postpartum thyroiditis after her first pregnancy and current twin gestation, presents with sudden onset of painless vaginal bleeding. She denies any trauma.",
+   "encounterId": 6804,
+   "date": "2021-03-15"
+  },
+  {
+   "id": "f52",
+   "field": "encounter.visit",
+   "value": "outpatient visit, Obstetrics & Gynecology, Dr. Elena Rodriguez",
+   "encounterId": 6801,
+   "date": "2021-05-15"
+  },
+  {
+   "id": "f53",
+   "field": "encounter.chief_complaint",
+   "value": "Postpartum check-up 8 weeks after delivering second child with increased thirst and frequent urination",
+   "encounterId": 6801,
+   "date": "2021-05-15"
+  },
+  {
+   "id": "f54",
+   "field": "encounter.note.hpi",
+   "value": "Patient with history of peripartum cardiomyopathy and gestational diabetes returns for postpartum follow-up, reporting feeling generally well but mentions increased thirst and frequent urination. She notes uncomplicated pregnancy and delivery and currently breastfeeds.",
+   "encounterId": 6801,
+   "date": "2021-05-15"
+  },
+  {
+   "id": "f55",
+   "field": "encounter.visit",
+   "value": "outpatient visit, Obstetrics & Gynecology, Dr. Priya Natarajan",
+   "encounterId": 6803,
+   "date": "2022-04-15"
+  },
+  {
+   "id": "f56",
+   "field": "encounter.chief_complaint",
+   "value": "Request for elective cesarean delivery due to significant anxiety about labor and vaginal delivery",
+   "encounterId": 6803,
+   "date": "2022-04-15"
+  },
+  {
+   "id": "f57",
+   "field": "encounter.note.hpi",
+   "value": "The patient is a 34-year-old female with a history of peripartum cardiomyopathy following her first delivery and vasa previa in her prior twin gestation who presents requesting elective cesarean delivery for her current pregnancy. She carries diagnoses of generalized anxiety disorder, impaired glucose tolerance, and prior postpartum thyroiditis.",
+   "encounterId": 6803,
+   "date": "2022-04-15"
+  },
+  {
+   "id": "f58",
+   "field": "encounter.note.plan",
+   "value": "You are uncomfortable performing a cesarean delivery without a clear medical or obstetric indication.",
+   "encounterId": 6803,
+   "date": "2022-04-15"
+  },
+  {
+   "id": "f59",
+   "field": "seed.caregiver",
+   "value": "Partner"
+  },
+  {
+   "id": "f60",
+   "field": "seed.upcoming_visit",
+   "value": "Cardiology: Heart follow-up with echo after pregnancy (in 2 days)"
+  },
+  {
+   "id": "f61",
+   "field": "seed.stated_language",
+   "value": "English (patient-stated)"
+  }
+ ],
+ "profile": {
+  "patientId": 1672,
+  "preferredName": "Emily",
+  "summaryLine": "Emily is a 32-year-old teacher and mother of twins with a history of peripartum cardiomyopathy, who values written plans and is concerned about her heart and her children.",
+  "audience": "self",
+  "recipients": [
+   {
+    "role": "patient",
+    "name": "Emily",
+    "relationship": "self",
+    "primary": true
+   }
+  ],
+  "communicationNeeds": {
+   "readingLevel": 6,
+   "detailPreference": "stepwise",
+   "language": "en",
+   "channel": "sms",
+   "bestTimeOfDay": ""
+  },
+  "emotionalContext": [
+   {
+    "id": "ec1",
+    "text": "Emily is concerned about her heart health and her twins.",
+    "kind": "patient_stated",
+    "source": {
+     "factIds": [],
+     "note": "What matters to you check-in"
+    },
+    "reason": "Directly stated in her check-in."
+   },
+   {
+    "id": "ec2",
+    "text": "Emily prefers having a written plan for her care.",
+    "kind": "patient_stated",
+    "source": {
+     "factIds": [],
+     "note": "What matters to you check-in"
+    },
+    "reason": "Directly stated in her check-in."
+   },
+   {
+    "id": "ec3",
+    "text": "Emily experiences significant anxiety, especially related to her health and childbirth.",
+    "kind": "fact",
+    "source": {
+     "factIds": [
+      "f18",
+      "f56",
+      "f57"
+     ],
+     "note": ""
+    },
+    "reason": "Generalized anxiety disorder is diagnosed and anxiety about labor and delivery is documented."
+   }
+  ],
+  "privacyRules": [
+   {
+    "id": "pr1",
+    "rule": "Do not include diagnosis names related to mental health or psychiatric medications in SMS messages.",
+    "restrictedTerms": [
+     "generalized anxiety disorder",
+     "sertraline"
+    ],
+    "channels": [
+     "sms"
+    ],
+    "recipients": [],
+    "kind": "fact",
+    "source": {
+     "factIds": [
+      "f18",
+      "f22"
+     ],
+     "note": ""
+    },
+    "reason": "To protect privacy regarding psychiatric diagnoses and medications in SMS."
+   }
+  ],
+  "cognitiveSupport": [],
+  "strengths": [
+   {
+    "id": "s1",
+    "text": "Emily is proactive in her healthcare and seeks clear, written plans.",
+    "kind": "patient_stated",
+    "source": {
+     "factIds": [],
+     "note": "What matters to you check-in"
+    },
+    "reason": "She states she likes a written plan."
+   },
+   {
+    "id": "s2",
+    "text": "Emily is engaged in her role as a mother and teacher.",
+    "kind": "patient_stated",
+    "source": {
+     "factIds": [],
+     "note": "What matters to you check-in"
+    },
+    "reason": "She identifies herself as a teacher and expresses concern for her twins."
+   },
+   {
+    "id": "s3",
+    "text": "Emily consistently attends follow-up visits and manages multiple health conditions.",
+    "kind": "fact",
+    "source": {
+     "factIds": [
+      "f37",
+      "f40",
+      "f43",
+      "f46",
+      "f49",
+      "f52",
+      "f55"
+     ],
+     "note": ""
+    },
+    "reason": "Multiple documented follow-up visits for various health concerns."
+   }
+  ],
+  "avoidTerms": [
+   "non-compliant",
+   "denies",
+   "refused"
+  ],
+  "dataQualityWarnings": [
+   "\"Exclusive breastfeeding\" appears as both a primary diagnosis and a comorbidity."
+  ]
+ },
+ "voiceGuide": {
+  "tone": [
+   "reassuring",
+   "clear",
+   "supportive"
+  ],
+  "doSay": [
+   "Here is your step-by-step plan.",
+   "Let us know if you want more details.",
+   "You can choose what works best for you.",
+   "Your care is important to us.",
+   "We are here to support you."
+  ],
+  "dontSay": [
+   "non-compliant",
+   "denies",
+   "refused",
+   "generalized anxiety disorder",
+   "sertraline"
+  ],
+  "sentenceMaxWords": 12,
+  "addressing": "Speak directly to Emily by name. No other recipients need to be addressed.",
+  "greeting": "Hi Emily,",
+  "signoff": "Your Cardiology team",
+  "choicePhrases": [
+   "Would you like to see your plan?",
+   "Do you want to talk to a nurse?",
+   "Would you prefer written or phone follow-up?"
+  ],
+  "safetyPhrases": [
+   "Reply STOP to pause messages.",
+   "Call 555-0100 for help."
+  ]
+ },
+ "outputs": {
+  "messages": [
+   {
+    "stage": "before_7d",
+    "recipient": "patient",
+    "persona": "Hi Emily,\nYour heart follow-up with echo is on {{date}}, {{weekday}} at {{time}}. The visit will take about 40 minutes. We will check your heart and talk about your care plan together. You can ask for your plan in writing or talk with us by phone. Call 555-0100 for help.\nYour Cardiology team",
+    "claimIds": [
+     "ec2",
+     "ec1"
+    ]
+   },
+   {
+    "stage": "before_2d",
+    "recipient": "patient",
+    "persona": "Hi Emily,\nYour cardiology visit is coming up on {{date}}, {{weekday}} at {{time}}. We will do an echo and review your care plan together. The visit should last about 40 minutes. Would you like a written summary after? Call 555-0100 for help.\nYour Cardiology team",
+    "claimIds": [
+     "ec2"
+    ]
+   },
+   {
+    "stage": "after_24h",
+    "recipient": "patient",
+    "persona": "Hi Emily,\nThank you for coming to your heart follow-up. You can read your plain-language summary now. Next, we will keep checking your heart and update your plan together. Call 555-0100 if you have questions.\nYour Cardiology team",
+    "claimIds": [
+     "ec2"
+    ]
+   }
+  ],
+  "clinicianBrief": {
+   "lines": [
+    "Emily is a 32-year-old teacher and mother of twins here for a post-pregnancy cardiology follow-up and echo after peripartum cardiomyopathy.",
+    "She values stepwise, written plans and prefers clear, supportive communication.",
+    "Emily is concerned about her heart health and her twins' well-being.",
+    "She experiences significant anxiety, especially around health and childbirth; avoid discussing psychiatric diagnoses or medications in SMS or aloud unless necessary.",
+    "Use reassuring, clear language and offer written summaries.",
+    "Words to avoid: non-compliant, denies, refused, generalized anxiety disorder, sertraline.",
+    "Chart check: \"Exclusive breastfeeding\" appears as both a primary diagnosis and a comorbidity."
+   ],
+   "readAloudSeconds": 29,
+   "claimIds": [
+    "ec1",
+    "ec2",
+    "ec3",
+    "pr1"
+   ]
+  },
+  "visitSummary": {
+   "headline": "Your Heart Follow-Up Visit Summary for {{date}}",
+   "whatWeTalkedAbout": [
+    {
+     "text": "We checked your heart with an echo after pregnancy.",
+     "claimIds": []
+    },
+    {
+     "text": "We reviewed your care plan together.",
+     "claimIds": [
+      "ec2"
+     ]
+    },
+    {
+     "text": "We talked about your concerns for your heart and your twins.",
+     "claimIds": [
+      "ec1"
+     ]
+    }
+   ],
+   "yourNextSteps": [
+    "Follow your written care plan.",
+    "Take your medications as prescribed.",
+    "Schedule your next heart check.",
+    "Contact us if you have new symptoms."
+   ],
+   "whenToCall": [
+    "Call if you have chest pain or trouble breathing.",
+    "Call if you feel faint or very weak.",
+    "Call 555-0100 for any urgent concerns."
+   ],
+   "questionsForNextTime": [
+    "What changes should I watch for in my heart health?",
+    "How can I support my twins while caring for my heart?",
+    "Can I adjust my plan if my symptoms change?"
+   ]
+  },
+  "videoScripts": [
+   {
+    "stage": "before",
+    "title": "Getting Ready for Your Heart Follow-Up",
+    "scenes": [
+     {
+      "kind": "title",
+      "title": "Welcome, Emily!",
+      "text": "Your heart follow-up is soon.",
+      "items": [],
+      "voiceover": "Hi Emily, your heart follow-up visit is coming up soon."
+     },
+     {
+      "kind": "card",
+      "title": "What to Expect",
+      "text": "We will check your heart with an echo.",
+      "items": [],
+      "voiceover": "We will check your heart with an echo and talk about your care plan together."
+     },
+     {
+      "kind": "steps",
+      "title": "How Long and Who Will Be There",
+      "text": "The visit takes about 40 minutes.",
+      "items": [
+       "Cardiology team will see you",
+       "Echo test during visit"
+      ],
+      "voiceover": "The visit will take about 40 minutes. Our cardiology team will be with you."
+     },
+     {
+      "kind": "choice",
+      "title": "Your Choices",
+      "text": "You can ask for a written plan.",
+      "items": [
+       "Ask for written summary",
+       "Choose phone or in-person follow-up"
+      ],
+      "voiceover": "You can ask for a written summary or choose how you want to follow up."
+     },
+     {
+      "kind": "closing",
+      "title": "Need Help?",
+      "text": "Call 555-0100 for questions.",
+      "items": [],
+      "voiceover": "Call 555-0100 if you need help. We are here to support you."
+     }
+    ]
+   },
+   {
+    "stage": "after",
+    "title": "Your Heart Visit Recap",
+    "scenes": [
+     {
+      "kind": "title",
+      "title": "Thank You, Emily!",
+      "text": "You finished your heart follow-up.",
+      "items": [],
+      "voiceover": "Thank you, Emily, for coming to your heart follow-up."
+     },
+     {
+      "kind": "card",
+      "title": "What We Did",
+      "text": "We checked your heart and reviewed your plan.",
+      "items": [],
+      "voiceover": "We checked your heart and reviewed your care plan together."
+     },
+     {
+      "kind": "steps",
+      "title": "Next Steps",
+      "text": "Follow your written plan and take your medicines.",
+      "items": [
+       "Follow your written plan",
+       "Take your medicines",
+       "Schedule your next check"
+      ],
+      "voiceover": "Follow your written plan, take your medicines, and schedule your next check."
+     },
+     {
+      "kind": "choice",
+      "title": "When to Call",
+      "text": "Call if you have chest pain or trouble breathing.",
+      "items": [
+       "Chest pain or trouble breathing",
+       "Feeling faint or weak"
+      ],
+      "voiceover": "Call us if you have chest pain, trouble breathing, or feel faint."
+     },
+     {
+      "kind": "closing",
+      "title": "Questions?",
+      "text": "Call 555-0100 for help.",
+      "items": [],
+      "voiceover": "Call 555-0100 if you have any questions. We are here to help."
+     }
+    ]
+   }
+  ]
+ }
+}
